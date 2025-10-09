@@ -373,16 +373,6 @@
             margin-top: 4px;
         }
 
-        /* Novo estilo para o Delta */
-        .metric-content .delta-indicator {
-            font-size: 1rem; /* Tamanho ajustado para não quebrar a estética */
-            margin-left: 10px;
-            font-weight: 600;
-            vertical-align: middle;
-            display: inline-block;
-        }
-        /* Fim do novo estilo para o Delta */
-
         .timeline-header {
             text-align: center;
             font-size: 24px;
@@ -832,7 +822,7 @@
                 <i class="fas fa-bullhorn" style="color: #f59e0b;"></i>
                 Resumo da Semana
             </h1>
-            <p class="dashboard-subtitle" id="semana-data-panorama">Panorama de 29/09/25 a 05/10/25</p>
+            <p class="dashboard-subtitle" id="subtitleResumoSemana">Carregando dados...</p>
         </div>
 
         <div class="metrics-grid">
@@ -843,11 +833,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Total de visitas:</p>
-                    <strong>
-                        <span id="semana-visitas-valor">0</span> 
-                        <span id="semana-visitas-delta" class="delta-indicator"></span>
-                    </strong>
-                    <p class="info-text" id="semana-visitas-segmentacao">...</p>
+                    <strong id="metricVisitas">0</strong>
+                    <p class="info-text" id="infoVisitas">Carregando...</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -857,11 +844,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Total de indicações:</p>
-                    <strong>
-                        <span id="semana-indicacoes-valor">0</span>
-                        <span id="semana-indicacoes-delta" class="delta-indicator"></span>
-                    </strong>
-                    <p class="info-text" id="semana-indicacoes-segmentacao">...</p>
+                    <strong id="metricIndicacoes">0</strong>
+                    <p class="info-text" id="infoIndicacoes">Carregando...</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -871,11 +855,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Retornos na semana:</p>
-                    <strong>
-                        <span id="semana-retornos-valor">0</span>
-                        <span id="semana-retornos-delta" class="delta-indicator"></span>
-                    </strong>
-                    <p class="info-text" id="semana-retornos-segmentacao">...</p>
+                    <strong id="metricRetornos">0</strong>
+                    <p class="info-text" id="infoRetornos">Carregando...</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -885,11 +866,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Propostas geradas:</p>
-                    <strong>
-                        <span id="semana-propostas-valor">0</span>
-                        <span id="semana-propostas-delta" class="delta-indicator"></span>
-                    </strong>
-                    <p class="info-text" id="semana-propostas-segmentacao">...</p>
+                    <strong id="metricPropostas">0</strong>
+                    <p class="info-text" id="infoPropostas">Carregando...</p>
                 </div>
             </div>
         </div>
@@ -904,7 +882,7 @@
             <div class="chart-card">
                 <h4><i class="fas fa-chart-bar"></i> Tipo de Atendimento</h4>
                 <div class="chart-container">
-                    <canvas id="chartTipoAtendimento"></canvas>
+                    <canvas id="chartTipoAtendimentoSemana"></canvas>
                 </div>
             </div>
         </div>
@@ -914,24 +892,26 @@
             <div class="timeline-card">
                 <h4><i class="fas fa-map-marked-alt"></i> Visitas</h4>
                 <h5>Origem das Visitas</h5>
-                <p style="margin-bottom: 10px;" id="semana-origem-visitas-total">Vez: 0 atendimentos</p>
-                <div id="semana-origem-visitas-lista">
-                    <span class="text-sm text-gray">Carregando dados...</span>
-                </div>
+                <p style="margin-bottom: 10px;" id="totalAtendimentosVisitas">Total: 0 atendimentos</p>
+                <ul id="listOrigemVisitas">
+                    <li class="loading">Carregando...</li>
+                </ul>
             </div>
             <div class="timeline-card">
                 <h4><i class="fas fa-user-check"></i> Indicações</h4>
                 <h5>Origem das Indicações</h5>
-                <div id="semana-origem-indicacoes-lista">
-                    <span class="text-sm text-gray">Carregando dados...</span>
-                </div>
+                <p style="margin-bottom: 10px;" id="totalAtendimentosIndicacoes">Total: 0 atendimentos</p>
+                <ul id="listOrigemIndicacoes">
+                    <li class="loading">Carregando...</li>
+                </ul>
             </div>
             <div class="timeline-card">
                 <h4><i class="fas fa-reply"></i> Retornos</h4>
                 <h5>Origem dos Retornos</h5>
-                <div id="semana-origem-retornos-lista">
-                    <span class="text-sm text-gray">Carregando dados...</span>
-                </div>
+                <p style="margin-bottom: 10px;" id="totalAtendimentosRetornos">Total: 0 atendimentos</p>
+                <ul id="listOrigemRetornos">
+                    <li class="loading">Carregando...</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -1249,7 +1229,6 @@
             </div>
         </div>
 
-        <h2 class="timeline-header">Detalhes do Estoque e Vendas</h2>
         <div class="timeline-container">
             <div class="timeline-card">
                 <h4><i class="fas fa-check-circle" style="color: #10b981;"></i> UNIDADES VENDIDAS</h4>
@@ -1322,33 +1301,17 @@
                 <div class="list-group">
                     <h5><i class="fas fa-money-bill-wave"></i> VGV</h5>
                     <ul>
-                        <li>Meta: R$ 320.000.000</li>
-                        <li>Realizado: R$ 172.398.088</li>
-                        <li style="color: #3b82f6; font-weight: bold;">Atingimento: 53.8%</li>
+                        <li>Meta: R$ 320M</li>
+                        <li>Realizado: R$ 172.4M</li>
+                        <li style="color: #10b981; font-weight: bold;">Atingimento: 53.8%</li>
                     </ul>
                 </div>
                 <div class="list-group">
-                    <h5><i class="fas fa-calendar-alt"></i> Outubro/2025</h5>
+                    <h5><i class="fas fa-percent"></i> Taxa de Conversão</h5>
                     <ul>
-                        <li>Meta: 5 unidades</li>
-                        <li>Realizado: 2 unidades</li>
-                        <li style="color: #f59e0b; font-weight: bold;">Atingimento: 40%</li>
+                        <li>Vendas / Total Atendimentos: 15 / 131</li>
+                        <li style="color: #10b981; font-weight: bold;">Taxa: 11.45%</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="charts-container">
-            <div class="chart-card">
-                <h4><i class="fas fa-chart-line"></i> Performance de Atingimento</h4>
-                <div class="chart-container">
-                    <canvas id="chartPerformance"></canvas>
-                </div>
-            </div>
-            <div class="chart-card">
-                <h4><i class="fas fa-balance-scale"></i> Vendas vs Estoque</h4>
-                <div class="chart-container">
-                    <canvas id="chartVendasEstoque"></canvas>
                 </div>
             </div>
         </div>
@@ -1357,60 +1320,54 @@
     <div id="controle-atendimentos" class="dashboard">
         <div class="dashboard-header">
             <h1 class="dashboard-title">
-                <i class="fas fa-calendar-check" style="color: #3b82f6;"></i> Controle de Atendimentos
+                <i class="fas fa-clipboard-list" style="color: #3b82f6;"></i>
+                Controle de Atendimentos
             </h1>
-            <p class="dashboard-subtitle">Gestão completa de visitas e atendimentos comerciais</p>
+            <p class="dashboard-subtitle">Filtre e visualize todos os atendimentos registrados.</p>
         </div>
+
         <div class="filter-container">
-            <div class="date-range">
-                <div class="filter-group">
-                    <label for="filterDataInicio"><i class="fas fa-calendar"></i> Data Início</label>
-                    <input type="date" id="filterDataInicio" class="filter-input">
-                </div>
-                <div class="filter-group">
-                    <label for="filterDataFim"><i class="fas fa-calendar"></i> Data Fim</label>
-                    <input type="date" id="filterDataFim" class="filter-input">
-                </div>
+            <div class="filter-group">
+                <label for="filterDataInicio"><i class="fas fa-calendar-day"></i> Data Início</label>
+                <input type="date" id="filterDataInicio" class="filter-input">
+            </div>
+            <div class="filter-group">
+                <label for="filterDataFim"><i class="fas fa-calendar-day"></i> Data Fim</label>
+                <input type="date" id="filterDataFim" class="filter-input">
             </div>
             <div class="filter-group">
                 <label for="filterDiretoria"><i class="fas fa-building"></i> Diretoria</label>
                 <select id="filterDiretoria" class="filter-select">
-                    <option value="todas">Todas as Directorias</option>
-                    <option value="YUNY STORE">YUNY STORE</option>
-                    <option value="HOMESPHERE">HOMESPHERE</option>
-                    <option value="PARCERIAS">PARCERIAS</option>
-                    <option value="DIRETORIA">DIRETORIA</option>
-                    <option value="YUNY SELL">YUNY SELL</option>
+                    <option value="">Todas</option>
+                    <option value="Store">Store</option>
+                    <option value="Homesphere">Homesphere</option>
+                    <option value="Parcerias">Parcerias</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Sell">Yuny Sell</option>
+                    <option value="Diretoria">Diretoria</option>
                 </select>
             </div>
             <div class="filter-group">
-                <label for="filterTipo"><i class="fas fa-tag"></i> Tipo de Visita</label>
+                <label for="filterTipo"><i class="fas fa-door-open"></i> Tipo</label>
                 <select id="filterTipo" class="filter-select">
-                    <option value="todos">Todos os Tipos</option>
-                    <option value="Vez">Vez</option>
+                    <option value="">Todos</option>
+                    <option value="Visita">Visita</option>
                     <option value="Indicação">Indicação</option>
                     <option value="Retorno">Retorno</option>
-                    <option value="Ligação">Ligação</option>
                 </select>
             </div>
             <div class="filter-actions">
-                <button class="btn btn-primary" onclick="aplicarFiltros()">
-                    <i class="fas fa-filter"></i> Aplicar Filtros
-                </button>
-                <button class="btn btn-secondary" onclick="limparFiltros()">
-                    <i class="fas fa-redo"></i> Limpar
-                </button>
+                <button class="btn btn-primary" id="btnFiltrar"><i class="fas fa-search"></i> Filtrar</button>
+                <button class="btn btn-secondary" id="btnLimparFiltros"><i class="fas fa-redo"></i> Limpar</button>
             </div>
         </div>
 
         <div class="table-container">
             <div class="table-header">
-                <h3 class="table-title">Atendimentos Registrados (<span id="totalAtendimentos">0</span>)</h3>
+                <div class="table-title">Tabela de Atendimentos (<span id="countAtendimentos">0</span>)</div>
                 <div class="table-actions">
-                    <input type="text" id="searchTable" class="search-box" placeholder="Buscar na tabela...">
-                    <button class="btn btn-success" onclick="exportarTabela()">
-                        <i class="fas fa-file-excel"></i> Exportar
-                    </button>
+                    <input type="text" id="searchCliente" class="search-box" placeholder="Buscar por Cliente/Origem">
+                    <button class="btn btn-success"><i class="fas fa-download"></i> Exportar</button>
                 </div>
             </div>
             <div class="table-responsive">
@@ -1421,615 +1378,506 @@
                             <th>Cliente</th>
                             <th>Diretoria</th>
                             <th>Tipo</th>
-                            <th>Mídia</th>
-                            <th>Corretor</th>
-                            <th>Observações</th>
+                            <th>Origem</th>
+                            <th>Status</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody id="atendimentosTbody">
+                    <tbody id="tabelaAtendimentosBody">
                         </tbody>
                 </table>
             </div>
             <div class="pagination">
-                <span class="pagination-info" id="paginationInfo">Mostrando 0 de 0 atendimentos</span>
+                <div class="pagination-info" id="paginationInfo">Mostrando 0 de 0</div>
                 <div class="pagination-controls">
                     <button class="pagination-btn" id="prevPage" disabled><i class="fas fa-chevron-left"></i> Anterior</button>
-                    <button class="pagination-btn" id="nextPage" disabled>Próximo <i class="fas fa-chevron-right"></i></button>
+                    <span id="currentPageDisplay">Página 1</span>
+                    <button class="pagination-btn" id="nextPage" disabled>Próxima <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="tratativas" class="dashboard">
-        <div class="dashboard-header header-pipeline">
+        <div class="dashboard-header">
             <h1 class="dashboard-title">
-                <i class="fas fa-project-diagram" style="color: #6366f1;"></i>
+                <i class="fas fa-sitemap" style="color: #06b6d4;"></i>
                 Pipeline de Tratativas
             </h1>
-            <p class="dashboard-subtitle">Gerenciamento de clientes em negociação ativa</p>
+            <p class="dashboard-subtitle">Funil de Vendas de Atendimentos em Andamento (Status: Tratativa, Proposta, Processo)</p>
+        </div>
+        <div class="header-pipeline">
+            <h2 class="timeline-header" id="pipelineHeaderVGV">VGV em Tratativa: R$ 0,00 | Total de Unidades: 0</h2>
         </div>
 
         <div class="pipeline-container">
-            <div class="pipeline-col">
-                <div class="col-header" style="border-bottom-color: #3b82f6;">
-                    <h3>Novo Atendimento</h3>
+            <div class="pipeline-col tratativa-col">
+                <div class="col-header" style="border-left: 5px solid #06b6d4;">
+                    <h3>TRATATIVA</h3>
                     <div class="count">
-                        <span>Clientes:</span>
-                        <span class="count-value" id="countNovoAtendimento" style="background: #3b82f6;">0</span>
+                        <span>Unidades: <span id="countTratativa">0</span></span>
+                        <span class="count-value" style="background-color: #06b6d4;" id="vgvTratativa">R$ 0,00</span>
                     </div>
                 </div>
-                <div class="col-content" id="colNovoAtendimento">
+                <div class="col-content" id="colTratativa">
+                    <p class="loading">Carregando...</p>
                     </div>
             </div>
 
-            <div class="pipeline-col">
-                <div class="col-header" style="border-bottom-color: #06b6d4;">
-                    <h3>Em Tratativa</h3>
+            <div class="pipeline-col proposta-col">
+                <div class="col-header" style="border-left: 5px solid var(--warning);">
+                    <h3>PROPOSTA</h3>
                     <div class="count">
-                        <span>Clientes:</span>
-                        <span class="count-value" id="countEmTratativa" style="background: #06b6d4;">0</span>
+                        <span>Unidades: <span id="countProposta">0</span></span>
+                        <span class="count-value" style="background-color: var(--warning);" id="vgvProposta">R$ 0,00</span>
                     </div>
                 </div>
-                <div class="col-content" id="colEmTratativa">
+                <div class="col-content" id="colProposta">
+                    <p class="loading">Carregando...</p>
                 </div>
             </div>
 
-            <div class="pipeline-col">
-                <div class="col-header" style="border-bottom-color: #f59e0b;">
-                    <h3>Proposta Enviada</h3>
+            <div class="pipeline-col processo-col">
+                <div class="col-header" style="border-left: 5px solid var(--primary);">
+                    <h3>PROCESSO</h3>
                     <div class="count">
-                        <span>Clientes:</span>
-                        <span class="count-value" id="countPropostaEnviada" style="background: #f59e0b;">0</span>
+                        <span>Unidades: <span id="countProcesso">0</span></span>
+                        <span class="count-value" style="background-color: var(--primary);" id="vgvProcesso">R$ 0,00</span>
                     </div>
-                    <div class="vgv-total" id="vgvPropostaEnviada">R$ 0</div>
                 </div>
-                <div class="col-content" id="colPropostaEnviada">
+                <div class="col-content" id="colProcesso">
+                    <p class="loading">Carregando...</p>
                 </div>
             </div>
 
-            <div class="pipeline-col">
-                <div class="col-header" style="border-bottom-color: #ef4444;">
-                    <h3>Negociação Final</h3>
+            <div class="pipeline-col vendido-col">
+                <div class="col-header" style="border-left: 5px solid var(--success);">
+                    <h3>VENDIDO</h3>
                     <div class="count">
-                        <span>Clientes:</span>
-                        <span class="count-value" id="countNegociacaoFinal" style="background: #ef4444;">0</span>
+                        <span>Unidades: <span id="countVendido">0</span></span>
+                        <span class="count-value" style="background-color: var(--success);" id="vgvVendido">R$ 0,00</span>
                     </div>
-                    <div class="vgv-total" id="vgvNegociacaoFinal">R$ 0</div>
-                </div>
-                <div class="col-content" id="colNegociacaoFinal">
-                </div>
-            </div>
-
-            <div class="pipeline-col">
-                <div class="col-header" style="border-bottom-color: #10b981;">
-                    <h3>Vendido</h3>
-                    <div class="count">
-                        <span>Unidades:</span>
-                        <span class="count-value" id="countVendido" style="background: #10b981;">0</span>
-                    </div>
-                    <div class="vgv-total" id="vgvVendido">R$ 0</div>
                 </div>
                 <div class="col-content" id="colVendido">
+                    <p class="loading">Carregando...</p>
                     </div>
             </div>
-        </div>
 
-        <div id="pipelineChartsContainer" class="charts-container" style="margin-top: 30px;">
-            <div class="chart-card">
-                <h4><i class="fas fa-funnel-dollar"></i> Funil de Conversão</h4>
-                <div class="chart-container">
-                    <canvas id="chartFunilPipeline"></canvas>
-                </div>
-            </div>
-            <div class="chart-card">
-                <h4><i class="fas fa-chart-bar"></i> VGV por Etapa</h4>
-                <div class="chart-container">
-                    <canvas id="chartVGVPorEtapa"></canvas>
-                </div>
-            </div>
         </div>
     </div>
+
+
+    <div id="dynamicTooltip" class="tooltip"></div>
+
 </div>
 
-<div class="tooltip" id="dynamicTooltip"></div>
-
 <script>
-    // Variável global para armazenar os dados carregados
-    let ATENDIMENTOS_BRUTOS = [];
-    let PIPELINE_BRUTO = [];
-    const ITEMS_PER_PAGE = 25;
-    let currentPage = 1;
-    let filteredAtendimentos = [];
-    
-    // Lista de Diretorias válidas (para segmentação e cores)
-    const DIRETORIAS_VALIDAS = ['Store', 'Homesphere', 'Ferrari', 'Parcerias', 'Yuny Sell', 'Diretoria'];
+    // ====================================================================
+    // 1. ESTRUTURA DE DADOS (SIMULANDO A PLANILHA)
+    // Usado como fonte única de dados para todas as abas dinâmicas.
+    // ====================================================================
 
-    // --- FUNÇÕES DE DASHBOARD GERAIS ---
+    /**
+     * @typedef {Object} Atendimento
+     * @property {string} data - Data do atendimento (formato YYYY-MM-DD).
+     * @property {string} cliente - Nome do cliente.
+     * @property {string} diretoria - Diretoria responsável (Store, Homesphere, Parcerias, etc.).
+     * @property {string} tipo - Tipo de atendimento (Visita, Indicação, Retorno).
+     * @property {string} origem - Origem do contato (Passagem, Carteira, Instagram, etc.).
+     * @property {string} status - Status atual (Tratativa, Proposta, Processo, Vendido, Perdido).
+     * @property {number} vgv - Valor Geral de Vendas (0 se não for Vendido/Proposta).
+     * @property {string} unidade - Unidade ou tipologia de interesse.
+     * @property {string} corretor - Corretor responsável.
+     */
 
-    function showDashboard(targetId) {
-        document.querySelectorAll('.dashboard').forEach(dashboard => {
-            dashboard.classList.remove('active');
-        });
-        document.getElementById(targetId).classList.add('active');
+    /** @type {Atendimento[]} */
+    const dadosReais = [
+        // Semana de 29/09/2025 a 05/10/2025 (Dados para Resumo da Semana)
+        { data: '2025-09-29', cliente: 'João Silva', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
+        { data: '2025-09-29', cliente: 'Maria Souza', diretoria: 'Homesphere', tipo: 'Visita', origem: 'Vizinho', status: 'Tratativa', vgv: 0, unidade: 'Torre Jardins', corretor: 'Carlos' },
+        { data: '2025-09-30', cliente: 'Pedro Santos', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
+        { data: '2025-09-30', cliente: 'Carla Pereira', diretoria: 'Parcerias', tipo: 'Indicação', origem: 'Carteira', status: 'Tratativa', vgv: 0, unidade: 'Torre Parque', corretor: 'Beatriz' },
+        { data: '2025-10-01', cliente: 'Lucas Oliveira', diretoria: 'Store', tipo: 'Retorno', origem: 'Retorno', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
+        { data: '2025-10-01', cliente: 'Fernanda Costa', diretoria: 'Homesphere', tipo: 'Indicação', origem: 'Lead Online', status: 'Proposta', vgv: 520000, unidade: 'Torre Jardins', corretor: 'Carlos' },
+        { data: '2025-10-02', cliente: 'Rafael Almeida', diretoria: 'Store', tipo: 'Visita', origem: 'Instagram', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
+        { data: '2025-10-02', cliente: 'Juliana Mendes', diretoria: 'Ferrari', tipo: 'Indicação', origem: 'Carteira', status: 'Vendido', vgv: 650000, unidade: 'Torre Europa', corretor: 'David' },
+        { data: '2025-10-03', cliente: 'Gabriel Rocha', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Jardins', corretor: 'Ana' },
+        { data: '2025-10-03', cliente: 'Patrícia Lima', diretoria: 'Homesphere', tipo: 'Retorno', origem: 'Retorno', status: 'Processo', vgv: 480000, unidade: 'Torre Parque', corretor: 'Carlos' },
+        { data: '2025-10-04', cliente: 'Guilherme Neves', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
+        { data: '2025-10-04', cliente: 'Laura Dias', diretoria: 'Ferrari', tipo: 'Indicação', origem: 'Folheto em rua', status: 'Tratativa', vgv: 0, unidade: 'Torre Jardins', corretor: 'David' },
+        { data: '2025-10-05', cliente: 'Bruno Alves', diretoria: 'Homesphere', tipo: 'Visita', origem: 'Jogo na quadra', status: 'Tratativa', vgv: 0, unidade: 'Torre Parque', corretor: 'Carlos' },
 
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.classList.remove('active');
-            if (tab.getAttribute('data-target') === targetId) {
-                tab.classList.add('active');
-            }
-        });
+        // Outros dados (apenas para simular volume)
+        { data: '2025-10-08', cliente: 'Sofia Ribeiro', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
+        { data: '2025-10-09', cliente: 'Thiago Martins', diretoria: 'Store', tipo: 'Indicação', origem: 'Carteira', status: 'Perdido', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
+        { data: '2025-09-25', cliente: 'Érica Gomes', diretoria: 'Sell', tipo: 'Indicação', origem: 'Lead Online', status: 'Vendido', vgv: 710000, unidade: 'Torre Jardins', corretor: 'Eduardo' },
+    ];
 
-        // Tenta redesenhar gráficos ao mudar de aba (para corrigir problemas de renderização)
-        if (targetId === 'resumo') {
-            // Chamamos a função principal que redesenha tudo se os dados já estiverem carregados
-            if (ATENDIMENTOS_BRUTOS.length > 0) {
-                 const resultados = calcularResumoSemanal(ATENDIMENTOS_BRUTOS);
-                 renderizarResumoSemanal(resultados);
-            }
-        }
-        // ... (Outras chamadas de renderização para outras abas)
-    }
 
-    // --- FUNÇÕES DE DATAS E FORMATO ---
+    // ====================================================================
+    // 2. FUNÇÕES DE UTILIDADE E CÁLCULO
+    // ====================================================================
 
-    // Função auxiliar para garantir que o formato seja Date
-    const toDate = (dateString) => {
-        // Assume que a string está no formato YYYY-MM-DD
-        const [year, month, day] = dateString.split('-').map(Number);
-        // Cria a data no fuso horário local (evita problemas de UTC)
-        return new Date(year, month - 1, day); 
+    /**
+     * Formata uma data Date em DD/MM/AAAA.
+     * @param {Date} date
+     * @returns {string}
+     */
+    const formatarData = (date) => {
+        const dia = String(date.getDate()).padStart(2, '0');
+        const mes = String(date.getMonth() + 1).padStart(2, '0');
+        const ano = String(date.getFullYear()).slice(2);
+        return `${dia}/${mes}/${ano}`;
     };
 
-    // Função auxiliar para verificar se a data está no período (início e fim inclusos)
-    const estaNoPeriodo = (dateString, inicio, fim) => {
-        const data = toDate(dateString);
-        // Adiciona 1 dia (24h) ao final para garantir que o dia final seja incluído
-        const fimInclusivo = new Date(fim.getTime());
-        fimInclusivo.setDate(fimInclusivo.getDate() + 1); 
-
-        return data >= inicio && data < fimInclusivo;
-    };
-    
-    // Função para calcular o delta percentual
-    const calcularDelta = (valorSA, valorSP) => {
-        if (valorSA === 0 && valorSP === 0) {
-            return { delta: '0%', cor: 'text-gray' };
-        }
-        if (valorSP === 0) {
-            return { delta: `+${valorSA * 100}%`, cor: 'text-success' }; // Grande aumento (ou apenas '+100%+' se for estourar)
-        }
-
-        const delta = ((valorSA - valorSP) / valorSP) * 100;
-        const cor = delta >= 0 ? 'text-success' : 'text-danger';
-        const sinal = delta >= 0 ? '+' : '';
+    /**
+     * Encontra o domingo e sábado da semana que contém a data '2025-09-29' (referência do layout).
+     * @returns {{dataInicio: string, dataFim: string}}
+     */
+    const getDataRangeSemana = () => {
+        // Usamos uma data fixa para manter o Resumo da Semana igual ao seu layout estático anterior
+        const refDate = new Date('2025-09-29T00:00:00'); // Segunda-feira
         
-        return { delta: `${sinal}${delta.toFixed(0)}%`, cor: cor };
+        // Define o início da semana (Domingo) - 29/09/2025 é Segunda-feira
+        const dataInicio = new Date(refDate);
+        dataInicio.setDate(refDate.getDate() - (refDate.getDay() === 0 ? 6 : refDate.getDay() - 1));
+        
+        // Ajuste: O layout estático original indica 29/09 (Segunda) a 05/10 (Domingo).
+        // Vamos forçar o range exato do seu layout estático para corresponder ao seu pedido.
+        // Data Início: 2025-09-29 (Segunda)
+        // Data Fim: 2025-10-05 (Domingo)
+
+        const start = '2025-09-29';
+        const end = '2025-10-05';
+        
+        return { dataInicio: start, dataFim: end };
     };
 
-    // --- LÓGICA DE DADOS DO RESUMO DA SEMANA ---
-
-    // Função principal que processa os dados da semana atual (SA) e anterior (SP)
-    function calcularResumoSemanal(atendimentos) {
-        // --- 1. DEFINIÇÃO DE PERÍODOS (Datas - FIXAS PARA SIMULAÇÃO) ---
-        // Datas de referência que estão sendo usadas na simulação:
-        // Semana Atual (SA): 2025-09-29 a 2025-10-05
-        // Semana Anterior (SP): 2025-09-22 a 2025-09-28
-        
-        const SA_INICIO = toDate('2025-09-29'); 
-        const SA_FIM = toDate('2025-10-05'); 
-        const SP_INICIO = toDate('2025-09-22');
-        const SP_FIM = toDate('2025-09-28');
-        
-        // Atualiza o título do panorama
-        const panoramaTitle = document.getElementById('semana-data-panorama');
-        if (panoramaTitle) {
-            panoramaTitle.textContent = `Panorama de ${SA_INICIO.toLocaleDateString('pt-BR')} a ${SA_FIM.toLocaleDateString('pt-BR')}`;
-        }
-
-
-        // --- 2. INICIALIZAÇÃO DE CONTADORES ---
-        let totaisSA = { visitas: 0, indicacoes: 0, retornos: 0, propostas: 0 };
-        let totaisSP = { visitas: 0, indicacoes: 0, retornos: 0, propostas: 0 };
-        
-        let resultados = {
-            totaisSA: totaisSA,
-            totaisSP: totaisSP,
-            // Segmentação dos cartões principais por Diretoria
-            segmentacaoDiretoriaVisitasSA: {},
-            segmentacaoDiretoriaIndicacoesSA: {},
-            segmentacaoDiretoriaRetornosSA: {},
-            // Segmentação da seção Origem dos Clientes por Mídia
-            segmentacaoMidiaVisitasSA: {},
-            segmentacaoMidiaIndicacoesSA: {},
-            segmentacaoMidiaRetornosSA: {}
-        };
-
-        // --- 3. FILTRAGEM E CÁLCULOS ---
-        atendimentos.forEach(atendimento => {
-            const tipo = atendimento.tipo;
-            const diretoria = atendimento.diretoria;
-            const midia = atendimento.midia;
-            const temProposta = atendimento.proposta; // Assume 'true' ou 'false'
-
-            // A. Semana ATUAL (SA)
-            if (estaNoPeriodo(atendimento.data, SA_INICIO, SA_FIM)) {
-                
-                // Contagem de Totais
-                if (tipo === 'Visita') totaisSA.visitas++;
-                if (tipo === 'Indicação') totaisSA.indicacoes++;
-                if (tipo === 'Retorno') totaisSA.retornos++;
-                if (temProposta) totaisSA.propostas++; 
-                
-                // Segmentação por Diretoria (para os cartões principais)
-                const segmentarDiretoria = (segObj) => {
-                     if (DIRETORIAS_VALIDAS.includes(diretoria)) {
-                        segObj[diretoria] = (segObj[diretoria] || 0) + 1;
-                    }
-                }
-                if (tipo === 'Visita') segmentarDiretoria(resultados.segmentacaoDiretoriaVisitasSA);
-                if (tipo === 'Indicação') segmentarDiretoria(resultados.segmentacaoDiretoriaIndicacoesSA);
-                if (tipo === 'Retorno') segmentarDiretoria(resultados.segmentacaoDiretoriaRetornosSA);
-                
-                // Segmentação por Mídia (para a seção Origem dos Clientes)
-                const segmentarMidia = (segObj) => {
-                    if (midia) {
-                        segObj[midia] = (segObj[midia] || 0) + 1;
-                    }
-                }
-                if (tipo === 'Visita') segmentarMidia(resultados.segmentacaoMidiaVisitasSA);
-                if (tipo === 'Indicação') segmentarMidia(resultados.segmentacaoMidiaIndicacoesSA);
-                if (tipo === 'Retorno') segmentarMidia(resultados.segmentacaoMidiaRetornosSA);
-
-            // B. Semana ANTERIOR (SP)
-            } else if (estaNoPeriodo(atendimento.data, SP_INICIO, SP_FIM)) {
-                
-                // Contagem de Totais
-                if (tipo === 'Visita') totaisSP.visitas++;
-                if (tipo === 'Indicação') totaisSP.indicacoes++;
-                if (tipo === 'Retorno') totaisSP.retornos++;
-                if (temProposta) totaisSP.propostas++;
-            }
-        });
-        
-        return resultados;
-    }
-
-
-    // Função que injeta os resultados calculados no HTML
-    function renderizarResumoSemanal(resultados) {
-        
-        // --- FUNÇÃO AUXILIAR PARA FORMATAR A SEGMENTAÇÃO ---
-        const formatarSegmentacaoDiretoria = (segmentacaoObjeto) => {
-            let segmentacaoString = '';
-            // Inclui todas as diretorias válidas, adicionando '0' se não houver contagem
-            const partes = DIRETORIAS_VALIDAS.map(diretoria => {
-                const count = segmentacaoObjeto[diretoria] || 0;
-                return `${diretoria}: ${count}`;
-            });
-            return partes.join(' / ');
-        };
-
-        // --- FUNÇÃO AUXILIAR PARA FORMATAR A LISTA DE ORIGEM (MÍDIA) ---
-        const formatarListaOrigem = (segmentacaoObjeto) => {
-            let listaHTML = '';
-            
-            // Ordena do maior para o menor
-            const midiasOrdenadas = Object.keys(segmentacaoObjeto)
-                .sort((a, b) => segmentacaoObjeto[b] - segmentacaoObjeto[a]);
-
-            // Formata cada item como "Mídia → Contagem" com <br>
-            midiasOrdenadas.forEach(midia => {
-                const contagem = segmentacaoObjeto[midia];
-                // Usa uma classe que já temos (text-sm text-gray)
-                listaHTML += `<span class="text-sm text-gray">${midia} → ${contagem}</span><br>`; 
-            });
-            
-            return listaHTML || '<span class="text-sm text-gray">Nenhuma origem registrada.</span>';
-        };
-
-        // --- FUNÇÃO AUXILIAR PARA ATUALIZAR OS CARDS PRINCIPAIS (COM DELTA) ---
-        const atualizarCard = (metrica) => {
-            const valorSA = resultados.totaisSA[metrica];
-            const valorSP = resultados.totaisSP[metrica];
-            const deltaObj = calcularDelta(valorSA, valorSP);
-            
-            document.getElementById(`semana-${metrica}-valor`).textContent = valorSA;
-            
-            const deltaElement = document.getElementById(`semana-${metrica}-delta`);
-            if (deltaElement) {
-                deltaElement.textContent = deltaObj.delta;
-                // Aplica a cor do delta (verde, vermelho, cinza)
-                deltaElement.className = `delta-indicator ${deltaObj.cor}`;
-            }
-
-            // Atualiza a segmentação por diretoria (somente para Visitas, Indicações e Retornos)
-            if (metrica !== 'propostas') {
-                 const segmentacaoObj = resultados[`segmentacaoDiretoria${metrica.charAt(0).toUpperCase() + metrica.slice(1)}SA`];
-                 const segmentacaoStr = formatarSegmentacaoDiretoria(segmentacaoObj);
-                 const segElement = document.getElementById(`semana-${metrica}-segmentacao`);
-                 if (segElement) segElement.textContent = segmentacaoStr;
-            } else {
-                 // Para propostas, apenas limpa ou mostra um texto genérico se necessário
-                 const segElement = document.getElementById(`semana-${metrica}-segmentacao`);
-                 if (segElement) segElement.textContent = `Propostas geradas na semana.`;
-            }
-        };
-
-        // 1. Atualiza os 4 cartões de métricas
-        atualizarCard('visitas');
-        atualizarCard('indicacoes');
-        atualizarCard('retornos');
-        atualizarCard('propostas');
-
-        // 2. Atualiza a seção "Origem dos Clientes"
-        
-        // 2.1. Visitas (Vez)
-        const totalVisitasElement = document.getElementById('semana-origem-visitas-total');
-        if (totalVisitasElement) {
-            totalVisitasElement.textContent = `Vez: ${resultados.totaisSA.visitas} atendimentos`; 
-        }
-        const visitasListaHTML = formatarListaOrigem(resultados.segmentacaoMidiaVisitasSA);
-        document.getElementById('semana-origem-visitas-lista').innerHTML = visitasListaHTML;
-
-        // 2.2. Indicações
-        const indicacoesListaHTML = formatarListaOrigem(resultados.segmentacaoMidiaIndicacoesSA);
-        document.getElementById('semana-origem-indicacoes-lista').innerHTML = indicacoesListaHTML;
-
-        // 2.3. Retornos
-        const retornosListaHTML = formatarListaOrigem(resultados.segmentacaoMidiaRetornosSA);
-        document.getElementById('semana-origem-retornos-lista').innerHTML = retornosListaHTML;
-        
-        // *Chamar as funções de inicialização de gráficos aqui se necessário*
-        inicializarGraficosSemana(resultados);
-    }
-    
-    // --- SIMULAÇÃO DE CARREGAMENTO DE DADOS (Substitui a chamada real da API da Planilha) ---
-    
-    // Função de simulação de dados que sua Planilha/Banco de Dados deve retornar
-    function carregarDadosPlanilha() {
-        // Simulação de dados brutos (Datas YYYY-MM-DD, Tipo, Diretoria, Mídia)
-        // Inclui dados da Semana Atual (SA: 2025-09-29 a 2025-10-05) e Semana Anterior (SP: 2025-09-22 a 2025-09-28)
-        ATENDIMENTOS_BRUTOS = [
-            // DADOS DA SEMANA ATUAL (SA) - Total Visitas: 8, Indicações: 4, Retornos: 2, Propostas: 1
-            // Visitas (8):
-            { data: '2025-09-29', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            { data: '2025-09-30', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            { data: '2025-10-01', tipo: 'Visita', diretoria: 'Homesphere', midia: 'Vizinho', proposta: false },
-            { data: '2025-10-01', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            { data: '2025-10-02', tipo: 'Visita', diretoria: 'Homesphere', midia: 'Vizinho', proposta: false },
-            { data: '2025-10-03', tipo: 'Visita', diretoria: 'Ferrari', midia: 'Instagram', proposta: true }, // Tem proposta
-            { data: '2025-10-04', tipo: 'Visita', diretoria: 'Store', midia: 'Jogo na quadra', proposta: false },
-            { data: '2025-10-05', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            
-            // Indicações (4):
-            { data: '2025-09-29', tipo: 'Indicação', diretoria: 'Store', midia: 'Carteira', proposta: false },
-            { data: '2025-10-01', tipo: 'Indicação', diretoria: 'Parcerias', midia: 'Folheto em rua', proposta: false },
-            { data: '2025-10-03', tipo: 'Indicação', diretoria: 'Store', midia: 'Carteira', proposta: false },
-            { data: '2025-10-04', tipo: 'Indicação', diretoria: 'Store', midia: 'Lead Online', proposta: false },
-
-            // Retornos (2):
-            { data: '2025-10-01', tipo: 'Retorno', diretoria: 'Homesphere', midia: 'Retorno', proposta: false },
-            { data: '2025-10-03', tipo: 'Retorno', diretoria: 'Store', midia: 'Retorno', proposta: false },
-
-            // DADOS DA SEMANA ANTERIOR (SP) - Total Visitas: 12, Indicações: 2, Retornos: 0, Propostas: 0
-            { data: '2025-09-22', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            { data: '2025-09-22', tipo: 'Visita', diretoria: 'Homesphere', midia: 'Vizinho', proposta: false },
-            { data: '2025-09-22', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            { data: '2025-09-23', tipo: 'Visita', diretoria: 'Homesphere', midia: 'Vizinho', proposta: false },
-            { data: '2025-09-23', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            { data: '2025-09-24', tipo: 'Visita', diretoria: 'Homesphere', midia: 'Instagram', proposta: false },
-            { data: '2025-09-25', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            { data: '2025-09-25', tipo: 'Visita', diretoria: 'Store', midia: 'Jogo na quadra', proposta: false },
-            { data: '2025-09-26', tipo: 'Visita', diretoria: 'Homesphere', midia: 'Passagem', proposta: false },
-            { data: '2025-09-27', tipo: 'Visita', diretoria: 'Store', midia: 'Passagem', proposta: false },
-            { data: '2025-09-28', tipo: 'Visita', diretoria: 'Homesphere', midia: 'Vizinho', proposta: false },
-            { data: '2025-09-28', tipo: 'Visita', diretoria: 'Store', midia: 'Instagram', proposta: false },
-
-            { data: '2025-09-25', tipo: 'Indicação', diretoria: 'Ferrari', midia: 'Carteira', proposta: false },
-            { data: '2025-09-26', tipo: 'Indicação', diretoria: 'Ferrari', midia: 'Carteira', proposta: false },
-        ];
-        
-        // Chamada principal para processar e renderizar o Resumo da Semana
-        const resultadosSemana = calcularResumoSemanal(ATENDIMENTOS_BRUTOS);
-        renderizarResumoSemanal(resultadosSemana);
-        
-        // Também carrega os dados brutos para o Controle de Atendimentos
-        loadAtendimentosTable(ATENDIMENTOS_BRUTOS);
-    }
-    
-    // --- FUNÇÕES DE GRÁFICOS (MOCK) ---
-    
-    // A função de inicialização de gráficos agora recebe os resultados calculados
-    function inicializarGraficosSemana(resultados) {
-        // Se houver dados (visitas, indicacoes, etc)
-        if (!resultados || resultados.totaisSA.visitas + resultados.totaisSA.indicacoes + resultados.totaisSA.retornos === 0) {
-            console.log("Não há dados para gerar os gráficos da semana.");
-            return;
-        }
-
-        // Exemplo 1: Distribuição por Diretoria (para todos os atendimentos da SA)
-        const allAttendantsSA = ATENDIMENTOS_BRUTOS.filter(att => {
-            const SA_INICIO = toDate('2025-09-29'); 
-            const SA_FIM = toDate('2025-10-05'); 
-            return estaNoPeriodo(att.data, SA_INICIO, SA_FIM);
-        });
-        
-        const contagemDiretoria = allAttendantsSA.reduce((acc, att) => {
-            const dir = att.diretoria;
-            acc[dir] = (acc[dir] || 0) + 1;
+    /**
+     * Agrupa um array de objetos por uma chave e conta a ocorrência.
+     * @param {Atendimento[]} arr 
+     * @param {string} key - Chave a ser agrupada (ex: 'diretoria', 'origem').
+     * @returns {Object<string, number>}
+     */
+    const groupByCount = (arr, key) => {
+        return arr.reduce((acc, item) => {
+            const groupKey = item[key];
+            acc[groupKey] = (acc[groupKey] || 0) + 1;
             return acc;
         }, {});
+    };
+
+    /**
+     * Calcula as métricas e dados de gráficos para o Resumo da Semana.
+     * @param {Atendimento[]} dadosFiltrados - Dados filtrados pela semana.
+     * @returns {Object}
+     */
+    const calcularResumoSemanal = (dadosFiltrados) => {
+        // 1. Métricas Principais
+        const visitas = dadosFiltrados.filter(a => a.tipo === 'Visita');
+        const indicacoes = dadosFiltrados.filter(a => a.tipo === 'Indicação');
+        const retornos = dadosFiltrados.filter(a => a.tipo === 'Retorno');
+        const propostas = dadosFiltrados.filter(a => a.status === 'Proposta' || a.status === 'Vendido' || a.status === 'Processo');
+
+        // 2. Agrupamento
+        const countDiretoria = groupByCount(dadosFiltrados, 'diretoria');
+        const countTipo = groupByCount(dadosFiltrados, 'tipo');
         
-        const labelsDiretoria = Object.keys(contagemDiretoria);
-        const dataDiretoria = Object.values(contagemDiretoria);
+        const countVisitasDiretoria = groupByCount(visitas, 'diretoria');
+        const countIndicacoesDiretoria = groupByCount(indicacoes, 'diretoria');
+        const countRetornosDiretoria = groupByCount(retornos, 'diretoria');
+
+        const countVisitasOrigem = groupByCount(visitas, 'origem');
+        const countIndicacoesOrigem = groupByCount(indicacoes, 'origem');
+        const countRetornosOrigem = groupByCount(retornos, 'origem');
         
-        new Chart(document.getElementById('chartDiretoriaSemana'), {
+        // Função auxiliar para formatar a lista de info-text
+        const formatInfoText = (counts) => {
+            return Object.entries(counts)
+                .map(([dir, count]) => `${dir}: ${count}`)
+                .join(' / ');
+        };
+
+        return {
+            totalVisitas: visitas.length,
+            infoVisitas: formatInfoText(countVisitasDiretoria),
+            
+            totalIndicacoes: indicacoes.length,
+            infoIndicacoes: formatInfoText(countIndicacoesDiretoria),
+            
+            totalRetornos: retornos.length,
+            infoRetornos: formatInfoText(countRetornosDiretoria),
+            
+            totalPropostas: propostas.length,
+            infoPropostas: `Proposta/Processo/Vendido: ${propostas.length} clientes`,
+            
+            origemVisitas: countVisitasOrigem,
+            origemIndicacoes: countIndicacoesOrigem,
+            origemRetornos: countRetornosOrigem,
+
+            chartDiretoriaData: countDiretoria,
+            chartTipoData: countTipo
+        };
+    };
+
+    /**
+     * Atualiza o DOM (HTML) com as métricas calculadas.
+     * @param {Object} metrics - Objeto retornado por calcularResumoSemanal.
+     * @param {string} dataInicio - Data de início da semana (DD/MM/AA).
+     * @param {string} dataFim - Data de fim da semana (DD/MM/AA).
+     */
+    const atualizarResumoSemanal = (metrics, dataInicio, dataFim) => {
+        // 1. Título e Subtítulo
+        document.getElementById('subtitleResumoSemana').textContent = `Panorama de ${dataInicio} a ${dataFim}`;
+
+        // 2. Métricas
+        document.getElementById('metricVisitas').textContent = metrics.totalVisitas;
+        document.getElementById('infoVisitas').textContent = metrics.infoVisitas || 'Nenhum registro.';
+        
+        document.getElementById('metricIndicacoes').textContent = metrics.totalIndicacoes;
+        document.getElementById('infoIndicacoes').textContent = metrics.infoIndicacoes || 'Nenhum registro.';
+        
+        document.getElementById('metricRetornos').textContent = metrics.totalRetornos;
+        document.getElementById('infoRetornos').textContent = metrics.infoRetornos || 'Nenhum registro.';
+
+        document.getElementById('metricPropostas').textContent = metrics.totalPropostas;
+        document.getElementById('infoPropostas').textContent = metrics.infoPropostas || 'Nenhum registro.';
+
+        // 3. Listas de Origem (Timeline)
+        const renderList = (elementId, counts, total) => {
+            const ul = document.getElementById(elementId);
+            ul.innerHTML = ''; // Limpa o conteúdo
+            if (total === 0) {
+                ul.innerHTML = '<li>Nenhum atendimento na semana.</li>';
+                return;
+            }
+            // Converte objeto em array de pares [origem, contagem] e ordena por contagem
+            const sortedCounts = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+            
+            sortedCounts.forEach(([origem, count]) => {
+                const li = document.createElement('li');
+                li.textContent = `${origem} → ${count}`;
+                ul.appendChild(li);
+            });
+        };
+
+        renderList('listOrigemVisitas', metrics.origemVisitas, metrics.totalVisitas);
+        document.getElementById('totalAtendimentosVisitas').textContent = `Total: ${metrics.totalVisitas} atendimentos`;
+        
+        renderList('listOrigemIndicacoes', metrics.origemIndicacoes, metrics.totalIndicacoes);
+        document.getElementById('totalAtendimentosIndicacoes').textContent = `Total: ${metrics.totalIndicacoes} atendimentos`;
+        
+        renderList('listOrigemRetornos', metrics.origemRetornos, metrics.totalRetornos);
+        document.getElementById('totalAtendimentosRetornos').textContent = `Total: ${metrics.totalRetornos} atendimentos`;
+
+        // 4. Gráficos
+        renderChartDiretoriaSemana(metrics.chartDiretoriaData);
+        renderChartTipoAtendimentoSemana(metrics.chartTipoData);
+    };
+
+    let chartDiretoriaInstance = null;
+    let chartTipoInstance = null;
+    const CHART_COLORS = ['#3b82f6', '#6366f1', '#10b981', '#f59e0b', '#ef4444', '#06b6d4', '#8b5cf6'];
+    const CHART_BORDER_COLORS = ['#ffffff']; // Borda branca
+
+    /**
+     * Renderiza o gráfico de Distribuição por Diretoria (Semana).
+     */
+    const renderChartDiretoriaSemana = (dataCounts) => {
+        const ctx = document.getElementById('chartDiretoriaSemana').getContext('2d');
+        if (chartDiretoriaInstance) {
+            chartDiretoriaInstance.destroy();
+        }
+
+        const labels = Object.keys(dataCounts);
+        const dataValues = Object.values(dataCounts);
+
+        chartDiretoriaInstance = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: labelsDiretoria,
+                labels: labels,
                 datasets: [{
-                    data: dataDiretoria,
-                    backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#ef4444', '#06b6d4', '#8b5cf6'],
-                    hoverOffset: 4
+                    data: dataValues,
+                    backgroundColor: CHART_COLORS.slice(0, labels.length),
+                    borderColor: CHART_BORDER_COLORS[0],
+                    borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { position: 'right' }
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: false,
+                    }
                 }
             }
         });
+    };
 
-        // Exemplo 2: Tipo de Atendimento
-        const labelsTipo = ['Visita', 'Indicação', 'Retorno'];
-        const dataTipo = [
-            resultados.totaisSA.visitas, 
-            resultados.totaisSA.indicacoes, 
-            resultados.totaisSA.retornos
-        ];
+    /**
+     * Renderiza o gráfico de Tipo de Atendimento (Semana).
+     */
+    const renderChartTipoAtendimentoSemana = (dataCounts) => {
+        const ctx = document.getElementById('chartTipoAtendimentoSemana').getContext('2d');
+        if (chartTipoInstance) {
+            chartTipoInstance.destroy();
+        }
 
-        new Chart(document.getElementById('chartTipoAtendimento'), {
+        const labels = Object.keys(dataCounts);
+        const dataValues = Object.values(dataCounts);
+
+        chartTipoInstance = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: labelsTipo,
+                labels: labels,
                 datasets: [{
-                    label: 'Atendimentos',
-                    data: dataTipo,
-                    backgroundColor: ['#3b82f6', '#6366f1', '#f59e0b'],
+                    label: 'Contagem de Atendimentos',
+                    data: dataValues,
+                    backgroundColor: CHART_COLORS.slice(0, labels.length),
+                    borderColor: CHART_COLORS.slice(0, labels.length),
+                    borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
                 scales: {
-                    y: { beginAtZero: true }
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0 // Mostra apenas números inteiros
+                        }
+                    }
                 }
             }
         });
-    }
+    };
 
-    // --- FUNÇÕES DE CONTROLE DE ATENDIMENTOS (EXISTENTES) ---
 
-    let currentAtendimentosData = [];
+    // ====================================================================
+    // 3. LÓGICA DE INICIALIZAÇÃO GERAL E CONTROLE DE ABAS
+    // ====================================================================
 
-    function loadAtendimentosTable(data) {
-        currentAtendimentosData = data;
-        aplicarFiltros();
-    }
+    /**
+     * Função principal para carregar os dados e atualizar a aba 'Resumo da Semana'.
+     */
+    const carregarDadosResumoSemana = () => {
+        const { dataInicio, dataFim } = getDataRangeSemana();
 
-    function aplicarFiltros() {
-        // Simulação da aplicação de filtros...
-        filteredAtendimentos = currentAtendimentosData.slice(); // Clona os dados
-        currentPage = 1;
-        renderAtendimentosTable();
-    }
-
-    function limparFiltros() {
-        document.getElementById('filterDataInicio').value = '';
-        document.getElementById('filterDataFim').value = '';
-        document.getElementById('filterDiretoria').value = 'todas';
-        document.getElementById('filterTipo').value = 'todos';
-        document.getElementById('searchTable').value = '';
-        aplicarFiltros();
-    }
-
-    function renderAtendimentosTable() {
-        const tbody = document.getElementById('atendimentosTbody');
-        const totalAtendimentosSpan = document.getElementById('totalAtendimentos');
-        const paginationInfo = document.getElementById('paginationInfo');
-        tbody.innerHTML = '';
-
-        const start = (currentPage - 1) * ITEMS_PER_PAGE;
-        const end = start + ITEMS_PER_PAGE;
-        const pageItems = filteredAtendimentos.slice(start, end);
-
-        pageItems.forEach(item => {
-            const row = tbody.insertRow();
-            row.innerHTML = `
-                <td>${item.data}</td>
-                <td>${item.cliente || 'N/A'}</td>
-                <td><span class="diretoria-badge diretoria-${item.diretoria.toLowerCase().replace(' ', '-')}">${item.diretoria}</span></td>
-                <td><span class="tipo-badge">${item.tipo}</span></td>
-                <td>${item.midia || 'N/A'}</td>
-                <td>${item.corretor || 'N/A'}</td>
-                <td>${item.observacoes || ''}</td>
-            `;
+        // Filtra os dados da planilha para o período da semana
+        const dadosSemana = dadosReais.filter(item => {
+            return item.data >= dataInicio && item.data <= dataFim;
         });
 
-        totalAtendimentosSpan.textContent = filteredAtendimentos.length;
-        paginationInfo.textContent = `Mostrando ${Math.min(end, filteredAtendimentos.length)} de ${filteredAtendimentos.length} atendimentos`;
+        const metrics = calcularResumoSemanal(dadosSemana);
+        
+        // Convertendo as datas para exibição (DD/MM/AA)
+        const displayDataInicio = formatarData(new Date(dataInicio));
+        const displayDataFim = formatarData(new Date(dataFim));
 
-        // Controle de paginação
-        document.getElementById('prevPage').disabled = currentPage === 1;
-        document.getElementById('nextPage').disabled = end >= filteredAtendimentos.length;
-    }
+        atualizarResumoSemanal(metrics, displayDataInicio, displayDataFim);
+    };
 
-    function nextPage() {
-        if ((currentPage * ITEMS_PER_PAGE) < filteredAtendimentos.length) {
-            currentPage++;
-            renderAtendimentosTable();
-        }
-    }
 
-    function prevPage() {
-        if (currentPage > 1) {
-            currentPage--;
-            renderAtendimentosTable();
-        }
-    }
+    /**
+     * Função para carregar os dados da Planilha (para Controle de Atendimentos)
+     * (Implementação futura, apenas esqueleto para manter a estrutura do seu código anterior)
+     */
+    const carregarDadosPlanilha = () => {
+        // Por enquanto, esta função não faz nada além de carregar o Resumo da Semana
+        // A lógica de preenchimento da tabela do Controle de Atendimentos será implementada aqui.
 
-    // --- FUNÇÕES ESTÁTICAS DE OUTRAS ABAS (MOCK) ---
+        console.log("Dados carregados para Controle de Atendimentos:", dadosReais.length);
+    };
     
-    // Estas funções foram mantidas para evitar erros, mas seus dados são estáticos
-    function inicializarGraficosOutubro() {}
-    function inicializarGraficosSetembro() {}
-    function inicializarGraficosEstoque() {}
-    function carregarDadosPipeline() {}
+    // As outras funções (inicializarGraficosOutubro, inicializarGraficosSetembro, etc.)
+    // são mantidas vazias para evitar erros, mas devem ser implementadas
+    // se você quiser que as outras abas funcionem de forma dinâmica.
+
+    const inicializarGraficosOutubro = () => {};
+    const inicializarGraficosSetembro = () => {};
+    const inicializarGraficosEstoque = () => {};
+    const carregarDadosPipeline = () => {};
 
 
-    // --- EVENT LISTENERS ---
-
+    // Listener para o DOM
     document.addEventListener('DOMContentLoaded', () => {
-        // Event listeners para as abas
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                showDashboard(this.getAttribute('data-target'));
+        const tabs = document.querySelectorAll('.tab');
+        const dashboards = document.querySelectorAll('.dashboard');
+
+        // Lógica de Troca de Abas
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove 'active' de todas as abas e dashboards
+                tabs.forEach(t => t.classList.remove('active'));
+                dashboards.forEach(d => d.classList.remove('active'));
+
+                // Adiciona 'active' à aba clicada
+                tab.classList.add('active');
+
+                // Exibe o dashboard correspondente
+                const targetId = tab.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+
+                // Recarrega o Resumo da Semana ao clicar nele
+                if (targetId === 'resumo') {
+                    carregarDadosResumoSemana();
+                }
+                // (Aqui você adicionaria a lógica para recarregar as outras abas)
             });
         });
+
+
+        // ------------------------------------------------------------------
+        // ATUALIZAÇÃO: Inicia a aba Resumo da Semana com os dados dinâmicos
+        // ------------------------------------------------------------------
+        carregarDadosResumoSemana();
+
+        // Inicializar filtros de data no Controle de Atendimentos (apenas formatação)
+        const hoje = new Date();
+        const dataFim = new Date(hoje);
+        const dataInicio = new Date(hoje);
+        dataInicio.setDate(hoje.getDate() - 7); // Últimos 7 dias
+
+        // Define os valores padrão dos filtros (YYYY-MM-DD)
+        document.getElementById('filterDataInicio').value = dataInicio.toISOString().split('T')[0];
+        document.getElementById('filterDataFim').value = dataFim.toISOString().split('T')[0];
         
-        // Inicializar com o Resumo da Semana (que será preenchido dinamicamente)
-        showDashboard('resumo'); 
+        // Inicializar gráficos estáticos iniciais (mantidos para evitar quebra)
+        inicializarGraficosOutubro();
+        inicializarGraficosSetembro();
+        inicializarGraficosEstoque();
 
-        // Adiciona funcionalidade de paginação
-        document.getElementById('prevPage').addEventListener('click', prevPage);
-        document.getElementById('nextPage').addEventListener('click', nextPage);
+        // Carregar dados da planilha ao iniciar o DOM (principalmente para a aba Controle)
+        carregarDadosPlanilha();
+        
+        // Carregar dados do pipeline ao iniciar o DOM
+        carregarDadosPipeline();
 
-        // Funcionalidade de Tooltip (mantida do código original)
+
+        // Sistema de tooltips (mantido do código original)
         document.addEventListener('mouseover', function(e) {
             let targetElement = e.target;
             while (targetElement && !targetElement.classList.contains('tratativa-row') && targetElement !== document.body) {
                 targetElement = targetElement.parentElement;
             }
-            if (targetElement && targetElement.classList.contains('tratativa-row')) {
-                // Conteúdo do Tooltip (MOCK)
-                const tooltipHtml = `
-                    <p style="font-weight: bold; margin-bottom: 5px;">Detalhes do Cliente</p>
-                    <p>Unidade: ${targetElement.querySelector('.row-unit').textContent}</p>
-                    <p>Etapa: ${targetElement.closest('.pipeline-col').querySelector('h3').textContent}</p>
-                    <p>VGV: R$ 500.000 (Simulação)</p>
-                `;
-
-                if (targetElement._currentTooltip) return;
-
-                const tooltip = document.createElement('div');
-                tooltip.className = 'tooltip show';
-                tooltip.id = 'activeTooltip';
-                tooltip.innerHTML = tooltipHtml;
-                document.body.appendChild(tooltip);
-
-                // Posicionamento do Tooltip
+            if (targetElement && targetElement.classList.contains('tratativa-row') && targetElement.hasAttribute('data-tooltip')) {
+                const tooltip = document.getElementById('dynamicTooltip');
+                
+                tooltip.innerHTML = '';
+                const tooltipContent = targetElement.getAttribute('data-tooltip').split(';').map(line => `<p>${line}</p>`).join('');
+                tooltip.innerHTML = tooltipContent;
+                tooltip.classList.add('show');
+                
                 const rect = targetElement.getBoundingClientRect();
                 
                 let leftPos = rect.left + rect.width / 2 - tooltip.offsetWidth / 2;
@@ -2048,20 +1896,11 @@
             while (targetElement && !targetElement.classList.contains('tratativa-row') && targetElement !== document.body) {
                 targetElement = targetElement.parentElement;
             }
-            if (targetElement && targetElement.classList.contains('tratativa-row') && targetElement._currentTooltip) {
-                targetElement._currentTooltip.remove();
+            if (targetElement && targetElement.classList.contains('tratativa-row')) {
+                document.getElementById('dynamicTooltip').classList.remove('show');
                 targetElement._currentTooltip = null;
             }
         });
-
-        // Chamada principal para carregar dados e iniciar a renderização
-        carregarDadosPlanilha();
-        
-        // Outras inicializações
-        inicializarGraficosOutubro();
-        inicializarGraficosSetembro();
-        inicializarGraficosEstoque();
-        carregarDadosPipeline();
     });
 </script>
 </body>
