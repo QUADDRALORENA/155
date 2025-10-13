@@ -822,7 +822,7 @@
                 <i class="fas fa-bullhorn" style="color: #f59e0b;"></i>
                 Resumo da Semana
             </h1>
-            <p class="dashboard-subtitle" id="subtitleResumoSemana">Carregando dados...</p>
+            <p class="dashboard-subtitle">Panorama de 29/09/25 a 05/10/25</p>
         </div>
 
         <div class="metrics-grid">
@@ -833,8 +833,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Total de visitas:</p>
-                    <strong id="metricVisitas">0</strong>
-                    <p class="info-text" id="infoVisitas">Carregando...</p>
+                    <strong>8</strong>
+                    <p class="info-text">Store: 6 / Homesphere: 2 / Ferrari: 0</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -844,8 +844,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Total de indicações:</p>
-                    <strong id="metricIndicacoes">0</strong>
-                    <p class="info-text" id="infoIndicacoes">Carregando...</p>
+                    <strong>7</strong>
+                    <p class="info-text">Store: 4 / Homesphere: 0 / Parcerias: 1 / Ferrari: 2</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -855,8 +855,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Retornos na semana:</p>
-                    <strong id="metricRetornos">0</strong>
-                    <p class="info-text" id="infoRetornos">Carregando...</p>
+                    <strong>2</strong>
+                    <p class="info-text">Store: 1 / Homesphere: 1 / Parcerias: 0</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -866,8 +866,7 @@
                 </div>
                 <div class="metric-content">
                     <p>Propostas geradas:</p>
-                    <strong id="metricPropostas">0</strong>
-                    <p class="info-text" id="infoPropostas">Carregando...</p>
+                    <strong>0</strong>
                 </div>
             </div>
         </div>
@@ -882,7 +881,7 @@
             <div class="chart-card">
                 <h4><i class="fas fa-chart-bar"></i> Tipo de Atendimento</h4>
                 <div class="chart-container">
-                    <canvas id="chartTipoAtendimentoSemana"></canvas>
+                    <canvas id="chartTipoAtendimento"></canvas>
                 </div>
             </div>
         </div>
@@ -892,25 +891,28 @@
             <div class="timeline-card">
                 <h4><i class="fas fa-map-marked-alt"></i> Visitas</h4>
                 <h5>Origem das Visitas</h5>
-                <p style="margin-bottom: 10px;" id="totalAtendimentosVisitas">Total: 0 atendimentos</p>
-                <ul id="listOrigemVisitas">
-                    <li class="loading">Carregando...</li>
+                <p style="margin-bottom: 10px;">Vez: 8 atendimentos</p>
+                <ul>
+                    <li>Passagem → 4</li>
+                    <li>Vizinho → 2</li>
+                    <li>Instagram → 1</li>
+                    <li>Jogo na quadra → 1</li>
                 </ul>
             </div>
             <div class="timeline-card">
                 <h4><i class="fas fa-user-check"></i> Indicações</h4>
                 <h5>Origem das Indicações</h5>
-                <p style="margin-bottom: 10px;" id="totalAtendimentosIndicacoes">Total: 0 atendimentos</p>
-                <ul id="listOrigemIndicacoes">
-                    <li class="loading">Carregando...</li>
+                <ul>
+                    <li>Carteira → 3</li>
+                    <li>Folheto em rua → 3</li>
+                    <li>Lead Online → 1</li>
                 </ul>
             </div>
             <div class="timeline-card">
                 <h4><i class="fas fa-reply"></i> Retornos</h4>
                 <h5>Origem dos Retornos</h5>
-                <p style="margin-bottom: 10px;" id="totalAtendimentosRetornos">Total: 0 atendimentos</p>
-                <ul id="listOrigemRetornos">
-                    <li class="loading">Carregando...</li>
+                <ul>
+                    <li>Retorno → 2</li>
                 </ul>
             </div>
         </div>
@@ -1233,6 +1235,7 @@
             <div class="timeline-card">
                 <h4><i class="fas fa-check-circle" style="color: #10b981;"></i> UNIDADES VENDIDAS</h4>
                 <h5>Total: 15 unidades</h5>
+                
                 <div class="list-group">
                     <h5><i class="fas fa-building"></i> Por Torre</h5>
                     <ul>
@@ -1241,6 +1244,7 @@
                         <li>PARQUE: 4 unidades</li>
                     </ul>
                 </div>
+                
                 <div class="list-group">
                     <h5><i class="fas fa-ruler-combined"></i> Por Metragem</h5>
                     <ul>
@@ -1248,6 +1252,7 @@
                         <li>300m²: 7 unidades</li>
                     </ul>
                 </div>
+
                 <div class="list-group">
                     <h5><i class="fas fa-tag"></i> Por Origem</h5>
                     <ul>
@@ -1258,9 +1263,11 @@
                     </ul>
                 </div>
             </div>
+
             <div class="timeline-card">
                 <h4><i class="fas fa-warehouse" style="color: #3b82f6;"></i> ESTOQUE ATUAL</h4>
                 <h5>Total: 56 unidades (41 disponíveis)</h5>
+                
                 <div class="list-group">
                     <h5><i class="fas fa-building"></i> Torre Jardins</h5>
                     <ul>
@@ -1270,6 +1277,7 @@
                         <li style="color: #10b981; font-weight: bold;">Vendidas: 4 unidades</li>
                     </ul>
                 </div>
+                
                 <div class="list-group">
                     <h5><i class="fas fa-building"></i> Torre Parque</h5>
                     <ul>
@@ -1279,6 +1287,7 @@
                         <li style="color: #10b981; font-weight: bold;">Vendidas: 4 unidades</li>
                     </ul>
                 </div>
+
                 <div class="list-group">
                     <h5><i class="fas fa-building"></i> Torre Europa</h5>
                     <ul>
@@ -1288,8 +1297,10 @@
                     </ul>
                 </div>
             </div>
+
             <div class="timeline-card">
                 <h4><i class="fas fa-trophy" style="color: #f59e0b;"></i> PERFORMANCE 2025</h4>
+                
                 <div class="list-group">
                     <h5><i class="fas fa-cube"></i> Unidades</h5>
                     <ul>
@@ -1298,20 +1309,38 @@
                         <li style="color: #10b981; font-weight: bold;">Atingimento: 53.6%</li>
                     </ul>
                 </div>
+                
                 <div class="list-group">
                     <h5><i class="fas fa-money-bill-wave"></i> VGV</h5>
                     <ul>
-                        <li>Meta: R$ 320M</li>
-                        <li>Realizado: R$ 172.4M</li>
-                        <li style="color: #10b981; font-weight: bold;">Atingimento: 53.8%</li>
+                        <li>Meta: R$ 320.000.000</li>
+                        <li>Realizado: R$ 172.398.088</li>
+                        <li style="color: #3b82f6; font-weight: bold;">Atingimento: 53.8%</li>
                     </ul>
                 </div>
+                
                 <div class="list-group">
-                    <h5><i class="fas fa-percent"></i> Taxa de Conversão</h5>
+                    <h5><i class="fas fa-calendar-alt"></i> Outubro/2025</h5>
                     <ul>
-                        <li>Vendas / Total Atendimentos: 15 / 131</li>
-                        <li style="color: #10b981; font-weight: bold;">Taxa: 11.45%</li>
+                        <li>Meta: 5 unidades</li>
+                        <li>Realizado: 2 unidades</li>
+                        <li style="color: #f59e0b; font-weight: bold;">Atingimento: 40%</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h4><i class="fas fa-chart-line"></i> Performance de Atingimento</h4>
+                <div class="chart-container">
+                    <canvas id="chartPerformance"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h4><i class="fas fa-balance-scale"></i> Vendas vs Estoque</h4>
+                <div class="chart-container">
+                    <canvas id="chartVendasEstoque"></canvas>
                 </div>
             </div>
         </div>
@@ -1320,54 +1349,123 @@
     <div id="controle-atendimentos" class="dashboard">
         <div class="dashboard-header">
             <h1 class="dashboard-title">
-                <i class="fas fa-clipboard-list" style="color: #3b82f6;"></i>
+                <i class="fas fa-calendar-check" style="color: #3b82f6;"></i>
                 Controle de Atendimentos
             </h1>
-            <p class="dashboard-subtitle">Filtre e visualize todos os atendimentos registrados.</p>
+            <p class="dashboard-subtitle">Gestão completa de visitas e atendimentos comerciais</p>
         </div>
 
         <div class="filter-container">
-            <div class="filter-group">
-                <label for="filterDataInicio"><i class="fas fa-calendar-day"></i> Data Início</label>
-                <input type="date" id="filterDataInicio" class="filter-input">
-            </div>
-            <div class="filter-group">
-                <label for="filterDataFim"><i class="fas fa-calendar-day"></i> Data Fim</label>
-                <input type="date" id="filterDataFim" class="filter-input">
+            <div class="date-range">
+                <div class="filter-group">
+                    <label for="filterDataInicio"><i class="fas fa-calendar"></i> Data Início</label>
+                    <input type="date" id="filterDataInicio" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label for="filterDataFim"><i class="fas fa-calendar"></i> Data Fim</label>
+                    <input type="date" id="filterDataFim" class="filter-input">
+                </div>
             </div>
             <div class="filter-group">
                 <label for="filterDiretoria"><i class="fas fa-building"></i> Diretoria</label>
                 <select id="filterDiretoria" class="filter-select">
-                    <option value="">Todas</option>
-                    <option value="Store">Store</option>
-                    <option value="Homesphere">Homesphere</option>
-                    <option value="Parcerias">Parcerias</option>
-                    <option value="Ferrari">Ferrari</option>
-                    <option value="Sell">Yuny Sell</option>
-                    <option value="Diretoria">Diretoria</option>
+                    <option value="todas">Todas as Directorias</option>
+                    <option value="YUNY STORE">YUNY STORE</option>
+                    <option value="HOMESPHERE">HOMESPHERE</option>
+                    <option value="PARCERIAS">PARCERIAS</option>
+                    <option value="DIRETORIA">DIRETORIA</option>
+                    <option value="YUNY SELL">YUNY SELL</option>
                 </select>
             </div>
             <div class="filter-group">
-                <label for="filterTipo"><i class="fas fa-door-open"></i> Tipo</label>
+                <label for="filterTipo"><i class="fas fa-tag"></i> Tipo de Visita</label>
                 <select id="filterTipo" class="filter-select">
-                    <option value="">Todos</option>
-                    <option value="Visita">Visita</option>
+                    <option value="todos">Todos os Tipos</option>
+                    <option value="Vez">Vez</option>
                     <option value="Indicação">Indicação</option>
                     <option value="Retorno">Retorno</option>
+                    <option value="Ligação">Ligação</option>
                 </select>
             </div>
             <div class="filter-actions">
-                <button class="btn btn-primary" id="btnFiltrar"><i class="fas fa-search"></i> Filtrar</button>
-                <button class="btn btn-secondary" id="btnLimparFiltros"><i class="fas fa-redo"></i> Limpar</button>
+                <button class="btn btn-primary" onclick="aplicarFiltros()">
+                    <i class="fas fa-filter"></i> Aplicar Filtros
+                </button>
+                <button class="btn btn-secondary" onclick="limparFiltros()">
+                    <i class="fas fa-undo"></i> Limpar
+                </button>
+                <button class="btn btn-success" onclick="exportarParaCSV()">
+                    <i class="fas fa-download"></i> Exportar CSV
+                </button>
+            </div>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="icon" style="color: #3b82f6;"><i class="fas fa-calendar-check"></i></div>
+                    <h3>Total de Atendimentos</h3>
+                </div>
+                <div class="metric-content">
+                    <strong id="totalAtendimentos">0</strong>
+                    <p class="info-text">No período selecionado</p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="icon" style="color: #10b981;"><i class="fas fa-store-alt"></i></div>
+                    <h3>YUNY STORE</h3>
+                </div>
+                <div class="metric-content">
+                    <strong id="totalStore">0</strong>
+                    <p class="info-text">Atendimentos da Store</p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="icon" style="color: #f59e0b;"><i class="fas fa-home"></i></div>
+                    <h3>HOMESPHERE</h3>
+                </div>
+                <div class="metric-content">
+                    <strong id="totalHomesphere">0</strong>
+                    <p class="info-text">Atendimentos Homesphere</p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-header">
+                    <div class="icon" style="color: #ef4444;"><i class="fas fa-handshake"></i></div>
+                    <h3>PARCERIAS</h3>
+                </div>
+                <div class="metric-content">
+                    <strong id="totalParcerias">0</strong>
+                    <p class="info-text">Atendimentos Parcerias</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h4><i class="fas fa-chart-pie"></i> Atendimentos por Diretoria</h4>
+                <div class="chart-container">
+                    <canvas id="chartDiretoriaAtendimentos"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h4><i class="fas fa-chart-bar"></i> Atendimentos por Tipo</h4>
+                <div class="chart-container">
+                    <canvas id="chartTipoAtendimentos"></canvas>
+                </div>
             </div>
         </div>
 
         <div class="table-container">
             <div class="table-header">
-                <div class="table-title">Tabela de Atendimentos (<span id="countAtendimentos">0</span>)</div>
+                <h3 class="table-title">Registro de Atendimentos</h3>
                 <div class="table-actions">
-                    <input type="text" id="searchCliente" class="search-box" placeholder="Buscar por Cliente/Origem">
-                    <button class="btn btn-success"><i class="fas fa-download"></i> Exportar</button>
+                    <input type="text" id="searchInput" class="search-box" placeholder="Buscar..." onkeyup="filtrarTabela()">
+                    <button class="btn btn-secondary" onclick="limparBusca()">
+                        <i class="fas fa-times"></i> Limpar
+                    </button>
                 </div>
             </div>
             <div class="table-responsive">
@@ -1375,508 +1473,1016 @@
                     <thead>
                         <tr>
                             <th>Data</th>
-                            <th>Cliente</th>
-                            <th>Diretoria</th>
-                            <th>Tipo</th>
-                            <th>Origem</th>
-                            <th>Status</th>
-                            <th>Ações</th>
+                            <th>Tipo de Visita</th>
+                            <th>Corretor</th>
+                            <th>Gerente</th>
+                            <th>Empresa</th>
                         </tr>
                     </thead>
-                    <tbody id="tabelaAtendimentosBody">
-                        </tbody>
+                    <tbody id="tabelaAtendimentos">
+                        <tr>
+                            <td colspan="5" class="loading">
+                                <i class="fas fa-spinner fa-spin"></i> Carregando dados da planilha...
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div class="pagination">
-                <div class="pagination-info" id="paginationInfo">Mostrando 0 de 0</div>
+                <div class="pagination-info" id="paginationInfo">
+                    Mostrando 0 de 0 registros
+                </div>
                 <div class="pagination-controls">
-                    <button class="pagination-btn" id="prevPage" disabled><i class="fas fa-chevron-left"></i> Anterior</button>
-                    <span id="currentPageDisplay">Página 1</span>
-                    <button class="pagination-btn" id="nextPage" disabled>Próxima <i class="fas fa-chevron-right"></i></button>
+                    <button class="pagination-btn" onclick="mudarPagina(-1)" disabled id="btnPrev">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
+                    <button class="pagination-btn" onclick="mudarPagina(1)" id="btnNext">
+                        Próxima <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="tratativas" class="dashboard">
-        <div class="dashboard-header">
+        <div class="header-pipeline">
             <h1 class="dashboard-title">
-                <i class="fas fa-sitemap" style="color: #06b6d4;"></i>
+                <i class="fas fa-filter" style="color: #3b82f6;"></i>
                 Pipeline de Tratativas
             </h1>
-            <p class="dashboard-subtitle">Funil de Vendas de Atendimentos em Andamento (Status: Tratativa, Proposta, Processo)</p>
+            <p class="dashboard-subtitle">Visão detalhada do funil de vendas</p>
+            <div id="pipelineStatusArea" style="margin-top: 10px; font-size: 0.9em;"></div> 
         </div>
-        <div class="header-pipeline">
-            <h2 class="timeline-header" id="pipelineHeaderVGV">VGV em Tratativa: R$ 0,00 | Total de Unidades: 0</h2>
-        </div>
-
+        
         <div class="pipeline-container">
-            <div class="pipeline-col tratativa-col">
-                <div class="col-header" style="border-left: 5px solid #06b6d4;">
-                    <h3>TRATATIVA</h3>
+            
+            <div class="pipeline-col vendido">
+                <div class="col-header">
+                    <h3>Unidades Vendidas</h3>
                     <div class="count">
-                        <span>Unidades: <span id="countTratativa">0</span></span>
-                        <span class="count-value" style="background-color: #06b6d4;" id="vgvTratativa">R$ 0,00</span>
+                        <span>Total:</span>
+                        <span class="count-value" id="countVendido">0</span>
                     </div>
+                    <div class="vgv-total" id="vgvVendido">R$ 0</div>
                 </div>
-                <div class="col-content" id="colTratativa">
-                    <p class="loading">Carregando...</p>
+                <div class="col-content" id="pipelineVendido">
                     </div>
             </div>
 
-            <div class="pipeline-col proposta-col">
-                <div class="col-header" style="border-left: 5px solid var(--warning);">
-                    <h3>PROPOSTA</h3>
+            <div class="pipeline-col processo">
+                <div class="col-header">
+                    <h3>Processo</h3>
                     <div class="count">
-                        <span>Unidades: <span id="countProposta">0</span></span>
-                        <span class="count-value" style="background-color: var(--warning);" id="vgvProposta">R$ 0,00</span>
+                        <span>Total:</span>
+                        <span class="count-value" id="countProcesso">0</span>
                     </div>
+                    <div class="vgv-total" id="vgvProcesso">R$ 0</div>
                 </div>
-                <div class="col-content" id="colProposta">
-                    <p class="loading">Carregando...</p>
-                </div>
+                <div class="col-content" id="pipelineProcesso">
+                    </div>
             </div>
-
-            <div class="pipeline-col processo-col">
-                <div class="col-header" style="border-left: 5px solid var(--primary);">
-                    <h3>PROCESSO</h3>
+            
+            <div class="pipeline-col proposta">
+                <div class="col-header">
+                    <h3>Propostas</h3>
                     <div class="count">
-                        <span>Unidades: <span id="countProcesso">0</span></span>
-                        <span class="count-value" style="background-color: var(--primary);" id="vgvProcesso">R$ 0,00</span>
+                        <span>Total:</span>
+                        <span class="count-value" id="countProposta">0</span>
                     </div>
+                    <div class="vgv-total" id="vgvProposta">R$ 0</div>
                 </div>
-                <div class="col-content" id="colProcesso">
-                    <p class="loading">Carregando...</p>
-                </div>
+                <div class="col-content" id="pipelineProposta">
+                    </div>
             </div>
-
-            <div class="pipeline-col vendido-col">
-                <div class="col-header" style="border-left: 5px solid var(--success);">
-                    <h3>VENDIDO</h3>
+            
+            <div class="pipeline-col tratativa">
+                <div class="col-header">
+                    <h3>Tratativas</h3>
                     <div class="count">
-                        <span>Unidades: <span id="countVendido">0</span></span>
-                        <span class="count-value" style="background-color: var(--success);" id="vgvVendido">R$ 0,00</span>
+                        <span>Total:</span>
+                        <span class="count-value" id="countTratativa">0</span>
                     </div>
+                    <div class="vgv-total" id="vgvTratativa">R$ 0</div>
                 </div>
-                <div class="col-content" id="colVendido">
-                    <p class="loading">Carregando...</p>
+                <div class="col-content" id="pipelineTratativa">
                     </div>
             </div>
 
         </div>
     </div>
-
-
-    <div id="dynamicTooltip" class="tooltip"></div>
-
-</div>
+    </div>
 
 <script>
     // ====================================================================
-    // 1. ESTRUTURA DE DADOS (SIMULANDO A PLANILHA)
-    // Usado como fonte única de dados para todas as abas dinâmicas.
+    // 1. Configurações Globais & URL da Planilha
     // ====================================================================
+    let atendimentosData = []; 
+    let atendimentosFiltrados = [];
+    let atendimentosPaginados = []; 
+    let paginaAtual = 1;
+    const itensPorPagina = 10;
+    
+    let chartDiretoriaAtendimentos = null;
+    let chartTipoAtendimentos = null;
 
-    /**
-     * @typedef {Object} Atendimento
-     * @property {string} data - Data do atendimento (formato YYYY-MM-DD).
-     * @property {string} cliente - Nome do cliente.
-     * @property {string} diretoria - Diretoria responsável (Store, Homesphere, Parcerias, etc.).
-     * @property {string} tipo - Tipo de atendimento (Visita, Indicação, Retorno).
-     * @property {string} origem - Origem do contato (Passagem, Carteira, Instagram, etc.).
-     * @property {string} status - Status atual (Tratativa, Proposta, Processo, Vendido, Perdido).
-     * @property {number} vgv - Valor Geral de Vendas (0 se não for Vendido/Proposta).
-     * @property {string} unidade - Unidade ou tipologia de interesse.
-     * @property {string} corretor - Corretor responsável.
-     */
+    // URL DO SEU GOOGLE SHEETS DE ATENDIMENTOS (MANTIDO DO SEU CÓDIGO)
+    const SHEET_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTx2cJTokag2KDlpWxGK5V3yk3hFehgxUrVIw9vll3ES4SduXdYTLQLtKDjWQUdCvkLa3M0teXdxeEc/pub?gid=0&single=true&output=csv'; 
+    
+    // URL DO SEU GOOGLE SHEETS DE PIPELINE (CORRIGIDA E MANTIDA)
+    const PIPELINE_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSWVGFr4bPew5Q4j3mo2QLY2tPgNSDFjZ4T40X3-D8bnWwIPKnHf_nhvWE34WMRJEqGYqD3e3hnKvDz/pub?gid=0&single=true&output=csv'; 
 
-    /** @type {Atendimento[]} */
-    const dadosReais = [
-        // Semana de 29/09/2025 a 05/10/2025 (Dados para Resumo da Semana)
-        { data: '2025-09-29', cliente: 'João Silva', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
-        { data: '2025-09-29', cliente: 'Maria Souza', diretoria: 'Homesphere', tipo: 'Visita', origem: 'Vizinho', status: 'Tratativa', vgv: 0, unidade: 'Torre Jardins', corretor: 'Carlos' },
-        { data: '2025-09-30', cliente: 'Pedro Santos', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
-        { data: '2025-09-30', cliente: 'Carla Pereira', diretoria: 'Parcerias', tipo: 'Indicação', origem: 'Carteira', status: 'Tratativa', vgv: 0, unidade: 'Torre Parque', corretor: 'Beatriz' },
-        { data: '2025-10-01', cliente: 'Lucas Oliveira', diretoria: 'Store', tipo: 'Retorno', origem: 'Retorno', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
-        { data: '2025-10-01', cliente: 'Fernanda Costa', diretoria: 'Homesphere', tipo: 'Indicação', origem: 'Lead Online', status: 'Proposta', vgv: 520000, unidade: 'Torre Jardins', corretor: 'Carlos' },
-        { data: '2025-10-02', cliente: 'Rafael Almeida', diretoria: 'Store', tipo: 'Visita', origem: 'Instagram', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
-        { data: '2025-10-02', cliente: 'Juliana Mendes', diretoria: 'Ferrari', tipo: 'Indicação', origem: 'Carteira', status: 'Vendido', vgv: 650000, unidade: 'Torre Europa', corretor: 'David' },
-        { data: '2025-10-03', cliente: 'Gabriel Rocha', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Jardins', corretor: 'Ana' },
-        { data: '2025-10-03', cliente: 'Patrícia Lima', diretoria: 'Homesphere', tipo: 'Retorno', origem: 'Retorno', status: 'Processo', vgv: 480000, unidade: 'Torre Parque', corretor: 'Carlos' },
-        { data: '2025-10-04', cliente: 'Guilherme Neves', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
-        { data: '2025-10-04', cliente: 'Laura Dias', diretoria: 'Ferrari', tipo: 'Indicação', origem: 'Folheto em rua', status: 'Tratativa', vgv: 0, unidade: 'Torre Jardins', corretor: 'David' },
-        { data: '2025-10-05', cliente: 'Bruno Alves', diretoria: 'Homesphere', tipo: 'Visita', origem: 'Jogo na quadra', status: 'Tratativa', vgv: 0, unidade: 'Torre Parque', corretor: 'Carlos' },
+    // Nomes das colunas no seu arquivo CSV de Atendimentos
+    const COL_DATA = 'Data'; 
+    const COL_TIPO = 'TIPO DE VISITA'; 
+    const COL_GERENTE = 'Gerente'; 
+    const COL_CORRETOR = 'Corretor de atendimento'; 
+    const COL_DIRETORIA = 'Empresa'; 
 
-        // Outros dados (apenas para simular volume)
-        { data: '2025-10-08', cliente: 'Sofia Ribeiro', diretoria: 'Store', tipo: 'Visita', origem: 'Passagem', status: 'Tratativa', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
-        { data: '2025-10-09', cliente: 'Thiago Martins', diretoria: 'Store', tipo: 'Indicação', origem: 'Carteira', status: 'Perdido', vgv: 0, unidade: 'Torre Europa', corretor: 'Ana' },
-        { data: '2025-09-25', cliente: 'Érica Gomes', diretoria: 'Sell', tipo: 'Indicação', origem: 'Lead Online', status: 'Vendido', vgv: 710000, unidade: 'Torre Jardins', corretor: 'Eduardo' },
+    // Nomes das colunas no seu arquivo CSV de Pipeline
+    const COL_PIPELINE_STATUS = 'STATUS';
+    const COL_PIPELINE_EMPRESA = 'EMPRESA';
+    const COL_PIPELINE_UNIDADE = 'UNIDADE';
+    const COL_PIPELINE_ORIGEM = 'ORIGEM';
+    const COL_PIPELINE_TOOLTIP = 'TOOLTIP';
+    const COL_PIPELINE_VGV = 'VGV'; 
+
+    // NOVO: Ordem das diretorias para as colunas do Pipeline
+    const DIRETORIA_KEYS = [
+        { key: 'STORE', label: 'STORE' },
+        { key: 'YUNYSELL', label: 'YUNY SELL' },
+        { key: 'PARCERIAS', label: 'PARCERIAS' },
+        { key: 'HOMESPHERE', label: 'HOMESPHERE' },
+        { key: 'DIRETORIA', label: 'DIRETORIA' }
     ];
 
+    // ====================================================================
+    // 2. Funções Auxiliares de Dados (CSV para JSON e Data Parsing)
+    // ====================================================================
+
+    function parseDate(dateStr) {
+        if (!dateStr) return null;
+        const parts = dateStr.split('/');
+        if (parts.length === 3) {
+            // Formato DD/MM/AAAA -> Converte para YYYY-MM-DD
+            return new Date(`${parts[2]}-${parts[1]}-${parts[0]}T00:00:00`);
+        }
+        if (dateStr.includes('-')) {
+             // Formato YYYY-MM-DD (já esperado)
+             return new Date(dateStr + 'T00:00:00');
+        }
+        return null;
+    }
+
+    function formatCurrency(value) {
+        if (isNaN(value)) return 'R$ 0';
+        return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    /**
+     * CORREÇÃO DE BUG: Ajusta a correspondência de cabeçalho para ser insensível a maiúsculas/minúsculas.
+     * Além disso, mantém a tolerância a linhas vazias.
+     */
+    function csvToJson(csv) {
+        const lines = csv.split('\n').filter(line => line.trim() !== '');
+        if (lines.length <= 1) return { data: [], headersFound: {} };
+        
+        const firstLine = lines[0];
+        let delimiter = firstLine.includes(';') ? ';' : (firstLine.includes('\t') ? '\t' : ',');
+        
+        const originalHeaders = firstLine.split(delimiter).map(h => h.trim().replace(/"/g, ''));
+        const normalizedHeaders = originalHeaders.map(h => h.toUpperCase());
+        const result = [];
+        const headersFound = {}; // Para retornar quais headers foram mapeados
+
+        const expectedHeaders = [
+            COL_DATA, COL_TIPO, COL_GERENTE, COL_CORRETOR, COL_DIRETORIA,
+            COL_PIPELINE_STATUS, COL_PIPELINE_EMPRESA, COL_PIPELINE_UNIDADE, 
+            COL_PIPELINE_ORIGEM, COL_PIPELINE_TOOLTIP, COL_PIPELINE_VGV
+        ];
+        
+        const headerIndexMap = {}; 
+
+        expectedHeaders.forEach(expectedKey => {
+            // CORREÇÃO APLICADA: Converte a chave esperada para UPPERCASE antes de procurar
+            const keyToSearch = expectedKey.toUpperCase();
+            const foundIndex = normalizedHeaders.findIndex(h => h === keyToSearch);
+            
+            if (foundIndex !== -1) {
+                // Mapeia o índice encontrado no CSV para a chave ORIGINAL (ex: 'Data')
+                headerIndexMap[expectedKey] = foundIndex; 
+                headersFound[expectedKey] = true; 
+            }
+        });
+
+        for (let i = 1; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line.length) continue;
+            
+            const currentline = line.split(delimiter);
+
+            const obj = {};
+            let isRowEmpty = true; 
+
+            for (const expectedKey of expectedHeaders) {
+                const columnIndex = headerIndexMap[expectedKey];
+                
+                if (columnIndex !== undefined && currentline.length > columnIndex) {
+                    let value = currentline[columnIndex] || ''; 
+                    value = value.trim().replace(/^"|"$/g, '').replace(/""/g, '"'); 
+                    
+                    obj[expectedKey] = value;
+                    if (value.length > 0) {
+                        isRowEmpty = false; 
+                    }
+                }
+            }
+            
+            // Adiciona a linha se não estiver totalmente vazia
+            if (!isRowEmpty) {
+                result.push(obj);
+            }
+        }
+        return { data: result, headersFound: headersFound };
+    }
+
+    function contarFrequencia(data, colKey) {
+        const contagem = {};
+        data.forEach(item => {
+            const valor = (item[colKey] || 'NÃO ESPECIFICADO').trim().toUpperCase(); 
+            contagem[valor] = (contagem[valor] || 0) + 1;
+        });
+        return contagem;
+    }
 
     // ====================================================================
-    // 2. FUNÇÕES DE UTILIDADE E CÁLCULO
+    // 3. LÓGICA DE CARREGAMENTO DE DADOS - ATENDIMENTOS
     // ====================================================================
 
-    /**
-     * Formata uma data Date em DD/MM/AAAA.
-     * @param {Date} date
-     * @returns {string}
-     */
-    const formatarData = (date) => {
-        const dia = String(date.getDate()).padStart(2, '0');
-        const mes = String(date.getMonth() + 1).padStart(2, '0');
-        const ano = String(date.getFullYear()).slice(2);
-        return `${dia}/${mes}/${ano}`;
-    };
-
-    /**
-     * Encontra o domingo e sábado da semana que contém a data '2025-09-29' (referência do layout).
-     * @returns {{dataInicio: string, dataFim: string}}
-     */
-    const getDataRangeSemana = () => {
-        // Usamos uma data fixa para manter o Resumo da Semana igual ao seu layout estático anterior
-        const refDate = new Date('2025-09-29T00:00:00'); // Segunda-feira
+    async function carregarDadosPlanilha() {
+        const tabelaBody = document.getElementById('tabelaAtendimentos');
+        const statusArea = document.getElementById('statusArea');
         
-        // Define o início da semana (Domingo) - 29/09/2025 é Segunda-feira
-        const dataInicio = new Date(refDate);
-        dataInicio.setDate(refDate.getDate() - (refDate.getDay() === 0 ? 6 : refDate.getDay() - 1));
-        
-        // Ajuste: O layout estático original indica 29/09 (Segunda) a 05/10 (Domingo).
-        // Vamos forçar o range exato do seu layout estático para corresponder ao seu pedido.
-        // Data Início: 2025-09-29 (Segunda)
-        // Data Fim: 2025-10-05 (Domingo)
+        statusArea.innerHTML = `<div class="loading"><i class="fas fa-spinner fa-spin"></i> Carregando dados de Atendimentos...</div>`;
+        tabelaBody.innerHTML = `<tr><td colspan="5" class="loading"><i class="fas fa-spinner fa-spin"></i> Carregando...</td></tr>`;
 
-        const start = '2025-09-29';
-        const end = '2025-10-05';
-        
-        return { dataInicio: start, dataFim: end };
-    };
+        try {
+            const response = await fetch(SHEET_DATA_URL);
 
-    /**
-     * Agrupa um array de objetos por uma chave e conta a ocorrência.
-     * @param {Atendimento[]} arr 
-     * @param {string} key - Chave a ser agrupada (ex: 'diretoria', 'origem').
-     * @returns {Object<string, number>}
-     */
-    const groupByCount = (arr, key) => {
-        return arr.reduce((acc, item) => {
-            const groupKey = item[key];
-            acc[groupKey] = (acc[groupKey] || 0) + 1;
-            return acc;
-        }, {});
-    };
+            if (!response.ok) {
+                throw new Error(`Erro: ${response.statusText}. Status: ${response.status}`);
+            }
 
-    /**
-     * Calcula as métricas e dados de gráficos para o Resumo da Semana.
-     * @param {Atendimento[]} dadosFiltrados - Dados filtrados pela semana.
-     * @returns {Object}
-     */
-    const calcularResumoSemanal = (dadosFiltrados) => {
-        // 1. Métricas Principais
-        const visitas = dadosFiltrados.filter(a => a.tipo === 'Visita');
-        const indicacoes = dadosFiltrados.filter(a => a.tipo === 'Indicação');
-        const retornos = dadosFiltrados.filter(a => a.tipo === 'Retorno');
-        const propostas = dadosFiltrados.filter(a => a.status === 'Proposta' || a.status === 'Vendido' || a.status === 'Processo');
+            const csvText = await response.text();
+            const { data, headersFound } = csvToJson(csvText);
+            atendimentosData = data;
 
-        // 2. Agrupamento
-        const countDiretoria = groupByCount(dadosFiltrados, 'diretoria');
-        const countTipo = groupByCount(dadosFiltrados, 'tipo');
-        
-        const countVisitasDiretoria = groupByCount(visitas, 'diretoria');
-        const countIndicacoesDiretoria = groupByCount(indicacoes, 'diretoria');
-        const countRetornosDiretoria = groupByCount(retornos, 'diretoria');
-
-        const countVisitasOrigem = groupByCount(visitas, 'origem');
-        const countIndicacoesOrigem = groupByCount(indicacoes, 'origem');
-        const countRetornosOrigem = groupByCount(retornos, 'origem');
-        
-        // Função auxiliar para formatar a lista de info-text
-        const formatInfoText = (counts) => {
-            return Object.entries(counts)
-                .map(([dir, count]) => `${dir}: ${count}`)
-                .join(' / ');
-        };
-
-        return {
-            totalVisitas: visitas.length,
-            infoVisitas: formatInfoText(countVisitasDiretoria),
-            
-            totalIndicacoes: indicacoes.length,
-            infoIndicacoes: formatInfoText(countIndicacoesDiretoria),
-            
-            totalRetornos: retornos.length,
-            infoRetornos: formatInfoText(countRetornosDiretoria),
-            
-            totalPropostas: propostas.length,
-            infoPropostas: `Proposta/Processo/Vendido: ${propostas.length} clientes`,
-            
-            origemVisitas: countVisitasOrigem,
-            origemIndicacoes: countIndicacoesOrigem,
-            origemRetornos: countRetornosOrigem,
-
-            chartDiretoriaData: countDiretoria,
-            chartTipoData: countTipo
-        };
-    };
-
-    /**
-     * Atualiza o DOM (HTML) com as métricas calculadas.
-     * @param {Object} metrics - Objeto retornado por calcularResumoSemanal.
-     * @param {string} dataInicio - Data de início da semana (DD/MM/AA).
-     * @param {string} dataFim - Data de fim da semana (DD/MM/AA).
-     */
-    const atualizarResumoSemanal = (metrics, dataInicio, dataFim) => {
-        // 1. Título e Subtítulo
-        document.getElementById('subtitleResumoSemana').textContent = `Panorama de ${dataInicio} a ${dataFim}`;
-
-        // 2. Métricas
-        document.getElementById('metricVisitas').textContent = metrics.totalVisitas;
-        document.getElementById('infoVisitas').textContent = metrics.infoVisitas || 'Nenhum registro.';
-        
-        document.getElementById('metricIndicacoes').textContent = metrics.totalIndicacoes;
-        document.getElementById('infoIndicacoes').textContent = metrics.infoIndicacoes || 'Nenhum registro.';
-        
-        document.getElementById('metricRetornos').textContent = metrics.totalRetornos;
-        document.getElementById('infoRetornos').textContent = metrics.infoRetornos || 'Nenhum registro.';
-
-        document.getElementById('metricPropostas').textContent = metrics.totalPropostas;
-        document.getElementById('infoPropostas').textContent = metrics.infoPropostas || 'Nenhum registro.';
-
-        // 3. Listas de Origem (Timeline)
-        const renderList = (elementId, counts, total) => {
-            const ul = document.getElementById(elementId);
-            ul.innerHTML = ''; // Limpa o conteúdo
-            if (total === 0) {
-                ul.innerHTML = '<li>Nenhum atendimento na semana.</li>';
+            if (!headersFound[COL_DATA]) {
+                // A COL_DATA é 'Data'. Se não for encontrada, exibe erro.
+                statusArea.innerHTML = `<div class="error-message"><i class="fas fa-times-circle"></i> ERRO DE CABEÇALHO: Não foi possível encontrar a coluna **'${COL_DATA}'** no seu CSV. Verifique o nome exato da coluna no seu Google Sheets (deve ser 'Data').</div>`;
+                tabelaBody.innerHTML = `<tr><td colspan="5">Falha ao identificar a coluna de Data.</td></tr>`;
                 return;
             }
-            // Converte objeto em array de pares [origem, contagem] e ordena por contagem
-            const sortedCounts = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+            if (atendimentosData.length === 0) {
+                statusArea.innerHTML = `<div class="warning-message"><i class="fas fa-exclamation-triangle"></i> Planilha carregada. Nenhum registro com dados válidos encontrado (Verifique se as colunas estão preenchidas).</div>`;
+                tabelaBody.innerHTML = `<tr><td colspan="5">Nenhum registro encontrado.</td></tr>`;
+                return;
+            }
+
+            statusArea.innerHTML = `<div class="success-message"><i class="fas fa-check-circle"></i> Dados de Atendimentos carregados. Total: **${atendimentosData.length}** registros.</div>`;
             
-            sortedCounts.forEach(([origem, count]) => {
-                const li = document.createElement('li');
-                li.textContent = `${origem} → ${count}`;
-                ul.appendChild(li);
+            limparFiltros(true); // Inicializa com o período padrão
+            
+        } catch (error) {
+            console.error('Erro no carregamento de dados:', error);
+            tabelaBody.innerHTML = `<tr><td colspan="5" class="error-message">
+                <i class="fas fa-exclamation-triangle"></i> Falha ao carregar os dados.
+            </td></tr>`;
+            statusArea.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Erro: Não foi possível buscar o CSV de Atendimentos. Detalhe: ${error.message}</div>`;
+        }
+    }
+
+    function aplicarFiltros() {
+        const dataInicioStr = document.getElementById('filterDataInicio').value;
+        const dataFimStr = document.getElementById('filterDataFim').value;
+        const diretoria = document.getElementById('filterDiretoria').value;
+        const tipo = document.getElementById('filterTipo').value;
+
+        const dataInicio = dataInicioStr ? new Date(dataInicioStr + 'T00:00:00') : null;
+        const dataFim = dataFimStr ? new Date(dataFimStr + 'T23:59:59') : null;
+
+        atendimentosFiltrados = atendimentosData.filter(item => {
+            const itemDate = parseDate(item[COL_DATA]);
+            let passaData = true;
+            
+            if (dataInicio && itemDate && itemDate < dataInicio) passaData = false;
+            if (dataFim && itemDate && itemDate > dataFim) passaData = false;
+
+            const diretoriaKey = (item[COL_DIRETORIA] || '').trim().toUpperCase(); 
+            let passaDiretoria = diretoria === 'todas' || diretoriaKey === diretoria.toUpperCase();
+
+            const tipoKey = (item[COL_TIPO] || '').trim().toUpperCase(); 
+            let passaTipo = tipo === 'todos' || tipoKey === tipo.toUpperCase();
+
+            return passaData && passaDiretoria && passaTipo;
+        });
+
+        document.getElementById('searchInput').value = '';
+        paginaAtual = 1;
+        filtrarTabela();
+    }
+
+    function limparFiltros(apenasSetarDatas = false) {
+        document.getElementById('filterDiretoria').value = 'todas';
+        document.getElementById('filterTipo').value = 'todos';
+
+        const dataFim = new Date();
+        const dataInicio = new Date();
+        dataInicio.setDate(dataInicio.getDate() - 30);
+        
+        document.getElementById('filterDataInicio').value = dataInicio.toISOString().split('T')[0];
+        document.getElementById('filterDataFim').value = dataFim.toISOString().split('T')[0];
+        
+        if (!apenasSetarDatas) {
+             aplicarFiltros();
+        }
+    }
+
+    function limparBusca() {
+        document.getElementById('searchInput').value = '';
+        filtrarTabela();
+    }
+
+    function filtrarTabela() {
+        const termoBusca = document.getElementById('searchInput').value.toLowerCase();
+        
+        atendimentosPaginados = atendimentosFiltrados.filter(item => {
+            const itemString = (item[COL_DATA] || '') + ' ' +
+                               (item[COL_TIPO] || '') + ' ' +
+                               (item[COL_CORRETOR] || '') + ' ' +
+                               (item[COL_GERENTE] || '') + ' ' +
+                               (item[COL_DIRETORIA] || '');
+            
+            return itemString.toLowerCase().includes(termoBusca);
+        });
+
+        atualizarMetricas(atendimentosPaginados);
+        inicializarGraficosAtendimentos(atendimentosPaginados);
+        
+        paginaAtual = 1;
+        popularTabela(atendimentosPaginados);
+    }
+    
+    function popularTabela(data) {
+        const tabelaBody = document.getElementById('tabelaAtendimentos');
+        tabelaBody.innerHTML = '';
+
+        const totalPaginas = Math.ceil(data.length / itensPorPagina);
+        paginaAtual = Math.min(Math.max(1, paginaAtual), totalPaginas || 1); 
+
+        const inicio = (paginaAtual - 1) * itensPorPagina;
+        const fim = inicio + itensPorPagina;
+        const dadosPagina = data.slice(inicio, fim);
+        
+        if (dadosPagina.length === 0 && data.length > 0 && paginaAtual > 1) {
+            paginaAtual = totalPaginas;
+            popularTabela(data);
+            return;
+        }
+        
+        if (dadosPagina.length === 0) {
+            tabelaBody.innerHTML = `<tr><td colspan="5">Nenhum registro encontrado.</td></tr>`;
+        } else {
+            dadosPagina.forEach(item => {
+                const diretoria = item[COL_DIRETORIA] || 'N/A';
+                const tipo = item[COL_TIPO] || 'N/A';
+                const corretor = item[COL_CORRETOR] || 'N/A';
+                const gerente = item[COL_GERENTE] || 'N/A';
+                const dataFormatada = item[COL_DATA] || 'N/A';
+
+                const diretoriaClass = 'diretoria-' + diretoria.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+                const row = `
+                    <tr>
+                        <td>${dataFormatada}</td>
+                        <td><span class="tipo-badge">${tipo}</span></td>
+                        <td>${corretor}</td>
+                        <td>${gerente}</td>
+                        <td><span class="diretoria-badge ${diretoriaClass}">${diretoria}</span></td>
+                    </tr>
+                `;
+                tabelaBody.innerHTML += row;
             });
-        };
-
-        renderList('listOrigemVisitas', metrics.origemVisitas, metrics.totalVisitas);
-        document.getElementById('totalAtendimentosVisitas').textContent = `Total: ${metrics.totalVisitas} atendimentos`;
-        
-        renderList('listOrigemIndicacoes', metrics.origemIndicacoes, metrics.totalIndicacoes);
-        document.getElementById('totalAtendimentosIndicacoes').textContent = `Total: ${metrics.totalIndicacoes} atendimentos`;
-        
-        renderList('listOrigemRetornos', metrics.origemRetornos, metrics.totalRetornos);
-        document.getElementById('totalAtendimentosRetornos').textContent = `Total: ${metrics.totalRetornos} atendimentos`;
-
-        // 4. Gráficos
-        renderChartDiretoriaSemana(metrics.chartDiretoriaData);
-        renderChartTipoAtendimentoSemana(metrics.chartTipoData);
-    };
-
-    let chartDiretoriaInstance = null;
-    let chartTipoInstance = null;
-    const CHART_COLORS = ['#3b82f6', '#6366f1', '#10b981', '#f59e0b', '#ef4444', '#06b6d4', '#8b5cf6'];
-    const CHART_BORDER_COLORS = ['#ffffff']; // Borda branca
-
-    /**
-     * Renderiza o gráfico de Distribuição por Diretoria (Semana).
-     */
-    const renderChartDiretoriaSemana = (dataCounts) => {
-        const ctx = document.getElementById('chartDiretoriaSemana').getContext('2d');
-        if (chartDiretoriaInstance) {
-            chartDiretoriaInstance.destroy();
         }
 
-        const labels = Object.keys(dataCounts);
-        const dataValues = Object.values(dataCounts);
+        document.getElementById('paginationInfo').textContent = `Mostrando ${inicio + 1} a ${inicio + dadosPagina.length} de ${data.length} registros`;
+        document.getElementById('btnPrev').disabled = paginaAtual === 1 || data.length === 0;
+        document.getElementById('btnNext').disabled = paginaAtual === totalPaginas || data.length === 0;
+    }
 
-        chartDiretoriaInstance = new Chart(ctx, {
+    function mudarPagina(direcao) {
+        paginaAtual += direcao;
+        popularTabela(atendimentosPaginados);
+    }
+    
+    function atualizarMetricas(data) {
+        const total = data.length;
+        const store = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'YUNY STORE').length;
+        const homesphere = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'HOMESPHERE').length;
+        const parcerias = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'PARCERIAS').length;
+
+        document.getElementById('totalAtendimentos').textContent = total;
+        document.getElementById('totalStore').textContent = store;
+        document.getElementById('totalHomesphere').textContent = homesphere;
+        document.getElementById('totalParcerias').textContent = parcerias;
+    }
+
+    function inicializarGraficosAtendimentos(data = atendimentosPaginados) {
+        // 1. Gráfico de Diretoria (Pie)
+        const ctx1 = document.getElementById('chartDiretoriaAtendimentos').getContext('2d');
+        if (chartDiretoriaAtendimentos) chartDiretoriaAtendimentos.destroy();
+
+        const diretorias = contarFrequencia(data, COL_DIRETORIA);
+
+        const labels = Object.keys(diretorias);
+        const chartData = Object.values(diretorias);
+        const colors = ['#6366f1', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
+
+        chartDiretoriaAtendimentos = new Chart(ctx1, {
             type: 'pie',
             data: {
                 labels: labels,
                 datasets: [{
-                    data: dataValues,
-                    backgroundColor: CHART_COLORS.slice(0, labels.length),
-                    borderColor: CHART_BORDER_COLORS[0],
-                    borderWidth: 1
+                    data: chartData,
+                    backgroundColor: colors.slice(0, labels.length)
                 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'right',
-                    },
-                    title: {
-                        display: false,
-                    }
-                }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
         });
-    };
 
-    /**
-     * Renderiza o gráfico de Tipo de Atendimento (Semana).
-     */
-    const renderChartTipoAtendimentoSemana = (dataCounts) => {
-        const ctx = document.getElementById('chartTipoAtendimentoSemana').getContext('2d');
-        if (chartTipoInstance) {
-            chartTipoInstance.destroy();
-        }
+        // 2. Gráfico de Tipo (Bar)
+        const ctx2 = document.getElementById('chartTipoAtendimentos').getContext('2d');
+        if (chartTipoAtendimentos) chartTipoAtendimentos.destroy();
+        
+        const tipos = contarFrequencia(data, COL_TIPO);
 
-        const labels = Object.keys(dataCounts);
-        const dataValues = Object.values(dataCounts);
+        const tipoLabels = Object.keys(tipos);
+        const tipoData = Object.values(tipos);
 
-        chartTipoInstance = new Chart(ctx, {
+        chartTipoAtendimentos = new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: labels,
+                labels: tipoLabels,
                 datasets: [{
-                    label: 'Contagem de Atendimentos',
-                    data: dataValues,
-                    backgroundColor: CHART_COLORS.slice(0, labels.length),
-                    borderColor: CHART_COLORS.slice(0, labels.length),
-                    borderWidth: 1
+                    label: 'Atendimentos',
+                    data: tipoData,
+                    backgroundColor: '#3b82f6'
                 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            options: { 
+                responsive: true, maintainAspectRatio: false, 
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    }
+
+    function exportarParaCSV() {
+        const COLUNAS_EXPORTAR = [COL_DATA, COL_TIPO, COL_CORRETOR, COL_GERENTE, COL_DIRETORIA];
+        const CABECALHOS_EXPORTAR = ['Data', 'Tipo de Visita', 'Corretor', 'Gerente', 'Empresa'];
+
+        if (atendimentosPaginados.length === 0) {
+            alert("Não há dados filtrados para exportar.");
+            return;
+        }
+
+        let csvContent = CABECALHOS_EXPORTAR.map(h => `"${h}"`).join(";") + "\n";
+
+        atendimentosPaginados.forEach(item => {
+            const row = COLUNAS_EXPORTAR.map(header => {
+                let value = item[header] || '';
+                return `"${String(value).replace(/"/g, '""').replace(/;/, ',').replace(/\n/g, ' ')}"`;
+            }).join(";");
+            csvContent += row + "\n";
+        });
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        if (link.download !== undefined) {
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "Atendimentos_Exportados.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+    
+    // ====================================================================
+    // 4. LÓGICA DE CARREGAMENTO DE DADOS - PIPELINE (Refatorada para Agrupamento)
+    // ====================================================================
+
+    /**
+     * Gera a estrutura de subcategorias (pipeline-diretoria) dentro de um container
+     * e retorna o mapa dos elementos pai criados.
+     * @param {string} statusKey - A chave do status (ex: 'vendido').
+     * @param {HTMLElement} targetElement - O elemento HTML pai da coluna.
+     * @returns {Object} Mapa de elementos pais por chave de diretoria.
+     */
+    function renderPipelineColumn(statusKey, targetElement) {
+        targetElement.innerHTML = ''; // Limpa o conteúdo anterior
+        const directorateElements = {}; // NEW: Mapa para armazenar os elementos pais
+
+        DIRETORIA_KEYS.forEach(d => {
+            // Ex: 'vendido' + 'STORE' -> 'vendidoSTORE'
+            const idBase = statusKey.toLowerCase() + d.key;
+            
+            // Ex: 'vgvVendidoStore'
+            const vgvId = 'vgv' + idBase.charAt(0).toUpperCase() + idBase.slice(1);
+
+            const diretoriaDiv = document.createElement('div');
+            diretoriaDiv.className = 'pipeline-diretoria';
+            
+            diretoriaDiv.innerHTML = `
+                <h4>${d.label} <span class="diretoria-vgv" id="${vgvId}">R$ 0</span></h4>
+                <div id="${idBase}" class="diretoria-items"></div>
+            `;
+            targetElement.appendChild(diretoriaDiv);
+            
+            // NEW: Armazena o elemento pai (div.pipeline-diretoria) pela chave
+            directorateElements[d.key] = diretoriaDiv;
+        });
+        
+        return directorateElements; // Retorna o mapa de elementos para controle de visibilidade
+    }
+
+    async function carregarDadosPipeline() {
+        const pipelineStatusArea = document.getElementById('pipelineStatusArea');
+        pipelineStatusArea.innerHTML = '<span class="text-warning"><i class="fas fa-spinner fa-spin"></i> Carregando dados do Pipeline...</span>';
+
+        try {
+            const response = await fetch(PIPELINE_DATA_URL);
+            if (!response.ok) throw new Error(`Erro de rede: ${response.statusText}`);
+            
+            const csvText = await response.text();
+            const { data: dadosPipeline, headersFound } = csvToJson(csvText);
+            
+            if (!headersFound[COL_PIPELINE_UNIDADE] || !headersFound[COL_PIPELINE_STATUS]) {
+                 pipelineStatusArea.innerHTML = `<span class="error-message"><i class="fas fa-exclamation-triangle"></i> ERRO DE CABEÇALHO: Colunas **STATUS** e/ou **UNIDADE** não encontradas no CSV do Pipeline.</span>`;
+                 return;
+            }
+
+            popularPipeline(dadosPipeline);
+            
+            if (dadosPipeline.length > 0) {
+                pipelineStatusArea.innerHTML = `<span class="success-message"><i class="fas fa-check-circle"></i> Pipeline carregado com sucesso. **${dadosPipeline.length}** itens encontrados.</span>`;
+            } else {
+                 pipelineStatusArea.innerHTML = `<span class="warning-message"><i class="fas fa-exclamation-triangle"></i> **Pipeline vazio**. Nenhum dado válido encontrado.</span>`;
+            }
+
+        } catch (error) {
+            console.error('Erro ao carregar dados do pipeline:', error);
+            pipelineStatusArea.innerHTML = `<span class="error-message"><i class="fas fa-exclamation-triangle"></i> Erro ao carregar o Pipeline. Detalhe: ${error.message}</span>`;
+        }
+    }
+    
+    /**
+     * Processa os dados do pipeline, conta os itens, calcula o VGV e popula o HTML.
+     */
+    function popularPipeline(dados) {
+        // 1. Containers HTML e Geração da Estrutura
+        const pipelineContainers = {
+            VENDIDO: document.getElementById('pipelineVendido'),
+            PROCESSO: document.getElementById('pipelineProcesso'),
+            PROPOSTA: document.getElementById('pipelineProposta'),
+            TRATATIVA: document.getElementById('pipelineTratativa')
+        };
+        
+        // Renderiza a estrutura de subcategorias e captura o mapa de elementos pais
+        const vendidoParents = renderPipelineColumn('vendido', pipelineContainers.VENDIDO);
+        const processoParents = renderPipelineColumn('processo', pipelineContainers.PROCESSO);
+        const propostaParents = renderPipelineColumn('proposta', pipelineContainers.PROPOSTA);
+        const tratativaParents = renderPipelineColumn('tratativa', pipelineContainers.TRATATIVA);
+        
+        // 2. Inicializa a Estrutura de Tracking
+        const columns = {};
+        Object.keys(pipelineContainers).forEach(status => {
+            // Determina qual mapa de elementos pais usar para o status atual
+            const parentMap = status === 'VENDIDO' ? vendidoParents : 
+                              status === 'PROCESSO' ? processoParents :
+                              status === 'PROPOSTA' ? propostaParents :
+                              tratativaParents; // TRATATIVA
+
+            columns[status] = { 
+                count: 0, 
+                vgvSum: 0, 
+                // Cria um mapa de elementos baseado nas diretorias e IDs gerados
+                elements: DIRETORIA_KEYS.reduce((acc, d) => {
+                    const idBase = status.toLowerCase() + d.key;
+                    acc[d.key] = {
+                        total: 0,
+                        vgv: 0,
+                        element: document.getElementById(idBase),
+                        vgvElement: document.getElementById('vgv' + idBase.charAt(0).toUpperCase() + idBase.slice(1)),
+                        parentElement: parentMap[d.key] // NOVO: Elemento pai (div.pipeline-diretoria)
+                    };
+                    return acc;
+                }, {})
+            };
+        });
+
+        // 3. Processar os dados e popular os cards
+        dados.forEach(item => {
+            const status = (item[COL_PIPELINE_STATUS] || '').toUpperCase();
+            const nomeUnidade = item[COL_PIPELINE_UNIDADE] || 'Unidade Desconhecida';
+            const origem = item[COL_PIPELINE_ORIGEM] || 'Não Informada'; 
+            const tooltipContent = item[COL_PIPELINE_TOOLTIP] || 'Detalhe não informado.'; 
+            const vgvRaw = item[COL_PIPELINE_VGV] || '0';
+            
+            let vgvClean = vgvRaw.replace(/[^0-9,\.-]/g, '');
+            let vgvFloat = parseFloat(vgvClean.replace(/\./g, '').replace(/,/g, '.')); 
+            
+            if (isNaN(vgvFloat)) {
+                vgvFloat = parseFloat(vgvClean.replace(/,/g, ''));
+            }
+            
+            const vgvValue = isNaN(vgvFloat) ? 0 : vgvFloat;
+
+            // Ignora a linha se o status for inválido ou a unidade for desconhecida
+            if (nomeUnidade === 'Unidade Desconhecida' || !columns[status]) return; 
+
+            const empresa = (item[COL_PIPELINE_EMPRESA] || 'NAOESPECIFICADO').toUpperCase().replace(/\s/g, ''); 
+            // Padroniza YUNY SELL para YUNYSELL
+            const empresaKey = empresa.includes('SELL') ? 'YUNYSELL' : empresa;
+
+            const columnData = columns[status];
+            const diretoriaData = columnData.elements[empresaKey];
+            
+            if (diretoriaData && diretoriaData.element) {
+                columnData.count++;
+                columnData.vgvSum += vgvValue;
+                diretoriaData.total++;
+                diretoriaData.vgv += vgvValue;
+                
+                let statusClass = '';
+                if (status === 'VENDIDO') statusClass = 'tratativa-row-vendido';
+                else if (status === 'PROCESSO') statusClass = 'tratativa-row-processo';
+                else if (status === 'PROPOSTA') statusClass = 'tratativa-row-proposta';
+                else if (status === 'TRATATIVA') statusClass = 'tratativa-row-tratativa';
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = `tratativa-row ${statusClass}`;
+                
+                // AJUSTE DO TOOLTIP: Apenas o tooltipContent
+                itemElement.setAttribute('data-tooltip', tooltipContent); 
+
+                // HTML do card (mostra a unidade e a origem)
+                itemElement.innerHTML = `
+                    <span class="row-unit" title="${nomeUnidade}">${nomeUnidade}</span>
+                    <span class="row-origin" title="Origem: ${origem}">${origem}</span>
+                `;
+
+                diretoriaData.element.appendChild(itemElement);
+            }
+        });
+
+        // 4. Atualizar as contagens totais, VGV e VISIBILIDADE
+        
+        // VGV total do Pipeline (topo da coluna)
+        document.getElementById('countVendido').textContent = columns.VENDIDO.count;
+        document.getElementById('vgvVendido').textContent = formatCurrency(columns.VENDIDO.vgvSum);
+        document.getElementById('countProcesso').textContent = columns.PROCESSO.count;
+        document.getElementById('vgvProcesso').textContent = formatCurrency(columns.PROCESSO.vgvSum);
+        document.getElementById('countProposta').textContent = columns.PROPOSTA.count;
+        document.getElementById('vgvProposta').textContent = formatCurrency(columns.PROPOSTA.vgvSum);
+        document.getElementById('countTratativa').textContent = columns.TRATATIVA.count;
+        document.getElementById('vgvTratativa').textContent = formatCurrency(columns.TRATATIVA.vgvSum);
+        
+        // VGV por Diretoria (subtítulos) e Lógica de Ocultamento
+        Object.keys(columns).forEach(status => {
+            Object.values(columns[status].elements).forEach(diretoria => {
+                 if(diretoria.vgvElement) {
+                    diretoria.vgvElement.textContent = formatCurrency(diretoria.vgv);
+                 }
+                 
+                 // Lógica para ocultar a subcategoria se não houver itens
+                 if (diretoria.total === 0 && diretoria.parentElement) {
+                     diretoria.parentElement.style.display = 'none';
+                 } else if (diretoria.parentElement) {
+                     // Garante que subcategorias com dados estejam visíveis
+                     diretoria.parentElement.style.display = 'block';
+                 }
+            });
+        });
+    }
+
+    // ====================================================================
+    // 5. Funções de Inicialização Estáticas (MANTIDAS)
+    // ====================================================================
+
+    function inicializarGraficosSemana() {
+        const ctx1 = document.getElementById('chartDiretoriaSemana').getContext('2d');
+        if (ctx1) {
+            new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Store', 'Homesphere', 'Parcerias', 'Ferrari'],
+                    datasets: [{
+                        data: [6, 2, 1, 2],
+                        backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#ef4444']
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            precision: 0 // Mostra apenas números inteiros
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
                         }
                     }
                 }
-            }
-        });
-    };
+            });
+        }
+        const ctx2 = document.getElementById('chartTipoAtendimento').getContext('2d');
+        if (ctx2) {
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Vez', 'Indicação', 'Retorno', 'Propostas'],
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: [8, 7, 2, 0],
+                        backgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function inicializarGraficosOutubro() {
+        const ctx1 = document.getElementById('chartDiretoriaOutubro').getContext('2d');
+        if (ctx1) {
+            new Chart(ctx1, {
+                type: 'pie',
+                data: {
+                    labels: ['Store', 'Homesphere', 'Parcerias', 'YUNY SELL'],
+                    datasets: [{
+                        data: [11, 2, 1, 2],
+                        backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#06b6d4']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+        const ctx2 = document.getElementById('chartTipoAtendimentoOutubro').getContext('2d');
+        if (ctx2) {
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Visitas', 'Indicações', 'Retornos'],
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: [7, 7, 2],
+                        backgroundColor: '#10b981'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function inicializarGraficosSetembro() {
+        const ctx1 = document.getElementById('chartDiretoriaSetembro').getContext('2d');
+        if (ctx1) {
+            new Chart(ctx1, {
+                type: 'pie',
+                data: {
+                    labels: ['Store', 'Homesphere', 'Parcerias', 'YUNY SELL', 'Diretoria'],
+                    datasets: [{
+                        data: [60, 41, 19, 10, 1],
+                        backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#06b6d4', '#8b5cf6']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+        const ctx2 = document.getElementById('chartTipoAtendimentoSetembro').getContext('2d');
+        if (ctx2) {
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Visitas', 'Indicações', 'Retornos'],
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: [53, 61, 17],
+                        backgroundColor: '#8b5cf6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function inicializarGraficosEstoque() {
+        const ctx1 = document.getElementById('chartVendasTorre').getContext('2d');
+        if (ctx1) {
+            new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['JARDINS', 'EUROPA', 'PARQUE'],
+                    datasets: [{
+                        data: [4, 7, 4],
+                        backgroundColor: ['#6366f1', '#10b981', '#f59e0b']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Vendas por Torre - 15 unidades'
+                        }
+                    }
+                }
+            });
+        }
+        const ctx2 = document.getElementById('chartOrigemVendas').getContext('2d');
+        if (ctx2) {
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['ONLINE', 'CARTEIRA', 'VEZ', 'DIRETORIA'],
+                    datasets: [{
+                        label: 'Unidades Vendidas',
+                        data: [5, 4, 2, 4],
+                        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Unidades'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        const ctx3 = document.getElementById('chartPerformance').getContext('2d');
+        if (ctx3) {
+            new Chart(ctx3, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Atingido', 'Restante'],
+                    datasets: [{
+                        data: [15, 13], 
+                        backgroundColor: ['#10b981', '#e5e7eb']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Performance Unidades 2025 - 53.6%'
+                        }
+                    }
+                }
+            });
+        }
+        const ctx4 = document.getElementById('chartVendasEstoque').getContext('2d');
+        if (ctx4) {
+            new Chart(ctx4, {
+                type: 'pie',
+                data: {
+                    labels: ['Vendidas', 'Em Estoque'],
+                    datasets: [{
+                        data: [15, 41],
+                        backgroundColor: ['#10b981', '#3b82f6']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Total: 56 unidades'
+                        }
+                    }
+                }
+            });
+        }
+    }
 
 
     // ====================================================================
-    // 3. LÓGICA DE INICIALIZAÇÃO GERAL E CONTROLE DE ABAS
+    // 6. Event Listener de Inicialização (ATUALIZADO)
     // ====================================================================
 
-    /**
-     * Função principal para carregar os dados e atualizar a aba 'Resumo da Semana'.
-     */
-    const carregarDadosResumoSemana = () => {
-        const { dataInicio, dataFim } = getDataRangeSemana();
-
-        // Filtra os dados da planilha para o período da semana
-        const dadosSemana = dadosReais.filter(item => {
-            return item.data >= dataInicio && item.data <= dataFim;
-        });
-
-        const metrics = calcularResumoSemanal(dadosSemana);
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Inicializando dashboard...');
         
-        // Convertendo as datas para exibição (DD/MM/AA)
-        const displayDataInicio = formatarData(new Date(dataInicio));
-        const displayDataFim = formatarData(new Date(dataFim));
-
-        atualizarResumoSemanal(metrics, displayDataInicio, displayDataFim);
-    };
-
-
-    /**
-     * Função para carregar os dados da Planilha (para Controle de Atendimentos)
-     * (Implementação futura, apenas esqueleto para manter a estrutura do seu código anterior)
-     */
-    const carregarDadosPlanilha = () => {
-        // Por enquanto, esta função não faz nada além de carregar o Resumo da Semana
-        // A lógica de preenchimento da tabela do Controle de Atendimentos será implementada aqui.
-
-        console.log("Dados carregados para Controle de Atendimentos:", dadosReais.length);
-    };
-    
-    // As outras funções (inicializarGraficosOutubro, inicializarGraficosSetembro, etc.)
-    // são mantidas vazias para evitar erros, mas devem ser implementadas
-    // se você quiser que as outras abas funcionem de forma dinâmica.
-
-    const inicializarGraficosOutubro = () => {};
-    const inicializarGraficosSetembro = () => {};
-    const inicializarGraficosEstoque = () => {};
-    const carregarDadosPipeline = () => {};
-
-
-    // Listener para o DOM
-    document.addEventListener('DOMContentLoaded', () => {
+        // Configurar abas
         const tabs = document.querySelectorAll('.tab');
         const dashboards = document.querySelectorAll('.dashboard');
 
-        // Lógica de Troca de Abas
         tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove 'active' de todas as abas e dashboards
+            tab.addEventListener('click', function() {
+                const target = this.getAttribute('data-target');
+                
                 tabs.forEach(t => t.classList.remove('active'));
                 dashboards.forEach(d => d.classList.remove('active'));
-
-                // Adiciona 'active' à aba clicada
-                tab.classList.add('active');
-
-                // Exibe o dashboard correspondente
-                const targetId = tab.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
-
-                // Recarrega o Resumo da Semana ao clicar nele
-                if (targetId === 'resumo') {
-                    carregarDadosResumoSemana();
+                
+                this.classList.add('active');
+                document.getElementById(target).classList.add('active');
+                
+                // Inicializar gráficos quando mudar de aba
+                if (target === 'resumo') inicializarGraficosSemana();
+                if (target === 'resumo-mes') inicializarGraficosOutubro();
+                if (target === 'historico-mes') inicializarGraficosSetembro();
+                if (target === 'panorama-estoque') inicializarGraficosEstoque();
+                if (target === 'controle-atendimentos') {
+                    if(atendimentosPaginados.length > 0) {
+                        inicializarGraficosAtendimentos(); 
+                    }
                 }
-                // (Aqui você adicionaria a lógica para recarregar as outras abas)
+                if (target === 'tratativas') carregarDadosPipeline(); 
             });
         });
 
+        // Configurar datas padrão (limparFiltros(true) apenas seta as datas)
+        limparFiltros(true); 
 
-        // ------------------------------------------------------------------
-        // ATUALIZAÇÃO: Inicia a aba Resumo da Semana com os dados dinâmicos
-        // ------------------------------------------------------------------
-        carregarDadosResumoSemana();
-
-        // Inicializar filtros de data no Controle de Atendimentos (apenas formatação)
-        const hoje = new Date();
-        const dataFim = new Date(hoje);
-        const dataInicio = new Date(hoje);
-        dataInicio.setDate(hoje.getDate() - 7); // Últimos 7 dias
-
-        // Define os valores padrão dos filtros (YYYY-MM-DD)
-        document.getElementById('filterDataInicio').value = dataInicio.toISOString().split('T')[0];
-        document.getElementById('filterDataFim').value = dataFim.toISOString().split('T')[0];
-        
-        // Inicializar gráficos estáticos iniciais (mantidos para evitar quebra)
-        inicializarGraficosOutubro();
-        inicializarGraficosSetembro();
-        inicializarGraficosEstoque();
-
-        // Carregar dados da planilha ao iniciar o DOM (principalmente para a aba Controle)
-        carregarDadosPlanilha();
-        
-        // Carregar dados do pipeline ao iniciar o DOM
-        carregarDadosPipeline();
-
-
-        // Sistema de tooltips (mantido do código original)
+        // Sistema de tooltips 
         document.addEventListener('mouseover', function(e) {
             let targetElement = e.target;
             while (targetElement && !targetElement.classList.contains('tratativa-row') && targetElement !== document.body) {
                 targetElement = targetElement.parentElement;
             }
+
             if (targetElement && targetElement.classList.contains('tratativa-row') && targetElement.hasAttribute('data-tooltip')) {
-                const tooltip = document.getElementById('dynamicTooltip');
-                
-                tooltip.innerHTML = '';
-                const tooltipContent = targetElement.getAttribute('data-tooltip').split(';').map(line => `<p>${line}</p>`).join('');
-                tooltip.innerHTML = tooltipContent;
-                tooltip.classList.add('show');
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip show';
+                tooltip.textContent = targetElement.getAttribute('data-tooltip');
+                document.body.appendChild(tooltip);
                 
                 const rect = targetElement.getBoundingClientRect();
                 
@@ -1896,11 +2502,23 @@
             while (targetElement && !targetElement.classList.contains('tratativa-row') && targetElement !== document.body) {
                 targetElement = targetElement.parentElement;
             }
-            if (targetElement && targetElement.classList.contains('tratativa-row')) {
-                document.getElementById('dynamicTooltip').classList.remove('show');
+            if (targetElement && targetElement.classList.contains('tratativa-row') && targetElement._currentTooltip) {
+                targetElement._currentTooltip.remove();
                 targetElement._currentTooltip = null;
             }
         });
+
+        // Inicializar gráficos estáticos iniciais
+        inicializarGraficosSemana();
+        inicializarGraficosOutubro();
+        inicializarGraficosSetembro();
+        inicializarGraficosEstoque();
+
+        // Carregar dados da planilha ao iniciar o DOM
+        carregarDadosPlanilha();
+        
+        // Carregar dados do pipeline ao iniciar o DOM
+        carregarDadosPipeline();
     });
 </script>
 </body>
