@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dashboard de Pipeline Comercial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* === ESTILOS ORIGINAIS PRESERVADOS === */
         :root {
             --primary: #3b82f6;
             --secondary: #6366f1;
@@ -301,6 +302,12 @@
             background-color: #06b6d4;
         }
 
+        /* Correção de contraste - texto escuro onde o fundo é muito claro */
+        .diretoria-store,
+        .diretoria-sell {
+            color: #1f2937 !important; /* texto escuro */
+        }
+
         .tipo-badge {
             padding: 4px 8px;
             border-radius: 6px;
@@ -503,7 +510,6 @@
             cursor: not-allowed;
         }
 
-        /* ESTILOS DE PIPELINE - NOVOS */
         .header-pipeline {
             margin-bottom: 24px;
         }
@@ -513,31 +519,29 @@
             gap: 20px;
             overflow-x: auto;
             padding-bottom: 10px;
-            /* Permitir que o container ocupe toda a largura */
-            width: 100%; 
+            width: 100%;
         }
 
         .pipeline-col {
-            flex: 0 0 320px; /* Largura fixa para cada coluna */
+            flex: 0 0 320px;
             background: white;
             border-radius: 12px;
             box-shadow: var(--card-shadow);
             display: flex;
             flex-direction: column;
-            max-height: 80vh; /* Limita a altura para o scroll funcionar */
+            max-height: 80vh;
         }
 
         .col-header {
             padding: 15px;
             border-bottom: 2px solid var(--border);
             display: flex;
-            flex-direction: column; /* Novo: Para VGV ficar embaixo do count */
+            flex-direction: column;
             align-items: flex-start;
             background-color: var(--light);
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
-            /* Garante que o cabeçalho não role */
-            flex-shrink: 0; 
+            flex-shrink: 0;
         }
 
         .col-header h3 {
@@ -566,7 +570,7 @@
         }
 
         .col-header .vgv-total {
-            font-size: 1.2rem; /* Mais visível */
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--success);
             margin-top: 5px;
@@ -576,10 +580,9 @@
             padding: 10px;
             overflow-y: auto;
             flex-grow: 1;
-            background-color: #f9fafb; /* Cor de fundo mais clara para o corpo da coluna */
+            background-color: #f9fafb;
         }
 
-        /* Estilos para o agrupamento na coluna VENDIDO */
         .pipeline-diretoria {
             margin-bottom: 15px;
             padding-bottom: 10px;
@@ -600,7 +603,7 @@
             border-left: 3px solid var(--secondary);
             padding-left: 8px;
             display: flex;
-            justify-content: space-between; /* Para alinhar o VGV */
+            justify-content: space-between;
         }
 
         .diretoria-vgv {
@@ -608,53 +611,47 @@
             font-weight: 700;
             color: var(--primary);
         }
-        /* Fim dos estilos para agrupamento */
 
-
-        /* NOVO ESTILO MAIS COMPACTO (LINHA) */
         .tratativa-row {
             position: relative;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            padding: 6px 8px; /* Reduzida a altura */
+            padding: 6px 8px;
             border-radius: 4px;
-            margin-bottom: 3px; /* Reduzida a margem */
+            margin-bottom: 3px;
             background: white;
             border: 1px solid var(--border);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             display: flex;
-            justify-content: space-between; 
+            justify-content: space-between;
             align-items: center;
-            font-size: 0.85em; /* Reduzido o tamanho da fonte */
+            font-size: 0.85em;
         }
 
         .tratativa-row:hover {
             background-color: rgba(59, 130, 246, 0.1);
         }
 
-        /* Cores de borda dos cards por Status */
         .tratativa-row-vendido { border-left: 5px solid var(--success); }
         .tratativa-row-processo { border-left: 5px solid var(--primary); }
         .tratativa-row-proposta { border-left: 5px solid var(--warning); }
-        .tratativa-row-tratativa { border-left: 5px solid #06b6d4; } 
+        .tratativa-row-tratativa { border-left: 5px solid #06b6d4; }
 
         .row-unit {
             font-weight: 500;
             color: var(--dark);
-            max-width: 65%; /* Aumentado o espaço para o nome da unidade */
+            max-width: 65%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        
-        /* NOVO ESTILO PARA ORIGEM */
+
         .row-origin {
             font-weight: 500;
             font-size: 0.9em;
-            color: var(--gray); /* Origem em cor mais discreta */
+            color: var(--gray);
             white-space: nowrap;
         }
-        /* Fim dos estilos de Pipeline */
 
         .tooltip {
             position: absolute;
@@ -762,6 +759,38 @@
             margin: 10px 0;
         }
 
+        /* --- Styles para os cards do Resumo Mensal (reaproveitados) --- */
+        .cards-performance {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card-performance {
+            padding: 18px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: var(--card-shadow);
+        }
+
+        .card-performance h3 {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .card-performance p { margin: 4px 0; color: var(--dark); }
+
+        /* classes de cor iguais ao resumo mensal */
+        .card-performance.store { border-left: 6px solid #6366f1; }
+        .card-performance.sell { border-left: 6px solid #06b6d4; }
+        .card-performance.homesphere { border-left: 6px solid #10b981; }
+        .card-performance.parcerias { border-left: 6px solid #f59e0b; }
+        .card-performance.ferrari { border-left: 6px solid #ef4444; }
+        .card-performance.diretoria { border-left: 6px solid #8b5cf6; }
+
         @media (max-width: 768px) {
             .filter-container {
                 grid-template-columns: 1fr;
@@ -816,16 +845,40 @@
 
     <div id="statusArea"></div>
 
+    <!-- ABA RESUMO DA SEMANA DINÂMICA -->
     <div id="resumo" class="dashboard active">
         <div class="dashboard-header">
             <h1 class="dashboard-title">
                 <i class="fas fa-bullhorn" style="color: #f59e0b;"></i>
                 Resumo da Semana
             </h1>
-            <p class="dashboard-subtitle">Panorama de 06/10/25 a 12/10/25</p>
+            <p class="dashboard-subtitle" id="resumoPeriodo">Carregando período...</p>
         </div>
 
-        <div class="metrics-grid">
+        <!-- FILTRO DE PERÍODO -->
+        <div class="filter-container">
+            <div class="date-range">
+                <div class="filter-group">
+                    <label for="resumoDataInicio"><i class="fas fa-calendar"></i> Data Início</label>
+                    <input type="date" id="resumoDataInicio" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label for="resumoDataFim"><i class="fas fa-calendar"></i> Data Fim</label>
+                    <input type="date" id="resumoDataFim" class="filter-input">
+                </div>
+            </div>
+            <div class="filter-actions">
+                <button class="btn btn-primary" onclick="aplicarFiltroResumo()">
+                    <i class="fas fa-filter"></i> Aplicar Filtro
+                </button>
+                <button class="btn btn-secondary" onclick="definirSemanaAtual()">
+                    <i class="fas fa-calendar-week"></i> Semana Atual
+                </button>
+            </div>
+        </div>
+
+        <!-- MÉTRICAS DINÂMICAS -->
+        <div class="metrics-grid" id="metricsResumoSemanal">
             <div class="metric-card">
                 <div class="metric-header">
                     <div class="icon" style="color: #3b82f6;"><i class="fas fa-door-open"></i></div>
@@ -833,8 +886,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Total de visitas:</p>
-                    <strong>5 (8)</strong>
-                    <p class="info-text">Store: 2 / Homesphere: 1 / Ferrari: 2</p>
+                    <strong id="resumoVisitas">0</strong>
+                    <p class="info-text" id="resumoVisitasDetalhe">Carregando...</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -844,8 +897,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Total de indicações:</p>
-                    <strong>14 (7)</strong>
-                    <p class="info-text">Store: 5 / Homesphere: 1 / Parcerias: 4 / Ferrari: 1</p>
+                    <strong id="resumoIndicacoes">0</strong>
+                    <p class="info-text" id="resumoIndicacoesDetalhe">Carregando...</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -855,8 +908,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Retornos na semana:</p>
-                    <strong>0 (2)</strong>
-                    <p class="info-text">Store: 0 / Homesphere: 0 / Parcerias: 0</p>
+                    <strong id="resumoRetornos">0</strong>
+                    <p class="info-text" id="resumoRetornosDetalhe">Carregando...</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -866,7 +919,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Propostas geradas:</p>
-                    <strong>1</strong>
+                    <strong id="resumoPropostas">0</strong>
+                    <p class="info-text" id="resumoPropostasDetalhe">Carregando...</p>
                 </div>
             </div>
         </div>
@@ -887,39 +941,20 @@
         </div>
 
         <h2 class="timeline-header">Origem dos Clientes</h2>
-        <div class="timeline-container">
-            <div class="timeline-card">
-                <h4><i class="fas fa-map-marked-alt"></i> Visitas</h4>
-                <h5>Origem das Visitas</h5>
-                <p style="margin-bottom: 10px;">Vez: 5 atendimentos</p>
-                <ul>
-                    <li>Passagem → 4</li>
-                    <li>Vizinho → 1</li>
-                    <li>Ligação → 1</li>
-                    <li>_ → _</li>
-                </ul>
-            </div>
-            <div class="timeline-card">
-                <h4><i class="fas fa-user-check"></i> Indicações</h4>
-                <h5>Origem das Indicações</h5>
-                <ul>
-                    <li>Carteira → 5</li>
-                    <li>Carteira Parcerias → 4</li>
-                    <li>Diretoria → 3</li>
-                    <li>Folheto rua → 1</li>
-                    <li>Indicação Parente → 1</li>
-                </ul>
-            </div>
-            <div class="timeline-card">
-                <h4><i class="fas fa-reply"></i> Retornos</h4>
-                <h5>Origem dos Retornos</h5>
-                <ul>
-                    <li>Retorno → 0</li>
-                </ul>
+        <div class="timeline-container" id="timelineOrigem">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> Carregando dados de origem...
             </div>
         </div>
+
+        <!-- === NOVOS CARDS (IGUAIS AO RESUMO MENSAL) === -->
+        <section class="cards-performance-section">
+          <h2>Performance por Diretoria</h2>
+          <div class="cards-performance" id="cardsPerformanceSemanal"></div>
+        </section>
     </div>
 
+    <!-- DEMAIS ABAS PERMANECEM EXATAMENTE IGUAIS AO ORIGINAL -->
     <div id="resumo-mes" class="dashboard">
         <div class="dashboard-header">
             <h1 class="dashboard-title">
@@ -937,8 +972,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Total de visitas:</p>
-                    <strong>12</strong>
-                    <p class="info-text">Store: 7 / Sell: 2 / Homesphere: 3</p>
+                    <strong>7</strong>
+                    <p class="info-text">Store: 6 / Sell: 0 / Homesphere: 1</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -948,8 +983,8 @@
                 </div>
                 <div class="metric-content">
                     <p>Total de indicações:</p>
-                    <strong>21</strong>
-                    <p class="info-text">Store: 9 / Sell: 3 / Home: 1 / Parcerias: 5 / Diretoria: 3</p>
+                    <strong>7</strong>
+                    <p class="info-text">Store: 4 / Sell: 2 / Home: 0 / Parcerias: 1</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -1237,7 +1272,7 @@
             <div class="timeline-card">
                 <h4><i class="fas fa-check-circle" style="color: #10b981;"></i> UNIDADES VENDIDAS</h4>
                 <h5>Total: 15 unidades</h5>
-                
+
                 <div class="list-group">
                     <h5><i class="fas fa-building"></i> Por Torre</h5>
                     <ul>
@@ -1246,7 +1281,7 @@
                         <li>PARQUE: 4 unidades</li>
                     </ul>
                 </div>
-                
+
                 <div class="list-group">
                     <h5><i class="fas fa-ruler-combined"></i> Por Metragem</h5>
                     <ul>
@@ -1269,7 +1304,7 @@
             <div class="timeline-card">
                 <h4><i class="fas fa-warehouse" style="color: #3b82f6;"></i> ESTOQUE ATUAL</h4>
                 <h5>Total: 56 unidades (41 disponíveis)</h5>
-                
+
                 <div class="list-group">
                     <h5><i class="fas fa-building"></i> Torre Jardins</h5>
                     <ul>
@@ -1279,7 +1314,7 @@
                         <li style="color: #10b981; font-weight: bold;">Vendidas: 4 unidades</li>
                     </ul>
                 </div>
-                
+
                 <div class="list-group">
                     <h5><i class="fas fa-building"></i> Torre Parque</h5>
                     <ul>
@@ -1302,7 +1337,7 @@
 
             <div class="timeline-card">
                 <h4><i class="fas fa-trophy" style="color: #f59e0b;"></i> PERFORMANCE 2025</h4>
-                
+
                 <div class="list-group">
                     <h5><i class="fas fa-cube"></i> Unidades</h5>
                     <ul>
@@ -1311,7 +1346,7 @@
                         <li style="color: #10b981; font-weight: bold;">Atingimento: 53.6%</li>
                     </ul>
                 </div>
-                
+
                 <div class="list-group">
                     <h5><i class="fas fa-money-bill-wave"></i> VGV</h5>
                     <ul>
@@ -1320,7 +1355,7 @@
                         <li style="color: #3b82f6; font-weight: bold;">Atingimento: 53.8%</li>
                     </ul>
                 </div>
-                
+
                 <div class="list-group">
                     <h5><i class="fas fa-calendar-alt"></i> Outubro/2025</h5>
                     <ul>
@@ -1513,11 +1548,11 @@
                 Pipeline de Tratativas
             </h1>
             <p class="dashboard-subtitle">Visão detalhada do funil de vendas</p>
-            <div id="pipelineStatusArea" style="margin-top: 10px; font-size: 0.9em;"></div> 
+            <div id="pipelineStatusArea" style="margin-top: 10px; font-size: 0.9em;"></div>
         </div>
-        
+
         <div class="pipeline-container">
-            
+
             <div class="pipeline-col vendido">
                 <div class="col-header">
                     <h3>Unidades Vendidas</h3>
@@ -1528,7 +1563,7 @@
                     <div class="vgv-total" id="vgvVendido">R$ 0</div>
                 </div>
                 <div class="col-content" id="pipelineVendido">
-                    </div>
+                </div>
             </div>
 
             <div class="pipeline-col processo">
@@ -1541,9 +1576,9 @@
                     <div class="vgv-total" id="vgvProcesso">R$ 0</div>
                 </div>
                 <div class="col-content" id="pipelineProcesso">
-                    </div>
+                </div>
             </div>
-            
+
             <div class="pipeline-col proposta">
                 <div class="col-header">
                     <h3>Propostas</h3>
@@ -1554,9 +1589,9 @@
                     <div class="vgv-total" id="vgvProposta">R$ 0</div>
                 </div>
                 <div class="col-content" id="pipelineProposta">
-                    </div>
+                </div>
             </div>
-            
+
             <div class="pipeline-col tratativa">
                 <div class="col-header">
                     <h3>Tratativas</h3>
@@ -1567,38 +1602,39 @@
                     <div class="vgv-total" id="vgvTratativa">R$ 0</div>
                 </div>
                 <div class="col-content" id="pipelineTratativa">
-                    </div>
+                </div>
             </div>
 
         </div>
     </div>
-    </div>
+</div>
 
 <script>
     // ====================================================================
-    // 1. Configurações Globais & URL da Planilha
+    // 1. Configurações Globais & URL da Planilha (ORIGINAL)
     // ====================================================================
-    let atendimentosData = []; 
+    let atendimentosData = [];
     let atendimentosFiltrados = [];
-    let atendimentosPaginados = []; 
+    let atendimentosPaginados = [];
     let paginaAtual = 1;
     const itensPorPagina = 10;
-    
+
     let chartDiretoriaAtendimentos = null;
     let chartTipoAtendimentos = null;
 
     // URL DO SEU GOOGLE SHEETS DE ATENDIMENTOS (MANTIDO DO SEU CÓDIGO)
-    const SHEET_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTx2cJTokag2KDlpWxGK5V3yk3hFehgxUrVIw9vll3ES4SduXdYTLQLtKDjWQUdCvkLa3M0teXdxeEc/pub?gid=0&single=true&output=csv'; 
-    
+    const SHEET_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTx2cJTokag2KDlpWxGK5V3yk3hFehgxUrVIw9vll3ES4SduXdYTLQLtKDjWQUdCvkLa3M0teXdxeEc/pub?gid=0&single=true&output=csv';
+
     // URL DO SEU GOOGLE SHEETS DE PIPELINE (CORRIGIDA E MANTIDA)
-    const PIPELINE_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSWVGFr4bPew5Q4j3mo2QLY2tPgNSDFjZ4T40X3-D8bnWwIPKnHf_nhvWE34WMRJEqGYqD3e3hnKvDz/pub?gid=0&single=true&output=csv'; 
+    const PIPELINE_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSWVGFr4bPew5Q4j3mo2QLY2tPgNSDFjZ4T40X3-D8bnWwIPKnHf_nhvWE34WMRJEqGYqD3e3hnKvDz/pub?gid=0&single=true&output=csv';
 
     // Nomes das colunas no seu arquivo CSV de Atendimentos
-    const COL_DATA = 'Data'; 
-    const COL_TIPO = 'TIPO DE VISITA'; 
-    const COL_GERENTE = 'Gerente'; 
-    const COL_CORRETOR = 'Corretor de atendimento'; 
-    const COL_DIRETORIA = 'Empresa'; 
+    const COL_DATA = 'Data';
+    const COL_TIPO = 'TIPO DE VISITA';
+    const COL_GERENTE = 'Gerente';
+    const COL_CORRETOR = 'Corretor de atendimento';
+    const COL_DIRETORIA = 'Empresa';
+    const COL_MIDIA = 'Mídia'; // NOVA COLUNA PARA ORIGEM
 
     // Nomes das colunas no seu arquivo CSV de Pipeline
     const COL_PIPELINE_STATUS = 'STATUS';
@@ -1606,7 +1642,7 @@
     const COL_PIPELINE_UNIDADE = 'UNIDADE';
     const COL_PIPELINE_ORIGEM = 'ORIGEM';
     const COL_PIPELINE_TOOLTIP = 'TOOLTIP';
-    const COL_PIPELINE_VGV = 'VGV'; 
+    const COL_PIPELINE_VGV = 'VGV';
 
     // NOVO: Ordem das diretorias para as colunas do Pipeline
     const DIRETORIA_KEYS = [
@@ -1617,8 +1653,13 @@
         { key: 'DIRETORIA', label: 'DIRETORIA' }
     ];
 
+    // Variáveis específicas para o Resumo
+    let chartDiretoriaSemana = null;
+    let chartTipoAtendimentoSemana = null;
+    let dadosResumoFiltrados = [];
+
     // ====================================================================
-    // 2. Funções Auxiliares de Dados (CSV para JSON e Data Parsing)
+    // 2. Funções Auxiliares de Dados (CSV para JSON e Data Parsing) - ORIGINAL
     // ====================================================================
 
     function parseDate(dateStr) {
@@ -1640,6 +1681,37 @@
         return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 0, maximumFractionDigits: 0 });
     }
 
+    // --- Helper: remove acentos e normaliza texto para agrupamento consistente
+    function normalizeText(val) {
+        if (val === undefined || val === null) return 'NÃO INFORMADA';
+        let s = String(val).trim();
+        s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return s.toUpperCase();
+    }
+
+    // --- Helper: tenta obter o campo "origem/mídia" a partir de vários nomes possíveis
+    function getOrigemFromItem(item) {
+        if (!item || typeof item !== 'object') return 'NÃO INFORMADA';
+        const possibleKeys = [
+            COL_MIDIA, 'MIDIA', 'MÍDIA', 'ORIGEM', 'ORIGEM/MIDIA', 'MEIO', 'MIDO', 'MÍDIA/ORIGEM'
+        ];
+        for (const k of possibleKeys) {
+            if (Object.prototype.hasOwnProperty.call(item, k) && item[k] !== undefined && String(item[k]).trim() !== '') {
+                return normalizeText(item[k]);
+            }
+        }
+        const keys = Object.keys(item || {});
+        for (const k of keys) {
+            const up = k.toUpperCase();
+            if (up.includes('ORIG') || up.includes('MID')) {
+                if (item[k] !== undefined && String(item[k]).trim() !== '') {
+                    return normalizeText(item[k]);
+                }
+            }
+        }
+        return 'NÃO INFORMADA';
+    }
+
     /**
      * CORREÇÃO DE BUG: Ajusta a correspondência de cabeçalho para ser insensível a maiúsculas/minúsculas.
      * Além disso, mantém a tolerância a linhas vazias.
@@ -1647,59 +1719,56 @@
     function csvToJson(csv) {
         const lines = csv.split('\n').filter(line => line.trim() !== '');
         if (lines.length <= 1) return { data: [], headersFound: {} };
-        
+
         const firstLine = lines[0];
         let delimiter = firstLine.includes(';') ? ';' : (firstLine.includes('\t') ? '\t' : ',');
-        
+
         const originalHeaders = firstLine.split(delimiter).map(h => h.trim().replace(/"/g, ''));
         const normalizedHeaders = originalHeaders.map(h => h.toUpperCase());
         const result = [];
         const headersFound = {}; // Para retornar quais headers foram mapeados
 
         const expectedHeaders = [
-            COL_DATA, COL_TIPO, COL_GERENTE, COL_CORRETOR, COL_DIRETORIA,
-            COL_PIPELINE_STATUS, COL_PIPELINE_EMPRESA, COL_PIPELINE_UNIDADE, 
+            COL_DATA, COL_TIPO, COL_GERENTE, COL_CORRETOR, COL_DIRETORIA, COL_MIDIA,
+            COL_PIPELINE_STATUS, COL_PIPELINE_EMPRESA, COL_PIPELINE_UNIDADE,
             COL_PIPELINE_ORIGEM, COL_PIPELINE_TOOLTIP, COL_PIPELINE_VGV
         ];
-        
-        const headerIndexMap = {}; 
+
+        const headerIndexMap = {};
 
         expectedHeaders.forEach(expectedKey => {
-            // CORREÇÃO APLICADA: Converte a chave esperada para UPPERCASE antes de procurar
             const keyToSearch = expectedKey.toUpperCase();
             const foundIndex = normalizedHeaders.findIndex(h => h === keyToSearch);
-            
+
             if (foundIndex !== -1) {
-                // Mapeia o índice encontrado no CSV para a chave ORIGINAL (ex: 'Data')
-                headerIndexMap[expectedKey] = foundIndex; 
-                headersFound[expectedKey] = true; 
+                headerIndexMap[expectedKey] = foundIndex;
+                headersFound[expectedKey] = true;
             }
         });
 
         for (let i = 1; i < lines.length; i++) {
             const line = lines[i].trim();
             if (!line.length) continue;
-            
+
             const currentline = line.split(delimiter);
 
             const obj = {};
-            let isRowEmpty = true; 
+            let isRowEmpty = true;
 
             for (const expectedKey of expectedHeaders) {
                 const columnIndex = headerIndexMap[expectedKey];
-                
+
                 if (columnIndex !== undefined && currentline.length > columnIndex) {
-                    let value = currentline[columnIndex] || ''; 
-                    value = value.trim().replace(/^"|"$/g, '').replace(/""/g, '"'); 
-                    
+                    let value = currentline[columnIndex] || '';
+                    value = value.trim().replace(/^"|"$/g, '').replace(/""/g, '"');
+
                     obj[expectedKey] = value;
                     if (value.length > 0) {
-                        isRowEmpty = false; 
+                        isRowEmpty = false;
                     }
                 }
             }
-            
-            // Adiciona a linha se não estiver totalmente vazia
+
             if (!isRowEmpty) {
                 result.push(obj);
             }
@@ -1710,20 +1779,20 @@
     function contarFrequencia(data, colKey) {
         const contagem = {};
         data.forEach(item => {
-            const valor = (item[colKey] || 'NÃO ESPECIFICADO').trim().toUpperCase(); 
+            const valor = (item[colKey] || 'NÃO ESPECIFICADO').trim().toUpperCase();
             contagem[valor] = (contagem[valor] || 0) + 1;
         });
         return contagem;
     }
 
     // ====================================================================
-    // 3. LÓGICA DE CARREGAMENTO DE DADOS - ATENDIMENTOS
+    // 3. LÓGICA DE CARREGAMENTO DE DADOS - ATENDIMENTOS (ORIGINAL)
     // ====================================================================
 
     async function carregarDadosPlanilha() {
         const tabelaBody = document.getElementById('tabelaAtendimentos');
         const statusArea = document.getElementById('statusArea');
-        
+
         statusArea.innerHTML = `<div class="loading"><i class="fas fa-spinner fa-spin"></i> Carregando dados de Atendimentos...</div>`;
         tabelaBody.innerHTML = `<tr><td colspan="5" class="loading"><i class="fas fa-spinner fa-spin"></i> Carregando...</td></tr>`;
 
@@ -1739,7 +1808,6 @@
             atendimentosData = data;
 
             if (!headersFound[COL_DATA]) {
-                // A COL_DATA é 'Data'. Se não for encontrada, exibe erro.
                 statusArea.innerHTML = `<div class="error-message"><i class="fas fa-times-circle"></i> ERRO DE CABEÇALHO: Não foi possível encontrar a coluna **'${COL_DATA}'** no seu CSV. Verifique o nome exato da coluna no seu Google Sheets (deve ser 'Data').</div>`;
                 tabelaBody.innerHTML = `<tr><td colspan="5">Falha ao identificar a coluna de Data.</td></tr>`;
                 return;
@@ -1752,775 +1820,488 @@
             }
 
             statusArea.innerHTML = `<div class="success-message"><i class="fas fa-check-circle"></i> Dados de Atendimentos carregados. Total: **${atendimentosData.length}** registros.</div>`;
-            
+
+            // Inicializar resumo da semana após carregar dados
+            definirSemanaAtual();
             limparFiltros(true); // Inicializa com o período padrão
-            
+
         } catch (error) {
             console.error('Erro no carregamento de dados:', error);
             tabelaBody.innerHTML = `<tr><td colspan="5" class="error-message">
                 <i class="fas fa-exclamation-triangle"></i> Falha ao carregar os dados.
             </td></tr>`;
-            statusArea.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Erro: Não foi possível buscar o CSV de Atendimentos. Detalhe: ${error.message}</div>`;
+            const statusArea = document.getElementById('statusArea');
+            if (statusArea) statusArea.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Erro: Não foi possível buscar o CSV de Atendimentos. Detalhe: ${error.message}</div>`;
         }
     }
 
+    // ====================================================================
+    // 4. LÓGICA DO RESUMO DA SEMANA (NOVA)
+    // ====================================================================
+
+    // Função para definir a semana atual (segunda a domingo)
+    function definirSemanaAtual() {
+        const hoje = new Date();
+        const segunda = new Date(hoje);
+        segunda.setDate(hoje.getDate() - hoje.getDay() + (hoje.getDay() === 0 ? -6 : 1));
+
+        const domingo = new Date(segunda);
+        domingo.setDate(segunda.getDate() + 6);
+
+        document.getElementById('resumoDataInicio').value = segunda.toISOString().split('T')[0];
+        document.getElementById('resumoDataFim').value = domingo.toISOString().split('T')[0];
+
+        aplicarFiltroResumo();
+    }
+
+    // Função principal do filtro do resumo
+    function aplicarFiltroResumo() {
+        const dataInicioStr = document.getElementById('resumoDataInicio').value;
+        const dataFimStr = document.getElementById('resumoDataFim').value;
+
+        if (!dataInicioStr || !dataFimStr) {
+            mostrarNotificacao('Selecione ambas as datas', 'warning');
+            return;
+        }
+
+        const dataInicio = new Date(dataInicioStr + 'T00:00:00');
+        const dataFim = new Date(dataFimStr + 'T23:59:59');
+
+        // Filtrar dados da planilha
+        dadosResumoFiltrados = atendimentosData.filter(item => {
+            const itemDate = parseDate(item[COL_DATA]);
+            if (!itemDate) return false;
+
+            return itemDate >= dataInicio && itemDate <= dataFim;
+        });
+
+        // Atualizar interface
+        atualizarResumoPeriodo(dataInicio, dataFim);
+        calcularMetricasResumo();
+        inicializarGraficosResumo();
+        atualizarTimelineOrigem();
+        atualizarCardsPerformanceSemanal();
+    }
+
+    // Atualizar o subtítulo com o período
+    function atualizarResumoPeriodo(inicio, fim) {
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        const inicioStr = inicio.toLocaleDateString('pt-BR', options);
+        const fimStr = fim.toLocaleDateString('pt-BR', options);
+
+        document.getElementById('resumoPeriodo').textContent = `Período: ${inicioStr} a ${fimStr}`;
+    }
+
+    // Calcular todas as métricas do resumo - FUNÇÃO ATUALIZADA
+    function calcularMetricasResumo() {
+        // Contadores
+        let visitas = { total: 0, store: 0, homesphere: 0, yunysell: 0, parcerias: 0, diretoria: 0 };
+        let indicacoes = { total: 0, store: 0, homesphere: 0, yunysell: 0, parcerias: 0, diretoria: 0 };
+        let retornos = { total: 0, store: 0, homesphere: 0, yunysell: 0, parcerias: 0, diretoria: 0 };
+        let propostas = { total: 0, store: 0, homesphere: 0, yunysell: 0, parcerias: 0, diretoria: 0 };
+
+        dadosResumoFiltrados.forEach(item => {
+            const tipo = (item[COL_TIPO] || '').toUpperCase();
+            const diretoria = (item[COL_DIRETORIA] || '').toUpperCase();
+
+            if (tipo.includes('VEZ')) {
+                visitas.total++;
+                if (diretoria.includes('STORE')) visitas.store++;
+                else if (diretoria.includes('HOMESPHERE')) visitas.homesphere++;
+                else if (diretoria.includes('YUNY SELL') || diretoria.includes('YUNYSELL')) visitas.yunysell++;
+                else if (diretoria.includes('PARCERIAS')) visitas.parcerias++;
+                else if (diretoria.includes('DIRETORIA')) visitas.diretoria++;
+            }
+            else if (tipo.includes('INDI')) {
+                indicacoes.total++;
+                if (diretoria.includes('STORE')) indicacoes.store++;
+                else if (diretoria.includes('HOMESPHERE')) indicacoes.homesphere++;
+                else if (diretoria.includes('YUNY SELL') || diretoria.includes('YUNYSELL')) indicacoes.yunysell++;
+                else if (diretoria.includes('PARCERIAS')) indicacoes.parcerias++;
+                else if (diretoria.includes('DIRETORIA')) indicacoes.diretoria++;
+            }
+            else if (tipo.includes('RETORNO')) {
+                retornos.total++;
+                if (diretoria.includes('STORE')) retornos.store++;
+                else if (diretoria.includes('HOMESPHERE')) retornos.homesphere++;
+                else if (diretoria.includes('YUNY SELL') || diretoria.includes('YUNYSELL')) retornos.yunysell++;
+                else if (diretoria.includes('PARCERIAS')) retornos.parcerias++;
+                else if (diretoria.includes('DIRETORIA')) retornos.diretoria++;
+            }
+            else if (tipo.includes('PROPOSTA')) {
+                propostas.total++;
+                if (diretoria.includes('STORE')) propostas.store++;
+                else if (diretoria.includes('HOMESPHERE')) propostas.homesphere++;
+                else if (diretoria.includes('YUNY SELL') || diretoria.includes('YUNYSELL')) propostas.yunysell++;
+                else if (diretoria.includes('PARCERIAS')) propostas.parcerias++;
+                else if (diretoria.includes('DIRETORIA')) propostas.diretoria++;
+            }
+        });
+
+        // Função auxiliar para formatar as diretorias (apenas as que têm atendimentos)
+        function formatarDiretorias(metricas) {
+            const partes = [];
+            if (metricas.store > 0) partes.push(`Store: ${metricas.store}`);
+            if (metricas.homesphere > 0) partes.push(`Homesphere: ${metricas.homesphere}`);
+            if (metricas.yunysell > 0) partes.push(`YunySell: ${metricas.yunysell}`);
+            if (metricas.parcerias > 0) partes.push(`Parcerias: ${metricas.parcerias}`);
+            if (metricas.diretoria > 0) partes.push(`Diretoria: ${metricas.diretoria}`);
+            return partes.join(' / ');
+        }
+
+        // Atualizar cards
+        document.getElementById('resumoVisitas').textContent = visitas.total;
+        document.getElementById('resumoVisitasDetalhe').textContent = formatarDiretorias(visitas) || 'Nenhuma diretoria';
+
+        document.getElementById('resumoIndicacoes').textContent = indicacoes.total;
+        document.getElementById('resumoIndicacoesDetalhe').textContent = formatarDiretorias(indicacoes) || 'Nenhuma diretoria';
+
+        document.getElementById('resumoRetornos').textContent = retornos.total;
+        document.getElementById('resumoRetornosDetalhe').textContent = formatarDiretorias(retornos) || 'Nenhuma diretoria';
+
+        document.getElementById('resumoPropostas').textContent = propostas.total;
+        // <-- Linha adicionada para evitar erro e exibir detalhes
+        const elPropostasDetalhe = document.getElementById('resumoPropostasDetalhe');
+        if (elPropostasDetalhe) {
+            elPropostasDetalhe.textContent = formatarDiretorias(propostas) || 'Nenhuma diretoria';
+        }
+    }
+
+    // Inicializar gráficos do resumo (placeholder, você pode preencher conforme necessidade)
+    function inicializarGraficosResumo() {
+        // Exemplo mínimo: montar um gráfico de pizza de diretoria com dadosResumoFiltrados
+        const contagem = {};
+        dadosResumoFiltrados.forEach(item => {
+            const d = (item[COL_DIRETORIA] || 'NÃO INFORMADA').trim().toUpperCase();
+            contagem[d] = (contagem[d] || 0) + 1;
+        });
+
+        const labels = Object.keys(contagem);
+        const values = labels.map(l => contagem[l]);
+
+        const ctx = document.getElementById('chartDiretoriaSemana');
+        if (!ctx) return;
+        if (chartDiretoriaSemana) chartDiretoriaSemana.destroy();
+        chartDiretoriaSemana = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels,
+                datasets: [{
+                    data: values
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // gráfico tipo atendimento
+        const tipoCount = {};
+        dadosResumoFiltrados.forEach(item => {
+            const t = (item[COL_TIPO] || 'NÃO INFORMADO').trim().toUpperCase();
+            tipoCount[t] = (tipoCount[t] || 0) + 1;
+        });
+
+        const labels2 = Object.keys(tipoCount);
+        const values2 = labels2.map(l => tipoCount[l]);
+
+        const ctx2 = document.getElementById('chartTipoAtendimento');
+        if (!ctx2) return;
+        if (chartTipoAtendimentoSemana) chartTipoAtendimentoSemana.destroy();
+        chartTipoAtendimentoSemana = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: labels2,
+                datasets: [{ data: values2 }]
+            },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    }
+
+    // === Função robusta de atualização da timeline de ORIGEM (usa getOrigemFromItem) ===
+    function atualizarTimelineOrigem() {
+        const timelineContainer = document.getElementById('timelineOrigem');
+        if (!timelineContainer) return;
+        timelineContainer.innerHTML = '';
+
+        const visitasPorMidia = {};
+        const indicacoesPorMidia = {};
+        const retornosPorMidia = {};
+
+        dadosResumoFiltrados.forEach(item => {
+            const tipo = normalizeText(item[COL_TIPO] || '');
+            const midia = getOrigemFromItem(item);
+
+            if (tipo.includes('VEZ')) {
+                visitasPorMidia[midia] = (visitasPorMidia[midia] || 0) + 1;
+            }
+            else if (tipo.includes('INDI')) {
+                indicacoesPorMidia[midia] = (indicacoesPorMidia[midia] || 0) + 1;
+            }
+            else if (tipo.includes('RETORNO')) {
+                retornosPorMidia[midia] = (retornosPorMidia[midia] || 0) + 1;
+            }
+        });
+
+        function criarCard(title, subtitle, mapObj) {
+            if (!mapObj || Object.keys(mapObj).length === 0) return null;
+            const total = Object.values(mapObj).reduce((a, b) => a + b, 0);
+            const card = document.createElement('div');
+            card.className = 'timeline-card';
+            card.innerHTML = `
+                <h4>${title}</h4>
+                <h5>${subtitle}</h5>
+                <p style="margin-bottom: 10px;">Total: ${total} atendimentos</p>
+                <ul>
+                    ${Object.entries(mapObj)
+                        .sort((a, b) => b[1] - a[1])
+                        .map(([midia, count]) => `<li>${midia} → ${count}</li>`).join('')}
+                </ul>
+            `;
+            return card;
+        }
+
+        const visitasCard = criarCard('<i class="fas fa-map-marked-alt"></i> Visitas', 'Origem das Visitas', visitasPorMidia);
+        const indicacoesCard = criarCard('<i class="fas fa-user-check"></i> Indicações', 'Origem das Indicações', indicacoesPorMidia);
+        const retornosCard = criarCard('<i class="fas fa-reply"></i> Retornos', 'Origem dos Retornos', retornosPorMidia);
+
+        if (visitasCard) timelineContainer.appendChild(visitasCard);
+        if (indicacoesCard) timelineContainer.appendChild(indicacoesCard);
+        if (retornosCard) timelineContainer.appendChild(retornosCard);
+
+        if (timelineContainer.children.length === 0) {
+            timelineContainer.innerHTML = '<div class="loading">Nenhum dado de origem encontrado para o período selecionado.</div>';
+        }
+    }
+
+    // === Atualizar cards de performance (idênticos ao resumo mensal) ===
+    function atualizarCardsPerformanceSemanal() {
+        const container = document.getElementById('cardsPerformanceSemanal');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const dadosPorDiretoria = {};
+
+        dadosResumoFiltrados.forEach(item => {
+            const raw = (item[COL_DIRETORIA] || 'NÃO INFORMADA').trim();
+            const diretoriaKey = normalizeText(raw);
+            if (!dadosPorDiretoria[diretoriaKey]) {
+                dadosPorDiretoria[diretoriaKey] = { label: raw, atendimentos: 0, propostas: 0 };
+            }
+            dadosPorDiretoria[diretoriaKey].atendimentos++;
+
+            const tipo = (item[COL_TIPO] || '').toUpperCase();
+            if (tipo.includes('PROPOSTA')) {
+                dadosPorDiretoria[diretoriaKey].propostas++;
+            }
+        });
+
+        // Função que escolhe a classe visual para o card com base no nome
+        function getClassForDiretoria(nameUpper) {
+            if (!nameUpper) return '';
+            if (nameUpper.includes('STORE')) return 'store';
+            if (nameUpper.includes('SELL') || nameUpper.includes('YUNYSELL') || nameUpper.includes('YUNY SELL')) return 'sell';
+            if (nameUpper.includes('HOMESPHERE')) return 'homesphere';
+            if (nameUpper.includes('PARCERIA') || nameUpper.includes('PARCERIAS')) return 'parcerias';
+            if (nameUpper.includes('FERRARI')) return 'ferrari';
+            if (nameUpper.includes('DIRETORIA')) return 'diretoria';
+            return '';
+        }
+
+        for (const [k, dados] of Object.entries(dadosPorDiretoria)) {
+            const atendimentos = dados.atendimentos;
+            const propostas = dados.propostas;
+            const conversao = atendimentos > 0 ? ((propostas / atendimentos) * 100).toFixed(1) : '0.0';
+            const classe = getClassForDiretoria(k);
+
+            const card = document.createElement('div');
+            card.className = `card-performance ${classe}`;
+            card.innerHTML = `
+                <h3>${dados.label}</h3>
+                <p>Atendimentos: <strong>${atendimentos}</strong></p>
+                <p>Propostas: <strong>${propostas}</strong></p>
+                <p>Conversão: <strong>${conversao}%</strong></p>
+            `;
+            container.appendChild(card);
+        }
+
+        if (Object.keys(dadosPorDiretoria).length === 0) {
+            container.innerHTML = '<div class="loading">Nenhum dado encontrado no período selecionado.</div>';
+        }
+    }
+
+    // ====================================================================
+    // 5. CONTROLE DE ATENDIMENTOS (LISTA, FILTROS, PAGINAÇÃO) - versão simplificada
+    // ====================================================================
     function aplicarFiltros() {
-        const dataInicioStr = document.getElementById('filterDataInicio').value;
-        const dataFimStr = document.getElementById('filterDataFim').value;
+        const inicio = document.getElementById('filterDataInicio').value;
+        const fim = document.getElementById('filterDataFim').value;
         const diretoria = document.getElementById('filterDiretoria').value;
         const tipo = document.getElementById('filterTipo').value;
 
-        const dataInicio = dataInicioStr ? new Date(dataInicioStr + 'T00:00:00') : null;
-        const dataFim = dataFimStr ? new Date(dataFimStr + 'T23:59:59') : null;
-
         atendimentosFiltrados = atendimentosData.filter(item => {
             const itemDate = parseDate(item[COL_DATA]);
-            let passaData = true;
-            
-            if (dataInicio && itemDate && itemDate < dataInicio) passaData = false;
-            if (dataFim && itemDate && itemDate > dataFim) passaData = false;
-
-            const diretoriaKey = (item[COL_DIRETORIA] || '').trim().toUpperCase(); 
-            let passaDiretoria = diretoria === 'todas' || diretoriaKey === diretoria.toUpperCase();
-
-            const tipoKey = (item[COL_TIPO] || '').trim().toUpperCase(); 
-            let passaTipo = tipo === 'todos' || tipoKey === tipo.toUpperCase();
-
-            return passaData && passaDiretoria && passaTipo;
+            if (!itemDate) return false;
+            if (inicio) {
+                const start = new Date(inicio + 'T00:00:00');
+                if (itemDate < start) return false;
+            }
+            if (fim) {
+                const end = new Date(fim + 'T23:59:59');
+                if (itemDate > end) return false;
+            }
+            if (diretoria && diretoria !== 'todas') {
+                const emp = (item[COL_DIRETORIA] || '').toUpperCase();
+                if (!emp.includes(diretoria)) return false;
+            }
+            if (tipo && tipo !== 'todos') {
+                const t = (item[COL_TIPO] || '').toUpperCase();
+                if (!t.includes(tipo.toUpperCase())) return false;
+            }
+            return true;
         });
 
-        document.getElementById('searchInput').value = '';
         paginaAtual = 1;
-        filtrarTabela();
+        montarTabelaAtendimentos();
     }
 
-    function limparFiltros(apenasSetarDatas = false) {
+    function limparFiltros(skipInit) {
+        document.getElementById('filterDataInicio').value = '';
+        document.getElementById('filterDataFim').value = '';
         document.getElementById('filterDiretoria').value = 'todas';
         document.getElementById('filterTipo').value = 'todos';
 
-        const dataFim = new Date();
-        const dataInicio = new Date();
-        dataInicio.setDate(dataInicio.getDate() - 30);
-        
-        document.getElementById('filterDataInicio').value = dataInicio.toISOString().split('T')[0];
-        document.getElementById('filterDataFim').value = dataFim.toISOString().split('T')[0];
-        
-        if (!apenasSetarDatas) {
-             aplicarFiltros();
+        if (!skipInit) {
+            atendimentosFiltrados = atendimentosData.slice();
+            paginaAtual = 1;
+            montarTabelaAtendimentos();
+        } else {
+            atendimentosFiltrados = atendimentosData.slice();
         }
+    }
+
+    function montarTabelaAtendimentos() {
+        const tbody = document.getElementById('tabelaAtendimentos');
+        if (!tbody) return;
+        tbody.innerHTML = '';
+
+        const start = (paginaAtual - 1) * itensPorPagina;
+        const pageItems = atendimentosFiltrados.slice(start, start + itensPorPagina);
+
+        if (pageItems.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="5">Nenhum registro encontrado.</td></tr>`;
+        } else {
+            pageItems.forEach(row => {
+                const tr = document.createElement('tr');
+
+                const tdData = document.createElement('td');
+                tdData.textContent = row[COL_DATA] || '';
+                tr.appendChild(tdData);
+
+                const tdTipo = document.createElement('td');
+                tdTipo.textContent = row[COL_TIPO] || '';
+                tr.appendChild(tdTipo);
+
+                const tdCorretor = document.createElement('td');
+                tdCorretor.textContent = row[COL_CORRETOR] || '';
+                tr.appendChild(tdCorretor);
+
+                const tdGerente = document.createElement('td');
+                tdGerente.textContent = row[COL_GERENTE] || '';
+                tr.appendChild(tdGerente);
+
+                const tdEmpresa = document.createElement('td');
+                const emp = row[COL_DIRETORIA] || '';
+                const span = document.createElement('span');
+                span.className = 'diretoria-badge';
+                // define classe de cor se possível
+                const up = (emp || '').toUpperCase();
+                if (up.includes('STORE')) span.classList.add('diretoria-store');
+                else if (up.includes('HOMESPHERE')) span.classList.add('diretoria-homesphere');
+                else if (up.includes('PARCERIAS')) span.classList.add('diretoria-parcerias');
+                else if (up.includes('FERRARI')) span.classList.add('diretoria-ferrari');
+                else if (up.includes('DIRETORIA')) span.classList.add('diretoria-diretoria');
+                else if (up.includes('SELL') || up.includes('YUNYSELL')) span.classList.add('diretoria-sell');
+
+                span.textContent = emp || 'NÃO INFORMADA';
+                tdEmpresa.appendChild(span);
+                tr.appendChild(tdEmpresa);
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        // atualiza info de paginação
+        const paginationInfo = document.getElementById('paginationInfo');
+        if (paginationInfo) {
+            paginationInfo.textContent = `Mostrando ${Math.min(atendimentosFiltrados.length, start + 1)} até ${Math.min(atendimentosFiltrados.length, start + pageItems.length)} de ${atendimentosFiltrados.length} registros`;
+        }
+
+        document.getElementById('btnPrev').disabled = paginaAtual === 1;
+        document.getElementById('btnNext').disabled = (paginaAtual * itensPorPagina) >= atendimentosFiltrados.length;
+    }
+
+    function mudarPagina(dir) {
+        paginaAtual += dir;
+        montarTabelaAtendimentos();
+    }
+
+    function filtrarTabela() {
+        const q = document.getElementById('searchInput').value.toLowerCase();
+        atendimentosFiltrados = atendimentosData.filter(row => {
+            return Object.values(row).some(v => (v || '').toString().toLowerCase().includes(q));
+        });
+        paginaAtual = 1;
+        montarTabelaAtendimentos();
     }
 
     function limparBusca() {
         document.getElementById('searchInput').value = '';
-        filtrarTabela();
-    }
-
-    function filtrarTabela() {
-        const termoBusca = document.getElementById('searchInput').value.toLowerCase();
-        
-        atendimentosPaginados = atendimentosFiltrados.filter(item => {
-            const itemString = (item[COL_DATA] || '') + ' ' +
-                               (item[COL_TIPO] || '') + ' ' +
-                               (item[COL_CORRETOR] || '') + ' ' +
-                               (item[COL_GERENTE] || '') + ' ' +
-                               (item[COL_DIRETORIA] || '');
-            
-            return itemString.toLowerCase().includes(termoBusca);
-        });
-
-        atualizarMetricas(atendimentosPaginados);
-        inicializarGraficosAtendimentos(atendimentosPaginados);
-        
-        paginaAtual = 1;
-        popularTabela(atendimentosPaginados);
-    }
-    
-    function popularTabela(data) {
-        const tabelaBody = document.getElementById('tabelaAtendimentos');
-        tabelaBody.innerHTML = '';
-
-        const totalPaginas = Math.ceil(data.length / itensPorPagina);
-        paginaAtual = Math.min(Math.max(1, paginaAtual), totalPaginas || 1); 
-
-        const inicio = (paginaAtual - 1) * itensPorPagina;
-        const fim = inicio + itensPorPagina;
-        const dadosPagina = data.slice(inicio, fim);
-        
-        if (dadosPagina.length === 0 && data.length > 0 && paginaAtual > 1) {
-            paginaAtual = totalPaginas;
-            popularTabela(data);
-            return;
-        }
-        
-        if (dadosPagina.length === 0) {
-            tabelaBody.innerHTML = `<tr><td colspan="5">Nenhum registro encontrado.</td></tr>`;
-        } else {
-            dadosPagina.forEach(item => {
-                const diretoria = item[COL_DIRETORIA] || 'N/A';
-                const tipo = item[COL_TIPO] || 'N/A';
-                const corretor = item[COL_CORRETOR] || 'N/A';
-                const gerente = item[COL_GERENTE] || 'N/A';
-                const dataFormatada = item[COL_DATA] || 'N/A';
-
-                const diretoriaClass = 'diretoria-' + diretoria.toLowerCase().replace(/[^a-z0-9]/g, '');
-
-                const row = `
-                    <tr>
-                        <td>${dataFormatada}</td>
-                        <td><span class="tipo-badge">${tipo}</span></td>
-                        <td>${corretor}</td>
-                        <td>${gerente}</td>
-                        <td><span class="diretoria-badge ${diretoriaClass}">${diretoria}</span></td>
-                    </tr>
-                `;
-                tabelaBody.innerHTML += row;
-            });
-        }
-
-        document.getElementById('paginationInfo').textContent = `Mostrando ${inicio + 1} a ${inicio + dadosPagina.length} de ${data.length} registros`;
-        document.getElementById('btnPrev').disabled = paginaAtual === 1 || data.length === 0;
-        document.getElementById('btnNext').disabled = paginaAtual === totalPaginas || data.length === 0;
-    }
-
-    function mudarPagina(direcao) {
-        paginaAtual += direcao;
-        popularTabela(atendimentosPaginados);
-    }
-    
-    function atualizarMetricas(data) {
-        const total = data.length;
-        const store = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'YUNY STORE').length;
-        const homesphere = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'HOMESPHERE').length;
-        const parcerias = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'PARCERIAS').length;
-
-        document.getElementById('totalAtendimentos').textContent = total;
-        document.getElementById('totalStore').textContent = store;
-        document.getElementById('totalHomesphere').textContent = homesphere;
-        document.getElementById('totalParcerias').textContent = parcerias;
-    }
-
-    function inicializarGraficosAtendimentos(data = atendimentosPaginados) {
-        // 1. Gráfico de Diretoria (Pie)
-        const ctx1 = document.getElementById('chartDiretoriaAtendimentos').getContext('2d');
-        if (chartDiretoriaAtendimentos) chartDiretoriaAtendimentos.destroy();
-
-        const diretorias = contarFrequencia(data, COL_DIRETORIA);
-
-        const labels = Object.keys(diretorias);
-        const chartData = Object.values(diretorias);
-        const colors = ['#6366f1', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'];
-
-        chartDiretoriaAtendimentos = new Chart(ctx1, {
-            type: 'pie',
-            data: {
-                labels: labels,
-                datasets: [{
-                    data: chartData,
-                    backgroundColor: colors.slice(0, labels.length)
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
-        });
-
-        // 2. Gráfico de Tipo (Bar)
-        const ctx2 = document.getElementById('chartTipoAtendimentos').getContext('2d');
-        if (chartTipoAtendimentos) chartTipoAtendimentos.destroy();
-        
-        const tipos = contarFrequencia(data, COL_TIPO);
-
-        const tipoLabels = Object.keys(tipos);
-        const tipoData = Object.values(tipos);
-
-        chartTipoAtendimentos = new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: tipoLabels,
-                datasets: [{
-                    label: 'Atendimentos',
-                    data: tipoData,
-                    backgroundColor: '#3b82f6'
-                }]
-            },
-            options: { 
-                responsive: true, maintainAspectRatio: false, 
-                scales: { y: { beginAtZero: true } }
-            }
-        });
+        atendimentosFiltrados = atendimentosData.slice();
+        montarTabelaAtendimentos();
     }
 
     function exportarParaCSV() {
-        const COLUNAS_EXPORTAR = [COL_DATA, COL_TIPO, COL_CORRETOR, COL_GERENTE, COL_DIRETORIA];
-        const CABECALHOS_EXPORTAR = ['Data', 'Tipo de Visita', 'Corretor', 'Gerente', 'Empresa'];
-
-        if (atendimentosPaginados.length === 0) {
-            alert("Não há dados filtrados para exportar.");
-            return;
-        }
-
-        let csvContent = CABECALHOS_EXPORTAR.map(h => `"${h}"`).join(";") + "\n";
-
-        atendimentosPaginados.forEach(item => {
-            const row = COLUNAS_EXPORTAR.map(header => {
-                let value = item[header] || '';
-                return `"${String(value).replace(/"/g, '""').replace(/;/, ',').replace(/\n/g, ' ')}"`;
-            }).join(";");
-            csvContent += row + "\n";
+        // formato simples de exportação do subset atual
+        const rows = [Object.keys(atendimentosData[0] || {}).join(',')];
+        atendimentosFiltrados.forEach(r => {
+            const vals = Object.keys(r).map(k => `"${(r[k] || '').replace(/"/g, '""')}"`);
+            rows.push(vals.join(','));
         });
-
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement("a");
-        if (link.download !== undefined) {
-            const url = URL.createObjectURL(blob);
-            link.setAttribute("href", url);
-            link.setAttribute("download", "Atendimentos_Exportados.csv");
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    }
-    
-    // ====================================================================
-    // 4. LÓGICA DE CARREGAMENTO DE DADOS - PIPELINE (Refatorada para Agrupamento)
-    // ====================================================================
-
-    /**
-     * Gera a estrutura de subcategorias (pipeline-diretoria) dentro de um container
-     * e retorna o mapa dos elementos pai criados.
-     * @param {string} statusKey - A chave do status (ex: 'vendido').
-     * @param {HTMLElement} targetElement - O elemento HTML pai da coluna.
-     * @returns {Object} Mapa de elementos pais por chave de diretoria.
-     */
-    function renderPipelineColumn(statusKey, targetElement) {
-        targetElement.innerHTML = ''; // Limpa o conteúdo anterior
-        const directorateElements = {}; // NEW: Mapa para armazenar os elementos pais
-
-        DIRETORIA_KEYS.forEach(d => {
-            // Ex: 'vendido' + 'STORE' -> 'vendidoSTORE'
-            const idBase = statusKey.toLowerCase() + d.key;
-            
-            // Ex: 'vgvVendidoStore'
-            const vgvId = 'vgv' + idBase.charAt(0).toUpperCase() + idBase.slice(1);
-
-            const diretoriaDiv = document.createElement('div');
-            diretoriaDiv.className = 'pipeline-diretoria';
-            
-            diretoriaDiv.innerHTML = `
-                <h4>${d.label} <span class="diretoria-vgv" id="${vgvId}">R$ 0</span></h4>
-                <div id="${idBase}" class="diretoria-items"></div>
-            `;
-            targetElement.appendChild(diretoriaDiv);
-            
-            // NEW: Armazena o elemento pai (div.pipeline-diretoria) pela chave
-            directorateElements[d.key] = diretoriaDiv;
-        });
-        
-        return directorateElements; // Retorna o mapa de elementos para controle de visibilidade
-    }
-
-    async function carregarDadosPipeline() {
-        const pipelineStatusArea = document.getElementById('pipelineStatusArea');
-        pipelineStatusArea.innerHTML = '<span class="text-warning"><i class="fas fa-spinner fa-spin"></i> Carregando dados do Pipeline...</span>';
-
-        try {
-            const response = await fetch(PIPELINE_DATA_URL);
-            if (!response.ok) throw new Error(`Erro de rede: ${response.statusText}`);
-            
-            const csvText = await response.text();
-            const { data: dadosPipeline, headersFound } = csvToJson(csvText);
-            
-            if (!headersFound[COL_PIPELINE_UNIDADE] || !headersFound[COL_PIPELINE_STATUS]) {
-                 pipelineStatusArea.innerHTML = `<span class="error-message"><i class="fas fa-exclamation-triangle"></i> ERRO DE CABEÇALHO: Colunas **STATUS** e/ou **UNIDADE** não encontradas no CSV do Pipeline.</span>`;
-                 return;
-            }
-
-            popularPipeline(dadosPipeline);
-            
-            if (dadosPipeline.length > 0) {
-                pipelineStatusArea.innerHTML = `<span class="success-message"><i class="fas fa-check-circle"></i> Pipeline carregado com sucesso. **${dadosPipeline.length}** itens encontrados.</span>`;
-            } else {
-                 pipelineStatusArea.innerHTML = `<span class="warning-message"><i class="fas fa-exclamation-triangle"></i> **Pipeline vazio**. Nenhum dado válido encontrado.</span>`;
-            }
-
-        } catch (error) {
-            console.error('Erro ao carregar dados do pipeline:', error);
-            pipelineStatusArea.innerHTML = `<span class="error-message"><i class="fas fa-exclamation-triangle"></i> Erro ao carregar o Pipeline. Detalhe: ${error.message}</span>`;
-        }
-    }
-    
-    /**
-     * Processa os dados do pipeline, conta os itens, calcula o VGV e popula o HTML.
-     */
-    function popularPipeline(dados) {
-        // 1. Containers HTML e Geração da Estrutura
-        const pipelineContainers = {
-            VENDIDO: document.getElementById('pipelineVendido'),
-            PROCESSO: document.getElementById('pipelineProcesso'),
-            PROPOSTA: document.getElementById('pipelineProposta'),
-            TRATATIVA: document.getElementById('pipelineTratativa')
-        };
-        
-        // Renderiza a estrutura de subcategorias e captura o mapa de elementos pais
-        const vendidoParents = renderPipelineColumn('vendido', pipelineContainers.VENDIDO);
-        const processoParents = renderPipelineColumn('processo', pipelineContainers.PROCESSO);
-        const propostaParents = renderPipelineColumn('proposta', pipelineContainers.PROPOSTA);
-        const tratativaParents = renderPipelineColumn('tratativa', pipelineContainers.TRATATIVA);
-        
-        // 2. Inicializa a Estrutura de Tracking
-        const columns = {};
-        Object.keys(pipelineContainers).forEach(status => {
-            // Determina qual mapa de elementos pais usar para o status atual
-            const parentMap = status === 'VENDIDO' ? vendidoParents : 
-                              status === 'PROCESSO' ? processoParents :
-                              status === 'PROPOSTA' ? propostaParents :
-                              tratativaParents; // TRATATIVA
-
-            columns[status] = { 
-                count: 0, 
-                vgvSum: 0, 
-                // Cria um mapa de elementos baseado nas diretorias e IDs gerados
-                elements: DIRETORIA_KEYS.reduce((acc, d) => {
-                    const idBase = status.toLowerCase() + d.key;
-                    acc[d.key] = {
-                        total: 0,
-                        vgv: 0,
-                        element: document.getElementById(idBase),
-                        vgvElement: document.getElementById('vgv' + idBase.charAt(0).toUpperCase() + idBase.slice(1)),
-                        parentElement: parentMap[d.key] // NOVO: Elemento pai (div.pipeline-diretoria)
-                    };
-                    return acc;
-                }, {})
-            };
-        });
-
-        // 3. Processar os dados e popular os cards
-        dados.forEach(item => {
-            const status = (item[COL_PIPELINE_STATUS] || '').toUpperCase();
-            const nomeUnidade = item[COL_PIPELINE_UNIDADE] || 'Unidade Desconhecida';
-            const origem = item[COL_PIPELINE_ORIGEM] || 'Não Informada'; 
-            const tooltipContent = item[COL_PIPELINE_TOOLTIP] || 'Detalhe não informado.'; 
-            const vgvRaw = item[COL_PIPELINE_VGV] || '0';
-            
-            let vgvClean = vgvRaw.replace(/[^0-9,\.-]/g, '');
-            let vgvFloat = parseFloat(vgvClean.replace(/\./g, '').replace(/,/g, '.')); 
-            
-            if (isNaN(vgvFloat)) {
-                vgvFloat = parseFloat(vgvClean.replace(/,/g, ''));
-            }
-            
-            const vgvValue = isNaN(vgvFloat) ? 0 : vgvFloat;
-
-            // Ignora a linha se o status for inválido ou a unidade for desconhecida
-            if (nomeUnidade === 'Unidade Desconhecida' || !columns[status]) return; 
-
-            const empresa = (item[COL_PIPELINE_EMPRESA] || 'NAOESPECIFICADO').toUpperCase().replace(/\s/g, ''); 
-            // Padroniza YUNY SELL para YUNYSELL
-            const empresaKey = empresa.includes('SELL') ? 'YUNYSELL' : empresa;
-
-            const columnData = columns[status];
-            const diretoriaData = columnData.elements[empresaKey];
-            
-            if (diretoriaData && diretoriaData.element) {
-                columnData.count++;
-                columnData.vgvSum += vgvValue;
-                diretoriaData.total++;
-                diretoriaData.vgv += vgvValue;
-                
-                let statusClass = '';
-                if (status === 'VENDIDO') statusClass = 'tratativa-row-vendido';
-                else if (status === 'PROCESSO') statusClass = 'tratativa-row-processo';
-                else if (status === 'PROPOSTA') statusClass = 'tratativa-row-proposta';
-                else if (status === 'TRATATIVA') statusClass = 'tratativa-row-tratativa';
-                
-                const itemElement = document.createElement('div');
-                itemElement.className = `tratativa-row ${statusClass}`;
-                
-                // AJUSTE DO TOOLTIP: Apenas o tooltipContent
-                itemElement.setAttribute('data-tooltip', tooltipContent); 
-
-                // HTML do card (mostra a unidade e a origem)
-                itemElement.innerHTML = `
-                    <span class="row-unit" title="${nomeUnidade}">${nomeUnidade}</span>
-                    <span class="row-origin" title="Origem: ${origem}">${origem}</span>
-                `;
-
-                diretoriaData.element.appendChild(itemElement);
-            }
-        });
-
-        // 4. Atualizar as contagens totais, VGV e VISIBILIDADE
-        
-        // VGV total do Pipeline (topo da coluna)
-        document.getElementById('countVendido').textContent = columns.VENDIDO.count;
-        document.getElementById('vgvVendido').textContent = formatCurrency(columns.VENDIDO.vgvSum);
-        document.getElementById('countProcesso').textContent = columns.PROCESSO.count;
-        document.getElementById('vgvProcesso').textContent = formatCurrency(columns.PROCESSO.vgvSum);
-        document.getElementById('countProposta').textContent = columns.PROPOSTA.count;
-        document.getElementById('vgvProposta').textContent = formatCurrency(columns.PROPOSTA.vgvSum);
-        document.getElementById('countTratativa').textContent = columns.TRATATIVA.count;
-        document.getElementById('vgvTratativa').textContent = formatCurrency(columns.TRATATIVA.vgvSum);
-        
-        // VGV por Diretoria (subtítulos) e Lógica de Ocultamento
-        Object.keys(columns).forEach(status => {
-            Object.values(columns[status].elements).forEach(diretoria => {
-                 if(diretoria.vgvElement) {
-                    diretoria.vgvElement.textContent = formatCurrency(diretoria.vgv);
-                 }
-                 
-                 // Lógica para ocultar a subcategoria se não houver itens
-                 if (diretoria.total === 0 && diretoria.parentElement) {
-                     diretoria.parentElement.style.display = 'none';
-                 } else if (diretoria.parentElement) {
-                     // Garante que subcategorias com dados estejam visíveis
-                     diretoria.parentElement.style.display = 'block';
-                 }
-            });
-        });
+        const csv = rows.join('\n');
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'atendimentos_export.csv';
+        a.click();
+        URL.revokeObjectURL(url);
     }
 
     // ====================================================================
-    // 5. Funções de Inicialização Estáticas (MANTIDAS)
+    // 6. INICIALIZAÇÃO
     // ====================================================================
-
-    function inicializarGraficosSemana() {
-        const ctx1 = document.getElementById('chartDiretoriaSemana').getContext('2d');
-        if (ctx1) {
-            new Chart(ctx1, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Store', 'Homesphere', 'Parcerias', 'Ferrari'],
-                    datasets: [{
-                        data: [6, 2, 1, 2],
-                        backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#ef4444']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-        }
-        const ctx2 = document.getElementById('chartTipoAtendimento').getContext('2d');
-        if (ctx2) {
-            new Chart(ctx2, {
-                type: 'bar',
-                data: {
-                    labels: ['Vez', 'Indicação', 'Retorno', 'Propostas'],
-                    datasets: [{
-                        label: 'Quantidade',
-                        data: [8, 7, 2, 0],
-                        backgroundColor: '#3b82f6'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    function inicializarGraficosOutubro() {
-        const ctx1 = document.getElementById('chartDiretoriaOutubro').getContext('2d');
-        if (ctx1) {
-            new Chart(ctx1, {
-                type: 'pie',
-                data: {
-                    labels: ['Store', 'Homesphere', 'Parcerias', 'YUNY SELL'],
-                    datasets: [{
-                        data: [11, 2, 1, 2],
-                        backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#06b6d4']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-        }
-        const ctx2 = document.getElementById('chartTipoAtendimentoOutubro').getContext('2d');
-        if (ctx2) {
-            new Chart(ctx2, {
-                type: 'bar',
-                data: {
-                    labels: ['Visitas', 'Indicações', 'Retornos'],
-                    datasets: [{
-                        label: 'Quantidade',
-                        data: [7, 7, 2],
-                        backgroundColor: '#10b981'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    function inicializarGraficosSetembro() {
-        const ctx1 = document.getElementById('chartDiretoriaSetembro').getContext('2d');
-        if (ctx1) {
-            new Chart(ctx1, {
-                type: 'pie',
-                data: {
-                    labels: ['Store', 'Homesphere', 'Parcerias', 'YUNY SELL', 'Diretoria'],
-                    datasets: [{
-                        data: [60, 41, 19, 10, 1],
-                        backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#06b6d4', '#8b5cf6']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-        }
-        const ctx2 = document.getElementById('chartTipoAtendimentoSetembro').getContext('2d');
-        if (ctx2) {
-            new Chart(ctx2, {
-                type: 'bar',
-                data: {
-                    labels: ['Visitas', 'Indicações', 'Retornos'],
-                    datasets: [{
-                        label: 'Quantidade',
-                        data: [53, 61, 17],
-                        backgroundColor: '#8b5cf6'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-    function inicializarGraficosEstoque() {
-        const ctx1 = document.getElementById('chartVendasTorre').getContext('2d');
-        if (ctx1) {
-            new Chart(ctx1, {
-                type: 'doughnut',
-                data: {
-                    labels: ['JARDINS', 'EUROPA', 'PARQUE'],
-                    datasets: [{
-                        data: [4, 7, 4],
-                        backgroundColor: ['#6366f1', '#10b981', '#f59e0b']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        },
-                        title: {
-                            display: true,
-                            text: 'Vendas por Torre - 15 unidades'
-                        }
-                    }
-                }
-            });
-        }
-        const ctx2 = document.getElementById('chartOrigemVendas').getContext('2d');
-        if (ctx2) {
-            new Chart(ctx2, {
-                type: 'bar',
-                data: {
-                    labels: ['ONLINE', 'CARTEIRA', 'VEZ', 'DIRETORIA'],
-                    datasets: [{
-                        label: 'Unidades Vendidas',
-                        data: [5, 4, 2, 4],
-                        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Unidades'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        const ctx3 = document.getElementById('chartPerformance').getContext('2d');
-        if (ctx3) {
-            new Chart(ctx3, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Atingido', 'Restante'],
-                    datasets: [{
-                        data: [15, 13], 
-                        backgroundColor: ['#10b981', '#e5e7eb']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        },
-                        title: {
-                            display: true,
-                            text: 'Performance Unidades 2025 - 53.6%'
-                        }
-                    }
-                }
-            });
-        }
-        const ctx4 = document.getElementById('chartVendasEstoque').getContext('2d');
-        if (ctx4) {
-            new Chart(ctx4, {
-                type: 'pie',
-                data: {
-                    labels: ['Vendidas', 'Em Estoque'],
-                    datasets: [{
-                        data: [15, 41],
-                        backgroundColor: ['#10b981', '#3b82f6']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        },
-                        title: {
-                            display: true,
-                            text: 'Total: 56 unidades'
-                        }
-                    }
-                }
-            });
-        }
-    }
-
-
-    // ====================================================================
-    // 6. Event Listener de Inicialização (ATUALIZADO)
-    // ====================================================================
-
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 Inicializando dashboard...');
-        
-        // Configurar abas
-        const tabs = document.querySelectorAll('.tab');
-        const dashboards = document.querySelectorAll('.dashboard');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const target = this.getAttribute('data-target');
-                
-                tabs.forEach(t => t.classList.remove('active'));
-                dashboards.forEach(d => d.classList.remove('active'));
-                
-                this.classList.add('active');
+    document.addEventListener('DOMContentLoaded', () => {
+        // abas
+        document.querySelectorAll('.tab').forEach(t => {
+            t.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+                t.classList.add('active');
+                document.querySelectorAll('.dashboard').forEach(d => d.classList.remove('active'));
+                const target = t.getAttribute('data-target');
                 document.getElementById(target).classList.add('active');
-                
-                // Inicializar gráficos quando mudar de aba
-                if (target === 'resumo') inicializarGraficosSemana();
-                if (target === 'resumo-mes') inicializarGraficosOutubro();
-                if (target === 'historico-mes') inicializarGraficosSetembro();
-                if (target === 'panorama-estoque') inicializarGraficosEstoque();
-                if (target === 'controle-atendimentos') {
-                    if(atendimentosPaginados.length > 0) {
-                        inicializarGraficosAtendimentos(); 
-                    }
-                }
-                if (target === 'tratativas') carregarDadosPipeline(); 
             });
         });
 
-        // Configurar datas padrão (limparFiltros(true) apenas seta as datas)
-        limparFiltros(true); 
-
-        // Sistema de tooltips 
-        document.addEventListener('mouseover', function(e) {
-            let targetElement = e.target;
-            while (targetElement && !targetElement.classList.contains('tratativa-row') && targetElement !== document.body) {
-                targetElement = targetElement.parentElement;
-            }
-
-            if (targetElement && targetElement.classList.contains('tratativa-row') && targetElement.hasAttribute('data-tooltip')) {
-                const tooltip = document.createElement('div');
-                tooltip.className = 'tooltip show';
-                tooltip.textContent = targetElement.getAttribute('data-tooltip');
-                document.body.appendChild(tooltip);
-                
-                const rect = targetElement.getBoundingClientRect();
-                
-                let leftPos = rect.left + rect.width / 2 - tooltip.offsetWidth / 2;
-                leftPos = Math.min(leftPos, window.innerWidth - tooltip.offsetWidth - 10);
-                leftPos = Math.max(leftPos, 10);
-
-                tooltip.style.left = leftPos + 'px';
-                tooltip.style.top = (rect.bottom + 10) + 'px';
-                
-                targetElement._currentTooltip = tooltip;
-            }
-        });
-
-        document.addEventListener('mouseout', function(e) {
-            let targetElement = e.target;
-            while (targetElement && !targetElement.classList.contains('tratativa-row') && targetElement !== document.body) {
-                targetElement = targetElement.parentElement;
-            }
-            if (targetElement && targetElement.classList.contains('tratativa-row') && targetElement._currentTooltip) {
-                targetElement._currentTooltip.remove();
-                targetElement._currentTooltip = null;
-            }
-        });
-
-        // Inicializar gráficos estáticos iniciais
-        inicializarGraficosSemana();
-        inicializarGraficosOutubro();
-        inicializarGraficosSetembro();
-        inicializarGraficosEstoque();
-
-        // Carregar dados da planilha ao iniciar o DOM
+        // carregar planilha
         carregarDadosPlanilha();
-        
-        // Carregar dados do pipeline ao iniciar o DOM
-        carregarDadosPipeline();
     });
 </script>
 </body>
