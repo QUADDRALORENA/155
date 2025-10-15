@@ -390,7 +390,8 @@ setTimeout(atualizarYunySellControle, 3000);
             color: var(--dark);
         }
 
-        .metrics-grid {
+        /* global metrics-grid (original) */
+.metrics-grid {
     grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards no controle de atendimentos */
     grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards lado a lado */
             display: grid;
@@ -851,7 +852,8 @@ setTimeout(atualizarYunySellControle, 3000);
             .timeline-card {
                 width: 280px;
             }
-            .metrics-grid {
+            /* global metrics-grid (original) */
+.metrics-grid {
     grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards no controle de atendimentos */
     grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards lado a lado */
                 grid-template-columns: 1fr;
@@ -902,7 +904,26 @@ setTimeout(atualizarYunySellControle, 3000);
 .tab[data-target="historico-mes"] {
     display: none !important;
 }
-    </style>
+    
+/* Scoped layout: force 5 columns only for Resumo da Semana and Controle de Atendimentos */
+#resumo .metrics-grid, #controle-atendimentos .metrics-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 12px;
+}
+/* Make metric cards slightly smaller so five fit comfortably */
+#resumo .metric-card, #controle-atendimentos .metric-card {
+    padding: 14px;
+}
+#resumo .metric-card .metric-header .icon, #controle-atendimentos .metric-card .metric-header .icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
+}
+#resumo .metric-card .metric-content strong, #controle-atendimentos .metric-card .metric-content strong {
+    font-size: 1.25rem;
+}
+
+</style>
 </head>
 <body>
 
@@ -1543,54 +1564,18 @@ setTimeout(atualizarYunySellControle, 3000);
             </div>
         </div>
 
-        <div class="metrics-grid">
-
+        
 <div class="metric-card">
-    <h3><i class="fas fa-users" style="color:#2563eb"></i> Total de Atendimentos</h3>
-    <p id="totalAtendimentosSemana">0</p>
+    <div class="metric-header">
+        <div class="icon" style="color: #ef4444;"><i class="fas fa-car"></i></div>
+        <h3>Yuny Sell</h3>
+    </div>
+    <div class="metric-content">
+        <strong id="totalYunySell">0</strong>
+        <p class="info-text">Atendimentos Yuny Sell</p>
+    </div>
 </div>
-
-            <div class="metric-card">
-                <div class="metric-header">
-                    <div class="icon" style="color: #3b82f6;"><i class="fas fa-calendar-check"></i></div>
-                    <h3>Total de Atendimentos</h3>
-                </div>
-                <div class="metric-content">
-                    <strong id="totalAtendimentos">0</strong>
-                    <p class="info-text">No período selecionado</p>
-                </div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-header">
-                    <div class="icon" style="color: #10b981;"><i class="fas fa-store-alt"></i></div>
-                    <h3>YUNY STORE</h3>
-                </div>
-                <div class="metric-content">
-                    <strong id="totalStore">0</strong>
-                    <p class="info-text">Atendimentos da Store</p>
-                </div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-header">
-                    <div class="icon" style="color: #f59e0b;"><i class="fas fa-home"></i></div>
-                    <h3>HOMESPHERE</h3>
-                </div>
-                <div class="metric-content">
-                    <strong id="totalHomesphere">0</strong>
-                    <p class="info-text">Atendimentos Homesphere</p>
-                </div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-header">
-                    <div class="icon" style="color: #ef4444;"><i class="fas fa-handshake"></i></div>
-                    <h3>PARCERIAS</h3>
-                </div>
-                <div class="metric-content">
-                    <strong id="totalParcerias">0</strong>
-                    <p class="info-text">Atendimentos Parcerias</p>
-                </div>
-            </div>
-        </div>
+</div>
 
         <div class="charts-container">
             <div class="chart-card">
@@ -2990,7 +2975,7 @@ function atualizarPerformanceDiretoriaSemana() {
         return;
     }
 
-    const diretorias = ['STORE', 'HOMESPHERE', 'PARCERIAS', 'YUNY SELL', 'DIRETORIA'];
+    const diretorias = ['STORE', 'HOMESPHERE', 'PARCERIAS', 'YUNY SELL'];
     const cores = {
         STORE: '#6366f1',
         HOMESPHERE: '#10b981',
