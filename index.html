@@ -955,11 +955,17 @@ setTimeout(atualizarYunySellControle, 3000);
         <!-- MÉTRICAS DINÂMICAS -->
         <div class="metrics-grid">
 
-<div class="metric-card">
-    <h3><i class="fas fa-users" style="color:#2563eb"></i> Total de Atendimentos</h3>
-    <p id="totalAtendimentosSemana">0</p>
+<div class="metric-card" id="cardTotalAtendimentosSemana">
+  <div class="metric-header">
+    <div class="icon" style="color: #2563eb;"><i class="fas fa-users"></i></div>
+    <h3>Total de Atendimentos</h3>
+  </div>
+  <div class="metric-content">
+    <p>Total da semana:</p>
+    <strong id="totalAtendimentosSemana">0</strong>
+    <p class="info-text">Atendimentos registrados no período</p>
+  </div>
 </div>
-
             <div class="metric-card">
                 <div class="metric-header">
                     <div class="icon" style="color: #3b82f6;"><i class="fas fa-door-open"></i></div>
@@ -1179,9 +1185,16 @@ setTimeout(atualizarYunySellControle, 3000);
 
         <div class="metrics-grid">
 
-<div class="metric-card">
-    <h3><i class="fas fa-users" style="color:#2563eb"></i> Total de Atendimentos</h3>
-    <p id="totalAtendimentosSemana">0</p>
+<div class="metric-card" id="cardTotalAtendimentosSemana">
+  <div class="metric-header">
+    <div class="icon" style="color: #2563eb;"><i class="fas fa-users"></i></div>
+    <h3>Total de Atendimentos</h3>
+  </div>
+  <div class="metric-content">
+    <p>Total da semana:</p>
+    <strong id="totalAtendimentosSemana">0</strong>
+    <p class="info-text">Atendimentos registrados no período</p>
+  </div>
 </div>
 
             <div class="metric-card">
