@@ -64,6 +64,21 @@ function atualizarPerformanceDiretoriaSemana() {
     });
 }
 
+
+// Atualizar total da Yuny Sell no Controle de Atendimentos
+function atualizarYunySellControle() {
+    try {
+        const yunyAtendimentos = atendimentosData.filter(item => (item[COL_DIRETORIA] || '').toUpperCase().includes('YUNY SELL'));
+        const totalElem = document.getElementById('totalYunySell');
+        if (totalElem) totalElem.textContent = yunyAtendimentos.length.toLocaleString('pt-BR');
+    } catch (e) {
+        console.error('Erro ao calcular total da Yuny Sell:', e);
+    }
+}
+
+// Atualizar automaticamente quando carregar dados
+setTimeout(atualizarYunySellControle, 2000);
+
 </script>
     <style>
         :root {
@@ -376,6 +391,7 @@ function atualizarPerformanceDiretoriaSemana() {
         }
 
         .metrics-grid {
+    grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards lado a lado */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
@@ -835,6 +851,7 @@ function atualizarPerformanceDiretoriaSemana() {
                 width: 280px;
             }
             .metrics-grid {
+    grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards lado a lado */
                 grid-template-columns: 1fr;
             }
             .charts-container {
@@ -939,6 +956,12 @@ function atualizarPerformanceDiretoriaSemana() {
 
         <!-- MÉTRICAS DINÂMICAS -->
         <div class="metrics-grid">
+
+<div class="metric-card total-atendimentos">
+    <h3><i class="fas fa-users" style="color:#2563eb"></i> Total de Atendimentos</h3>
+    <p id="totalAtendimentosSemana">0</p>
+</div>
+
             <div class="metric-card">
                 <div class="metric-header">
                     <div class="icon" style="color: #3b82f6;"><i class="fas fa-door-open"></i></div>
@@ -1028,6 +1051,12 @@ function atualizarPerformanceDiretoriaSemana() {
         </div>
 
         <div class="metrics-grid">
+
+<div class="metric-card total-atendimentos">
+    <h3><i class="fas fa-users" style="color:#2563eb"></i> Total de Atendimentos</h3>
+    <p id="totalAtendimentosSemana">0</p>
+</div>
+
             <div class="metric-card">
                 <div class="metric-header">
                     <div class="icon" style="color: #3b82f6;"><i class="fas fa-door-open"></i></div>
@@ -1144,6 +1173,12 @@ function atualizarPerformanceDiretoriaSemana() {
         </div>
 
         <div class="metrics-grid">
+
+<div class="metric-card total-atendimentos">
+    <h3><i class="fas fa-users" style="color:#2563eb"></i> Total de Atendimentos</h3>
+    <p id="totalAtendimentosSemana">0</p>
+</div>
+
             <div class="metric-card">
                 <div class="metric-header">
                     <div class="icon" style="color: #3b82f6;"><i class="fas fa-door-open"></i></div>
@@ -1270,6 +1305,12 @@ function atualizarPerformanceDiretoriaSemana() {
         </div>
 
         <div class="metrics-grid">
+
+<div class="metric-card total-atendimentos">
+    <h3><i class="fas fa-users" style="color:#2563eb"></i> Total de Atendimentos</h3>
+    <p id="totalAtendimentosSemana">0</p>
+</div>
+
             <div class="metric-card">
                 <div class="metric-header">
                     <div class="icon" style="color: #10b981;"><i class="fas fa-bullseye"></i></div>
@@ -1501,6 +1542,12 @@ function atualizarPerformanceDiretoriaSemana() {
         </div>
 
         <div class="metrics-grid">
+
+<div class="metric-card total-atendimentos">
+    <h3><i class="fas fa-users" style="color:#2563eb"></i> Total de Atendimentos</h3>
+    <p id="totalAtendimentosSemana">0</p>
+</div>
+
             <div class="metric-card">
                 <div class="metric-header">
                     <div class="icon" style="color: #3b82f6;"><i class="fas fa-calendar-check"></i></div>
@@ -1917,6 +1964,7 @@ function atualizarPerformanceDiretoriaSemana() {
         inicializarGraficosResumo();
         atualizarTimelineOrigem();
     atualizarPerformanceDiretoriaSemana(); // NOVA CHAMADA
+    document.getElementById('totalAtendimentosSemana').textContent = dadosResumoFiltrados.length.toLocaleString('pt-BR');
     }
 
     // Atualizar o subtítulo com o período
@@ -2987,6 +3035,21 @@ function atualizarPerformanceDiretoriaSemana() {
         container.appendChild(card);
     });
 }
+
+
+// Atualizar total da Yuny Sell no Controle de Atendimentos
+function atualizarYunySellControle() {
+    try {
+        const yunyAtendimentos = atendimentosData.filter(item => (item[COL_DIRETORIA] || '').toUpperCase().includes('YUNY SELL'));
+        const totalElem = document.getElementById('totalYunySell');
+        if (totalElem) totalElem.textContent = yunyAtendimentos.length.toLocaleString('pt-BR');
+    } catch (e) {
+        console.error('Erro ao calcular total da Yuny Sell:', e);
+    }
+}
+
+// Atualizar automaticamente quando carregar dados
+setTimeout(atualizarYunySellControle, 2000);
 
 </script>
 </body>
