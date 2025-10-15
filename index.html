@@ -3057,7 +3057,7 @@ function atualizarPerformanceDiretoriaSemana() {
 // Atualizar total da Yuny Sell no Controle de Atendimentos
 function atualizarYunySellControle() {
     try {
-        const yunyAtendimentos = atendimentosData.filter(item => (item[COL_DIRETORIA] || '').toUpperCase().includes('YUNY SELL'));
+        const yunyAtendimentos = atendimentosData.filter(item => (item[COL_DIRETORIA] || '').toUpperCase().includes('YUNYSELL'));
         const totalElem = document.getElementById('totalYunySell');
         if (totalElem) totalElem.textContent = yunyAtendimentos.length.toLocaleString('pt-BR');
     } catch (e) {
