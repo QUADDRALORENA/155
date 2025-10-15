@@ -391,6 +391,7 @@ setTimeout(atualizarYunySellControle, 3000);
         }
 
         .metrics-grid {
+    grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards no controle de atendimentos */
     grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards lado a lado */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -851,6 +852,7 @@ setTimeout(atualizarYunySellControle, 3000);
                 width: 280px;
             }
             .metrics-grid {
+    grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards no controle de atendimentos */
     grid-template-columns: repeat(5, 1fr); /* Ajuste para 5 cards lado a lado */
                 grid-template-columns: 1fr;
             }
@@ -2988,7 +2990,7 @@ function atualizarPerformanceDiretoriaSemana() {
         return;
     }
 
-    const diretorias = ['STORE', 'HOMESPHERE', 'PARCERIAS', 'YUNY SELL'];
+    const diretorias = ['STORE', 'HOMESPHERE', 'PARCERIAS', 'YUNY SELL', 'DIRETORIA'];
     const cores = {
         STORE: '#6366f1',
         HOMESPHERE: '#10b981',
