@@ -68,7 +68,10 @@ function atualizarPerformanceDiretoriaSemana() {
 // Atualizar total da Yuny Sell no Controle de Atendimentos
 function atualizarYunySellControle() {
     try {
-        const yunyAtendimentos = atendimentosData.filter(item => (item[COL_DIRETORIA] || '').toUpperCase().includes('YUNY SELL'));
+        const yunyAtendimentos = atendimentosData.filter(item => {
+            const valor = (item[COL_DIRETORIA] || '').toUpperCase().trim();
+            return valor === 'YUNY SELL';
+        });
         const totalElem = document.getElementById('totalYunySell');
         if (totalElem) totalElem.textContent = yunyAtendimentos.length.toLocaleString('pt-BR');
     } catch (e) {
@@ -3087,18 +3090,6 @@ function atualizarPerformanceDiretoriaSemana() {
         `;
         container.appendChild(card);
     });
-}
-
-
-// Atualizar total da Yuny Sell no Controle de Atendimentos
-function atualizarYunySellControle() {
-    try {
-        const yunyAtendimentos = atendimentosData.filter(item => (item[COL_DIRETORIA] || '').toUpperCase().includes('YUNYSELL'));
-        const totalElem = document.getElementById('totalYunySell');
-        if (totalElem) totalElem.textContent = yunyAtendimentos.length.toLocaleString('pt-BR');
-    } catch (e) {
-        console.error('Erro ao calcular total da Yuny Sell:', e);
-    }
 }
 
 // Atualizar automaticamente após carregar os dados
