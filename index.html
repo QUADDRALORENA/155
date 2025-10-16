@@ -1980,10 +1980,11 @@ setTimeout(atualizarYunySellControle, 3000);
         inicializarGraficosResumo();
         atualizarTimelineOrigem();
     atualizarPerformanceDiretoriaSemana(); // NOVA CHAMADA
-    const totalAt = document.getElementById('totalAtendimentosSemana');
-    if(totalAt) totalAt.textContent = dadosResumoFiltrados.length.toLocaleString('pt-BR');
-    }
-
+   const totalAt = document.getElementById('totalAtendimentosSemana');
+if (totalAt) {
+  const dadosSemPropostas = dadosResumoFiltrados.filter(item => !item.tipo?.toUpperCase().includes('PROPOSTA'));
+  totalAt.textContent = dadosSemPropostas.length.toLocaleString('pt-BR');
+}
     // Atualizar o subtítulo com o período
     function atualizarResumoPeriodo(inicio, fim) {
         const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
