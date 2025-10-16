@@ -1984,7 +1984,7 @@ setTimeout(atualizarYunySellControle, 3000);
         inicializarGraficosResumo();
         atualizarTimelineOrigem();
     atualizarPerformanceDiretoriaSemana(); // NOVA CHAMADA
-    const totalAt = document.getElementById('totalAtendimentosSemana');
+  const totalAt = document.getElementById('totalAtendimentosSemana');
 if (totalAt) {
   const dadosSemPropostas = dadosResumoFiltrados.filter(item =>
     !((item[COL_TIPO] || '').toUpperCase().includes('PROPOSTA'))
