@@ -68,8 +68,12 @@ function atualizarPerformanceDiretoriaSemana() {
 // Atualizar total da Yuny Sell no Controle de Atendimentos
 function atualizarYunySellControle() {
     try {
-        const yunyAtendimentos = atendimentosData.filter(item => (item[COL_DIRETORIA] || '').toUpperCase().includes('YUNY SELL'));
         const totalElem = document.getElementById('totalYunySell');
+        const yunyAtendimentos = atendimentosData.filter(item => {
+            const dir = (item[COL_DIRETORIA] || '').toUpperCase();
+            // aceitar variações: 'YUNY SELL' ou 'YUNYSELL' (ou 'SELL' contendo YUNY)
+            return dir.includes('YUNY SELL') || dir.includes('YUNYSELL') || dir.includes('YUNY');
+        });
         if (totalElem) totalElem.textContent = yunyAtendimentos.length.toLocaleString('pt-BR');
     } catch (e) {
         console.error('Erro ao calcular total da Yuny Sell:', e);
@@ -1981,9 +1985,12 @@ setTimeout(atualizarYunySellControle, 3000);
         atualizarTimelineOrigem();
     atualizarPerformanceDiretoriaSemana(); // NOVA CHAMADA
     const totalAt = document.getElementById('totalAtendimentosSemana');
-    if(totalAt) totalAt.textContent = dadosResumoFiltrados.length.toLocaleString('pt-BR');
-    }
-
+if (totalAt) {
+  const dadosSemPropostas = dadosResumoFiltrados.filter(item =>
+    !((item[COL_TIPO] || '').toUpperCase().includes('PROPOSTA'))
+  );
+  totalAt.textContent = dadosSemPropostas.length.toLocaleString('pt-BR');
+}
     // Atualizar o subtítulo com o período
     function atualizarResumoPeriodo(inicio, fim) {
         const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -3052,19 +3059,20 @@ function atualizarPerformanceDiretoriaSemana() {
         container.appendChild(card);
     });
 }
-
-
 // Atualizar total da Yuny Sell no Controle de Atendimentos
 function atualizarYunySellControle() {
     try {
-        const yunyAtendimentos = atendimentosData.filter(item => (item[COL_DIRETORIA] || '').toUpperCase().includes('YUNYSELL'));
         const totalElem = document.getElementById('totalYunySell');
+        const yunyAtendimentos = atendimentosData.filter(item => {
+            const dir = (item[COL_DIRETORIA] || '').toUpperCase();
+            // aceitar variações: 'YUNY SELL' ou 'YUNYSELL' (ou 'SELL' contendo YUNY)
+            return dir.includes('YUNY SELL') || dir.includes('YUNYSELL') || dir.includes('YUNY');
+        });
         if (totalElem) totalElem.textContent = yunyAtendimentos.length.toLocaleString('pt-BR');
     } catch (e) {
         console.error('Erro ao calcular total da Yuny Sell:', e);
     }
 }
-
 // Atualizar automaticamente após carregar os dados
 setTimeout(atualizarYunySellControle, 3000);
 
