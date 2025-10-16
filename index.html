@@ -898,6 +898,21 @@ setTimeout(atualizarYunySellControle, 3000);
 .tab[data-target="historico-mes"] {
     display: none !important;
 }
+        /* === Logomarca fixa no canto === */
+.logo-fixed {
+    position: fixed;
+    bottom: 20px;       /* distância da borda inferior */
+    right: 20px;        /* distância da borda direita */
+    width: 100px;       /* tamanho da logo */
+    opacity: 0.85;      /* leve transparência */
+    z-index: 9999;      /* sobrepor elementos */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo-fixed:hover {
+    opacity: 1;
+    transform: scale(1.05); /* leve zoom ao passar o mouse */
+}
     </style>
 </head>
 <body>
@@ -3069,5 +3084,9 @@ function atualizarYunySellControle() {
 setTimeout(atualizarYunySellControle, 3000);
 
 </script>
+    <!-- Logomarca do Projeto -->
+<img src="https://tse1.mm.bing.net/th/id/OIP.czu4dFm01qMuerCk3BfRxwHaCN?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" 
+     alt="Logo Projeto"
+     class="logo-fixed">
 </body>
 </html>
