@@ -898,20 +898,29 @@ setTimeout(atualizarYunySellControle, 3000);
 .tab[data-target="historico-mes"] {
     display: none !important;
 }
-        /* === Logomarca fixa no canto === */
-.logo-fixed {
-    position: fixed;
-    bottom: 20px;       /* distância da borda inferior */
-    right: 20px;        /* distância da borda direita */
-    width: 100px;       /* tamanho da logo */
-    opacity: 0.85;      /* leve transparência */
-    z-index: 9999;      /* sobrepor elementos */
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
+  
 .logo-fixed:hover {
     opacity: 1;
     transform: scale(1.05); /* leve zoom ao passar o mouse */
+}
+        /* === Logomarca no cabeçalho === */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 40px;         /* ajusta a altura da imagem */
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;   /* suaviza bordas */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
     </style>
 </head>
@@ -920,9 +929,12 @@ setTimeout(atualizarYunySellControle, 3000);
 <div class="container">
     <header>
         <div class="logo">
-            <i class="fas fa-chart-line"></i>
-            <span>Pipeline Comercial</span>
-        </div>
+    <img src="https://tse1.mm.bing.net/th/id/OIP.czu4dFm01qMuerCk3BfRxwHaCN?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" 
+         alt="Logo Projeto" 
+         class="logo-img">
+    <i class="fas fa-chart-line"></i>
+    <span>Pipeline Comercial</span>
+</div>
         <div class="tabs">
             <div class="tab active" data-target="resumo">Resumo da Semana</div>
             <div class="tab" data-target="resumo-mes">Resumo do Mês</div>
@@ -3084,9 +3096,5 @@ function atualizarYunySellControle() {
 setTimeout(atualizarYunySellControle, 3000);
 
 </script>
-    <!-- Logomarca do Projeto -->
-<img src="https://tse1.mm.bing.net/th/id/OIP.czu4dFm01qMuerCk3BfRxwHaCN?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" 
-     alt="Logo Projeto"
-     class="logo-fixed">
-</body>
+ </body>
 </html>
