@@ -343,43 +343,48 @@ setTimeout(atualizarYunySellControle, 3000);
             border-bottom: none;
         }
 
-        .diretoria-badge {
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: white;
-        }
-
-        .diretoria-store {
-            background-color: #6366f1;
-        }
-
-        .diretoria-homesphere {
-            background-color: #10b981;
-        }
-
-        .diretoria-parcerias {
-            background-color: #f59e0b;
-        }
-
-        .diretoria-ferrari {
-            background-color: #ef4444;
-        }
-
-        .diretoria-diretoria {
-            background-color: #8b5cf6;
-        }
-
-        .diretoria-sell {
-            background-color: #1f2937;
-        }
-        /* --- Correção de contraste para diretorias claras --- */
-.diretoria-store,
-.diretoria-sell {
-    color: #1f2937 !important; /* texto escuro para melhor leitura */
-    
+        ./* ---------- BADGES DE DIRETORIA (cores e contraste) ---------- */
+.diretoria-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    color: #ffffff; /* padrão: texto branco */
+    background-color: #6b7280; /* fallback */
+    border: none;
 }
+
+/* Cores específicas */
+.diretoria-store {
+    background-color: #6366f1;
+    color: #ffffff;
+}
+
+.diretoria-sell {
+    background-color: #06b6d4;
+    /* fundo claro -> texto escuro para contraste melhor */
+    color: #0b2545;
+}
+
+.diretoria-homesphere {
+    background-color: #10b981;
+    color: #ffffff;
+}
+
+.diretoria-parcerias {
+    background-color: #f59e0b;
+    color: #ffffff;
+}
+
+.diretoria-diretoria {
+    background-color: #8b5cf6;
+    color: #ffffff;
+}
+
 
         .tipo-badge {
             padding: 4px 8px;
@@ -1672,7 +1677,7 @@ setTimeout(atualizarYunySellControle, 3000);
                     </thead>
                     <tbody id="tabelaAtendimentos">
                         <tr>
-                            <td colspan="5" class="loading">
+                            <td colspan="6" class="loading">...</td>
                                 <i class="fas fa-spinner fa-spin"></i> Carregando dados da planilha...
                             </td>
                         </tr>
@@ -2334,52 +2339,55 @@ setTimeout(atualizarYunySellControle, 3000);
         popularTabela(atendimentosPaginados);
     }
     
-    function popularTabela(data) {
-        const tabelaBody = document.getElementById('tabelaAtendimentos');
-        tabelaBody.innerHTML = '';
+function popularTabela(data) {
+    const tabelaBody = document.getElementById('tabelaAtendimentos');
+    tabelaBody.innerHTML = '';
 
-        const totalPaginas = Math.ceil(data.length / itensPorPagina);
-        paginaAtual = Math.min(Math.max(1, paginaAtual), totalPaginas || 1); 
+    const totalPaginas = Math.ceil(data.length / itensPorPagina);
+    paginaAtual = Math.min(Math.max(1, paginaAtual), totalPaginas || 1);
 
-        const inicio = (paginaAtual - 1) * itensPorPagina;
-        const fim = inicio + itensPorPagina;
-        const dadosPagina = data.slice(inicio, fim);
-        
-        if (dadosPagina.length === 0 && data.length > 0 && paginaAtual > 1) {
-            paginaAtual = totalPaginas;
-            popularTabela(data);
-            return;
-        }
-        
-        if (dadosPagina.length === 0) {
-            tabelaBody.innerHTML = `<tr><td colspan="5">Nenhum registro encontrado.</td></tr>`;
-        } else {
-            dadosPagina.forEach(item => {
-                const diretoria = item[COL_DIRETORIA] || 'N/A';
-                const tipo = item[COL_TIPO] || 'N/A';
-                const corretor = item[COL_CORRETOR] || 'N/A';
-                const gerente = item[COL_GERENTE] || 'N/A';
-                const dataFormatada = item[COL_DATA] || 'N/A';
+    const inicio = (paginaAtual - 1) * itensPorPagina;
+    const fim = inicio + itensPorPagina;
+    const dadosPagina = data.slice(inicio, fim);
 
-                const diretoriaClass = 'diretoria-' + diretoria.toLowerCase().replace(/[^a-z0-9]/g, '');
-
-                const row = `
-                    <tr>
-                        <td>${dataFormatada}</td>
-                        <td><span class="tipo-badge">${tipo}</span></td>
-                        <td>${corretor}</td>
-                        <td>${gerente}</td>
-                        <td><span class="diretoria-badge ${diretoriaClass}">${diretoria}</span></td>
-                    </tr>
-                `;
-                tabelaBody.innerHTML += row;
-            });
-        }
-
-        document.getElementById('paginationInfo').textContent = `Mostrando ${inicio + 1} a ${inicio + dadosPagina.length} de ${data.length} registros`;
-        document.getElementById('btnPrev').disabled = paginaAtual === 1 || data.length === 0;
-        document.getElementById('btnNext').disabled = paginaAtual === totalPaginas || data.length === 0;
+    if (dadosPagina.length === 0 && data.length > 0 && paginaAtual > 1) {
+        paginaAtual = totalPaginas;
+        popularTabela(data);
+        return;
     }
+
+    if (dadosPagina.length === 0) {
+        tabelaBody.innerHTML = `<tr><td colspan="6">Nenhum registro encontrado.</td></tr>`;
+    } else {
+        dadosPagina.forEach(item => {
+            const diretoria = (item[COL_DIRETORIA] || 'N/A').toString();
+            const tipo = item[COL_TIPO] || 'N/A';
+            const corretor = item[COL_CORRETOR] || 'N/A';
+            const gerente = item[COL_GERENTE] || 'N/A';
+            const midia = item[COL_MIDIA] || '';               // <-- agora incluímos Mídia
+            const dataFormatada = item[COL_DATA] || 'N/A';
+
+            // Gera classe 'diretoria-store', 'diretoria-yuny sell' etc. (normaliza)
+            const diretoriaClass = 'diretoria-' + diretoria.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+            const row = `
+                <tr>
+                    <td>${dataFormatada}</td>
+                    <td><span class="tipo-badge">${tipo}</span></td>
+                    <td>${corretor}</td>
+                    <td>${gerente}</td>
+                    <td>${ midia ? `<span class="diretoria-badge ${diretoriaClass}">${midia}</span>` : '' }</td>
+                    <td><span class="diretoria-badge ${diretoriaClass}">${diretoria}</span></td>
+                </tr>
+            `;
+            tabelaBody.innerHTML += row;
+        });
+    }
+
+    document.getElementById('paginationInfo').textContent = `Mostrando ${inicio + 1} a ${inicio + dadosPagina.length} de ${data.length} registros`;
+    document.getElementById('btnPrev').disabled = paginaAtual === 1 || data.length === 0;
+    document.getElementById('btnNext').disabled = paginaAtual === totalPaginas || data.length === 0;
+}
 
     function mudarPagina(direcao) {
         paginaAtual += direcao;
