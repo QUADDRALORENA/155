@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Quaddra Lorena</title>
+    <title>Dashboard Camino</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js">
 function atualizarPerformanceDiretoriaSemana() {
@@ -15,13 +15,11 @@ function atualizarPerformanceDiretoriaSemana() {
         return;
     }
 
-   const diretorias = ['STORE', 'HOMESPHERE', 'PARCERIAS', 'YUNY SELL'];
+const diretorias = ['STORE', 'PARCERIAS', 'YUNY SELL'];
     const cores = {
         STORE: '#6366f1',
-        HOMESPHERE: '#10b981',
         PARCERIAS: '#f59e0b',
         'YUNY SELL': '#06b6d4',
-        DIRETORIA: '#8b5cf6'
     };
 
     const metricas = {};
@@ -81,6 +79,9 @@ function atualizarYunySellControle() {
 
 // Atualizar automaticamente após carregar os dados
 setTimeout(atualizarYunySellControle, 3000);
+        document.addEventListener("DOMContentLoaded", () => {
+  }
+});
 
 </script>
     <style>
@@ -373,19 +374,10 @@ setTimeout(atualizarYunySellControle, 3000);
     color: #0b2545;
 }
 
-.diretoria-homesphere {
-    background-color: #10b981;
-    color: #ffffff;
-}
-
 .diretoria-parcerias {
     background-color: #f59e0b;
     color: #ffffff;
-}
 
-.diretoria-diretoria {
-    background-color: #8b5cf6;
-    color: #ffffff;
 }
 
 
@@ -902,11 +894,6 @@ setTimeout(atualizarYunySellControle, 3000);
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         }
         /* OCULTAR abas não utilizadas */
-.tab[data-target="resumo-mes"],
-.tab[data-target="historico-mes"] {
-    display: none !important;
-}
-  
 .logo-fixed:hover {
     opacity: 1;
     transform: scale(1.05); /* leve zoom ao passar o mouse */
@@ -937,16 +924,14 @@ setTimeout(atualizarYunySellControle, 3000);
 <div class="container">
     <header>
         <div class="logo">
-    <img src="https://tse1.mm.bing.net/th/id/OIP.czu4dFm01qMuerCk3BfRxwHaCN?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" 
+    <img src="https://caminoaltodaboavista.touchapp.com.br/img/logo.png" 
          alt="Logo Projeto" 
          class="logo-img">
     <i class="fas fa-chart-line"></i>
-    <span>DASH QUADDRA LORENA</span>
+    <span>DASH CAMINO ALTO DA BOA VISTA</span>
 </div>
         <div class="tabs">
             <div class="tab active" data-target="resumo">Resumo da Semana</div>
-            <div class="tab" data-target="resumo-mes">Resumo do Mês</div>
-            <div class="tab" data-target="historico-mes">Histórico Mensal</div>
             <div class="tab" data-target="panorama-estoque">Panorama Estoque</div>
             <div class="tab" data-target="controle-atendimentos">Controle de Atendimentos</div>
             <div class="tab" data-target="tratativas">Pipeline de Tratativas</div>
@@ -1080,16 +1065,7 @@ setTimeout(atualizarYunySellControle, 3000);
     </div>
 
     <!-- DEMAIS ABAS PERMANECEM EXATAMENTE IGUAIS AO ORIGINAL -->
-    <div id="resumo-mes" class="dashboard">
-        <div class="dashboard-header">
-            <h1 class="dashboard-title">
-                <i class="fas fa-calendar-alt" style="color: #10b981;"></i>
-                Resumo do Mês - OUTUBRO
-            </h1>
-            <p class="dashboard-subtitle">QUADDRA LORENA - Outubro/2025</p>
-        </div>
-
-        <div class="metrics-grid">
+    <div class="metrics-grid">
 
 <div class="metric-card" id="cardTotalAtendimentosSemana">
   <div class="metric-header">
@@ -1209,16 +1185,7 @@ setTimeout(atualizarYunySellControle, 3000);
         </div>
     </div>
 
-    <div id="historico-mes" class="dashboard">
-        <div class="dashboard-header">
-            <h1 class="dashboard-title">
-                <i class="fas fa-history" style="color: #8b5cf6;"></i>
-                Histórico Mensal - SETEMBRO
-            </h1>
-            <p class="dashboard-subtitle">Relatório Mensal - Setembro/2025</p>
-        </div>
-
-        <div class="metrics-grid">
+    <div class="metrics-grid">
 
 <div class="metric-card" id="cardTotalAtendimentosSemana">
   <div class="metric-header">
@@ -1353,7 +1320,7 @@ setTimeout(atualizarYunySellControle, 3000);
                 <i class="fas fa-boxes" style="color: #8b5cf6;"></i>
                 Panorama Estoque
             </h1>
-            <p class="dashboard-subtitle">Visão geral de vendas, estoque e performance - Quaddra Lorena</p>
+            <p class="dashboard-subtitle">Visão geral de vendas, estoque e performance - CAMINO</p>
         </div>
 
         <div class="metrics-grid">
@@ -1364,9 +1331,9 @@ setTimeout(atualizarYunySellControle, 3000);
                     <h3>Performance Unidades</h3>
                 </div>
                 <div class="metric-content">
-                    <p>Meta 2025: 28 unidades</p>
-                    <strong>17 unidades</strong>
-                    <p class="info-text">60.7% de atingimento</p>
+                    <p>Meta 2025: 100 unidades</p>
+                    <strong>50 unidades</strong>
+                    <p class="info-text">50% de atingimento</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -1375,9 +1342,9 @@ setTimeout(atualizarYunySellControle, 3000);
                     <h3>Performance VGV</h3>
                 </div>
                 <div class="metric-content">
-                    <p>Meta 2025: R$ 320M</p>
+                    <p>Meta 2025: R$ 100M</p>
                     <strong>R$ 207.1M</strong>
-                    <p class="info-text">64.7% de atingimento</p>
+                    <p class="info-text">50% de atingimento</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -1386,8 +1353,8 @@ setTimeout(atualizarYunySellControle, 3000);
                     <h3>Outubro 2025</h3>
                 </div>
                 <div class="metric-content">
-                    <p>Meta: 5 unidades</p>
-                    <strong>4 unidades</strong>
+                    <p>Meta: 50 unidades</p>
+                    <strong>40 unidades</strong>
                     <p class="info-text">80% de atingimento</p>
                 </div>
             </div>
@@ -1398,8 +1365,8 @@ setTimeout(atualizarYunySellControle, 3000);
                 </div>
                 <div class="metric-content">
                     <p>Unidades disponíveis:</p>
-                    <strong>39 unidades</strong>
-                    <p class="info-text">De 56 unidades totais</p>
+                    <strong>200 unidades</strong>
+                    <p class="info-text">De 500 unidades totais</p>
                 </div>
             </div>
         </div>
@@ -1422,64 +1389,62 @@ setTimeout(atualizarYunySellControle, 3000);
         <div class="timeline-container">
             <div class="timeline-card">
                 <h4><i class="fas fa-check-circle" style="color: #10b981;"></i> UNIDADES VENDIDAS</h4>
-                <h5>Total: 17 unidades</h5>
+                <h5>Total: 50 unidades</h5>
                 
                 <div class="list-group">
                     <h5><i class="fas fa-building"></i> Por Torre</h5>
                     <ul>
-                        <li>JARDINS: 5 unidades</li>
-                        <li>EUROPA: 7 unidades</li>
-                        <li>PARQUE: 5 unidades</li>
+                        <li>RESIDENCIAL: 50 unidades</li>
+                        <li>STUDIOS: 70 unidades</li>
                     </ul>
                 </div>
                 
                 <div class="list-group">
                     <h5><i class="fas fa-ruler-combined"></i> Por Metragem</h5>
                     <ul>
-                        <li>387m²: 9 unidades</li>
-                        <li>300m²: 7 unidades</li>
-                        <li>Coberturas: 1 unidade</li>
+                        <li>61m²: 19 unidades</li>
+                        <li>77m²: 70 unidades</li>
+                        <li>Studios: 100 unidade</li>
                     </ul>
                 </div>
 
                 <div class="list-group">
                     <h5><i class="fas fa-tag"></i> Por Origem</h5>
                     <ul>
-                        <li>ONLINE: 5 unidades</li>
-                        <li>CARTEIRA: 4 unidades</li>
-                        <li>VEZ: 2 unidades</li>
-                        <li>DIRETORIA: 6 unidades</li>
+                        <li>ONLINE: 50 unidades</li>
+                        <li>CARTEIRA: 42 unidades</li>
+                        <li>VEZ: 28 unidades</li>
+                        <li>DIRETORIA: 26 unidades</li>
                     </ul>
                 </div>
             </div>
 
             <div class="timeline-card">
                 <h4><i class="fas fa-warehouse" style="color: #3b82f6;"></i> ESTOQUE ATUAL</h4>
-                <h5>Total: 56 unidades (39 disponíveis)</h5>
+                <h5>Total: 500 unidades (300 disponíveis)</h5>
                 
                 <div class="list-group">
-                    <h5><i class="fas fa-building"></i> Torre Jardins</h5>
+                    <h5><i class="fas fa-building"></i> Unidades 61m²</h5>
                     <ul>
-                        <li>1 Garden</li>
-                        <li>7 Tipos 387m²</li>
-                        <li>1 Cobertura</li>
-                        <li style="color: #10b981; font-weight: bold;">Vendidas: 5 unidades</li>
+                        <li>2 Garden</li>
+                        <li>72 Tipos </li>
+                        <li style="color: #10b981; font-weight: bold;">Vendidas: 50 unidades</li>
                     </ul>
                 </div>
                 
                 <div class="list-group">
-                    <h5><i class="fas fa-building"></i> Torre Parque</h5>
+                    <h5><i class="fas fa-building"></i> Unidades 77m²</h5>
                     <ul>
                         <li>1 Garden</li>
-                        <li>8 Tipos 387m²</li>
+                        <li>8 Tipos </li>
                         <li style="color: #10b981; font-weight: bold;">Vendidas: 5 unidades</li>
                     </ul>
                 </div>
 
                 <div class="list-group">
-                    <h5><i class="fas fa-building"></i> Torre Europa</h5>
+                    <h5><i class="fas fa-building"></i> Torre Studios</h5>
                     <ul>
-                        <li>19 Tipos 300m²</li>
+                        <li>19 Tipos</li>
                         <li>2 Coberturas</li>
                         <li style="color: #10b981; font-weight: bold;">Vendidas: 7 unidades</li>
                     </ul>
@@ -1785,10 +1750,10 @@ setTimeout(atualizarYunySellControle, 3000);
     let chartTipoAtendimentos = null;
 
     // URL DO SEU GOOGLE SHEETS DE ATENDIMENTOS (MANTIDO DO SEU CÓDIGO)
-    const SHEET_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTx2cJTokag2KDlpWxGK5V3yk3hFehgxUrVIw9vll3ES4SduXdYTLQLtKDjWQUdCvkLa3M0teXdxeEc/pub?gid=0&single=true&output=csv'; 
+    const SHEET_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTE4TL2UpdsZM43opfqqdDH2gdW_tzoHd4z-_7vxb6koicdOJWt6r-SoFVR0FWaAEs8UmJJGirQ0h0S/pub?gid=0&single=true&output=csv'; 
     
     // URL DO SEU GOOGLE SHEETS DE PIPELINE (CORRIGIDA E MANTIDA)
-    const PIPELINE_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSWVGFr4bPew5Q4j3mo2QLY2tPgNSDFjZ4T40X3-D8bnWwIPKnHf_nhvWE34WMRJEqGYqD3e3hnKvDz/pub?gid=0&single=true&output=csv'; 
+    const PIPELINE_DATA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdqDsD7zwfjYT3BkEpLe_qBUPXjmPkOhkbJTM-VbGF71l94gijdOLIgQz9CkebfjnSobOPvZalst51/pub?gid=0&single=true&output=csv'; 
 
     // Nomes das colunas no seu arquivo CSV de Atendimentos
     const COL_DATA = 'Data'; 
@@ -2031,10 +1996,10 @@ setTimeout(atualizarYunySellControle, 3000);
     // Calcular todas as métricas do resumo - FUNÇÃO ATUALIZADA
     function calcularMetricasResumo() {
         // Contadores
-        let visitas = { total: 0, store: 0, homesphere: 0, yunysell: 0, parcerias: 0, diretoria: 0 };
-        let indicacoes = { total: 0, store: 0, homesphere: 0, yunysell: 0, parcerias: 0, diretoria: 0 };
-        let retornos = { total: 0, store: 0, homesphere: 0, yunysell: 0, parcerias: 0, diretoria: 0 };
-        let propostas = { total: 0, store: 0, homesphere: 0, yunysell: 0, parcerias: 0, diretoria: 0 };
+        let visitas = { total: 0, store: 0, yunysell: 0, parcerias: 0 };
+        let indicacoes = { total: 0, store: 0, yunysell: 0, parcerias: 0};
+        let retornos = { total: 0, store: 0, yunysell: 0, parcerias: 0 };
+        let propostas = { tototal: 0, store: 0, yunysell: 0, parcerias: 0 };
         
         dadosResumoFiltrados.forEach(item => {
             const tipo = (item[COL_TIPO] || '').toUpperCase();
@@ -2043,34 +2008,26 @@ setTimeout(atualizarYunySellControle, 3000);
             if (tipo.includes('VEZ')) {
                 visitas.total++;
                 if (diretoria.includes('STORE')) visitas.store++;
-                else if (diretoria.includes('HOMESPHERE')) visitas.homesphere++;
                 else if (diretoria.includes('YUNY SELL') || diretoria.includes('YUNYSELL')) visitas.yunysell++;
                 else if (diretoria.includes('PARCERIAS')) visitas.parcerias++;
-                else if (diretoria.includes('DIRETORIA')) visitas.diretoria++;
             }
             else if (tipo.includes('INDI')) {
                 indicacoes.total++;
                 if (diretoria.includes('STORE')) indicacoes.store++;
-                else if (diretoria.includes('HOMESPHERE')) indicacoes.homesphere++;
                 else if (diretoria.includes('YUNY SELL') || diretoria.includes('YUNYSELL')) indicacoes.yunysell++;
                 else if (diretoria.includes('PARCERIAS')) indicacoes.parcerias++;
-                else if (diretoria.includes('DIRETORIA')) indicacoes.diretoria++;
             }
             else if (tipo.includes('RETORNO')) {
                 retornos.total++;
                 if (diretoria.includes('STORE')) retornos.store++;
-                else if (diretoria.includes('HOMESPHERE')) retornos.homesphere++;
                 else if (diretoria.includes('YUNY SELL') || diretoria.includes('YUNYSELL')) retornos.yunysell++;
                 else if (diretoria.includes('PARCERIAS')) retornos.parcerias++;
-                else if (diretoria.includes('DIRETORIA')) retornos.diretoria++;
             }
             else if (tipo.includes('PROPOSTA')) {
                 propostas.total++;
                 if (diretoria.includes('STORE')) propostas.store++;
-                else if (diretoria.includes('HOMESPHERE')) propostas.homesphere++;
                 else if (diretoria.includes('YUNY SELL') || diretoria.includes('YUNYSELL')) propostas.yunysell++;
                 else if (diretoria.includes('PARCERIAS')) propostas.parcerias++;
-                else if (diretoria.includes('DIRETORIA')) propostas.diretoria++;
             }
         });
         
@@ -2078,10 +2035,8 @@ setTimeout(atualizarYunySellControle, 3000);
         function formatarDiretorias(metricas) {
             const partes = [];
             if (metricas.store > 0) partes.push(`Store: ${metricas.store}`);
-            if (metricas.homesphere > 0) partes.push(`Homesphere: ${metricas.homesphere}`);
             if (metricas.yunysell > 0) partes.push(`YunySell: ${metricas.yunysell}`);
             if (metricas.parcerias > 0) partes.push(`Parcerias: ${metricas.parcerias}`);
-            if (metricas.diretoria > 0) partes.push(`Diretoria: ${metricas.diretoria}`);
             return partes.join(' / ');
         }
         
@@ -2400,12 +2355,10 @@ function popularTabela(data) {
     function atualizarMetricas(data) {
         const total = data.length;
         const store = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'YUNY STORE').length;
-        const homesphere = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'HOMESPHERE').length;
         const parcerias = data.filter(item => (item[COL_DIRETORIA])?.toUpperCase() === 'PARCERIAS').length;
 
         document.getElementById('totalAtendimentos').textContent = total;
         document.getElementById('totalStore').textContent = store;
-        document.getElementById('totalHomesphere').textContent = homesphere;
         document.getElementById('totalParcerias').textContent = parcerias;
     }
 
@@ -2698,7 +2651,7 @@ function popularTabela(data) {
             new Chart(ctx1, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Store', 'Homesphere', 'Parcerias', 'Ferrari'],
+                    labels: ['Store' , 'Parcerias', 'Ferrari'],
                     datasets: [{
                         data: [6, 2, 1, 2],
                         backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#ef4444']
@@ -2746,7 +2699,7 @@ function popularTabela(data) {
             new Chart(ctx1, {
                 type: 'pie',
                 data: {
-                    labels: ['Store', 'Homesphere', 'Parcerias', 'YUNY SELL'],
+                    labels: ['Store', 'Parcerias', 'YUNY SELL'],
                     datasets: [{
                         data: [11, 2, 1, 2],
                         backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#06b6d4']
@@ -2794,7 +2747,7 @@ function popularTabela(data) {
             new Chart(ctx1, {
                 type: 'pie',
                 data: {
-                    labels: ['Store', 'Homesphere', 'Parcerias', 'YUNY SELL', 'Diretoria'],
+                    labels: ['Store', 'Parcerias', 'YUNY SELL',],
                     datasets: [{
                         data: [60, 41, 19, 10, 1],
                         backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#06b6d4', '#8b5cf6']
@@ -3043,13 +2996,11 @@ function atualizarPerformanceDiretoriaSemana() {
         return;
     }
 
-    const diretorias = ['STORE', 'HOMESPHERE', 'PARCERIAS', 'YUNY SELL', 'DIRETORIA'];
+    const diretorias = ['STORE', 'PARCERIAS', 'YUNY SELL'];
     const cores = {
         STORE: '#6366f1',
-        HOMESPHERE: '#10b981',
         PARCERIAS: '#f59e0b',
         'YUNY SELL': '#06b6d4',
-        DIRETORIA: '#8b5cf6'
     };
 
     const metricas = {};
@@ -3096,5 +3047,45 @@ function atualizarPerformanceDiretoriaSemana() {
 setTimeout(atualizarYunySellControle, 3000);
 
 </script>
- </body>
+ 
+<script>
+(function(){
+  try {
+    function activateTab(targetId) {
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.dashboard').forEach(d=>d.classList.remove('active'));
+      var tab = document.querySelector('.tab[data-target="'+targetId+'"]');
+      if(tab) tab.classList.add('active');
+      var dash = document.getElementById(targetId);
+      if(dash) dash.classList.add('active');
+    }
+
+    // Attach click handlers
+    document.querySelectorAll('.tab').forEach(tab=>{
+      tab.addEventListener('click', function(e){
+        var tgt = this.getAttribute('data-target');
+        if(!tgt) return;
+        activateTab(tgt);
+      });
+    });
+
+    // On load, ensure one dashboard is active. Prefer 'resumo' if exists.
+    document.addEventListener('DOMContentLoaded', function(){
+      if(document.querySelector('.dashboard.active')) return;
+      if(document.getElementById('resumo')) activateTab('resumo');
+      else {
+        var firstTab = document.querySelector('.tab[data-target]');
+        if(firstTab) {
+          var tgt = firstTab.getAttribute('data-target');
+          activateTab(tgt);
+        }
+      }
+    });
+  } catch(err) {
+    console.error('Tab init error', err);
+  }
+})();
+</script>
+
+</body>
 </html>
