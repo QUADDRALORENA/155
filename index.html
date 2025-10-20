@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Camino</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
 function atualizarPerformanceDiretoriaSemana() {
     const container = document.getElementById('timelineDiretoriaSemana');
     container.innerHTML = '';
@@ -894,6 +895,11 @@ setTimeout(atualizarYunySellControle, 3000);
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         }
         /* OCULTAR abas não utilizadas */
+.tab[data-target="resumo-mes"],
+.tab[data-target="historico-mes"] {
+    display: none !important;
+}
+  
 .logo-fixed:hover {
     opacity: 1;
     transform: scale(1.05); /* leve zoom ao passar o mouse */
@@ -932,6 +938,8 @@ setTimeout(atualizarYunySellControle, 3000);
 </div>
         <div class="tabs">
             <div class="tab active" data-target="resumo">Resumo da Semana</div>
+            <div class="tab" data-target="resumo-mes">Resumo do Mês</div>
+            <div class="tab" data-target="historico-mes">Histórico Mensal</div>
             <div class="tab" data-target="panorama-estoque">Panorama Estoque</div>
             <div class="tab" data-target="controle-atendimentos">Controle de Atendimentos</div>
             <div class="tab" data-target="tratativas">Pipeline de Tratativas</div>
@@ -1065,7 +1073,16 @@ setTimeout(atualizarYunySellControle, 3000);
     </div>
 
     <!-- DEMAIS ABAS PERMANECEM EXATAMENTE IGUAIS AO ORIGINAL -->
-    <div class="metrics-grid">
+    <div id="resumo-mes" class="dashboard">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">
+                <i class="fas fa-calendar-alt" style="color: #10b981;"></i>
+                Resumo do Mês - OUTUBRO
+            </h1>
+            <p class="dashboard-subtitle">CAMINO - Outubro/2025</p>
+        </div>
+
+        <div class="metrics-grid">
 
 <div class="metric-card" id="cardTotalAtendimentosSemana">
   <div class="metric-header">
@@ -1120,24 +1137,28 @@ setTimeout(atualizarYunySellControle, 3000);
                 <div class="metric-content">
                     <p>Atendimentos totais:</p>
                     <strong>35</strong>
-                    <p class="info-text">Visitas + Indicações + Retornos</div>
+                    <p class="info-text">Visitas + Indicações + Retornos</p>
+                </div>
             </div>
         </div>
 
         <div class="charts-container">
             <div class="chart-card">
-                <h4><i class="fas fa-chart-pie"></i> <div class="chart-container">
+                <h4><i class="fas fa-chart-pie"></i> Distribuição por Diretoria - Outubro</h4>
+                <div class="chart-container">
                     <canvas id="chartDiretoriaOutubro"></canvas>
                 </div>
             </div>
             <div class="chart-card">
-                <h4><i class="fas fa-chart-bar"></i> <div class="chart-container">
+                <h4><i class="fas fa-chart-bar"></i> Tipo de Atendimento - Outubro</h4>
+                <div class="chart-container">
                     <canvas id="chartTipoAtendimentoOutubro"></canvas>
                 </div>
             </div>
         </div>
 
-        <h2 class="timeline-header"><div class="timeline-container">
+        <h2 class="timeline-header">Performance Outubro por Diretoria</h2>
+        <div class="timeline-container">
             <div class="timeline-card">
                 <h4><i class="fas fa-store-alt" style="color: #6366f1;"></i> STORE</h4>
                 <h5>Performance do Mês</h5>
@@ -1181,7 +1202,16 @@ setTimeout(atualizarYunySellControle, 3000);
         </div>
     </div>
 
-    <div class="metrics-grid">
+    <div id="historico-mes" class="dashboard">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">
+                <i class="fas fa-history" style="color: #8b5cf6;"></i>
+                Histórico Mensal - SETEMBRO
+            </h1>
+            <p class="dashboard-subtitle">Relatório Mensal - Setembro/2025</p>
+        </div>
+
+        <div class="metrics-grid">
 
 <div class="metric-card" id="cardTotalAtendimentosSemana">
   <div class="metric-header">
@@ -1236,24 +1266,28 @@ setTimeout(atualizarYunySellControle, 3000);
                 <div class="metric-content">
                     <p>Atendimentos totais:</p>
                     <strong>131</strong>
-                    <p class="info-text">Visitas + Indicações + Retornos</div>
+                    <p class="info-text">Visitas + Indicações + Retornos</p>
+                </div>
             </div>
         </div>
 
         <div class="charts-container">
             <div class="chart-card">
-                <h4><i class="fas fa-chart-pie"></i> <div class="chart-container">
+                <h4><i class="fas fa-chart-pie"></i> Distribuição por Diretoria - Setembro</h4>
+                <div class="chart-container">
                     <canvas id="chartDiretoriaSetembro"></canvas>
                 </div>
             </div>
             <div class="chart-card">
-                <h4><i class="fas fa-chart-bar"></i> <div class="chart-container">
+                <h4><i class="fas fa-chart-bar"></i> Tipo de Atendimento - Setembro</h4>
+                <div class="chart-container">
                     <canvas id="chartTipoAtendimentoSetembro"></canvas>
                 </div>
             </div>
         </div>
 
-        <h2 class="timeline-header"><div class="timeline-container">
+        <h2 class="timeline-header">Performance Setembro por Diretoria</h2>
+        <div class="timeline-container">
             <div class="timeline-card">
                 <h4><i class="fas fa-store-alt" style="color: #6366f1;"></i> STORE</h4>
                 <h5>Performance do Mês</h5>
@@ -1636,12 +1670,10 @@ setTimeout(atualizarYunySellControle, 3000);
                         </tr>
                     </thead>
                     <tbody id="tabelaAtendimentos">
-                        <tr>
-                            <td colspan="6" class="loading">...</td>
-                                <i class="fas fa-spinner fa-spin"></i> Carregando dados da planilha...
-                            </td>
-                        </tr>
-                    </tbody>
+  <tr>
+    <td colspan="6" class="loading"><i class="fas fa-spinner fa-spin"></i> Carregando dados da planilha...</td>
+  </tr>
+</tbody>
                 </table>
             </div>
             <div class="pagination">
@@ -2049,7 +2081,7 @@ setTimeout(atualizarYunySellControle, 3000);
     // Inicializar gráficos do resumo
     function inicializarGraficosResumo() {
         // Gráfico de Distribuição por Diretoria
-        const ctx1 = document.getElementById('chartDiretoriaSemana').getContext('2d');
+        const ctx1 = (document.getElementById('chartDiretoriaSemana') && document.getElementById('chartDiretoriaSemana').getContext ? document.getElementById('chartDiretoriaSemana').getContext : null)('2d');
         if (chartDiretoriaSemana) chartDiretoriaSemana.destroy();
 
         const diretorias = contarFrequencia(dadosResumoFiltrados, COL_DIRETORIA);
@@ -2077,7 +2109,7 @@ setTimeout(atualizarYunySellControle, 3000);
         });
 
         // Gráfico de Tipo de Atendimento
-        const ctx2 = document.getElementById('chartTipoAtendimento').getContext('2d');
+        const ctx2 = (document.getElementById('chartTipoAtendimento') && document.getElementById('chartTipoAtendimento').getContext ? document.getElementById('chartTipoAtendimento').getContext : null)('2d');
         if (chartTipoAtendimentoSemana) chartTipoAtendimentoSemana.destroy();
 
         const tipos = contarFrequencia(dadosResumoFiltrados, COL_TIPO);
@@ -2356,7 +2388,7 @@ function popularTabela(data) {
 
     function inicializarGraficosAtendimentos(data = atendimentosPaginados) {
         // 1. Gráfico de Diretoria (Pie)
-        const ctx1 = document.getElementById('chartDiretoriaAtendimentos').getContext('2d');
+        const ctx1 = (document.getElementById('chartDiretoriaAtendimentos') && document.getElementById('chartDiretoriaAtendimentos').getContext ? document.getElementById('chartDiretoriaAtendimentos').getContext : null)('2d');
         if (chartDiretoriaAtendimentos) chartDiretoriaAtendimentos.destroy();
 
         const diretorias = contarFrequencia(data, COL_DIRETORIA);
@@ -2378,7 +2410,7 @@ function popularTabela(data) {
         });
 
         // 2. Gráfico de Tipo (Bar)
-        const ctx2 = document.getElementById('chartTipoAtendimentos').getContext('2d');
+        const ctx2 = (document.getElementById('chartTipoAtendimentos') && document.getElementById('chartTipoAtendimentos').getContext ? document.getElementById('chartTipoAtendimentos').getContext : null)('2d');
         if (chartTipoAtendimentos) chartTipoAtendimentos.destroy();
         
         const tipos = contarFrequencia(data, COL_TIPO);
@@ -2473,7 +2505,8 @@ function popularTabela(data) {
         return directorateElements; // Retorna o mapa de elementos para controle de visibilidade
     }
 
-    async function carregarDadosPipeline() {
+    let _pipelineCache = null;
+async function carregarDadosPipeline() {
         const pipelineStatusArea = document.getElementById('pipelineStatusArea');
         pipelineStatusArea.innerHTML = '<span class="text-warning"><i class="fas fa-spinner fa-spin"></i> Carregando dados do Pipeline...</span>';
 
@@ -2638,7 +2671,7 @@ function popularTabela(data) {
     // ====================================================================
 
     function inicializarGraficosSemana() {
-        const ctx1 = document.getElementById('chartDiretoriaSemana').getContext('2d');
+        const ctx1 = (document.getElementById('chartDiretoriaSemana') && document.getElementById('chartDiretoriaSemana').getContext ? document.getElementById('chartDiretoriaSemana').getContext : null)('2d');
         if (ctx1) {
             new Chart(ctx1, {
                 type: 'doughnut',
@@ -2660,7 +2693,7 @@ function popularTabela(data) {
                 }
             });
         }
-        const ctx2 = document.getElementById('chartTipoAtendimento').getContext('2d');
+        const ctx2 = (document.getElementById('chartTipoAtendimento') && document.getElementById('chartTipoAtendimento').getContext ? document.getElementById('chartTipoAtendimento').getContext : null)('2d');
         if (ctx2) {
             new Chart(ctx2, {
                 type: 'bar',
@@ -2686,7 +2719,7 @@ function popularTabela(data) {
     }
 
     function inicializarGraficosOutubro() {
-        const ctx1 = document.getElementById('chartDiretoriaOutubro').getContext('2d');
+        const ctx1 = (document.getElementById('chartDiretoriaOutubro') && document.getElementById('chartDiretoriaOutubro').getContext ? document.getElementById('chartDiretoriaOutubro').getContext : null)('2d');
         if (ctx1) {
             new Chart(ctx1, {
                 type: 'pie',
@@ -2708,7 +2741,7 @@ function popularTabela(data) {
                 }
             });
         }
-        const ctx2 = document.getElementById('chartTipoAtendimentoOutubro').getContext('2d');
+        const ctx2 = (document.getElementById('chartTipoAtendimentoOutubro') && document.getElementById('chartTipoAtendimentoOutubro').getContext ? document.getElementById('chartTipoAtendimentoOutubro').getContext : null)('2d');
         if (ctx2) {
             new Chart(ctx2, {
                 type: 'bar',
@@ -2734,7 +2767,7 @@ function popularTabela(data) {
     }
 
     function inicializarGraficosSetembro() {
-        const ctx1 = document.getElementById('chartDiretoriaSetembro').getContext('2d');
+        const ctx1 = (document.getElementById('chartDiretoriaSetembro') && document.getElementById('chartDiretoriaSetembro').getContext ? document.getElementById('chartDiretoriaSetembro').getContext : null)('2d');
         if (ctx1) {
             new Chart(ctx1, {
                 type: 'pie',
@@ -2756,7 +2789,7 @@ function popularTabela(data) {
                 }
             });
         }
-        const ctx2 = document.getElementById('chartTipoAtendimentoSetembro').getContext('2d');
+        const ctx2 = (document.getElementById('chartTipoAtendimentoSetembro') && document.getElementById('chartTipoAtendimentoSetembro').getContext ? document.getElementById('chartTipoAtendimentoSetembro').getContext : null)('2d');
         if (ctx2) {
             new Chart(ctx2, {
                 type: 'bar',
@@ -2782,7 +2815,7 @@ function popularTabela(data) {
     }
 
     function inicializarGraficosEstoque() {
-        const ctx1 = document.getElementById('chartVendasTorre').getContext('2d');
+        const ctx1 = (document.getElementById('chartVendasTorre') && document.getElementById('chartVendasTorre').getContext ? document.getElementById('chartVendasTorre').getContext : null)('2d');
         if (ctx1) {
             new Chart(ctx1, {
                 type: 'doughnut',
@@ -2808,7 +2841,7 @@ function popularTabela(data) {
                 }
             });
         }
-        const ctx2 = document.getElementById('chartOrigemVendas').getContext('2d');
+        const ctx2 = (document.getElementById('chartOrigemVendas') && document.getElementById('chartOrigemVendas').getContext ? document.getElementById('chartOrigemVendas').getContext : null)('2d');
         if (ctx2) {
             new Chart(ctx2, {
                 type: 'bar',
@@ -2835,7 +2868,7 @@ function popularTabela(data) {
                 }
             });
         }
-        const ctx3 = document.getElementById('chartPerformance').getContext('2d');
+        const ctx3 = (document.getElementById('chartPerformance') && document.getElementById('chartPerformance').getContext ? document.getElementById('chartPerformance').getContext : null)('2d');
         if (ctx3) {
             new Chart(ctx3, {
                 type: 'doughnut',
@@ -2861,7 +2894,7 @@ function popularTabela(data) {
                 }
             });
         }
-        const ctx4 = document.getElementById('chartVendasEstoque').getContext('2d');
+        const ctx4 = (document.getElementById('chartVendasEstoque') && document.getElementById('chartVendasEstoque').getContext ? document.getElementById('chartVendasEstoque').getContext : null)('2d');
         if (ctx4) {
             new Chart(ctx4, {
                 type: 'pie',
@@ -3041,42 +3074,13 @@ setTimeout(atualizarYunySellControle, 3000);
 </script>
  
 <script>
-(function(){
-  try {
-    function activateTab(targetId) {
-      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-      document.querySelectorAll('.dashboard').forEach(d=>d.classList.remove('active'));
-      var tab = document.querySelector('.tab[data-target="'+targetId+'"]');
-      if(tab) tab.classList.add('active');
-      var dash = document.getElementById(targetId);
-      if(dash) dash.classList.add('active');
-    }
-
-    // Attach click handlers
-    document.querySelectorAll('.tab').forEach(tab=>{
-      tab.addEventListener('click', function(e){
-        var tgt = this.getAttribute('data-target');
-        if(!tgt) return;
-        activateTab(tgt);
-      });
-    });
-
-    // On load, ensure one dashboard is active. Prefer 'resumo' if exists.
-    document.addEventListener('DOMContentLoaded', function(){
-      if(document.querySelector('.dashboard.active')) return;
-      if(document.getElementById('resumo')) activateTab('resumo');
-      else {
-        var firstTab = document.querySelector('.tab[data-target]');
-        if(firstTab) {
-          var tgt = firstTab.getAttribute('data-target');
-          activateTab(tgt);
-        }
-      }
-    });
-  } catch(err) {
-    console.error('Tab init error', err);
-  }
-})();
+function normalizeEmpresa(nome) {
+  if (!nome) return '';
+  return nome.normalize('NFD')
+             .replace(/[\u0300-\u036f]/g, '')
+             .replace(/\s+/g, '')
+             .toUpperCase();
+}
 </script>
 
 </body>
