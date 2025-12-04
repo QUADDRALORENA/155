@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuny Academy - Alta Performance</title>
+    <title>Yuny Academy - Cap 1: Fundações</title>
     <style>
         :root {
             --primary: #0f172a; /* Azul Noturno Yuny */
@@ -13,13 +13,14 @@
             --text: #334155;
             --text-light: #64748b;
             --border: #e2e8f0;
+            --success: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
         
         body { background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
 
-        /* SIDEBAR (Navegação) */
+        /* --- SIDEBAR --- */
         .sidebar {
             width: 280px;
             background: var(--surface);
@@ -27,6 +28,7 @@
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
+            transition: transform 0.3s;
         }
         
         .logo-area {
@@ -67,24 +69,41 @@
             border-left: 3px solid var(--primary);
         }
 
+        .sub-module-list {
+            padding-left: 40px; 
+            font-size: 0.85rem; 
+            color: var(--text); 
+            margin-bottom: 10px;
+            border-left: 2px solid #e2e8f0;
+            margin-left: 20px;
+        }
+
+        .sub-item {
+            padding: 8px 0;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        .sub-item.current { color: var(--primary); font-weight: 700; }
+        .sub-item:hover { color: var(--accent); }
+
         .status-icon { font-size: 1.1rem; }
         .locked { opacity: 0.5; cursor: not-allowed; }
 
-        /* MAIN CONTENT */
+        /* --- MAIN CONTENT --- */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
 
-        /* HEADER DA AULA */
+        /* HEADER */
         .lesson-header {
             background: var(--surface);
             padding: 24px 40px;
             border-bottom: 1px solid var(--border);
         }
 
-        .breadcrumbs { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+        .breadcrumbs { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
         
-        h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 16px; }
+        h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 16px; line-height: 1.2; }
 
-        /* O AUDIO PLAYER DO NOTEBOOK LM */
+        /* AUDIO PLAYER CARD */
         .audio-player-card {
             background: var(--primary);
             color: white;
@@ -93,7 +112,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
         }
 
         .play-btn {
@@ -107,12 +126,12 @@
         .play-btn:hover { transform: scale(1.05); }
         .play-icon { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 14px; border-color: transparent transparent transparent white; margin-left: 2px; }
 
-        .audio-info h4 { font-size: 0.95rem; margin-bottom: 4px; }
-        .audio-info p { font-size: 0.8rem; opacity: 0.8; }
+        .audio-info h4 { font-size: 0.95rem; margin-bottom: 2px; }
+        .audio-info p { font-size: 0.75rem; opacity: 0.7; letter-spacing: 0.5px; text-transform: uppercase; }
         .waveform { height: 24px; flex: 1; background: rgba(255,255,255,0.1); border-radius: 4px; position: relative; overflow: hidden; }
-        .waveform::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 35%; background: rgba(255,255,255,0.3); }
+        .waveform::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 45%; background: rgba(255,255,255,0.3); }
 
-        /* ABAS DE NAVEGAÇÃO */
+        /* TABS */
         .tabs-container {
             padding: 0 40px;
             background: var(--surface);
@@ -123,52 +142,90 @@
 
         .tab {
             padding: 16px 0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-light);
             cursor: pointer;
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .tab.active { color: var(--primary); }
         .tab.active::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--accent);
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--accent);
         }
 
-        /* ÁREA DE CONTEÚDO (SCROLLABLE) */
+        /* CONTENT AREAS */
         .content-area {
             padding: 40px;
             overflow-y: auto;
             max-width: 900px;
+            display: none; /* Hidden by default */
         }
+        .content-area.active-content { display: block; animation: fadeIn 0.3s ease; }
 
-        /* COMPONENTES DE CONTEÚDO */
-        .section-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; color: var(--primary); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* TYPOGRAPHY & ELEMENTS */
+        .section-title { font-size: 1.2rem; font-weight: 700; margin: 30px 0 16px 0; color: var(--primary); }
+        .section-title:first-child { margin-top: 0; }
         
-        p { line-height: 1.6; margin-bottom: 16px; font-size: 1rem; }
+        p { line-height: 1.7; margin-bottom: 16px; font-size: 1.05rem; color: #475569; }
 
+        /* Highlight Box (Yuny Insight) */
         .highlight-box {
             background: #fffbeb;
             border-left: 4px solid var(--accent);
-            padding: 20px;
+            padding: 24px;
             border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+        }
+        .highlight-title { font-weight: 700; color: #92400e; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; text-transform: uppercase; }
+
+        /* Visual: TRIAD GRID */
+        .triad-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
             margin: 24px 0;
         }
-
-        .highlight-title { font-weight: 700; color: #92400e; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-
-        .checklist { list-style: none; margin: 20px 0; }
-        .checklist li {
-            padding: 12px;
-            border: 1px solid var(--border);
-            margin-bottom: 8px;
-            border-radius: 6px;
-            display: flex; align-items: center; gap: 12px;
-            background: white;
+        .triad-card {
+            background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .checklist input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); }
+        .triad-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .triad-title { font-weight: 700; color: var(--primary); margin-bottom: 4px; display: block; }
+        .triad-desc { font-size: 0.8rem; color: var(--text-light); }
 
-        /* RODAPÉ (AÇÃO) */
+        /* Downloads (Tools Tab) */
+        .download-card {
+            display: flex; align-items: center; justify-content: space-between;
+            background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 16px;
+        }
+        .file-info { display: flex; align-items: center; gap: 15px; }
+        .file-icon { width: 40px; height: 40px; background: #ffe4e6; color: #be123c; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; }
+
+        /* Flashcards (Training Tab) */
+        .flashcard-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .flashcard {
+            background: white; border: 1px solid var(--border); height: 200px; border-radius: 12px;
+            position: relative; cursor: pointer; perspective: 1000px;
+        }
+        .flashcard-inner {
+            position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d;
+            padding: 20px; display: flex; align-items: center; justify-content: center;
+        }
+        .flashcard:hover .flashcard-inner { transform: rotateY(180deg); }
+        .card-front, .card-back {
+            position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;
+        }
+        .card-front { background: white; color: var(--primary); font-weight: 600; }
+        .card-back { background: var(--primary); color: white; transform: rotateY(180deg); border-radius: 11px; }
+        .card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; opacity: 0.6; }
+
+        /* FOOTER */
         .lesson-footer {
             padding: 20px 40px;
             background: var(--surface);
@@ -185,6 +242,7 @@
             cursor: pointer;
             border: none;
             transition: all 0.2s;
+            font-size: 0.9rem;
         }
 
         .btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
@@ -201,107 +259,170 @@
             YUNY ACADEMY
         </div>
         <div class="module-list">
-            <div class="module-item">
-                <span class="status-icon">✅</span> 1. Fundações da AP
-            </div>
-            <div class="module-item">
-                <span class="status-icon">✅</span> 2. CRM & Funil
-            </div>
-            <div class="module-item">
-                <span class="status-icon">✅</span> 3. Prospecção Ativa
-            </div>
-            <div class="module-item">
-                <span class="status-icon">✅</span> 4. Domínio do Produto
-            </div>
+            
             <div class="module-item active">
-                <span class="status-icon">▶️</span> 5. Ligação de Alta Performance
+                <span class="status-icon">▶️</span> 1. Fundações da AP
             </div>
-            <div style="padding-left: 40px; font-size: 0.85rem; color: var(--primary); margin-bottom: 10px;">
-                <div style="margin-bottom: 8px; font-weight: bold;">5.1 Framework Perfeito</div>
-                <div style="margin-bottom: 8px; opacity: 0.7;">5.2 Voz e Ritmo</div>
-                <div style="margin-bottom: 8px; opacity: 0.7;">5.3 Scripts Prontos</div>
+            <div class="sub-module-list">
+                <div class="sub-item current">1.1 A Tríade R.T.E.</div>
+                <div class="sub-item">1.2 Mentalidade Blindada</div>
+                <div class="sub-item">1.3 Doctor Frame</div>
+                <div class="sub-item">1.4 Blocos de Ouro</div>
             </div>
 
-            <div class="module-item locked">
-                <span class="status-icon">🔒</span> 6. Apresentação em Stand
-            </div>
-            <div class="module-item locked">
-                <span class="status-icon">🔒</span> 7. Negociação
-            </div>
+            <div class="module-item locked"><span class="status-icon">🔒</span> 2. CRM & Funil</div>
+            <div class="module-item locked"><span class="status-icon">🔒</span> 3. Prospecção Ativa</div>
+            <div class="module-item locked"><span class="status-icon">🔒</span> 4. Domínio do Produto</div>
+            <div class="module-item locked"><span class="status-icon">🔒</span> 5. Ligação de Alta Performance</div>
+            <div class="module-item locked"><span class="status-icon">🔒</span> 6. Apresentação em Stand</div>
+            <div class="module-item locked"><span class="status-icon">🔒</span> 7. Negociação</div>
         </div>
     </nav>
 
     <main class="main">
         
         <header class="lesson-header">
-            <div class="breadcrumbs">Módulo 5 > Ligação</div>
-            <h1>5.1 — O Framework da Ligação Perfeita</h1>
+            <div class="breadcrumbs">Módulo 1 > Fundações</div>
+            <h1>1.1 — O Código da Alta Performance: A Tríade R.T.E.</h1>
             
             <div class="audio-player-card">
                 <div class="play-btn"><div class="play-icon"></div></div>
                 <div class="audio-info" style="flex: 1;">
-                    <h4>Audio Briefing (Notebook LM)</h4>
-                    <p>Resumo executivo do módulo • 05:12 min</p>
+                    <h4>Audio Briefing: "Movimento vs. Progresso"</h4>
+                    <p>Resumo Gerencial • 04:15 min</p>
                 </div>
-                <div class="waveform" style="width: 200px;"></div>
+                <div class="waveform"></div>
             </div>
         </header>
 
         <div class="tabs-container">
-            <div class="tab active">📖 RESUMO & CONCEITO</div>
-            <div class="tab">🛠️ FERRAMENTAS & SCRIPTS</div>
-            <div class="tab">🧠 CARTÕES DE MEMÓRIA</div>
+            <div class="tab active" onclick="openTab('tab1', this)">📖 RESUMO & CONCEITO</div>
+            <div class="tab" onclick="openTab('tab2', this)">🛠️ FERRAMENTAS</div>
+            <div class="tab" onclick="openTab('tab3', this)">🧠 TREINO RÁPIDO</div>
         </div>
 
-        <div class="content-area">
+        <div id="tab1" class="content-area active-content">
             
-            <p>Uma ligação de alta performance não é um improviso. É uma estrutura coreografada onde você controla o ritmo. Na Yuny, não vendemos por telefone; vendemos a <strong>visita</strong>.</p>
+            <p>Muitos corretores acreditam que vender imóvel é um jogo de sorte ou de "dom natural". Na Yuny, nós tratamos vendas como <strong>engenharia</strong>. Se você não está vendendo, uma peça da sua máquina está quebrada.</p>
 
             <div class="highlight-box">
-                <div class="highlight-title">💡 Insight Yuny</div>
-                O objetivo da ligação não é explicar o produto. É identificar se o cliente tem o problema que o produto resolve. Se você explicar demais, ele satisfaz a curiosidade e não visita.
+                <div class="highlight-title">💎 REGRA DE OURO YUNY</div>
+                "Alta Performance não é um pico de vendas em um mês de lançamento. É a ausência de vales profundos nos meses difíceis."
             </div>
 
-            <h3 class="section-title">A Estrutura de 5 Passos (A.D.C.O.C)</h3>
-            <p>O Notebook LM analisou as ligações dos top performers da Yuny e identificou este padrão:</p>
+            <h3 class="section-title">O Sistema R.T.E.</h3>
+            <p>O Notebook LM analisou o comportamento dos top 1% da rede e identificou que eles equilibram perfeitamente três pratos:</p>
 
-            <ul class="checklist">
-                <li>
-                    <input type="checkbox" checked disabled>
-                    <div><strong>1. Abertura (Quebra de Padrão):</strong> Não use "Gostaria de falar com...". Use "Fulano? Aqui é o [Nome], tudo bem?"</div>
-                </li>
-                <li>
-                    <input type="checkbox" checked disabled>
-                    <div><strong>2. Diagnóstico Rápido:</strong> Valide o interesse antes de ofertar. "Você baixou o book do Quaddra para moradia ou investimento?"</div>
-                </li>
-                <li>
-                    <input type="checkbox">
-                    <div><strong>3. Conexão:</strong> Use a resposta dele para criar rapport.</div>
-                </li>
-                 <li>
-                    <input type="checkbox">
-                    <div><strong>4. Oferta de Valor (Isca):</strong> Não fale do prédio, fale da oportunidade.</div>
-                </li>
-                 <li>
-                    <input type="checkbox">
-                    <div><strong>5. CTA (Chamada para Ação):</strong> Duas opções de horário.</div>
-                </li>
-            </ul>
+            <div class="triad-grid">
+                <div class="triad-card">
+                    <span class="triad-icon">⚡</span>
+                    <span class="triad-title">RITMO</span>
+                    <span class="triad-desc">Volume de atividade. Quem não planta, não colhe.</span>
+                </div>
+                <div class="triad-card">
+                    <span class="triad-icon">🎯</span>
+                    <span class="triad-title">TÉCNICA</span>
+                    <span class="triad-desc">Taxa de conversão. Não queimar o lead na mesa.</span>
+                </div>
+                <div class="triad-card">
+                    <span class="triad-icon">🚀</span>
+                    <span class="triad-title">EXECUÇÃO</span>
+                    <span class="triad-desc">Constância. Fazer o chato bem feito todo dia.</span>
+                </div>
+            </div>
 
-            <h3 class="section-title">Erro Comum</h3>
-            <p>Tentar vender o preço ou a condição de pagamento antes de o cliente ver valor na visita. O script de contorno de objeção para isso está na aba <strong>Ferramentas</strong>.</p>
+            <p>Se você tem <strong>Ritmo</strong> mas não tem <strong>Técnica</strong>, você trabalha muito e vende pouco (o "corretor suado").<br>
+            Se você tem <strong>Técnica</strong> mas não tem <strong>Ritmo</strong>, você é um teórico que passa fome.</p>
 
+        </div>
+
+        <div id="tab2" class="content-area">
+            <h3 class="section-title">Downloads do Módulo</h3>
+            <p>Baixe as ferramentas para aplicar o R.T.E. hoje mesmo.</p>
+
+            <div class="download-card">
+                <div class="file-info">
+                    <div class="file-icon">PDF</div>
+                    <div>
+                        <div style="font-weight: 600;">Diagnóstico R.T.E.</div>
+                        <div style="font-size: 0.8rem; color: #64748b;">Descubra qual pilar está te travando.</div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" style="padding: 8px 16px;">Baixar ↓</button>
+            </div>
+
+            <div class="download-card">
+                <div class="file-info">
+                    <div class="file-icon">XLS</div>
+                    <div>
+                        <div style="font-weight: 600;">Calculadora Reversa de Metas</div>
+                        <div style="font-size: 0.8rem; color: #64748b;">Planilha oficial Yuny.</div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" style="padding: 8px 16px;">Baixar ↓</button>
+            </div>
+        </div>
+
+        <div id="tab3" class="content-area">
+            <h3 class="section-title">Flashcards de Fixação</h3>
+            <p>Passe o mouse (ou toque) nos cartões para revelar a resposta.</p>
+
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="card-front">
+                            <div class="card-label">SITUAÇÃO</div>
+                            O corretor faz 100 ligações (Ritmo) mas não agenda nenhuma visita. Qual o problema?
+                        </div>
+                        <div class="card-back">
+                            <div class="card-label">DIAGNÓSTICO</div>
+                            Falta de TÉCNICA (Script ruim ou tom de voz errado). Ele está queimando leads.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="card-front">
+                            <div class="card-label">CONCEITO</div>
+                            O que diferencia a Alta Performance de apenas "vender bem"?
+                        </div>
+                        <div class="card-back">
+                            <div class="card-label">RESPOSTA</div>
+                            Consistência. Alta Performance é a ausência de vales profundos de resultado.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <footer class="lesson-footer">
-            <button class="btn btn-secondary">← Aula Anterior</button>
+            <button class="btn btn-secondary" disabled>← Anterior</button>
             <div style="text-align: right;">
-                <span style="font-size: 0.8rem; margin-right: 10px; color: var(--text-light);">Leu tudo?</span>
-                <button class="btn btn-primary">Fazer Quiz de Validação →</button>
+                <span style="font-size: 0.8rem; margin-right: 10px; color: var(--text-light);">Já dominou a tríade?</span>
+                <button class="btn btn-primary">Ir para 1.2 Mentalidade Blindada →</button>
             </div>
         </footer>
 
     </main>
+
+    <script>
+        function openTab(tabId, element) {
+            // Esconde todos os conteúdos
+            document.querySelectorAll('.content-area').forEach(content => {
+                content.classList.remove('active-content');
+            });
+            
+            // Remove active de todas as abas
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Mostra o conteúdo certo e ativa a aba
+            document.getElementById(tabId).classList.add('active-content');
+            element.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
