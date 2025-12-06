@@ -1,428 +1,65 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuny Academy - Cap 1: Fundações</title>
-    <style>
-        :root {
-            --primary: #0f172a; /* Azul Noturno Yuny */
-            --accent: #ca8a04; /* Dourado Premium */
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --text: #334155;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --success: #10b981;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+<section id="rte-training" style="padding: 80px 20px; background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <div style="max-width: 1100px; margin: 0 auto;">
         
-        body { background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
-
-        /* --- SIDEBAR --- */
-        .sidebar {
-            width: 280px;
-            background: var(--surface);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-            transition: transform 0.3s;
-        }
-        
-        .logo-area {
-            padding: 24px;
-            border-bottom: 1px solid var(--border);
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo-icon { width: 20px; height: 20px; background: var(--accent); border-radius: 4px; }
-
-        .module-list { overflow-y: auto; flex: 1; padding: 10px; }
-        
-        .module-item {
-            padding: 12px 16px;
-            margin-bottom: 4px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            transition: all 0.2s;
-        }
-
-        .module-item:hover { background: var(--bg); }
-        
-        .module-item.active {
-            background: #eff6ff;
-            color: var(--primary);
-            font-weight: 600;
-            border-left: 3px solid var(--primary);
-        }
-
-        .sub-module-list {
-            padding-left: 40px; 
-            font-size: 0.85rem; 
-            color: var(--text); 
-            margin-bottom: 10px;
-            border-left: 2px solid #e2e8f0;
-            margin-left: 20px;
-        }
-
-        .sub-item {
-            padding: 8px 0;
-            cursor: pointer;
-            color: var(--text-light);
-        }
-        .sub-item.current { color: var(--primary); font-weight: 700; }
-        .sub-item:hover { color: var(--accent); }
-
-        .status-icon { font-size: 1.1rem; }
-        .locked { opacity: 0.5; cursor: not-allowed; }
-
-        /* --- MAIN CONTENT --- */
-        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
-
-        /* HEADER */
-        .lesson-header {
-            background: var(--surface);
-            padding: 24px 40px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .breadcrumbs { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
-        
-        h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 16px; line-height: 1.2; }
-
-        /* AUDIO PLAYER CARD */
-        .audio-player-card {
-            background: var(--primary);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
-        }
-
-        .play-btn {
-            width: 48px; height: 48px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; flex-shrink: 0;
-            transition: transform 0.2s;
-        }
-        .play-btn:hover { transform: scale(1.05); }
-        .play-icon { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 14px; border-color: transparent transparent transparent white; margin-left: 2px; }
-
-        .audio-info h4 { font-size: 0.95rem; margin-bottom: 2px; }
-        .audio-info p { font-size: 0.75rem; opacity: 0.7; letter-spacing: 0.5px; text-transform: uppercase; }
-        .waveform { height: 24px; flex: 1; background: rgba(255,255,255,0.1); border-radius: 4px; position: relative; overflow: hidden; }
-        .waveform::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 45%; background: rgba(255,255,255,0.3); }
-
-        /* TABS */
-        .tabs-container {
-            padding: 0 40px;
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            gap: 32px;
-        }
-
-        .tab {
-            padding: 16px 0;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-light);
-            cursor: pointer;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .tab.active { color: var(--primary); }
-        .tab.active::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--accent);
-        }
-
-        /* CONTENT AREAS */
-        .content-area {
-            padding: 40px;
-            overflow-y: auto;
-            max-width: 900px;
-            display: none; /* Hidden by default */
-        }
-        .content-area.active-content { display: block; animation: fadeIn 0.3s ease; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* TYPOGRAPHY & ELEMENTS */
-        .section-title { font-size: 1.2rem; font-weight: 700; margin: 30px 0 16px 0; color: var(--primary); }
-        .section-title:first-child { margin-top: 0; }
-        
-        p { line-height: 1.7; margin-bottom: 16px; font-size: 1.05rem; color: #475569; }
-
-        /* Highlight Box (Yuny Insight) */
-        .highlight-box {
-            background: #fffbeb;
-            border-left: 4px solid var(--accent);
-            padding: 24px;
-            border-radius: 0 8px 8px 0;
-            margin: 30px 0;
-        }
-        .highlight-title { font-weight: 700; color: #92400e; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; text-transform: uppercase; }
-
-        /* Visual: TRIAD GRID */
-        .triad-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 16px;
-            margin: 24px 0;
-        }
-        .triad-card {
-            background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .triad-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
-        .triad-title { font-weight: 700; color: var(--primary); margin-bottom: 4px; display: block; }
-        .triad-desc { font-size: 0.8rem; color: var(--text-light); }
-
-        /* Downloads (Tools Tab) */
-        .download-card {
-            display: flex; align-items: center; justify-content: space-between;
-            background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 16px;
-        }
-        .file-info { display: flex; align-items: center; gap: 15px; }
-        .file-icon { width: 40px; height: 40px; background: #ffe4e6; color: #be123c; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; }
-
-        /* Flashcards (Training Tab) */
-        .flashcard-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .flashcard {
-            background: white; border: 1px solid var(--border); height: 200px; border-radius: 12px;
-            position: relative; cursor: pointer; perspective: 1000px;
-        }
-        .flashcard-inner {
-            position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d;
-            padding: 20px; display: flex; align-items: center; justify-content: center;
-        }
-        .flashcard:hover .flashcard-inner { transform: rotateY(180deg); }
-        .card-front, .card-back {
-            position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;
-        }
-        .card-front { background: white; color: var(--primary); font-weight: 600; }
-        .card-back { background: var(--primary); color: white; transform: rotateY(180deg); border-radius: 11px; }
-        .card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; opacity: 0.6; }
-
-        /* FOOTER */
-        .lesson-footer {
-            padding: 20px 40px;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-        }
-
-        .btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: #1e293b; }
-
-    </style>
-</head>
-<body>
-
-    <nav class="sidebar">
-        <div class="logo-area">
-            <div class="logo-icon"></div>
-            YUNY ACADEMY
-        </div>
-        <div class="module-list">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span style="background-color: #0d2e4e; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Manual Prático para Corretores de Elite</span>
+            <h2 style="color: #0d2e4e; font-size: 3rem; margin-top: 20px; margin-bottom: 10px; font-weight: 800;">O Código R.T.E.</h2>
+            <p style="color: #555; font-size: 1.3rem; max-width: 700px; margin: 0 auto 30px auto;">A tríade inseparável que transforma vendedores comuns em consultores de alta performance.</p>
             
-            <div class="module-item active">
-                <span class="status-icon">▶️</span> 1. Fundações da AP
+            <div style="background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: inline-block; max-width: 800px;">
+                <p style="font-style: italic; color: #444; font-size: 1.1rem; line-height: 1.8; margin: 0;">
+                    <span style="color: #e67e22; font-weight: bold;">"</span>Técnica sem esforço é apenas teoria. Esforço sem técnica é desperdício de energia. E ambos sem foco em resultados são apenas um hobby.<span style="color: #e67e22; font-weight: bold;">"</span>
+                </p>
             </div>
-            <div class="sub-module-list">
-                <div class="sub-item current">1.1 A Tríade R.T.E.</div>
-                <div class="sub-item">1.2 Mentalidade Blindada</div>
-                <div class="sub-item">1.3 Doctor Frame</div>
-                <div class="sub-item">1.4 Blocos de Ouro</div>
-            </div>
-
-            <div class="module-item locked"><span class="status-icon">🔒</span> 2. CRM & Funil</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 3. Prospecção Ativa</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 4. Domínio do Produto</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 5. Ligação de Alta Performance</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 6. Apresentação em Stand</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 7. Negociação</div>
         </div>
-    </nav>
 
-    <main class="main">
-        
-        <header class="lesson-header">
-            <div class="breadcrumbs">Módulo 1 > Fundações</div>
-            <h1>1.1 — O Código da Alta Performance: A Tríade R.T.E.</h1>
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 60px;">
             
-            <div class="audio-player-card">
-                <div class="play-btn"><div class="play-icon"></div></div>
-                <div class="audio-info" style="flex: 1;">
-                    <h4>Audio Briefing: "Movimento vs. Progresso"</h4>
-                    <p>Resumo Gerencial • 04:15 min</p>
-                </div>
-                <div class="waveform"></div>
+            <div style="flex: 1; min-width: 300px; background: #0d2e4e; color: white; padding: 40px; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -20px; right: -20px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+                
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px; position: relative; z-index: 1;">🎧 Podcast Exclusivo</h3>
+                <p style="opacity: 0.9; margin-bottom: 30px; position: relative; z-index: 1;">Ouça a análise completa sobre a engenharia reversa de metas e como blindar sua agenda.</p>
+                
+                <a href="https://drive.google.com/file/d/15yXQ704AfrKTDbxOzEcv084qAaBJ3ppL/view?usp=sharing" target="_blank" style="background-color: #e67e22; color: white; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; text-align: center; transition: transform 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 10px;">
+                    <span>▶ Ouvir Áudio Completo</span>
+                </a>
             </div>
-        </header>
 
-        <div class="tabs-container">
-            <div class="tab active" onclick="openTab('tab1', this)">📖 RESUMO & CONCEITO</div>
-            <div class="tab" onclick="openTab('tab2', this)">🛠️ FERRAMENTAS</div>
-            <div class="tab" onclick="openTab('tab3', this)">🧠 TREINO RÁPIDO</div>
+            <div style="flex: 2; min-width: 300px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    
+                    <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-left: 5px solid #2c3e50;">
+                        <h4 style="color: #2c3e50; font-size: 1.5rem; margin-bottom: 10px;">01. Resultados</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">A Mente Orientada a Dados</p>
+                        <p style="font-size: 0.95rem; line-height: 1.5; color: #444;">O fim do "feeling". Utilize a <strong>Engenharia Reversa</strong>: não foque na venda final, mas nas atividades diárias (ligações qualificadas) que você controla.</p>
+                    </div>
+
+                    <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-left: 5px solid #e67e22;">
+                        <h4 style="color: #e67e22; font-size: 1.5rem; margin-bottom: 10px;">02. Técnica</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">Ferramentas de Conversão</p>
+                        <p style="font-size: 0.95rem; line-height: 1.5; color: #444;">Domine o <strong>SPIN Selling</strong> para descobrir a dor do cliente e aprenda a isolar a objeção de preço transformando-a em valor percebido.</p>
+                    </div>
+
+                    <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-left: 5px solid #27ae60;">
+                        <h4 style="color: #27ae60; font-size: 1.5rem; margin-bottom: 10px;">03. Esforço</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">Rotina e Constância</p>
+                        <p style="font-size: 0.95rem; line-height: 1.5; color: #444;">Aplica o conceito <strong>Hunter vs Farmer</strong>. Use blocos de tempo blindados e faça o follow-up infinito (a maioria desiste no 2º contato; o ouro está entre o 5º e o 12º).</p>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
-        <div id="tab1" class="content-area active-content">
+        <div style="text-align: center; border-top: 1px solid #ddd; padding-top: 50px;">
+            <h3 style="color: #333; margin-bottom: 15px;">Tenha o Manual Completo em Mãos</h3>
+            <p style="color: #666; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Baixe o PDF com os scripts de negociação, a planilha de cálculo de meta reversa e o checklist de autoavaliação R.T.E.</p>
             
-            <p>Muitos corretores acreditam que vender imóvel é um jogo de sorte ou de "dom natural". Na Yuny, nós tratamos vendas como <strong>engenharia</strong>. Se você não está vendendo, uma peça da sua máquina está quebrada.</p>
-
-            <div class="highlight-box">
-                <div class="highlight-title">💎 REGRA DE OURO YUNY</div>
-                "Alta Performance não é um pico de vendas em um mês de lançamento. É a ausência de vales profundos nos meses difíceis."
-            </div>
-
-            <h3 class="section-title">O Sistema R.T.E.</h3>
-            <p>O Notebook LM analisou o comportamento dos top 1% da rede e identificou que eles equilibram perfeitamente três pratos:</p>
-
-            <div class="triad-grid">
-                <div class="triad-card">
-                    <span class="triad-icon">⚡</span>
-                    <span class="triad-title">RITMO</span>
-                    <span class="triad-desc">Volume de atividade. Quem não planta, não colhe.</span>
-                </div>
-                <div class="triad-card">
-                    <span class="triad-icon">🎯</span>
-                    <span class="triad-title">TÉCNICA</span>
-                    <span class="triad-desc">Taxa de conversão. Não queimar o lead na mesa.</span>
-                </div>
-                <div class="triad-card">
-                    <span class="triad-icon">🚀</span>
-                    <span class="triad-title">EXECUÇÃO</span>
-                    <span class="triad-desc">Constância. Fazer o chato bem feito todo dia.</span>
-                </div>
-            </div>
-
-            <p>Se você tem <strong>Ritmo</strong> mas não tem <strong>Técnica</strong>, você trabalha muito e vende pouco (o "corretor suado").<br>
-            Se você tem <strong>Técnica</strong> mas não tem <strong>Ritmo</strong>, você é um teórico que passa fome.</p>
-
+            <a href="https://drive.google.com/file/d/14fcevNO8iBtx3mQ4gA02bemS2YboFbuB/view?usp=drive_link" target="_blank" style="background-color: #0d2e4e; color: white; padding: 18px 40px; text-decoration: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; box-shadow: 0 10px 25px rgba(13, 46, 78, 0.2); transition: all 0.3s ease; display: inline-block;">
+                📥 Baixar Workbook R.T.E. (PDF)
+            </a>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: #888;">*Link direto para o material oficial</p>
         </div>
 
-        <div id="tab2" class="content-area">
-            <h3 class="section-title">Downloads do Módulo</h3>
-            <p>Baixe as ferramentas para aplicar o R.T.E. hoje mesmo.</p>
-
-            <div class="download-card">
-                <div class="file-info">
-                    <div class="file-icon">PDF</div>
-                    <div>
-                        <div style="font-weight: 600;">Diagnóstico R.T.E.</div>
-                        <div style="font-size: 0.8rem; color: #64748b;">Descubra qual pilar está te travando.</div>
-                    </div>
-                </div>
-                <button class="btn btn-secondary" style="padding: 8px 16px;">Baixar ↓</button>
-            </div>
-
-            <div class="download-card">
-                <div class="file-info">
-                    <div class="file-icon">XLS</div>
-                    <div>
-                        <div style="font-weight: 600;">Calculadora Reversa de Metas</div>
-                        <div style="font-size: 0.8rem; color: #64748b;">Planilha oficial Yuny.</div>
-                    </div>
-                </div>
-                <button class="btn btn-secondary" style="padding: 8px 16px;">Baixar ↓</button>
-            </div>
-        </div>
-
-        <div id="tab3" class="content-area">
-            <h3 class="section-title">Flashcards de Fixação</h3>
-            <p>Passe o mouse (ou toque) nos cartões para revelar a resposta.</p>
-
-            <div class="flashcard-container">
-                <div class="flashcard">
-                    <div class="flashcard-inner">
-                        <div class="card-front">
-                            <div class="card-label">SITUAÇÃO</div>
-                            O corretor faz 100 ligações (Ritmo) mas não agenda nenhuma visita. Qual o problema?
-                        </div>
-                        <div class="card-back">
-                            <div class="card-label">DIAGNÓSTICO</div>
-                            Falta de TÉCNICA (Script ruim ou tom de voz errado). Ele está queimando leads.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flashcard">
-                    <div class="flashcard-inner">
-                        <div class="card-front">
-                            <div class="card-label">CONCEITO</div>
-                            O que diferencia a Alta Performance de apenas "vender bem"?
-                        </div>
-                        <div class="card-back">
-                            <div class="card-label">RESPOSTA</div>
-                            Consistência. Alta Performance é a ausência de vales profundos de resultado.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="lesson-footer">
-            <button class="btn btn-secondary" disabled>← Anterior</button>
-            <div style="text-align: right;">
-                <span style="font-size: 0.8rem; margin-right: 10px; color: var(--text-light);">Já dominou a tríade?</span>
-                <button class="btn btn-primary">Ir para 1.2 Mentalidade Blindada →</button>
-            </div>
-        </footer>
-
-    </main>
-
-    <script>
-        function openTab(tabId, element) {
-            // Esconde todos os conteúdos
-            document.querySelectorAll('.content-area').forEach(content => {
-                content.classList.remove('active-content');
-            });
-            
-            // Remove active de todas as abas
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            // Mostra o conteúdo certo e ativa a aba
-            document.getElementById(tabId).classList.add('active-content');
-            element.classList.add('active');
-        }
-    </script>
-
-</body>
-</html>
+    </div>
+</section>
