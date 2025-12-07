@@ -85,10 +85,10 @@
             transition: color 0.2s;
         }
         
-        /* Classe para o item selecionado no menu */
+        /* Estados do Menu */
         .sub-item.current { color: var(--primary); font-weight: 700; }
         .sub-item:hover { color: var(--accent); }
-        .sub-item.completed { color: var(--success); }
+        .sub-item.completed { color: var(--success); text-decoration: line-through; opacity: 0.8; }
 
         .status-icon { font-size: 1.1rem; }
         .locked { opacity: 0.5; cursor: not-allowed; }
@@ -286,7 +286,7 @@
             <div class="sub-module-list">
                 <div id="nav-l1" class="sub-item current" onclick="showLesson('lesson1')">1.1 A Tríade R.T.E.</div>
                 <div id="nav-l2" class="sub-item" onclick="showLesson('lesson2')">1.2 Mentalidade Blindada</div>
-                <div class="sub-item">1.3 Doctor Frame</div>
+                <div id="nav-l3" class="sub-item" onclick="showLesson('lesson3')">1.3 Doctor Frame</div>
                 <div class="sub-item">1.4 Blocos de Ouro</div>
             </div>
 
@@ -328,39 +328,32 @@
 
             <div id="l1-tab1" class="content-area active-content">
                 <p>O mercado imobiliário não aceita mais amadores. Na Yuny, alta performance não é um pico isolado de vendas, é <strong>consistência</strong>. Para atingir isso, utilizamos o <strong>Código R.T.E.</strong>.</p>
-
                 <div class="highlight-box">
                     <div class="highlight-title">💎 MANIFESTO R.T.E.</div>
                     "Técnica sem esforço é teoria. Esforço sem técnica é desperdício. E ambos sem foco em resultados são apenas hobby."
                 </div>
-
                 <h3 class="section-title">Os 3 Pilares da Elite</h3>
-                <p>Conforme detalhado no treinamento, o corretor de elite domina estas três áreas:</p>
-
                 <div class="triad-grid">
                     <div class="triad-card">
                         <span class="triad-icon">📊</span>
                         <span class="triad-title">RESULTADOS</span>
-                        <span class="triad-desc"><strong>Engenharia Reversa.</strong> Não trabalhe pelo "feeling", trabalhe pelos dados. Defina a meta e calcule a atividade necessária.</span>
+                        <span class="triad-desc"><strong>Engenharia Reversa.</strong> Não trabalhe pelo "feeling", trabalhe pelos dados.</span>
                     </div>
                     <div class="triad-card">
                         <span class="triad-icon">🛠️</span>
                         <span class="triad-title">TÉCNICA</span>
-                        <span class="triad-desc"><strong>SPIN Selling.</strong> Isole a objeção de preço e venda o valor. O cliente não compra tijolo, compra solução.</span>
+                        <span class="triad-desc"><strong>SPIN Selling.</strong> Isole a objeção de preço e venda o valor.</span>
                     </div>
                     <div class="triad-card">
                         <span class="triad-icon">💪</span>
                         <span class="triad-title">ESFORÇO</span>
-                        <span class="triad-desc"><strong>Hunter vs Farmer.</strong> Blocos de tempo blindados e Follow-up infinito (a venda acontece entre o 5º e o 12º contato).</span>
+                        <span class="triad-desc"><strong>Hunter vs Farmer.</strong> Blocos de tempo blindados e Follow-up infinito.</span>
                     </div>
                 </div>
-                <p>Se você tem <strong>Esforço</strong> mas não tem <strong>Técnica</strong>, você é o "corretor suado" que corre muito e chega em lugar nenhum. Se você tem <strong>Técnica</strong> mas não foca em <strong>Resultados</strong>, você perde tempo com clientes que nunca vão comprar.</p>
             </div>
 
             <div id="l1-tab2" class="content-area">
                 <h3 class="section-title">Downloads do Módulo</h3>
-                <p>Baixe o material oficial para acompanhar o treinamento.</p>
-
                 <div class="download-card">
                     <div class="file-info">
                         <div class="file-icon">PDF</div>
@@ -371,48 +364,21 @@
                     </div>
                     <a href="https://drive.google.com/file/d/1CYEjosVxMJR7ZKm6Dtvu4lePUS1UhyQ2/view?usp=sharing" target="_blank" class="btn btn-primary" style="padding: 8px 16px;">Baixar PDF</a>
                 </div>
-
-                <div class="download-card">
-                    <div class="file-info">
-                        <div class="file-icon">XLS</div>
-                        <div>
-                            <div style="font-weight: 600;">Calculadora Reversa de Metas</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">Planilha oficial Yuny (Em breve).</div>
-                        </div>
-                    </div>
-                    <button class="btn btn-secondary" style="padding: 8px 16px;" disabled>Em breve</button>
-                </div>
             </div>
 
             <div id="l1-tab3" class="content-area">
                 <h3 class="section-title">Flashcards de Fixação</h3>
-                <p>Passe o mouse (ou toque) nos cartões para revelar a resposta baseada no método R.T.E.</p>
-
                 <div class="flashcard-container">
                     <div class="flashcard">
                         <div class="flashcard-inner">
-                            <div class="card-front">
-                                <div class="card-label">PILAR: ESFORÇO</div>
-                                O que são os modos "Hunter" e "Farmer"?
-                            </div>
-                            <div class="card-back">
-                                <div class="card-label">RESPOSTA</div>
-                                <strong>Hunter:</strong> Foco em trazer novos negócios (prospecção).<br>
-                                <strong>Farmer:</strong> Foco em cuidar do que já tem (burocracia/pós-venda). Não misture os dois!
-                            </div>
+                            <div class="card-front"><div class="card-label">PILAR: ESFORÇO</div>O que são os modos "Hunter" e "Farmer"?</div>
+                            <div class="card-back"><div class="card-label">RESPOSTA</div><strong>Hunter:</strong> Foco em negócios novos.<br><strong>Farmer:</strong> Foco em cuidar do que já tem.</div>
                         </div>
                     </div>
-
                     <div class="flashcard">
                         <div class="flashcard-inner">
-                            <div class="card-front">
-                                <div class="card-label">ESTATÍSTICA</div>
-                                A maioria das vendas acontece em qual contato?
-                            </div>
-                            <div class="card-back">
-                                <div class="card-label">DADO REAL</div>
-                                Entre o <strong>5º e o 12º contato</strong>. A maioria dos corretores desiste no 2º. O segredo é o follow-up infinito.
-                            </div>
+                            <div class="card-front"><div class="card-label">ESTATÍSTICA</div>A maioria das vendas acontece em qual contato?</div>
+                            <div class="card-back"><div class="card-label">DADO REAL</div>Entre o <strong>5º e o 12º contato</strong>. Follow-up é dinheiro.</div>
                         </div>
                     </div>
                 </div>
@@ -420,10 +386,7 @@
 
             <footer class="lesson-footer">
                 <button class="btn btn-secondary" disabled>← Anterior</button>
-                <div style="text-align: right;">
-                    <span style="font-size: 0.8rem; margin-right: 10px; color: var(--text-light);">Concluiu esta etapa?</span>
-                    <button class="btn btn-primary" onclick="showLesson('lesson2')">Ir para 1.2 Mentalidade Blindada →</button>
-                </div>
+                <button class="btn btn-primary" onclick="showLesson('lesson2')">Ir para 1.2 Mentalidade →</button>
             </footer>
         </div>
 
@@ -453,40 +416,33 @@
             </div>
 
             <div id="l2-tab1" class="content-area active-content">
-                <p>A maioria dos corretores desiste nos primeiros 12 meses não por falta de técnica, mas por incapacidade de gerenciar a frustração. O Top Performer da Yuny opera em linha reta: ele não se empolga com a promessa e nem se deprime com o "não".</p>
-
+                <p>O Top Performer da Yuny opera em linha reta: ele não se empolga com a promessa e nem se deprime com o "não".</p>
                 <div class="highlight-box">
                     <div class="highlight-title">💎 PRINCÍPIO ESTOICO</div>
-                    "Você não controla se o cliente vai comprar. Você controla a sua Atividade Diária Produtiva (ADP). Apaixone-se pelo processo, e o resultado será inevitável."
+                    "Você controla a sua Atividade Diária Produtiva (ADP). Apaixone-se pelo processo, e o resultado será inevitável."
                 </div>
-
                 <h3 class="section-title">Os 3 Pilares da Blindagem</h3>
-
                 <div class="triad-grid">
                     <div class="triad-card">
                         <span class="triad-icon">🎮</span>
                         <span class="triad-title">CONTROLE (ADP)</span>
-                        <span class="triad-desc">Você controla quantas ligações faz, mas não quem atende. Foque 100% no que depende de você.</span>
+                        <span class="triad-desc">Você controla quantas ligações faz, mas não quem atende.</span>
                     </div>
                     <div class="triad-card">
                         <span class="triad-icon">📈</span>
                         <span class="triad-title">MATEMÁTICA DO NÃO</span>
-                        <span class="triad-desc">Para cada venda, você precisa de 20 a 30 "Nãos". O "Não" não é falha, é apenas estatística.</span>
+                        <span class="triad-desc">Cada venda exige de 20 a 30 "Nãos". O "Não" é apenas estatística.</span>
                     </div>
                     <div class="triad-card">
                         <span class="triad-icon">⏭️</span>
                         <span class="triad-title">NEXT PLAY</span>
-                        <span class="triad-desc">Cliente cancelou? Next Play. Vendeu? Next Play. A resiliência é a velocidade de recuperação.</span>
+                        <span class="triad-desc">A resiliência é a velocidade de recuperação. Vendeu? Next play. Perdeu? Next play.</span>
                     </div>
                 </div>
-
-                <p>O <strong>Ritmo de Recuperação</strong> é o que define o campeão. O corretor amador perde 2 dias "de luto" por uma venda caída. O Elite respira fundo e volta para o funil em 5 minutos.</p>
             </div>
 
             <div id="l2-tab2" class="content-area">
                 <h3 class="section-title">Material de Apoio</h3>
-                <p>Baixe o PDF completo para estudar o ritual matinal e a autoavaliação.</p>
-
                 <div class="download-card">
                     <div class="file-info">
                         <div class="file-icon">PDF</div>
@@ -501,18 +457,109 @@
 
             <div id="l2-tab3" class="content-area">
                 <h3 class="section-title">Flashcards de Fixação</h3>
-                <p>Teste sua blindagem emocional. Vire o cartão para ver a resposta da Elite.</p>
+                <div class="flashcard-container">
+                    <div class="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="card-front"><div class="card-label">SITUAÇÃO</div>"Levei 10 nãos seguidos hoje de manhã. Sou péssimo?"</div>
+                            <div class="card-back"><div class="card-label">MENTALIDADE BLINDADA</div><strong>Não.</strong> Você está apenas limpando o caminho estatístico para o "Sim".</div>
+                        </div>
+                    </div>
+                    <div class="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="card-front"><div class="card-label">CONCEITO</div>O que é a regra "Next Play"?</div>
+                            <div class="card-back"><div class="card-label">RESPOSTA</div>Não ficar preso no passado. Corrija ou comemore rápido, e vá para o próximo.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <footer class="lesson-footer">
+                <button class="btn btn-secondary" onclick="showLesson('lesson1')">← Anterior (1.1)</button>
+                <button class="btn btn-primary" onclick="showLesson('lesson3')">Ir para 1.3 Doctor Frame →</button>
+            </footer>
+        </div>
+
+        <div id="lesson3" class="lesson-wrapper">
+            
+            <header class="lesson-header">
+                <div class="breadcrumbs">Módulo 1 > Fundações > Autoridade</div>
+                <h1>1.3 — Doctor Frame: O Diagnóstico de Autoridade</h1>
+                
+                <div class="audio-player-card">
+                    <div style="flex: 1;">
+                        <div class="audio-info" style="margin-bottom: 10px;">
+                            <h4>Podcast: "Pare de Vender, Comece a Receitar"</h4>
+                            <p>Notebook LM • Áudio Oficial Yuny</p>
+                        </div>
+                        <div class="audio-iframe-container">
+                            <iframe src="https://drive.google.com/file/d/1rbg_daj09IGVBdqxaMVhvNPR9BD4cRJb/preview" width="100%" height="100%" style="border:none;"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="tabs-container">
+                <div class="tab active" onclick="openTab('l3-tab1', this)">📖 DOUTOR VS GARÇOM</div>
+                <div class="tab" onclick="openTab('l3-tab2', this)">🛠️ SCRIPTS</div>
+                <div class="tab" onclick="openTab('l3-tab3', this)">🧠 TREINO (FLASHCARDS)</div>
+            </div>
+
+            <div id="l3-tab1" class="content-area active-content">
+                <p>O maior erro do corretor mediano é aceitar o diagnóstico do cliente. O cliente diz: <em>"Quero um 2 quartos no bairro X"</em>. O corretor "Garçom" corre para buscar o produto. O corretor "Doctor Frame" faz a <strong>Anamnese</strong>.</p>
+
+                <div class="highlight-box">
+                    <div class="highlight-title">💎 A REGRA DE OURO</div>
+                    "Quem faz as perguntas detém o controle da conversa. Quem dá as respostas, apenas obedece."
+                </div>
+
+                <h3 class="section-title">A Metamorfose de Autoridade</h3>
+                <div class="triad-grid">
+                    <div class="triad-card">
+                        <span class="triad-icon">🩺</span>
+                        <span class="triad-title">O JALECO</span>
+                        <span class="triad-desc">Estabeleça autoridade logo no início. Você não precisa da venda, o cliente precisa da solução.</span>
+                    </div>
+                    <div class="triad-card">
+                        <span class="triad-icon">🔬</span>
+                        <span class="triad-title">O EXAME</span>
+                        <span class="triad-desc">Investigue a "dor" real. Ninguém compra imóvel por tijolo, compra por mudança de vida (casamento, filhos, status).</span>
+                    </div>
+                    <div class="triad-card">
+                        <span class="triad-icon">💊</span>
+                        <span class="triad-title">A PRESCRIÇÃO</span>
+                        <span class="triad-desc">Só apresente o produto quando tiver certeza que ele cura a dor. Isso aumenta o valor percebido.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="l3-tab2" class="content-area">
+                <h3 class="section-title">Ferramentas de Autoridade</h3>
+                <p>Use este roteiro para não cair na "Friend Zone" do cliente.</p>
+
+                <div class="download-card">
+                    <div class="file-info">
+                        <div class="file-icon">DOC</div>
+                        <div>
+                            <div style="font-weight: 600;">Roteiro de Anamnese Imobiliária</div>
+                            <div style="font-size: 0.8rem; color: #64748b;">As 10 perguntas que revelam a dor real do cliente.</div>
+                        </div>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1ldGvUjXRj00PZAhKYzXJ6HSUFHhrN3CF/view?usp=sharing" target="_blank" class="btn btn-primary" style="padding: 8px 16px;">Baixar Script</a>
+                </div>
+            </div>
+
+            <div id="l3-tab3" class="content-area">
+                <h3 class="section-title">Quebra de Objeção com Frame</h3>
                 <div class="flashcard-container">
                     <div class="flashcard">
                         <div class="flashcard-inner">
                             <div class="card-front">
-                                <div class="card-label">SITUAÇÃO</div>
-                                "Levei 10 nãos seguidos hoje de manhã. Sou péssimo corretor?"
+                                <div class="card-label">O CLIENTE DIZ:</div>
+                                "Não quero papo, só me manda o preço e a planta por WhatsApp."
                             </div>
                             <div class="card-back">
-                                <div class="card-label">MENTALIDADE BLINDADA</div>
-                                <strong>Não.</strong> Pela conversão média, faltam apenas mais 10 para a venda sair. Você está limpando o caminho estatístico.
+                                <div class="card-label">RESPOSTA DOUTOR</div>
+                                "Fulano, eu seria irresponsável se te passasse um preço sem entender seu perfil. Seria como um médico receitar remédio sem exame. Podemos falar 5 min?"
                             </div>
                         </div>
                     </div>
@@ -521,11 +568,11 @@
                         <div class="flashcard-inner">
                             <div class="card-front">
                                 <div class="card-label">CONCEITO</div>
-                                O que é a regra "Next Play"?
+                                Por que não devo responder o preço logo de cara?
                             </div>
                             <div class="card-back">
                                 <div class="card-label">RESPOSTA</div>
-                                É a habilidade de não ficar preso no passado. Se deu errado, corrija e vá para o próximo. Se deu certo, comemore rápido e vá para o próximo.
+                                Porque preço sem valor é apenas custo. Você deve criar valor (a cura da dor) antes de apresentar o custo (o preço do remédio).
                             </div>
                         </div>
                     </div>
@@ -533,10 +580,10 @@
             </div>
 
             <footer class="lesson-footer">
-                <button class="btn btn-secondary" onclick="showLesson('lesson1')">← Anterior (1.1)</button>
+                <button class="btn btn-secondary" onclick="showLesson('lesson2')">← Anterior (1.2)</button>
                 <div style="text-align: right;">
-                    <span style="font-size: 0.8rem; margin-right: 10px; color: var(--text-light);">Mente blindada?</span>
-                    <button class="btn btn-primary">Ir para 1.3 Doctor Frame →</button>
+                    <span style="font-size: 0.8rem; margin-right: 10px; color: var(--text-light);">Receitou a solução?</span>
+                    <button class="btn btn-primary" disabled>Próximo: 1.4 Blocos de Ouro (Em breve)</button>
                 </div>
             </footer>
         </div>
@@ -544,7 +591,7 @@
     </main>
 
     <script>
-        // Função para alternar entre as aulas (1.1 e 1.2)
+        // Função para alternar entre as aulas
         function showLesson(lessonId) {
             // Esconder todas as aulas
             document.querySelectorAll('.lesson-wrapper').forEach(lesson => {
@@ -555,20 +602,29 @@
             document.getElementById(lessonId).classList.add('active-lesson');
 
             // Atualizar o Menu Lateral
-            // Remove 'current' e 'completed' de todos
             document.querySelectorAll('.sub-item').forEach(item => {
                 item.classList.remove('current');
             });
 
-            // Lógica visual simples para o menu
+            // Lógica visual para o menu (Quem é current e quem é completed)
+            const nav1 = document.getElementById('nav-l1');
+            const nav2 = document.getElementById('nav-l2');
+            const nav3 = document.getElementById('nav-l3');
+
+            // Resetar completados para recálculo visual
+            nav1.classList.remove('completed');
+            nav2.classList.remove('completed');
+            nav3.classList.remove('completed');
+
             if (lessonId === 'lesson1') {
-                document.getElementById('nav-l1').classList.add('current');
-                document.getElementById('nav-l1').classList.remove('completed');
-                document.getElementById('nav-l2').classList.remove('current');
+                nav1.classList.add('current');
             } else if (lessonId === 'lesson2') {
-                document.getElementById('nav-l2').classList.add('current');
-                // Marca o anterior como completo visualmente
-                document.getElementById('nav-l1').classList.add('completed'); 
+                nav2.classList.add('current');
+                nav1.classList.add('completed');
+            } else if (lessonId === 'lesson3') {
+                nav3.classList.add('current');
+                nav1.classList.add('completed');
+                nav2.classList.add('completed');
             }
         }
 
