@@ -14,14 +14,14 @@
             --text-light: #64748b;
             --border: #e2e8f0;
             --success: #10b981;
-            --sidebar-width: 280px;
+            --sidebar-width: 260px; /* Sidebar um pouco mais fina */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
         
         body { background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
 
-        /* --- SIDEBAR (RESPONSIVA) --- */
+        /* --- SIDEBAR --- */
         .sidebar {
             width: var(--sidebar-width);
             background: var(--surface);
@@ -35,186 +35,158 @@
         }
         
         .logo-area {
-            padding: 24px;
+            padding: 20px;
             border-bottom: 1px solid var(--border);
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary);
-            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 10px;
         }
         
-        .logo-icon { width: 20px; height: 20px; background: var(--accent); border-radius: 4px; }
-
+        .logo-icon { width: 18px; height: 18px; background: var(--accent); border-radius: 4px; }
         .module-list { overflow-y: auto; flex: 1; padding: 10px; }
         
         .module-item {
-            padding: 12px 16px;
-            margin-bottom: 4px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            transition: all 0.2s;
-            margin-top: 10px;
+            padding: 10px 14px; margin-bottom: 2px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-light); transition: all 0.2s; margin-top: 5px;
         }
-
         .module-item:hover { background: var(--bg); }
-        .module-item.active { background: #eff6ff; color: var(--primary); font-weight: 600; border-left: 3px solid var(--primary); }
+        .module-item.active { background: #eff6ff; color: var(--primary); font-weight: 700; border-left: 3px solid var(--primary); }
 
-        .sub-module-list { padding-left: 40px; font-size: 0.85rem; color: var(--text); margin-bottom: 10px; border-left: 2px solid #e2e8f0; margin-left: 20px; }
-        .sub-item { padding: 10px 0; cursor: pointer; color: var(--text-light); transition: color 0.2s; display: block; } /* Mais área de toque */
+        .sub-module-list { padding-left: 34px; font-size: 0.8rem; color: var(--text); margin-bottom: 8px; border-left: 1px solid #e2e8f0; margin-left: 18px; }
+        .sub-item { padding: 6px 0; cursor: pointer; color: var(--text-light); transition: color 0.2s; display: block; }
         .sub-item.current { color: var(--primary); font-weight: 700; }
-        .sub-item.completed { color: var(--success); text-decoration: line-through; opacity: 0.8; }
+        .sub-item.completed { color: var(--success); text-decoration: line-through; opacity: 0.7; }
         .locked { opacity: 0.5; cursor: not-allowed; }
-
-        /* Botão fechar menu (Mobile) */
         .close-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; }
-
-        /* Overlay escuro para mobile */
-        .sidebar-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 900; opacity: 0; transition: opacity 0.3s;
-        }
+        .sidebar-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 900; opacity: 0; transition: opacity 0.3s; }
 
         /* --- MAIN CONTENT --- */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; width: 100%; }
 
-        /* Mobile Header (Só aparece no celular) */
         .mobile-header {
-            display: none; padding: 15px 20px; background: var(--surface); border-bottom: 1px solid var(--border);
+            display: none; padding: 12px 15px; background: var(--surface); border-bottom: 1px solid var(--border);
             align-items: center; justify-content: space-between; flex-shrink: 0; z-index: 50;
         }
-        .menu-toggle-btn {
-            background: transparent; border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px;
-            color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer;
-        }
+        .menu-toggle-btn { background: transparent; border: 1px solid var(--border); padding: 6px 10px; border-radius: 6px; color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.85rem; }
 
-        /* --- LAYOUT DA AULA --- */
+        /* LAYOUT DE AULA */
         .lesson-wrapper { display: none; flex-direction: column; height: 100%; overflow: hidden; }
         .lesson-wrapper.active-lesson { display: flex; animation: fadeInPage 0.3s ease; }
         @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
 
         .lesson-header {
-            background: var(--surface); padding: 24px 40px; border-bottom: 1px solid var(--border);
-            flex-shrink: 0; overflow-y: auto; max-height: 45vh; /* Limite altura header */
+            background: var(--surface); padding: 20px 30px; border-bottom: 1px solid var(--border);
+            flex-shrink: 0; overflow-y: auto; max-height: 45vh;
         }
 
-        .breadcrumbs { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
-        h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 16px; line-height: 1.2; }
+        .breadcrumbs { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 0.5px; }
+        h1 { font-size: 1.5rem; color: var(--primary); margin-bottom: 12px; line-height: 1.1; }
 
-        /* PLAYERS MULTIMÍDIA */
-        .media-section { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+        /* PLAYERS "SLIM" */
+        .media-section { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+        .media-card { background: var(--primary); color: white; padding: 12px; border-radius: 8px; box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1); display: flex; align-items: center; gap: 15px;}
+        .media-card.block-display { display: block; } /* Para o vídeo que precisa ser bloco */
+        .media-card.secondary { background: white; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; }
         
-        .media-card {
-            background: var(--primary); color: white; padding: 16px; border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
-        }
-        .media-card.secondary { background: white; border: 1px solid var(--border); color: var(--text); } /* Estilo para os áudios secundários */
-        .media-card.secondary h4 { color: var(--primary); }
-        .media-card.secondary p { color: var(--text-light); }
-
-        /* Video Container (16:9 Responsivo) */
-        .video-container {
-            position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 */
-            background: black; border-radius: 8px; overflow: hidden;
-        }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; background: black; border-radius: 6px; overflow: hidden; margin-top: 8px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-        .audio-iframe-container { width: 100%; height: 50px; border-radius: 6px; overflow: hidden; background: rgba(0,0,0,0.05); }
-        
-        .media-info { margin-bottom: 8px; }
-        .media-info h4 { font-size: 0.95rem; margin-bottom: 2px; }
-        .media-info p { font-size: 0.75rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .audio-iframe-container { width: 100%; height: 40px; border-radius: 4px; overflow: hidden; background: rgba(0,0,0,0.05); flex: 1; }
+        .media-info h4 { font-size: 0.85rem; margin: 0; white-space: nowrap; }
 
         /* TABS */
         .tabs-container {
-            padding: 0 40px; background: var(--surface); border-bottom: 1px solid var(--border);
-            display: flex; gap: 32px; flex-shrink: 0;
-            overflow-x: auto; /* Scroll horizontal no mobile */
-            -webkit-overflow-scrolling: touch; /* Scroll suave iOS */
+            padding: 0 30px; background: var(--surface); border-bottom: 1px solid var(--border);
+            display: flex; gap: 25px; flex-shrink: 0; overflow-x: auto;
         }
         .tab {
-            padding: 16px 0; font-size: 0.85rem; font-weight: 600; color: var(--text-light); cursor: pointer;
-            position: relative; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; /* Não quebra linha */
+            padding: 12px 0; font-size: 0.8rem; font-weight: 600; color: var(--text-light); cursor: pointer;
+            position: relative; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
         }
         .tab.active { color: var(--primary); }
-        .tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--accent); }
+        .tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--accent); }
 
         /* CONTEÚDO */
-        .content-area { padding: 40px; overflow-y: auto; max-width: 900px; display: none; flex: 1; -webkit-overflow-scrolling: touch; }
+        .content-area { padding: 30px; overflow-y: auto; max-width: 1200px; display: none; flex: 1; }
         .content-area.active-content { display: block; animation: fadeInContent 0.3s ease; }
         @keyframes fadeInContent { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        p { line-height: 1.6; margin-bottom: 16px; font-size: 1rem; color: #475569; }
-        .section-title { font-size: 1.2rem; font-weight: 700; margin: 30px 0 16px 0; color: var(--primary); }
+        p { line-height: 1.6; margin-bottom: 14px; font-size: 0.95rem; color: #475569; }
+        .highlight-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: 15px; border-radius: 0 6px 6px 0; margin: 20px 0; font-size: 0.9rem; }
+        .highlight-title { font-weight: 700; color: #92400e; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase; }
 
-        /* ELEMENTOS VISUAIS */
-        .highlight-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: 24px; border-radius: 0 8px 8px 0; margin: 25px 0; }
-        .highlight-title { font-weight: 700; color: #92400e; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; text-transform: uppercase; }
+        /* GRID COMPACTO PARA CONCEITOS (TRIAD) */
+        .triad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+        .triad-card { background: white; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .triad-icon { font-size: 1.5rem; margin-bottom: 5px; display: block; }
+        .triad-title { font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 2px; display: block; }
+        .triad-desc { font-size: 0.75rem; color: var(--text-light); line-height: 1.4; }
 
-        .triad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
-        .triad-card { background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .triad-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
-        .triad-title { font-weight: 700; color: var(--primary); margin-bottom: 4px; display: block; }
-
-        .download-card { display: flex; align-items: center; justify-content: space-between; background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 16px; }
-        .file-info { display: flex; align-items: center; gap: 15px; }
-        .file-icon { width: 40px; height: 40px; background: #ffe4e6; color: #be123c; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
-
-        .flashcard-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .flashcard { background: white; border: 1px solid var(--border); height: 200px; border-radius: 12px; position: relative; cursor: pointer; perspective: 1000px; }
-        .flashcard-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; padding: 20px; display: flex; align-items: center; justify-content: center; }
+        /* === GRID DE FLASHCARDS "MINI" (10 POR CAPÍTULO) === */
+        /* Desktop: 5 por linha (2 linhas) */
+        .flashcard-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 10px; }
+        
+        .flashcard {
+            background: white; border: 1px solid var(--border); 
+            height: 140px; /* Altura Reduzida */
+            border-radius: 8px; position: relative; cursor: pointer; perspective: 1000px; 
+        }
+        .flashcard-inner {
+            position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d;
+            padding: 10px; display: flex; align-items: center; justify-content: center;
+        }
         .flashcard:hover .flashcard-inner, .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
-        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; }
-        .card-front { background: white; color: var(--primary); font-weight: 600; }
-        .card-back { background: var(--primary); color: white; transform: rotateY(180deg); border-radius: 11px; }
+        .card-front, .card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px;
+        }
+        .card-front { background: white; color: var(--primary); font-weight: 600; font-size: 0.8rem; line-height: 1.3; }
+        .card-back { background: var(--primary); color: white; transform: rotateY(180deg); border-radius: 7px; font-size: 0.75rem; line-height: 1.3; }
+        .card-label { font-size: 0.6rem; text-transform: uppercase; opacity: 0.6; margin-bottom: 4px; letter-spacing: 0.5px; }
 
         /* FOOTER */
-        .lesson-footer { padding: 20px 40px; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-        .btn { padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; font-size: 0.9rem; text-decoration: none; display: inline-block; text-align: center; }
+        .lesson-footer { padding: 15px 30px; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        .btn { padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; border: none; font-size: 0.85rem; text-decoration: none; }
         .btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
         .btn-primary { background: var(--primary); color: white; }
 
         /* ========================================= */
-        /* 📱 MOBILE RESPONSIVE TWEAKS (BREAKPOINT) */
+        /* 📱 MOBILE RESPONSIVE FIX (SCROLL TOTAL)   */
         /* ========================================= */
         @media (max-width: 768px) {
-            .sidebar {
-                position: fixed; top: 0; left: 0; bottom: 0;
-                transform: translateX(-100%); /* Esconde por padrão */
-                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            }
-            .sidebar.active { transform: translateX(0); } /* Mostra quando ativo */
-            
-            .sidebar-overlay.active { display: block; opacity: 1; } /* Overlay escuro */
-            
-            .close-menu-btn { display: block; } /* Botão X aparece */
+            /* 1. Sidebar Fixa Escondida */
+            .sidebar { position: fixed; top: 0; left: 0; bottom: 0; transform: translateX(-100%); box-shadow: 2px 0 10px rgba(0,0,0,0.1); width: 80%; max-width: 300px; }
+            .sidebar.active { transform: translateX(0); }
+            .sidebar-overlay.active { display: block; opacity: 1; }
+            .close-menu-btn { display: block; }
             .logo-area { justify-content: space-between; }
+            .mobile-header { display: flex; }
 
-            .mobile-header { display: flex; } /* Header mobile aparece */
+            /* 2. CORREÇÃO DE SCROLL (PULO DO GATO) */
+            /* Removemos o overflow hidden do body e main para deixar o navegador controlar o scroll nativo */
+            body { overflow: auto; height: auto; }
+            .main { height: auto; overflow: visible; display: block; }
             
-            .lesson-header { padding: 20px; max-height: none; } /* Remove limite altura no mobile para scrolar pagina toda */
-            .lesson-header h1 { font-size: 1.4rem; }
+            /* Removemos scroll interno das áreas */
+            .lesson-wrapper { height: auto; display: none; overflow: visible; }
+            .lesson-wrapper.active-lesson { display: block; } /* Block em vez de Flex para empilhar naturalmente */
             
-            .tabs-container { padding: 0 20px; gap: 20px; }
-            .content-area { padding: 20px; }
-            .lesson-footer { padding: 15px 20px; flex-direction: column; gap: 10px; }
-            .lesson-footer .btn { width: 100%; }
-            .lesson-footer div { width: 100%; text-align: center; }
+            .lesson-header { max-height: none; padding: 20px; overflow: visible; }
+            .content-area { padding: 20px; overflow: visible; max-height: none; }
+            .tabs-container { padding: 0 20px; position: sticky; top: 0; z-index: 40; background: var(--surface); /* Abas grudam no topo ao rolar */ }
+            
+            /* 3. Ajustes de Grid Mobile */
+            .triad-grid { grid-template-columns: 1fr; } /* 1 por linha */
+            .flashcard-container { grid-template-columns: repeat(2, 1fr); gap: 8px; } /* 2 por linha (Mini cards mobile) */
+            .flashcard { height: 120px; } /* Cards ainda menores no mobile */
+            
+            .media-card { flex-direction: column; align-items: flex-start; }
+            .audio-iframe-container { width: 100%; margin-top: 5px; }
 
-            /* Grids viram colunas */
-            .triad-grid { grid-template-columns: 1fr; } 
-            .flashcard-container { grid-template-columns: 1fr; }
-            
-            .download-card { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .download-card .btn { width: 100%; }
+            .lesson-footer { flex-direction: column; gap: 10px; text-align: center; }
+            .lesson-footer button { width: 100%; }
+            .lesson-footer div { width: 100%; }
         }
     </style>
 </head>
@@ -231,265 +203,222 @@
             <button class="close-menu-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <div class="module-list">
-            
-            <div class="module-item active">
-                <span class="status-icon">✅</span> 1. Fundações da AP
-            </div>
+            <div class="module-item active"><span class="status-icon">✅</span> 1. Fundações da AP</div>
             <div class="sub-module-list">
                 <div id="nav-l1" class="sub-item completed" onclick="showLesson('lesson1'); toggleSidebarMobile()">1.1 A Tríade R.T.E.</div>
                 <div id="nav-l2" class="sub-item completed" onclick="showLesson('lesson2'); toggleSidebarMobile()">1.2 Mentalidade Blindada</div>
                 <div id="nav-l3" class="sub-item completed" onclick="showLesson('lesson3'); toggleSidebarMobile()">1.3 Doctor Frame</div>
                 <div id="nav-l4" class="sub-item completed" onclick="showLesson('lesson4'); toggleSidebarMobile()">1.4 Blocos de Ouro</div>
             </div>
-
-            <div class="module-item active">
-                <span class="status-icon">▶️</span> 2. CRM & Funil
-            </div>
+            <div class="module-item active"><span class="status-icon">▶️</span> 2. CRM & Funil</div>
             <div class="sub-module-list">
                 <div id="nav-l5" class="sub-item current" onclick="showLesson('lesson5'); toggleSidebarMobile()">2.1 O Funil Perfeito</div>
                 <div class="sub-item locked">2.2 CRM Eficiente</div>
                 <div class="sub-item locked">2.3 Método 3x3</div>
-                <div class="sub-item locked">2.4 KPIs de Verdade</div>
             </div>
-
-            <div class="module-item locked"><span class="status-icon">🔒</span> 3. Prospecção Ativa</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 4. Domínio do Produto</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 5. Ligação de Alta Performance</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 6. Apresentação em Stand</div>
-            <div class="module-item locked"><span class="status-icon">🔒</span> 7. Negociação</div>
         </div>
     </nav>
 
     <main class="main">
-        
         <header class="mobile-header">
-            <button class="menu-toggle-btn" onclick="toggleSidebar()">
-                <span style="font-size:1.2rem">☰</span> MENU
-            </button>
+            <button class="menu-toggle-btn" onclick="toggleSidebar()"><span>☰</span> MENU</button>
             <div style="font-weight:800; color:var(--primary); font-size:0.9rem;">YUNY ACADEMY</div>
         </header>
 
         <div id="lesson1" class="lesson-wrapper">
             <header class="lesson-header">
                 <div class="breadcrumbs">Módulo 1 > Fundações</div>
-                <h1>1.1 — O Código da Alta Performance: A Tríade R.T.E.</h1>
-                <div class="media-card">
-                    <div class="media-info"><h4>Podcast: "O Código R.T.E."</h4><p>Áudio Oficial Yuny</p></div>
-                    <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15yXQ704AfrKTDbxOzEcv084qAaBJ3ppL/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                </div>
+                <h1>1.1 — A Tríade R.T.E.</h1>
+                <div class="media-card secondary"><div class="media-info"><h4>Podcast: "O Código R.T.E."</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15yXQ704AfrKTDbxOzEcv084qAaBJ3ppL/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" onclick="openTab('l1-tab1', this)">📖 RESUMO</div>
-                <div class="tab" onclick="openTab('l1-tab2', this)">🛠️ FERRAMENTAS</div>
-                <div class="tab" onclick="openTab('l1-tab3', this)">🧠 TREINO</div>
+                <div class="tab active" onclick="openTab('l1-tab1', this)">📖 CONCEITO</div>
+                <div class="tab" onclick="openTab('l1-tab3', this)">🧠 TREINO (10 CARDS)</div>
             </div>
             <div id="l1-tab1" class="content-area active-content">
-                <p>O mercado imobiliário não aceita mais amadores. Na Yuny, alta performance não é um pico isolado de vendas, é <strong>consistência</strong>. Para atingir isso, utilizamos o <strong>Código R.T.E.</strong>.</p>
-                <div class="highlight-box"><div class="highlight-title">💎 MANIFESTO R.T.E.</div>"Técnica sem esforço é teoria. Esforço sem técnica é desperdício. E ambos sem foco em resultados são apenas hobby."</div>
-                <h3 class="section-title">Os 3 Pilares da Elite</h3>
+                <p>Alta performance é consistência. O código é <strong>R.T.E.</strong>.</p>
                 <div class="triad-grid">
-                    <div class="triad-card"><span class="triad-icon">📊</span><span class="triad-title">RESULTADOS</span><span class="triad-desc"><strong>Engenharia Reversa.</strong> Não trabalhe pelo "feeling", trabalhe pelos dados.</span></div>
-                    <div class="triad-card"><span class="triad-icon">🛠️</span><span class="triad-title">TÉCNICA</span><span class="triad-desc"><strong>SPIN Selling.</strong> Isole a objeção de preço e venda o valor.</span></div>
-                    <div class="triad-card"><span class="triad-icon">💪</span><span class="triad-title">ESFORÇO</span><span class="triad-desc"><strong>Hunter vs Farmer.</strong> Blocos de tempo blindados e Follow-up infinito.</span></div>
-                </div>
-            </div>
-            <div id="l1-tab2" class="content-area">
-                <h3 class="section-title">Downloads</h3>
-                <div class="download-card">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Workbook R.T.E.</div><div style="font-size: 0.8rem; color: #64748b;">Manual Completo.</div></div></div>
-                    <a href="https://drive.google.com/file/d/1CYEjosVxMJR7ZKm6Dtvu4lePUS1UhyQ2/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
+                    <div class="triad-card"><span class="triad-icon">📊</span><span class="triad-title">RESULTADOS</span><span class="triad-desc">Trabalhe pelos dados.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🛠️</span><span class="triad-title">TÉCNICA</span><span class="triad-desc">SPIN Selling.</span></div>
+                    <div class="triad-card"><span class="triad-icon">💪</span><span class="triad-title">ESFORÇO</span><span class="triad-desc">Hunter Mode.</span></div>
                 </div>
             </div>
             <div id="l1-tab3" class="content-area">
-                <h3 class="section-title">Flashcards</h3>
                 <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front"><div class="card-label">PILAR: ESFORÇO</div>O que são os modos "Hunter" e "Farmer"?</div><div class="card-back"><div class="card-label">RESPOSTA</div><strong>Hunter:</strong> Foco em negócios novos.<br><strong>Farmer:</strong> Foco em cuidar do que já tem.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front"><div class="card-label">ESTATÍSTICA</div>A maioria das vendas acontece em qual contato?</div><div class="card-back"><div class="card-label">DADO REAL</div>Entre o <strong>5º e o 12º contato</strong>. Follow-up é dinheiro.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Hunter?</div><div class="card-back">Caçador. Foco em novos leads.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Farmer?</div><div class="card-back">Fazendeiro. Cultiva atuais.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Maioria das Vendas?</div><div class="card-back">5º ao 12º contato.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Engenharia Reversa?</div><div class="card-back">Metas baseadas em dados.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Técnica sem Esforço?</div><div class="card-back">É apenas Teoria.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Esforço sem Técnica?</div><div class="card-back">É Desperdício.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">SPIN Selling?</div><div class="card-back">Situação, Problema, Implicação.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Alta Performance?</div><div class="card-back">Consistência, não sorte.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Foco em Resultado?</div><div class="card-back">O único que importa.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Amadores?</div><div class="card-back">Não têm vez na Yuny.</div></div></div>
                 </div>
             </div>
-            <footer class="lesson-footer"><button class="btn btn-secondary" disabled>← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson2')">Ir para 1.2 →</button></footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" disabled>Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson2')">Próximo</button></footer>
         </div>
 
         <div id="lesson2" class="lesson-wrapper">
-            <header class="lesson-header">
+             <header class="lesson-header">
                 <div class="breadcrumbs">Módulo 1 > Mentalidade</div>
                 <h1>1.2 — Mentalidade Blindada</h1>
-                <div class="media-card">
-                    <div class="media-info"><h4>Podcast: "Fim da Montanha Russa"</h4></div>
-                    <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1yRu-R6sw-2HwTdJz7nW4AtNBjJbnSiEt/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                </div>
+                <div class="media-card secondary"><div class="media-info"><h4>Podcast: "Sem Montanha Russa"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1yRu-R6sw-2HwTdJz7nW4AtNBjJbnSiEt/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
             </header>
             <div class="tabs-container">
                 <div class="tab active" onclick="openTab('l2-tab1', this)">📖 CONCEITO</div>
-                <div class="tab" onclick="openTab('l2-tab2', this)">🛠️ MATERIAL</div>
-                <div class="tab" onclick="openTab('l2-tab3', this)">🧠 TREINO</div>
+                <div class="tab" onclick="openTab('l2-tab3', this)">🧠 TREINO (10 CARDS)</div>
             </div>
             <div id="l2-tab1" class="content-area active-content">
-                <p>O Top Performer da Yuny opera em linha reta. Ele controla sua Atividade Diária Produtiva (ADP).</p>
-                <div class="highlight-box"><div class="highlight-title">💎 PRINCÍPIO ESTOICO</div>"Você controla a sua Atividade, não o Resultado. Apaixone-se pelo processo."</div>
                 <div class="triad-grid">
-                    <div class="triad-card"><span class="triad-icon">🎮</span><span class="triad-title">CONTROLE (ADP)</span><span class="triad-desc">Controle quantas ligações faz, não quem atende.</span></div>
-                    <div class="triad-card"><span class="triad-icon">📈</span><span class="triad-title">MATEMÁTICA</span><span class="triad-desc">Cada venda exige 20 a 30 "Nãos". É estatística.</span></div>
-                    <div class="triad-card"><span class="triad-icon">⏭️</span><span class="triad-title">NEXT PLAY</span><span class="triad-desc">Vendeu? Next play. Perdeu? Next play.</span></div>
-                </div>
-            </div>
-            <div id="l2-tab2" class="content-area">
-                <div class="download-card">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual: Mentalidade Blindada</div></div></div>
-                    <a href="https://drive.google.com/file/d/1Gu9n420tEOG72kTpZMhssN9l5l2JHmwL/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar</a>
+                    <div class="triad-card"><span class="triad-icon">🎮</span><span class="triad-title">CONTROLE</span><span class="triad-desc">Foquer no que você controla (ADP).</span></div>
+                    <div class="triad-card"><span class="triad-icon">📈</span><span class="triad-title">ESTATÍSTICA</span><span class="triad-desc">O "Não" faz parte da matemática.</span></div>
+                    <div class="triad-card"><span class="triad-icon">⏭️</span><span class="triad-title">NEXT PLAY</span><span class="triad-desc">Recuperação rápida.</span></div>
                 </div>
             </div>
             <div id="l2-tab3" class="content-area">
-                <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front"><div class="card-label">SITUAÇÃO</div>"Levei 10 nãos seguidos. Sou péssimo?"</div><div class="card-back"><div class="card-label">RESPOSTA</div><strong>Não.</strong> Você está apenas limpando o caminho estatístico para o "Sim".</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front"><div class="card-label">CONCEITO</div>Regra "Next Play"?</div><div class="card-back"><div class="card-label">RESPOSTA</div>Não ficar preso no passado. Corrija rápido e vá para o próximo.</div></div></div>
+                 <div class="flashcard-container">
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é ADP?</div><div class="card-back">Ativ. Diária Produtiva.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Eu controlo o "Sim"?</div><div class="card-back">Não. Controlo a ligação.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Regra Next Play?</div><div class="card-back">Esqueça o erro, siga.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">10 Nãos seguidos?</div><div class="card-back">Estatística normal.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Montanha Russa?</div><div class="card-back">Erro de amador emotivo.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Linha Reta?</div><div class="card-back">Estado do Profissional.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Ritual Matinal?</div><div class="card-back">Prepara a mente.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O "Não" é pessoal?</div><div class="card-back">Nunca. É negócio.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Resiliência é?</div><div class="card-back">Velocidade de voltar.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Foco do Estoico?</div><div class="card-back">No Processo.</div></div></div>
                 </div>
             </div>
-            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson1')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson3')">Ir para 1.3 →</button></footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson1')">Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson3')">Próximo</button></footer>
         </div>
 
         <div id="lesson3" class="lesson-wrapper">
-            <header class="lesson-header">
+             <header class="lesson-header">
                 <div class="breadcrumbs">Módulo 1 > Autoridade</div>
-                <h1>1.3 — Doctor Frame: O Diagnóstico</h1>
-                <div class="media-card">
-                    <div class="media-info"><h4>Podcast: "Receitar vs Vender"</h4></div>
-                    <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1rbg_daj09IGVBdqxaMVhvNPR9BD4cRJb/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                </div>
+                <h1>1.3 — Doctor Frame</h1>
+                <div class="media-card secondary"><div class="media-info"><h4>Podcast: "Receitar vs Vender"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1rbg_daj09IGVBdqxaMVhvNPR9BD4cRJb/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" onclick="openTab('l3-tab1', this)">📖 DOUTOR VS GARÇOM</div>
-                <div class="tab" onclick="openTab('l3-tab2', this)">🛠️ SCRIPTS</div>
-                <div class="tab" onclick="openTab('l3-tab3', this)">🧠 TREINO</div>
+                <div class="tab active" onclick="openTab('l3-tab1', this)">📖 CONCEITO</div>
+                <div class="tab" onclick="openTab('l3-tab3', this)">🧠 TREINO (10 CARDS)</div>
             </div>
             <div id="l3-tab1" class="content-area active-content">
-                <p>O corretor "Garçom" tira pedidos. O corretor "Doctor Frame" faz a Anamnese e prescreve a solução.</p>
-                <div class="highlight-box"><div class="highlight-title">💎 A REGRA DE OURO</div>"Quem faz as perguntas detém o controle da conversa."</div>
-                <div class="triad-grid">
-                    <div class="triad-card"><span class="triad-icon">🩺</span><span class="triad-title">O JALECO</span><span class="triad-desc">Estabeleça autoridade logo no início.</span></div>
-                    <div class="triad-card"><span class="triad-icon">🔬</span><span class="triad-title">O EXAME</span><span class="triad-desc">Investigue a "dor" real antes de falar de produto.</span></div>
-                    <div class="triad-card"><span class="triad-icon">💊</span><span class="triad-title">A PRESCRIÇÃO</span><span class="triad-desc">Só apresente o produto quando tiver certeza que ele cura a dor.</span></div>
-                </div>
-            </div>
-            <div id="l3-tab2" class="content-area">
-                <div class="download-card">
-                    <div class="file-info"><div class="file-icon">DOC</div><div><div style="font-weight: 600;">Roteiro de Anamnese</div></div></div>
-                    <a href="https://drive.google.com/file/d/1ldGvUjXRj00PZAhKYzXJ6HSUFHhrN3CF/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar</a>
+                 <div class="triad-grid">
+                    <div class="triad-card"><span class="triad-icon">🩺</span><span class="triad-title">O JALECO</span><span class="triad-desc">Autoridade imediata.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🔬</span><span class="triad-title">O EXAME</span><span class="triad-desc">Diagnóstico (Anamnese).</span></div>
+                    <div class="triad-card"><span class="triad-icon">💊</span><span class="triad-title">PRESCRIÇÃO</span><span class="triad-desc">Produto é remédio.</span></div>
                 </div>
             </div>
             <div id="l3-tab3" class="content-area">
                 <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front"><div class="card-label">CLIENTE DIZ</div>"Só me manda o preço."</div><div class="card-back"><div class="card-label">RESPOSTA DOUTOR</div>"Seria irresponsável te passar preço sem entender o que você precisa. Como um médico receitar sem exame."</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front"><div class="card-label">CONCEITO</div>Por que não falar preço logo?</div><div class="card-back"><div class="card-label">RESPOSTA</div>Preço sem valor é custo. Crie valor (a cura da dor) antes de apresentar o custo.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Corretor Garçom?</div><div class="card-back">Tira pedidos.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Corretor Doutor?</div><div class="card-back">Faz diagnósticos.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Quem controla?</div><div class="card-back">Quem faz perguntas.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">"Só quero preço"?</div><div class="card-back">"Preciso fazer o exame."</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Anamnese?</div><div class="card-back">Investigação da dor.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Preço sem Valor?</div><div class="card-back">É apenas Custo.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Quando ofertar?</div><div class="card-back">Só após o diagnóstico.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Compra por tijolo?</div><div class="card-back">Não, por mudança de vida.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Autoridade?</div><div class="card-back">Confiança técnica.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Prescrição Errada?</div><div class="card-back">Queima o cliente.</div></div></div>
                 </div>
             </div>
-            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson2')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson4')">Ir para 1.4 →</button></footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson2')">Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson4')">Próximo</button></footer>
         </div>
 
         <div id="lesson4" class="lesson-wrapper">
             <header class="lesson-header">
                 <div class="breadcrumbs">Módulo 1 > Produtividade</div>
-                <h1>1.4 — Blocos de Ouro: Produtividade de Elite</h1>
+                <h1>1.4 — Blocos de Ouro</h1>
                 
                 <div class="media-section">
-                    <div class="media-card">
-                        <div class="media-info"><h4>📺 Vídeo Aula: O Protocolo</h4><p>Assista Primeiro</p></div>
+                    <div class="media-card block-display">
+                        <div class="media-info"><h4>📺 Vídeo Aula: Protocolo</h4></div>
                         <div class="video-container">
                             <iframe src="https://drive.google.com/file/d/15yb5y2BwA4uPd-cb3UhyXkV74OpHQhlB/preview" allowfullscreen></iframe>
                         </div>
                     </div>
-
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast Versão A (V1)</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1XEatUjg1IVTnft3QJiSQ-DtvpkXHLyao/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
-                    
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast Versão B (V2)</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1KdJgUh3JxphSynCD0frhOgVNKQjFo88R/preview" width="100%" height="100%" style="border:none;"></iframe></div>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <div class="media-card secondary" style="flex:1; min-width: 200px;">
+                            <div class="media-info"><h4>🎧 Opção A (V1)</h4></div>
+                            <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1XEatUjg1IVTnft3QJiSQ-DtvpkXHLyao/preview" width="100%" height="100%" style="border:none;"></iframe></div>
+                        </div>
+                        <div class="media-card secondary" style="flex:1; min-width: 200px;">
+                            <div class="media-info"><h4>🎧 Opção B (V2)</h4></div>
+                            <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1KdJgUh3JxphSynCD0frhOgVNKQjFo88R/preview" width="100%" height="100%" style="border:none;"></iframe></div>
+                        </div>
                     </div>
                 </div>
             </header>
             
             <div class="tabs-container">
-                <div class="tab active" onclick="openTab('l4-tab1', this)">📖 BLOCO DE OURO</div>
-                <div class="tab" onclick="openTab('l4-tab2', this)">🛠️ MANUAL</div>
-                <div class="tab" onclick="openTab('l4-tab3', this)">🧠 TREINO</div>
+                <div class="tab active" onclick="openTab('l4-tab1', this)">📖 BLOCO</div>
+                <div class="tab" onclick="openTab('l4-tab3', this)">🧠 TREINO (10 CARDS)</div>
             </div>
             <div id="l4-tab1" class="content-area active-content">
-                <p>A frase mais perigosa no mercado é: <em>"Estou na correria"</em>. Estar ocupado não é estar produzindo.</p>
-                <div class="highlight-box"><div class="highlight-title">💎 A REGRA DE FERRO</div>"Bloco de Ouro é 60 minutos onde você SÓ faz Atividade Geradora de Renda (AGR). Tudo o resto é distração."</div>
+                <div class="highlight-box"><div class="highlight-title">💎 REGRA DE FERRO</div>"Bloco de Ouro = 60 min só de AGR (Venda)."</div>
                 <div class="triad-grid">
-                    <div class="triad-card"><span class="triad-icon">⚔️</span><span class="triad-title">MODO CAÇADOR</span><span class="triad-desc">Esqueça e-mails. Só ligue e oferte.</span></div>
-                    <div class="triad-card"><span class="triad-icon">🔕</span><span class="triad-title">MODO AVIÃO</span><span class="triad-desc">Notificações desligadas. O mundo espera 60 min.</span></div>
-                    <div class="triad-card"><span class="triad-icon">🚫</span><span class="triad-title">ZERO VAMPIROS</span><span class="triad-desc">Use fones grandes para ninguém te interromper.</span></div>
-                </div>
-            </div>
-            <div id="l4-tab2" class="content-area">
-                <div class="download-card">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual Blocos de Ouro</div></div></div>
-                    <a href="https://drive.google.com/file/d/1mp6ORPGVt9DKjz0HBWUK0lk1U-eq9ZZw/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar</a>
+                    <div class="triad-card"><span class="triad-icon">⚔️</span><span class="triad-title">CAÇADOR</span><span class="triad-desc">Só ligue e oferte.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🔕</span><span class="triad-title">AVIÃO</span><span class="triad-desc">Zero notificações.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🚫</span><span class="triad-title">VAMPIROS</span><span class="triad-desc">Bloqueie interrupções.</span></div>
                 </div>
             </div>
             <div id="l4-tab3" class="content-area">
                 <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front"><div class="card-label">PERGUNTA</div>O que é AGR?</div><div class="card-back"><div class="card-label">RESPOSTA</div><strong>Atividade Geradora de Renda.</strong> Apenas duas: 1. Prospectar. 2. Fechar. O resto é burocracia.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front"><div class="card-label">SITUAÇÃO</div>"Vou organizar planilha no Bloco de Ouro."</div><div class="card-back"><div class="card-label">ERRADO!</div>Organizar planilha é administrativo. Bloco de Ouro é falar com pessoas.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é AGR?</div><div class="card-back">Ativ. Geradora de Renda.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Planilha é AGR?</div><div class="card-back">Não, é adm.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Duração do Bloco?</div><div class="card-back">60 a 90 minutos.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Modo Avião?</div><div class="card-back">Obrigatório.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Fones de Ouvido?</div><div class="card-back">Sinal de "Não Perturbe".</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Estar Ocupado?</div><div class="card-back">Não é produzir.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Movimento é?</div><div class="card-back">Diferente de progresso.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Procrastinação Ativa?</div><div class="card-back">Fazer o fácil p/ evitar o difícil.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Falar com quem?</div><div class="card-back">Só com quem compra.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Consistência?</div><div class="card-back">Todo dia, sem falhar.</div></div></div>
                 </div>
             </div>
-            <footer class="lesson-footer">
-                <button class="btn btn-secondary" onclick="showLesson('lesson3')">← Anterior</button>
-                <div style="text-align: right; width: auto;">
-                    <button class="btn btn-primary" onclick="showLesson('lesson5')">Ir para 2.1 Funil →</button>
-                </div>
-            </footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson3')">Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson5')">Próximo</button></footer>
         </div>
 
-        <div id="lesson5" class="lesson-wrapper active-lesson">
-            <header class="lesson-header">
-                <div class="breadcrumbs">Módulo 2 > CRM & Funil</div>
-                <h1>2.1 — O Funil Imobiliário Perfeito</h1>
-                <div class="media-card">
-                    <div class="media-info"><h4>Podcast: "Sua Memória Te Engana"</h4></div>
-                    <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1xK-J7ADGsYYy0yDrQasWpWUz7TwhNXPf/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                </div>
+        <div id="lesson5" class="lesson-wrapper">
+             <header class="lesson-header">
+                <div class="breadcrumbs">Módulo 2 > Funil</div>
+                <h1>2.1 — O Funil Perfeito</h1>
+                <div class="media-card secondary"><div class="media-info"><h4>Podcast: "Sua Memória Te Engana"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1xK-J7ADGsYYy0yDrQasWpWUz7TwhNXPf/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
             </header>
             <div class="tabs-container">
                 <div class="tab active" onclick="openTab('l5-tab1', this)">📖 RÉGUA</div>
-                <div class="tab" onclick="openTab('l5-tab2', this)">🛠️ MAPA</div>
-                <div class="tab" onclick="openTab('l5-tab3', this)">🧠 TREINO (10)</div>
+                <div class="tab" onclick="openTab('l5-tab3', this)">🧠 TREINO (10 CARDS)</div>
             </div>
             <div id="l5-tab1" class="content-area active-content">
-                <p>O cérebro humano gerencia no máximo 7 relacionamentos. Se você tem 50 leads e não usa o CRM, está perdendo dinheiro.</p>
-                <div class="highlight-box"><div class="highlight-title">💎 LEI DE OURO</div>"Se não está no CRM, o cliente não existe."</div>
                 <div class="triad-grid">
-                    <div class="triad-card"><span class="triad-icon">🔽</span><span class="triad-title">TOPO</span><span class="triad-desc">Objetivo: <strong>Conexão</strong>. Fazer o lead responder.</span></div>
-                    <div class="triad-card"><span class="triad-icon">🔄</span><span class="triad-title">MEIO</span><span class="triad-desc">Objetivo: <strong>Visita</strong>. Venda presencial.</span></div>
-                    <div class="triad-card"><span class="triad-icon">💰</span><span class="triad-title">FUNDO</span><span class="triad-desc">Objetivo: <strong>Assinatura</strong>. Proposta e fechamento.</span></div>
-                </div>
-            </div>
-            <div id="l5-tab2" class="content-area">
-                <div class="download-card">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Mapa de Batalha: Funil</div></div></div>
-                    <a href="https://drive.google.com/file/d/1sivonFGSFC2VL11Pvm4McE4muQPx2ob3/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar</a>
+                    <div class="triad-card"><span class="triad-icon">🔽</span><span class="triad-title">TOPO</span><span class="triad-desc">Conexão (Resposta).</span></div>
+                    <div class="triad-card"><span class="triad-icon">🔄</span><span class="triad-title">MEIO</span><span class="triad-desc">Visita (Venda Real).</span></div>
+                    <div class="triad-card"><span class="triad-icon">💰</span><span class="triad-title">FUNDO</span><span class="triad-desc">Assinatura.</span></div>
                 </div>
             </div>
             <div id="l5-tab3" class="content-area">
                 <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Quantos leads a memória aguenta?</div><div class="card-back">5 a 7. Use o CRM.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Objetivo do Topo?</div><div class="card-back">Conexão (Resposta). Não venda o apê, venda a conversa.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Onde acontece a venda real?</div><div class="card-back">No Stand (Meio). Telefone é para agendar.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Lead que diz "Achei caro" morreu?</div><div class="card-back">Não. É objeção ou lead frio. Incube, não arquive.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Memória aguenta qts?</div><div class="card-back">5 a 7 leads.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Objetivo do Topo?</div><div class="card-back">Conexão.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Venda acontece onde?</div><div class="card-back">No Stand (Meio).</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">"Achei caro" morreu?</div><div class="card-back">Não, incube.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Lead Perdido é?</div><div class="card-back">Comprou ou pediu p/ sair.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Falta Venda?</div><div class="card-back">Olhe as Visitas.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Falta Visita?</div><div class="card-back">Olhe a Prospecção.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Vácuo é Não?</div><div class="card-back">Não, persista.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Lei do CRM?</div><div class="card-back">Se não tá lá, não existe.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Incubadora?</div><div class="card-back">Follow-up longo prazo.</div></div></div>
                 </div>
-                <p style="text-align: center; margin-top: 20px; font-size: 0.8rem; color: #999;">(Mais cards disponíveis na versão desktop)</p>
             </div>
-            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson4')">← Anterior</button><button class="btn btn-primary locked">2.2 Em Breve 🔒</button></footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson4')">Anterior</button><button class="btn btn-primary locked">2.2 Em Breve</button></footer>
         </div>
 
     </main>
 
     <script>
-        // Lógica do Menu Mobile
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.querySelector('.sidebar-overlay');
@@ -497,23 +426,18 @@
             overlay.classList.toggle('active');
         }
 
-        // Fecha o menu ao clicar em um item (Mobile UX)
         function toggleSidebarMobile() {
-            if (window.innerWidth <= 768) {
-                toggleSidebar();
-            }
+            if (window.innerWidth <= 768) { toggleSidebar(); }
         }
 
         function showLesson(lessonId) {
             document.querySelectorAll('.lesson-wrapper').forEach(l => l.classList.remove('active-lesson'));
             document.getElementById(lessonId).classList.add('active-lesson');
             
-            // Scroll to top
-            if(window.innerWidth <= 768) {
-                window.scrollTo(0,0);
-            }
+            // Scroll to top para garantir que o usuário veja o topo da nova aula
+            window.scrollTo(0,0);
+            if (document.querySelector('.main')) document.querySelector('.main').scrollTop = 0;
 
-            // Atualiza Menu
             const navs = ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5'];
             navs.forEach(id => {
                 const el = document.getElementById(id);
