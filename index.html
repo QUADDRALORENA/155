@@ -14,7 +14,7 @@
             --text-light: #64748b;
             --border: #e2e8f0;
             --success: #10b981;
-            --sidebar-width: 260px; /* Sidebar um pouco mais fina */
+            --sidebar-width: 280px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -35,10 +35,10 @@
         }
         
         .logo-area {
-            padding: 20px;
+            padding: 24px;
             border-bottom: 1px solid var(--border);
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--primary);
             display: flex;
             align-items: center;
@@ -46,20 +46,21 @@
             gap: 10px;
         }
         
-        .logo-icon { width: 18px; height: 18px; background: var(--accent); border-radius: 4px; }
+        .logo-icon { width: 20px; height: 20px; background: var(--accent); border-radius: 4px; }
         .module-list { overflow-y: auto; flex: 1; padding: 10px; }
         
         .module-item {
-            padding: 10px 14px; margin-bottom: 2px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-light); transition: all 0.2s; margin-top: 5px;
+            padding: 12px 16px; margin-bottom: 4px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-light); transition: all 0.2s; margin-top: 10px;
         }
         .module-item:hover { background: var(--bg); }
-        .module-item.active { background: #eff6ff; color: var(--primary); font-weight: 700; border-left: 3px solid var(--primary); }
+        .module-item.active { background: #eff6ff; color: var(--primary); font-weight: 600; border-left: 3px solid var(--primary); }
 
-        .sub-module-list { padding-left: 34px; font-size: 0.8rem; color: var(--text); margin-bottom: 8px; border-left: 1px solid #e2e8f0; margin-left: 18px; }
-        .sub-item { padding: 6px 0; cursor: pointer; color: var(--text-light); transition: color 0.2s; display: block; }
+        .sub-module-list { padding-left: 40px; font-size: 0.85rem; color: var(--text); margin-bottom: 10px; border-left: 2px solid #e2e8f0; margin-left: 20px; }
+        .sub-item { padding: 8px 0; cursor: pointer; color: var(--text-light); transition: color 0.2s; display: block; }
         .sub-item.current { color: var(--primary); font-weight: 700; }
-        .sub-item.completed { color: var(--success); text-decoration: line-through; opacity: 0.7; }
+        .sub-item.completed { color: var(--success); text-decoration: line-through; opacity: 0.8; }
         .locked { opacity: 0.5; cursor: not-allowed; }
+        
         .close-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; }
         .sidebar-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 900; opacity: 0; transition: opacity 0.3s; }
 
@@ -67,10 +68,10 @@
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; width: 100%; }
 
         .mobile-header {
-            display: none; padding: 12px 15px; background: var(--surface); border-bottom: 1px solid var(--border);
+            display: none; padding: 15px 20px; background: var(--surface); border-bottom: 1px solid var(--border);
             align-items: center; justify-content: space-between; flex-shrink: 0; z-index: 50;
         }
-        .menu-toggle-btn { background: transparent; border: 1px solid var(--border); padding: 6px 10px; border-radius: 6px; color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.85rem; }
+        .menu-toggle-btn { background: transparent; border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; }
 
         /* LAYOUT DE AULA */
         .lesson-wrapper { display: none; flex-direction: column; height: 100%; overflow: hidden; }
@@ -78,114 +79,104 @@
         @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
 
         .lesson-header {
-            background: var(--surface); padding: 20px 30px; border-bottom: 1px solid var(--border);
+            background: var(--surface); padding: 24px 40px; border-bottom: 1px solid var(--border);
             flex-shrink: 0; overflow-y: auto; max-height: 45vh;
         }
 
-        .breadcrumbs { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 0.5px; }
-        h1 { font-size: 1.5rem; color: var(--primary); margin-bottom: 12px; line-height: 1.1; }
+        .breadcrumbs { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
+        h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 16px; line-height: 1.2; }
 
-        /* PLAYERS "SLIM" */
-        .media-section { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
-        .media-card { background: var(--primary); color: white; padding: 12px; border-radius: 8px; box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1); display: flex; align-items: center; gap: 15px;}
-        .media-card.block-display { display: block; } /* Para o vídeo que precisa ser bloco */
-        .media-card.secondary { background: white; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; }
+        /* MEDIA CARDS */
+        .media-section { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+        .media-card { background: var(--primary); color: white; padding: 16px; border-radius: 12px; box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1); display: flex; align-items: center; gap: 20px; }
+        .media-card.block-display { display: block; }
+        .media-card.secondary { background: white; border: 1px solid var(--border); color: var(--text); padding: 10px 16px; }
         
-        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; background: black; border-radius: 6px; overflow: hidden; margin-top: 8px; }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; background: black; border-radius: 8px; overflow: hidden; margin-top: 10px; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .audio-iframe-container { width: 100%; height: 40px; border-radius: 4px; overflow: hidden; background: rgba(0,0,0,0.05); flex: 1; }
-        .media-info h4 { font-size: 0.85rem; margin: 0; white-space: nowrap; }
+        .audio-iframe-container { width: 100%; height: 50px; border-radius: 6px; overflow: hidden; background: rgba(0,0,0,0.05); flex: 1; }
+        .media-info h4 { font-size: 0.95rem; margin: 0; margin-bottom: 4px; }
+        .media-info p { font-size: 0.75rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* TABS */
         .tabs-container {
-            padding: 0 30px; background: var(--surface); border-bottom: 1px solid var(--border);
-            display: flex; gap: 25px; flex-shrink: 0; overflow-x: auto;
+            padding: 0 40px; background: var(--surface); border-bottom: 1px solid var(--border);
+            display: flex; gap: 32px; flex-shrink: 0; overflow-x: auto;
         }
         .tab {
-            padding: 12px 0; font-size: 0.8rem; font-weight: 600; color: var(--text-light); cursor: pointer;
+            padding: 16px 0; font-size: 0.85rem; font-weight: 600; color: var(--text-light); cursor: pointer;
             position: relative; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
         }
         .tab.active { color: var(--primary); }
-        .tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--accent); }
+        .tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--accent); }
 
         /* CONTEÚDO */
-        .content-area { padding: 30px; overflow-y: auto; max-width: 1200px; display: none; flex: 1; }
+        .content-area { padding: 40px; overflow-y: auto; max-width: 900px; display: none; flex: 1; }
         .content-area.active-content { display: block; animation: fadeInContent 0.3s ease; }
         @keyframes fadeInContent { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        p { line-height: 1.6; margin-bottom: 14px; font-size: 0.95rem; color: #475569; }
-        .highlight-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: 15px; border-radius: 0 6px 6px 0; margin: 20px 0; font-size: 0.9rem; }
-        .highlight-title { font-weight: 700; color: #92400e; margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase; }
+        p { line-height: 1.7; margin-bottom: 16px; font-size: 1.05rem; color: #475569; }
+        .section-title { font-size: 1.2rem; font-weight: 700; margin: 30px 0 16px 0; color: var(--primary); }
+        .highlight-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: 24px; border-radius: 0 8px 8px 0; margin: 30px 0; }
+        .highlight-title { font-weight: 700; color: #92400e; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; text-transform: uppercase; }
 
-        /* GRID COMPACTO PARA CONCEITOS (TRIAD) */
-        .triad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
-        .triad-card { background: white; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .triad-icon { font-size: 1.5rem; margin-bottom: 5px; display: block; }
-        .triad-title { font-weight: 700; font-size: 0.9rem; color: var(--primary); margin-bottom: 2px; display: block; }
-        .triad-desc { font-size: 0.75rem; color: var(--text-light); line-height: 1.4; }
+        /* GRID (VOLTANDO AO ESTILO RICO) */
+        .triad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+        .triad-card { background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .triad-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .triad-title { font-weight: 700; color: var(--primary); margin-bottom: 4px; display: block; }
+        .triad-desc { font-size: 0.8rem; color: var(--text-light); }
 
-        /* === GRID DE FLASHCARDS "MINI" (10 POR CAPÍTULO) === */
-        /* Desktop: 5 por linha (2 linhas) */
+        .download-card { display: flex; align-items: center; justify-content: space-between; background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-bottom: 16px; }
+        .file-info { display: flex; align-items: center; gap: 15px; }
+        .file-icon { width: 40px; height: 40px; background: #ffe4e6; color: #be123c; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+
+        /* GRID FLASHCARDS (ESTILO V7 - COMPACTO E EFICIENTE) */
         .flashcard-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 10px; }
-        
-        .flashcard {
-            background: white; border: 1px solid var(--border); 
-            height: 140px; /* Altura Reduzida */
-            border-radius: 8px; position: relative; cursor: pointer; perspective: 1000px; 
-        }
-        .flashcard-inner {
-            position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d;
-            padding: 10px; display: flex; align-items: center; justify-content: center;
-        }
+        .flashcard { background: white; border: 1px solid var(--border); height: 140px; border-radius: 8px; position: relative; cursor: pointer; perspective: 1000px; }
+        .flashcard-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; padding: 10px; display: flex; align-items: center; justify-content: center; }
         .flashcard:hover .flashcard-inner, .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
-        .card-front, .card-back {
-            position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px;
-        }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; }
         .card-front { background: white; color: var(--primary); font-weight: 600; font-size: 0.8rem; line-height: 1.3; }
         .card-back { background: var(--primary); color: white; transform: rotateY(180deg); border-radius: 7px; font-size: 0.75rem; line-height: 1.3; }
         .card-label { font-size: 0.6rem; text-transform: uppercase; opacity: 0.6; margin-bottom: 4px; letter-spacing: 0.5px; }
 
         /* FOOTER */
-        .lesson-footer { padding: 15px 30px; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-        .btn { padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; border: none; font-size: 0.85rem; text-decoration: none; }
+        .lesson-footer { padding: 20px 40px; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        .btn { padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; font-size: 0.9rem; text-decoration: none; display: inline-block; }
         .btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
         .btn-primary { background: var(--primary); color: white; }
 
         /* ========================================= */
-        /* 📱 MOBILE RESPONSIVE FIX (SCROLL TOTAL)   */
+        /* 📱 MOBILE FIX (SCROLL & LAYOUT) */
         /* ========================================= */
         @media (max-width: 768px) {
-            /* 1. Sidebar Fixa Escondida */
-            .sidebar { position: fixed; top: 0; left: 0; bottom: 0; transform: translateX(-100%); box-shadow: 2px 0 10px rgba(0,0,0,0.1); width: 80%; max-width: 300px; }
+            .sidebar { position: fixed; top: 0; left: 0; bottom: 0; transform: translateX(-100%); width: 85%; max-width: 300px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); }
             .sidebar.active { transform: translateX(0); }
             .sidebar-overlay.active { display: block; opacity: 1; }
             .close-menu-btn { display: block; }
             .logo-area { justify-content: space-between; }
             .mobile-header { display: flex; }
 
-            /* 2. CORREÇÃO DE SCROLL (PULO DO GATO) */
-            /* Removemos o overflow hidden do body e main para deixar o navegador controlar o scroll nativo */
+            /* SCROLL FIX */
             body { overflow: auto; height: auto; }
             .main { height: auto; overflow: visible; display: block; }
-            
-            /* Removemos scroll interno das áreas */
             .lesson-wrapper { height: auto; display: none; overflow: visible; }
-            .lesson-wrapper.active-lesson { display: block; } /* Block em vez de Flex para empilhar naturalmente */
-            
+            .lesson-wrapper.active-lesson { display: block; }
             .lesson-header { max-height: none; padding: 20px; overflow: visible; }
             .content-area { padding: 20px; overflow: visible; max-height: none; }
-            .tabs-container { padding: 0 20px; position: sticky; top: 0; z-index: 40; background: var(--surface); /* Abas grudam no topo ao rolar */ }
-            
-            /* 3. Ajustes de Grid Mobile */
-            .triad-grid { grid-template-columns: 1fr; } /* 1 por linha */
-            .flashcard-container { grid-template-columns: repeat(2, 1fr); gap: 8px; } /* 2 por linha (Mini cards mobile) */
-            .flashcard { height: 120px; } /* Cards ainda menores no mobile */
+            .tabs-container { padding: 0 20px; position: sticky; top: 0; z-index: 40; background: var(--surface); }
+
+            /* GRIDS MOBILE */
+            .triad-grid { grid-template-columns: 1fr; }
+            .flashcard-container { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .download-card { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .download-card .btn { width: 100%; text-align: center; }
             
             .media-card { flex-direction: column; align-items: flex-start; }
             .audio-iframe-container { width: 100%; margin-top: 5px; }
-
             .lesson-footer { flex-direction: column; gap: 10px; text-align: center; }
-            .lesson-footer button { width: 100%; }
+            .lesson-footer .btn { width: 100%; }
             .lesson-footer div { width: 100%; }
         }
     </style>
@@ -205,14 +196,14 @@
         <div class="module-list">
             <div class="module-item active"><span class="status-icon">✅</span> 1. Fundações da AP</div>
             <div class="sub-module-list">
-                <div id="nav-l1" class="sub-item completed" onclick="showLesson('lesson1'); toggleSidebarMobile()">1.1 A Tríade R.T.E.</div>
-                <div id="nav-l2" class="sub-item completed" onclick="showLesson('lesson2'); toggleSidebarMobile()">1.2 Mentalidade Blindada</div>
-                <div id="nav-l3" class="sub-item completed" onclick="showLesson('lesson3'); toggleSidebarMobile()">1.3 Doctor Frame</div>
-                <div id="nav-l4" class="sub-item completed" onclick="showLesson('lesson4'); toggleSidebarMobile()">1.4 Blocos de Ouro</div>
+                <div id="nav-l1" class="sub-item current" onclick="showLesson('lesson1'); toggleSidebarMobile()">1.1 A Tríade R.T.E.</div>
+                <div id="nav-l2" class="sub-item" onclick="showLesson('lesson2'); toggleSidebarMobile()">1.2 Mentalidade Blindada</div>
+                <div id="nav-l3" class="sub-item" onclick="showLesson('lesson3'); toggleSidebarMobile()">1.3 Doctor Frame</div>
+                <div id="nav-l4" class="sub-item" onclick="showLesson('lesson4'); toggleSidebarMobile()">1.4 Blocos de Ouro</div>
             </div>
             <div class="module-item active"><span class="status-icon">▶️</span> 2. CRM & Funil</div>
             <div class="sub-module-list">
-                <div id="nav-l5" class="sub-item current" onclick="showLesson('lesson5'); toggleSidebarMobile()">2.1 O Funil Perfeito</div>
+                <div id="nav-l5" class="sub-item" onclick="showLesson('lesson5'); toggleSidebarMobile()">2.1 O Funil Perfeito</div>
                 <div class="sub-item locked">2.2 CRM Eficiente</div>
                 <div class="sub-item locked">2.3 Método 3x3</div>
             </div>
@@ -225,27 +216,37 @@
             <div style="font-weight:800; color:var(--primary); font-size:0.9rem;">YUNY ACADEMY</div>
         </header>
 
-        <div id="lesson1" class="lesson-wrapper">
+        <div id="lesson1" class="lesson-wrapper active-lesson">
             <header class="lesson-header">
                 <div class="breadcrumbs">Módulo 1 > Fundações</div>
-                <h1>1.1 — A Tríade R.T.E.</h1>
+                <h1>1.1 — O Código da Alta Performance: A Tríade R.T.E.</h1>
                 <div class="media-card secondary"><div class="media-info"><h4>Podcast: "O Código R.T.E."</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15yXQ704AfrKTDbxOzEcv084qAaBJ3ppL/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" onclick="openTab('l1-tab1', this)">📖 CONCEITO</div>
-                <div class="tab" onclick="openTab('l1-tab3', this)">🧠 TREINO (10 CARDS)</div>
+                <div class="tab active" onclick="openTab('l1-tab1', this)">📖 RESUMO</div>
+                <div class="tab" onclick="openTab('l1-tab2', this)">🛠️ FERRAMENTAS</div>
+                <div class="tab" onclick="openTab('l1-tab3', this)">🧠 TREINO</div>
             </div>
             <div id="l1-tab1" class="content-area active-content">
-                <p>Alta performance é consistência. O código é <strong>R.T.E.</strong>.</p>
+                <p>O mercado imobiliário não aceita mais amadores. Na Yuny, alta performance não é um pico isolado de vendas, é <strong>consistência</strong>. Para atingir isso, utilizamos o <strong>Código R.T.E.</strong>.</p>
+                <div class="highlight-box"><div class="highlight-title">💎 MANIFESTO R.T.E.</div>"Técnica sem esforço é teoria. Esforço sem técnica é desperdício. E ambos sem foco em resultados são apenas hobby."</div>
+                <h3 class="section-title">Os 3 Pilares da Elite</h3>
                 <div class="triad-grid">
-                    <div class="triad-card"><span class="triad-icon">📊</span><span class="triad-title">RESULTADOS</span><span class="triad-desc">Trabalhe pelos dados.</span></div>
-                    <div class="triad-card"><span class="triad-icon">🛠️</span><span class="triad-title">TÉCNICA</span><span class="triad-desc">SPIN Selling.</span></div>
-                    <div class="triad-card"><span class="triad-icon">💪</span><span class="triad-title">ESFORÇO</span><span class="triad-desc">Hunter Mode.</span></div>
+                    <div class="triad-card"><span class="triad-icon">📊</span><span class="triad-title">RESULTADOS</span><span class="triad-desc"><strong>Engenharia Reversa.</strong> Não trabalhe pelo "feeling", trabalhe pelos dados.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🛠️</span><span class="triad-title">TÉCNICA</span><span class="triad-desc"><strong>SPIN Selling.</strong> Isole a objeção de preço e venda o valor.</span></div>
+                    <div class="triad-card"><span class="triad-icon">💪</span><span class="triad-title">ESFORÇO</span><span class="triad-desc"><strong>Hunter vs Farmer.</strong> Blocos de tempo blindados e Follow-up infinito.</span></div>
+                </div>
+            </div>
+            <div id="l1-tab2" class="content-area">
+                <h3 class="section-title">Downloads do Módulo</h3>
+                <div class="download-card">
+                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Workbook R.T.E. - Manual Completo</div><div style="font-size: 0.8rem; color: #64748b;">Scripts, Engenharia Reversa e Autoavaliação.</div></div></div>
+                    <a href="https://drive.google.com/file/d/1CYEjosVxMJR7ZKm6Dtvu4lePUS1UhyQ2/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
                 </div>
             </div>
             <div id="l1-tab3" class="content-area">
                 <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Hunter?</div><div class="card-back">Caçador. Foco em novos leads.</div></div></div>
+                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Hunter?</div><div class="card-back">Caçador. Foco em novos leads.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Farmer?</div><div class="card-back">Fazendeiro. Cultiva atuais.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Maioria das Vendas?</div><div class="card-back">5º ao 12º contato.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Engenharia Reversa?</div><div class="card-back">Metas baseadas em dados.</div></div></div>
@@ -257,7 +258,7 @@
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Amadores?</div><div class="card-back">Não têm vez na Yuny.</div></div></div>
                 </div>
             </div>
-            <footer class="lesson-footer"><button class="btn btn-secondary" disabled>Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson2')">Próximo</button></footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" disabled>← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson2')">Ir para 1.2 →</button></footer>
         </div>
 
         <div id="lesson2" class="lesson-wrapper">
@@ -268,13 +269,23 @@
             </header>
             <div class="tabs-container">
                 <div class="tab active" onclick="openTab('l2-tab1', this)">📖 CONCEITO</div>
-                <div class="tab" onclick="openTab('l2-tab3', this)">🧠 TREINO (10 CARDS)</div>
+                <div class="tab" onclick="openTab('l2-tab2', this)">🛠️ FERRAMENTAS</div>
+                <div class="tab" onclick="openTab('l2-tab3', this)">🧠 TREINO</div>
             </div>
             <div id="l2-tab1" class="content-area active-content">
+                <p>O Top Performer da Yuny opera em linha reta. Ele controla sua Atividade Diária Produtiva (ADP).</p>
+                <div class="highlight-box"><div class="highlight-title">💎 PRINCÍPIO ESTOICO</div>"Você controla a sua Atividade, não o Resultado. Apaixone-se pelo processo."</div>
                 <div class="triad-grid">
-                    <div class="triad-card"><span class="triad-icon">🎮</span><span class="triad-title">CONTROLE</span><span class="triad-desc">Foquer no que você controla (ADP).</span></div>
+                    <div class="triad-card"><span class="triad-icon">🎮</span><span class="triad-title">CONTROLE</span><span class="triad-desc">Foque no que você controla (ADP).</span></div>
                     <div class="triad-card"><span class="triad-icon">📈</span><span class="triad-title">ESTATÍSTICA</span><span class="triad-desc">O "Não" faz parte da matemática.</span></div>
                     <div class="triad-card"><span class="triad-icon">⏭️</span><span class="triad-title">NEXT PLAY</span><span class="triad-desc">Recuperação rápida.</span></div>
+                </div>
+            </div>
+            <div id="l2-tab2" class="content-area">
+                <h3 class="section-title">Material de Apoio</h3>
+                <div class="download-card">
+                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual: Mentalidade Blindada</div><div style="font-size: 0.8rem; color: #64748b;">Leitura obrigatória. Contém o "Ritual Matinal".</div></div></div>
+                    <a href="https://drive.google.com/file/d/1Gu9n420tEOG72kTpZMhssN9l5l2JHmwL/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
                 </div>
             </div>
             <div id="l2-tab3" class="content-area">
@@ -302,13 +313,23 @@
             </header>
             <div class="tabs-container">
                 <div class="tab active" onclick="openTab('l3-tab1', this)">📖 CONCEITO</div>
-                <div class="tab" onclick="openTab('l3-tab3', this)">🧠 TREINO (10 CARDS)</div>
+                <div class="tab" onclick="openTab('l3-tab2', this)">🛠️ SCRIPTS</div>
+                <div class="tab" onclick="openTab('l3-tab3', this)">🧠 TREINO</div>
             </div>
             <div id="l3-tab1" class="content-area active-content">
+                <p>O corretor "Garçom" tira pedidos. O corretor "Doctor Frame" faz a Anamnese e prescreve a solução.</p>
+                <div class="highlight-box"><div class="highlight-title">💎 A REGRA DE OURO</div>"Quem faz as perguntas detém o controle da conversa."</div>
                  <div class="triad-grid">
                     <div class="triad-card"><span class="triad-icon">🩺</span><span class="triad-title">O JALECO</span><span class="triad-desc">Autoridade imediata.</span></div>
                     <div class="triad-card"><span class="triad-icon">🔬</span><span class="triad-title">O EXAME</span><span class="triad-desc">Diagnóstico (Anamnese).</span></div>
                     <div class="triad-card"><span class="triad-icon">💊</span><span class="triad-title">PRESCRIÇÃO</span><span class="triad-desc">Produto é remédio.</span></div>
+                </div>
+            </div>
+            <div id="l3-tab2" class="content-area">
+                <h3 class="section-title">Ferramentas de Autoridade</h3>
+                <div class="download-card">
+                    <div class="file-info"><div class="file-icon">DOC</div><div><div style="font-weight: 600;">Roteiro de Anamnese Imobiliária</div><div style="font-size: 0.8rem; color: #64748b;">As 10 perguntas que revelam a dor real do cliente.</div></div></div>
+                    <a href="https://drive.google.com/file/d/1ldGvUjXRj00PZAhKYzXJ6HSUFHhrN3CF/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar Script</a>
                 </div>
             </div>
             <div id="l3-tab3" class="content-area">
@@ -355,14 +376,23 @@
             
             <div class="tabs-container">
                 <div class="tab active" onclick="openTab('l4-tab1', this)">📖 BLOCO</div>
-                <div class="tab" onclick="openTab('l4-tab3', this)">🧠 TREINO (10 CARDS)</div>
+                <div class="tab" onclick="openTab('l4-tab2', this)">🛠️ FERRAMENTAS</div>
+                <div class="tab" onclick="openTab('l4-tab3', this)">🧠 TREINO</div>
             </div>
             <div id="l4-tab1" class="content-area active-content">
+                <p>A frase mais perigosa no mercado é: <em>"Estou na correria"</em>. Estar ocupado não é estar produzindo.</p>
                 <div class="highlight-box"><div class="highlight-title">💎 REGRA DE FERRO</div>"Bloco de Ouro = 60 min só de AGR (Venda)."</div>
                 <div class="triad-grid">
                     <div class="triad-card"><span class="triad-icon">⚔️</span><span class="triad-title">CAÇADOR</span><span class="triad-desc">Só ligue e oferte.</span></div>
                     <div class="triad-card"><span class="triad-icon">🔕</span><span class="triad-title">AVIÃO</span><span class="triad-desc">Zero notificações.</span></div>
                     <div class="triad-card"><span class="triad-icon">🚫</span><span class="triad-title">VAMPIROS</span><span class="triad-desc">Bloqueie interrupções.</span></div>
+                </div>
+            </div>
+            <div id="l4-tab2" class="content-area">
+                <h3 class="section-title">Planner de Produtividade</h3>
+                <div class="download-card">
+                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual Blocos de Ouro</div><div style="font-size: 0.8rem; color: #64748b;">Checklist de preparação e blindagem de agenda.</div></div></div>
+                    <a href="https://drive.google.com/file/d/1mp6ORPGVt9DKjz0HBWUK0lk1U-eq9ZZw/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
                 </div>
             </div>
             <div id="l4-tab3" class="content-area">
@@ -390,13 +420,23 @@
             </header>
             <div class="tabs-container">
                 <div class="tab active" onclick="openTab('l5-tab1', this)">📖 RÉGUA</div>
-                <div class="tab" onclick="openTab('l5-tab3', this)">🧠 TREINO (10 CARDS)</div>
+                <div class="tab" onclick="openTab('l5-tab2', this)">🛠️ MAPA</div>
+                <div class="tab" onclick="openTab('l5-tab3', this)">🧠 TREINO</div>
             </div>
             <div id="l5-tab1" class="content-area active-content">
+                <p>O cérebro humano gerencia no máximo 7 relacionamentos. Se você tem 50 leads e não usa o CRM, está perdendo dinheiro.</p>
+                <div class="highlight-box"><div class="highlight-title">💎 LEI DE OURO</div>"Se não está no CRM, o cliente não existe."</div>
                 <div class="triad-grid">
                     <div class="triad-card"><span class="triad-icon">🔽</span><span class="triad-title">TOPO</span><span class="triad-desc">Conexão (Resposta).</span></div>
                     <div class="triad-card"><span class="triad-icon">🔄</span><span class="triad-title">MEIO</span><span class="triad-desc">Visita (Venda Real).</span></div>
                     <div class="triad-card"><span class="triad-icon">💰</span><span class="triad-title">FUNDO</span><span class="triad-desc">Assinatura.</span></div>
+                </div>
+            </div>
+            <div id="l5-tab2" class="content-area">
+                <h3 class="section-title">Manual de Bolso</h3>
+                <div class="download-card">
+                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Mapa de Batalha: O Funil Perfeito</div><div style="font-size: 0.8rem; color: #64748b;">Guia rápido para colar na parede.</div></div></div>
+                    <a href="https://drive.google.com/file/d/1sivonFGSFC2VL11Pvm4McE4muQPx2ob3/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
                 </div>
             </div>
             <div id="l5-tab3" class="content-area">
@@ -434,7 +474,7 @@
             document.querySelectorAll('.lesson-wrapper').forEach(l => l.classList.remove('active-lesson'));
             document.getElementById(lessonId).classList.add('active-lesson');
             
-            // Scroll to top para garantir que o usuário veja o topo da nova aula
+            // Scroll to top
             window.scrollTo(0,0);
             if (document.querySelector('.main')) document.querySelector('.main').scrollTop = 0;
 
