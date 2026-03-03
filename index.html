@@ -131,7 +131,7 @@
         .file-info { display: flex; align-items: center; gap: 15px; }
         .file-icon { width: 40px; height: 40px; background: #ffe4e6; color: #be123c; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
 
-        /* GRID FLASHCARDS (ESTILO V7 - COMPACTO E EFICIENTE) */
+        /* GRID FLASHCARDS */
         .flashcard-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 10px; }
         .flashcard { background: white; border: 1px solid var(--border); height: 140px; border-radius: 8px; position: relative; cursor: pointer; perspective: 1000px; }
         .flashcard-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; padding: 10px; display: flex; align-items: center; justify-content: center; }
@@ -220,7 +220,22 @@
             <header class="lesson-header">
                 <div class="breadcrumbs">Módulo 1 > Fundações</div>
                 <h1>1.1 — O Código da Alta Performance: A Tríade R.T.E.</h1>
-                <div class="media-card secondary"><div class="media-info"><h4>Podcast: "O Código R.T.E."</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15yXQ704AfrKTDbxOzEcv084qAaBJ3ppL/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
+                
+                <div class="media-section">
+                    <div class="media-card block-display">
+                        <div class="media-info"><h4>📺 Vídeo Aula: A Tríade</h4></div>
+                        <div class="video-container">
+                            <iframe src="https://drive.google.com/file/d/1VBdlPeP3ChtnSnjDA_30ymTB1yjFJsZ2/preview" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <div class="media-card secondary" style="flex:1; min-width: 200px;">
+                            <div class="media-info"><h4>🎧 Podcast: "O Código R.T.E."</h4></div>
+                            <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15yXQ704AfrKTDbxOzEcv084qAaBJ3ppL/preview" width="100%" height="100%" style="border:none;"></iframe></div>
+                        </div>
+                    </div>
+                </div>
+
             </header>
             <div class="tabs-container">
                 <div class="tab active" onclick="openTab('l1-tab1', this)">📖 RESUMO</div>
@@ -240,13 +255,13 @@
             <div id="l1-tab2" class="content-area">
                 <h3 class="section-title">Downloads do Módulo</h3>
                 <div class="download-card">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Workbook R.T.E. - Manual Completo</div><div style="font-size: 0.8rem; color: #64748b;">Scripts, Engenharia Reversa e Autoavaliação.</div></div></div>
-                    <a href="https://drive.google.com/file/d/1CYEjosVxMJR7ZKm6Dtvu4lePUS1UhyQ2/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
+                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Mapa de Batalha: A Tríade R.T.E.</div><div style="font-size: 0.8rem; color: #64748b;">Manual Completo atualizado.</div></div></div>
+                    <a href="https://drive.google.com/file/d/1wTY-_d3irQlyFC6haL6MRm7Qa_24QTNI/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
                 </div>
             </div>
             <div id="l1-tab3" class="content-area">
                 <div class="flashcard-container">
-                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Hunter?</div><div class="card-back">Caçador. Foco em novos leads.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Hunter?</div><div class="card-back">Caçador. Foco em novos leads.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Farmer?</div><div class="card-back">Fazendeiro. Cultiva atuais.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Maioria das Vendas?</div><div class="card-back">5º ao 12º contato.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Engenharia Reversa?</div><div class="card-back">Metas baseadas em dados.</div></div></div>
