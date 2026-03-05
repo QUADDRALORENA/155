@@ -6,87 +6,40 @@
     <title>Yuny Academy - Formação Elite</title>
     <style>
         :root {
-            --primary: #0f172a; 
-            --accent: #ca8a04; 
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --text: #334155;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --success: #10b981;
-            --sidebar-width: 280px;
+            --primary: #0f172a; --accent: #ca8a04; --bg: #f8fafc; --surface: #ffffff;
+            --text: #334155; --text-light: #64748b; --border: #e2e8f0; --success: #10b981; --sidebar-width: 280px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
-        
         body { background-color: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
         body.no-scroll { overflow: hidden; }
 
         /* --- SIDEBAR --- */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: var(--surface);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            height: 100%;
-        }
-        
-        .logo-area {
-            padding: 24px;
-            border-bottom: 1px solid var(--border);
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            cursor: pointer;
-        }
-        
+        .sidebar { width: var(--sidebar-width); background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; transition: transform .3s cubic-bezier(.4,0,.2,1); z-index: 1000; height: 100%; }
+        .logo-area { padding: 24px; border-bottom: 1px solid var(--border); font-weight: 800; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; }
         .logo-icon { width: 20px; height: 20px; background: var(--accent); border-radius: 4px; }
         .module-list { overflow-y: auto; flex: 1; padding: 10px; }
-        
-        .module-item {
-            padding: 12px 16px; margin-bottom: 4px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-light); transition: all 0.2s; margin-top: 10px;
-        }
-        @media (hover: hover) and (pointer: fine) {
-            .module-item:hover { background: var(--bg); }
-        }
+        .module-item { padding: 12px 16px; margin-bottom: 4px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-light); transition: all 0.2s; margin-top: 10px; }
+        @media (hover: hover) and (pointer: fine) { .module-item:hover { background: var(--bg); } }
         .module-item.active { background: #eff6ff; color: var(--primary); font-weight: 600; border-left: 3px solid var(--primary); }
-
         .sub-module-list { padding-left: 40px; font-size: 0.85rem; color: var(--text); margin-bottom: 10px; border-left: 2px solid #e2e8f0; margin-left: 20px; }
         .sub-item { padding: 8px 0; cursor: pointer; color: var(--text-light); transition: color 0.2s; display: block; }
         .sub-item.current { color: var(--primary); font-weight: 700; }
         .sub-item.completed { color: var(--success); text-decoration: line-through; opacity: 0.8; }
         .locked { opacity: 0.5; cursor: not-allowed; }
-        
         .close-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; }
         .sidebar-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 900; opacity: 0; transition: opacity 0.3s; }
 
         /* --- MAIN CONTENT --- */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; width: 100%; }
-
-        .mobile-header {
-            display: none; padding: 15px 20px; background: var(--surface); border-bottom: 1px solid var(--border);
-            align-items: center; justify-content: space-between; flex-shrink: 0; z-index: 50;
-        }
+        .mobile-header { display: none; padding: 15px 20px; background: var(--surface); border-bottom: 1px solid var(--border); align-items: center; justify-content: space-between; flex-shrink: 0; z-index: 50; }
         .menu-toggle-btn { background: transparent; border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer; }
 
         /* LAYOUT DE AULA */
         .lesson-wrapper { display: none; flex-direction: column; height: 100%; overflow: hidden; }
         .lesson-wrapper.active-lesson { display: flex; animation: fadeInPage 0.3s ease; }
         @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
-
-        .lesson-header {
-            background: var(--surface); padding: 24px 40px; border-bottom: 1px solid var(--border);
-            flex-shrink: 0; overflow-y: auto; max-height: 45vh;
-        }
-
+        .lesson-header { background: var(--surface); padding: 24px 40px; border-bottom: 1px solid var(--border); flex-shrink: 0; overflow-y: auto; max-height: 45vh; }
         .breadcrumbs { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
         h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 16px; line-height: 1.2; }
 
@@ -95,7 +48,6 @@
         .media-card { background: var(--primary); color: white; padding: 16px; border-radius: 12px; box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1); display: flex; align-items: center; gap: 20px; }
         .media-card.block-display { display: block; }
         .media-card.secondary { background: white; border: 1px solid var(--border); color: var(--text); padding: 10px 16px; }
-        
         .video-container { position: relative; width: 100%; padding-bottom: 56.25%; background: black; border-radius: 8px; overflow: hidden; margin-top: 10px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         .audio-iframe-container { width: 100%; height: 50px; border-radius: 6px; overflow: hidden; background: rgba(0,0,0,0.05); flex: 1; }
@@ -103,14 +55,8 @@
         .media-info p { font-size: 0.75rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* TABS */
-        .tabs-container {
-            padding: 0 40px; background: var(--surface); border-bottom: 1px solid var(--border);
-            display: flex; gap: 32px; flex-shrink: 0; overflow-x: auto;
-        }
-        .tab {
-            padding: 16px 0; font-size: 0.85rem; font-weight: 600; color: var(--text-light); cursor: pointer;
-            position: relative; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
-        }
+        .tabs-container { padding: 0 40px; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; gap: 32px; flex-shrink: 0; overflow-x: auto; }
+        .tab { padding: 16px 0; font-size: 0.85rem; font-weight: 600; color: var(--text-light); cursor: pointer; position: relative; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
         .tab.active { color: var(--primary); }
         .tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--accent); }
 
@@ -118,7 +64,6 @@
         .content-area { padding: 40px; overflow-y: auto; max-width: 900px; display: none; flex: 1; }
         .content-area.active-content { display: block; animation: fadeInContent 0.3s ease; }
         @keyframes fadeInContent { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
         p { line-height: 1.7; margin-bottom: 16px; font-size: 1.05rem; color: #475569; }
         .section-title { font-size: 1.2rem; font-weight: 700; margin: 30px 0 16px 0; color: var(--primary); }
         .highlight-box { background: #fffbeb; border-left: 4px solid var(--accent); padding: 24px; border-radius: 0 8px 8px 0; margin: 30px 0; }
@@ -134,11 +79,8 @@
         .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         .download-card { display: flex; flex-direction: column; justify-content: space-between; background: white; border: 1px solid var(--border); padding: 20px; border-radius: 8px; gap: 15px;}
         .download-card.full-width { grid-column: 1 / -1; flex-direction: row; align-items: center; }
-        
-        /* CARD ESPECIAL DRIVE */
         .drive-card { background: #eff6ff; border: 1px solid #bfdbfe; }
         .drive-card .file-icon { background: #dbeafe; color: #1e40af; }
-
         .file-info { display: flex; align-items: center; gap: 15px; }
         .file-icon { width: 40px; height: 40px; background: #ffe4e6; color: #be123c; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
 
@@ -146,28 +88,20 @@
         .flashcard-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 10px; }
         .flashcard { background: white; border: 1px solid var(--border); height: 140px; border-radius: 8px; position: relative; cursor: pointer; perspective: 1000px; }
         .flashcard-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; padding: 10px; display: flex; align-items: center; justify-content: center; }
-        
-        @media (hover: hover) and (pointer: fine) {
-            .flashcard:hover .flashcard-inner { transform: rotateY(180deg); }
-        }
+        @media (hover: hover) and (pointer: fine) { .flashcard:hover .flashcard-inner { transform: rotateY(180deg); } }
         .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
-        
         .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; }
         .card-front { background: white; color: var(--primary); font-weight: 600; font-size: 0.8rem; line-height: 1.3; }
         .card-back { background: var(--primary); color: white; transform: rotateY(180deg); border-radius: 7px; font-size: 0.75rem; line-height: 1.3; }
         
-        /* DASHBOARD (NOVO LOBBY) */
+        /* DASHBOARD */
         .dashboard-header { background: var(--primary); color: white; padding: 60px 40px; border-bottom: 1px solid var(--border); }
         .dashboard-header h1 { color: white; margin-bottom: 10px; font-size: 2.2rem;}
         .dashboard-header p { color: #cbd5e1; font-size: 1.1rem; margin-bottom: 0;}
         .dashboard-grid { padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; overflow-y: auto;}
-        
-        /* BOTOES DASHBOARD (Acessibilidade) */
         .dash-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; text-align: left; width: 100%;}
         .dash-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-        @media (hover: hover) and (pointer: fine) {
-            .dash-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: var(--accent); }
-        }
+        @media (hover: hover) and (pointer: fine) { .dash-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: var(--accent); } }
         .dash-card-icon { font-size: 2.5rem; margin-bottom: 16px; }
         .dash-card-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
         .dash-card-desc { font-size: 0.9rem; color: var(--text-light); line-height: 1.5; margin-bottom: 20px;}
@@ -179,9 +113,6 @@
         .btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
         .btn-primary { background: var(--primary); color: white; }
 
-        /* ========================================= */
-        /* 📱 MOBILE FIX */
-        /* ========================================= */
         @media (max-width: 768px) {
             .sidebar { position: fixed; top: 0; left: 0; bottom: 0; transform: translateX(-100%); width: 85%; max-width: 300px; box-shadow: 2px 0 10px rgba(0,0,0,0.1); }
             .sidebar.active { transform: translateX(0); }
@@ -189,7 +120,6 @@
             .close-menu-btn { display: block; }
             .logo-area { justify-content: space-between; }
             .mobile-header { display: flex; }
-
             body { overflow: auto; height: auto; }
             .main { height: auto; overflow: visible; display: block; }
             .lesson-wrapper { height: auto; display: none; overflow: visible; }
@@ -197,11 +127,9 @@
             .lesson-header, .dashboard-header { padding: 20px; overflow: visible; max-height: none; }
             .content-area, .dashboard-grid { padding: 20px; overflow: visible; max-height: none; }
             .tabs-container { padding: 0 20px; position: sticky; top: 0; z-index: 40; background: var(--surface); }
-            
             .download-grid { grid-template-columns: 1fr; }
             .download-card.full-width { flex-direction: column; align-items: flex-start; }
             .download-card .btn { width: 100%; text-align: center; }
-
             .triad-grid { grid-template-columns: 1fr; }
             .flashcard-container { grid-template-columns: repeat(2, 1fr); gap: 8px; }
             .lesson-footer { flex-direction: column; gap: 10px; text-align: center; }
@@ -247,13 +175,25 @@
                 <div id="nav-l11" class="sub-item" onclick="showLesson('lesson11'); toggleSidebarMobile()">3.3 Carteira Definitiva</div>
                 <div id="nav-l12" class="sub-item" onclick="showLesson('lesson12'); toggleSidebarMobile()">3.4 Reativação Técnica</div>
             </div>
+
+            <div class="module-item"><span class="status-icon">✅</span> 4. Domínio do Produto</div>
+            <div class="sub-module-list">
+                <div id="nav-l13" class="sub-item" onclick="showLesson('lesson13'); toggleSidebarMobile()">4.1 Engenharia de Valor</div>
+                <div id="nav-l14" class="sub-item" onclick="showLesson('lesson14'); toggleSidebarMobile()">4.2 O Pitch Presencial</div>
+                <div id="nav-l15" class="sub-item" onclick="showLesson('lesson15'); toggleSidebarMobile()">4.3 Contorno de Objeções</div>
+                <div id="nav-l16" class="sub-item" onclick="showLesson('lesson16'); toggleSidebarMobile()">4.4 Pós-Venda & Indicações</div>
+            </div>
             
-            <div class="module-item"><span class="status-icon">🎁</span> Bônus: Sistemas</div>
+            <div class="module-item"><span class="status-icon">🎁</span> Trilha Bônus</div>
             <div class="sub-module-list">
                 <div id="nav-l-sigavi" class="sub-item" onclick="showLesson('lesson-sigavi'); toggleSidebarMobile()">B.1 Treinamento SIGAVI</div>
+                <div id="nav-l-mkt" class="sub-item" onclick="showLesson('lesson-mkt'); toggleSidebarMobile()">B.2 Mkt Imobiliário (Felipe Capuano)</div>
             </div>
 
-            <div class="module-item locked"><span class="status-icon">🔒</span> 4. Domínio do Produto</div>
+            <div class="module-item locked"><span class="status-icon">🔒</span> 5. Fechamento Jurídico</div>
+            <div class="sub-module-list">
+                <div class="sub-item locked">Em breve</div>
+            </div>
         </div>
     </nav>
 
@@ -271,47 +211,32 @@
             <div class="dashboard-grid">
                 
                 <button class="dash-card" onclick="showLesson('lesson1')" aria-label="Acessar Módulo 1">
-                    <div>
-                        <div class="dash-card-icon">🏛️</div>
-                        <div class="dash-card-title">Módulo 1: Fundações da AP</div>
-                        <div class="dash-card-desc">Construa a mentalidade, rotina e autoridade inabalável do corretor Top 1% da Yuny.</div>
-                    </div>
+                    <div><div class="dash-card-icon">🏛️</div><div class="dash-card-title">Módulo 1: Fundações da AP</div><div class="dash-card-desc">Construa a mentalidade, rotina e autoridade inabalável do corretor Top 1% da Yuny.</div></div>
                     <div class="dash-card-footer"><span>4 Aulas</span> <span>Acessar →</span></div>
                 </button>
 
                 <button class="dash-card" onclick="showLesson('lesson5')" aria-label="Acessar Módulo 2">
-                    <div>
-                        <div class="dash-card-icon">📊</div>
-                        <div class="dash-card-title">Módulo 2: CRM e Funil</div>
-                        <div class="dash-card-desc">O método exato para organizar seu funil, aplicar o 3x3 e dominar a matemática da comissão.</div>
-                    </div>
+                    <div><div class="dash-card-icon">📊</div><div class="dash-card-title">Módulo 2: CRM e Funil</div><div class="dash-card-desc">O método exato para organizar seu funil, aplicar o 3x3 e dominar a matemática da comissão.</div></div>
                     <div class="dash-card-footer"><span>4 Aulas</span> <span>Acessar →</span></div>
                 </button>
 
                 <button class="dash-card" onclick="showLesson('lesson9')" aria-label="Acessar Módulo 3">
-                    <div>
-                        <div class="dash-card-icon">🎯</div>
-                        <div class="dash-card-title">Módulo 3: Prospecção Ativa</div>
-                        <div class="dash-card-desc">Aprenda a imprimir seu próprio dinheiro com Oferta Dirigida, Cold Call e Gestão de Carteira.</div>
-                    </div>
+                    <div><div class="dash-card-icon">🎯</div><div class="dash-card-title">Módulo 3: Prospecção Ativa</div><div class="dash-card-desc">Aprenda a imprimir seu próprio dinheiro com Oferta Dirigida, Cold Call e Gestão de Carteira.</div></div>
                     <div class="dash-card-footer"><span>4 Aulas</span> <span>Acessar →</span></div>
                 </button>
 
-                <button class="dash-card" onclick="showLesson('lesson-sigavi')" style="border-color: #60a5fa; box-shadow: 0 4px 15px rgba(96, 165, 250, 0.1);" aria-label="Acessar Módulo Bônus">
-                    <div>
-                        <div class="dash-card-icon">🎁</div>
-                        <div class="dash-card-title">Bônus: Treinamento SIGAVI</div>
-                        <div class="dash-card-desc">Capacitação técnica completa para operar a plataforma SIGAVI Connect e gestão comercial.</div>
-                    </div>
-                    <div class="dash-card-footer" style="color: #2563eb;"><span>Aula Extra</span> <span>Acessar →</span></div>
+                <button class="dash-card" onclick="showLesson('lesson13')" style="border-color: var(--accent); box-shadow: 0 4px 15px rgba(202, 138, 4, 0.1);" aria-label="Acessar Módulo 4">
+                    <div><div class="dash-card-icon">🏢</div><div class="dash-card-title">Módulo 4: Domínio do Produto</div><div class="dash-card-desc">Estratégias avançadas de pitch presencial, engenharia de valor e contorno de objeções.</div></div>
+                    <div class="dash-card-footer" style="color: var(--primary);"><span>Módulo Atual</span> <span>Continuar →</span></div>
                 </button>
 
-                <button class="dash-card" style="opacity: 0.6; cursor: not-allowed;" aria-label="Módulo 4 Bloqueado" disabled>
-                    <div>
-                        <div class="dash-card-icon">🏢</div>
-                        <div class="dash-card-title">Módulo 4: Domínio do Produto</div>
-                        <div class="dash-card-desc">Estratégias avançadas de pitch, contorno de objeções e cross-selling do Portfólio Yuny.</div>
-                    </div>
+                <button class="dash-card" onclick="showLesson('lesson-sigavi')" style="border-color: #60a5fa; box-shadow: 0 4px 15px rgba(96, 165, 250, 0.1);" aria-label="Acessar Trilha Bônus">
+                    <div><div class="dash-card-icon">🎁</div><div class="dash-card-title">Trilha Bônus e Masterclasses</div><div class="dash-card-desc">Acesso liberado ao Treinamento SIGAVI e à Masterclass de Mkt Imobiliário com Felipe Capuano.</div></div>
+                    <div class="dash-card-footer" style="color: #2563eb;"><span>2 Masterclasses</span> <span>Acessar →</span></div>
+                </button>
+
+                <button class="dash-card" style="opacity: 0.6; cursor: not-allowed;" aria-label="Módulo 5 Bloqueado" disabled>
+                    <div><div class="dash-card-icon">⚖️</div><div class="dash-card-title">Módulo 5: Fechamento Jurídico</div><div class="dash-card-desc">Tudo sobre contratos, documentação, análise de crédito e a esteira de aprovação Yuny.</div></div>
                     <div class="dash-card-footer" style="color: #94a3b8;"><span>Em breve</span> <span>🔒 Bloqueado</span></div>
                 </button>
 
@@ -323,24 +248,12 @@
                 <div class="breadcrumbs">Módulo 1 > Fundações</div>
                 <h1>1.1 — O Código da Alta Performance: A Tríade R.T.E.</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: A Tríade</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/1gaEnESgHzpKw1lQosjadhipAwGRkdNtk/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <div class="media-card secondary" style="flex:1; min-width: 200px;">
-                            <div class="media-info"><h4>🎧 Podcast: "O Código R.T.E."</h4></div>
-                            <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15yXQ704AfrKTDbxOzEcv084qAaBJ3ppL/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                        </div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: A Tríade</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/1gaEnESgHzpKw1lQosjadhipAwGRkdNtk/preview" allowfullscreen></iframe></div></div>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;"><div class="media-card secondary" style="flex:1; min-width: 200px;"><div class="media-info"><h4>🎧 Podcast: "O Código R.T.E."</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15yXQ704AfrKTDbxOzEcv084qAaBJ3ppL/preview" width="100%" height="100%" style="border:none;"></iframe></div></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l1-tab1" onclick="openTab(this)">📖 RESUMO</div>
-                <div class="tab" data-target="l1-tab2" onclick="openTab(this)">🛠️ FERRAMENTAS</div>
-                <div class="tab" data-target="l1-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l1-tab1" onclick="openTab(this)">📖 RESUMO</div><div class="tab" data-target="l1-tab2" onclick="openTab(this)">🛠️ FERRAMENTAS</div><div class="tab" data-target="l1-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l1-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 MANIFESTO R.T.E.</div>"Técnica sem esforço é teoria. Esforço sem técnica é desperdício. E ambos sem foco em resultados são apenas hobby."</div>
@@ -351,10 +264,7 @@
                 </div>
             </div>
             <div id="l1-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Mapa de Batalha: A Tríade R.T.E.</div></div></div>
-                    <a href="https://drive.google.com/file/d/1wTY-_d3irQlyFC6haL6MRm7Qa_24QTNI/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Mapa de Batalha: A Tríade R.T.E.</div></div></div><a href="https://drive.google.com/file/d/1wTY-_d3irQlyFC6haL6MRm7Qa_24QTNI/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l1-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -378,22 +288,12 @@
                 <div class="breadcrumbs">Módulo 1 > Mentalidade</div>
                 <h1>1.2 — Mentalidade Blindada</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: Mentalidade Blindada</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/1Aq_OOB1s8qJbh5wb8QFUktO_XxnL_1_B/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "Sem Montanha Russa"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1yRu-R6sw-2HwTdJz7nW4AtNBjJbnSiEt/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Mentalidade Blindada</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/1Aq_OOB1s8qJbh5wb8QFUktO_XxnL_1_B/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Sem Montanha Russa"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1yRu-R6sw-2HwTdJz7nW4AtNBjJbnSiEt/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l2-tab1" onclick="openTab(this)">📖 CONCEITO</div>
-                <div class="tab" data-target="l2-tab2" onclick="openTab(this)">🛠️ FERRAMENTAS</div>
-                <div class="tab" data-target="l2-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l2-tab1" onclick="openTab(this)">📖 CONCEITO</div><div class="tab" data-target="l2-tab2" onclick="openTab(this)">🛠️ FERRAMENTAS</div><div class="tab" data-target="l2-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l2-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 PRINCÍPIO ESTOICO</div>"Você controla a sua Atividade, não o Resultado. Apaixone-se pelo processo."</div>
@@ -404,10 +304,7 @@
                 </div>
             </div>
             <div id="l2-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual: Mentalidade Blindada</div></div></div>
-                    <a href="https://drive.google.com/file/d/1_z6QytX9xRVGMbT54eXOOM6A4InG3bfV/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual: Mentalidade Blindada</div></div></div><a href="https://drive.google.com/file/d/1_z6QytX9xRVGMbT54eXOOM6A4InG3bfV/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l2-tab3" class="content-area">
                  <div class="flashcard-container">
@@ -431,22 +328,12 @@
                 <div class="breadcrumbs">Módulo 1 > Autoridade</div>
                 <h1>1.3 — Doctor Frame</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: O Especialista</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/1QqWVNbRdQ2UlvQUy6Fi_BI2e9iDBacnM/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "Receitar vs Vender"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1rbg_daj09IGVBdqxaMVhvNPR9BD4cRJb/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: O Especialista</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/1QqWVNbRdQ2UlvQUy6Fi_BI2e9iDBacnM/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Receitar vs Vender"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1rbg_daj09IGVBdqxaMVhvNPR9BD4cRJb/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l3-tab1" onclick="openTab(this)">📖 CONCEITO</div>
-                <div class="tab" data-target="l3-tab2" onclick="openTab(this)">🛠️ SCRIPTS</div>
-                <div class="tab" data-target="l3-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l3-tab1" onclick="openTab(this)">📖 CONCEITO</div><div class="tab" data-target="l3-tab2" onclick="openTab(this)">🛠️ SCRIPTS</div><div class="tab" data-target="l3-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l3-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 A REGRA DE OURO</div>"Quem faz as perguntas detém o controle da conversa."</div>
@@ -457,10 +344,7 @@
                 </div>
             </div>
             <div id="l3-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">DOC</div><div><div style="font-weight: 600;">Roteiro de Anamnese Imobiliária</div></div></div>
-                    <a href="https://drive.google.com/file/d/1OWt-9DsssJhcEpa5m5NY8Fm9l9uSPdST/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar Script</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">DOC</div><div><div style="font-weight: 600;">Roteiro de Anamnese Imobiliária</div></div></div><a href="https://drive.google.com/file/d/1OWt-9DsssJhcEpa5m5NY8Fm9l9uSPdST/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar Script</a></div>
             </div>
             <div id="l3-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -484,28 +368,15 @@
                 <div class="breadcrumbs">Módulo 1 > Produtividade</div>
                 <h1>1.4 — Blocos de Ouro</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: Protocolo</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/15yb5y2BwA4uPd-cb3UhyXkV74OpHQhlB/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Protocolo</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/15yb5y2BwA4uPd-cb3UhyXkV74OpHQhlB/preview" allowfullscreen></iframe></div></div>
                     <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <div class="media-card secondary" style="flex:1; min-width: 200px;">
-                            <div class="media-info"><h4>🎧 Opção A (V1)</h4></div>
-                            <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1XEatUjg1IVTnft3QJiSQ-DtvpkXHLyao/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                        </div>
-                        <div class="media-card secondary" style="flex:1; min-width: 200px;">
-                            <div class="media-info"><h4>🎧 Opção B (V2)</h4></div>
-                            <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1KdJgUh3JxphSynCD0frhOgVNKQjFo88R/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                        </div>
+                        <div class="media-card secondary" style="flex:1; min-width: 200px;"><div class="media-info"><h4>🎧 Opção A (V1)</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1XEatUjg1IVTnft3QJiSQ-DtvpkXHLyao/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
+                        <div class="media-card secondary" style="flex:1; min-width: 200px;"><div class="media-info"><h4>🎧 Opção B (V2)</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1KdJgUh3JxphSynCD0frhOgVNKQjFo88R/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                     </div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l4-tab1" onclick="openTab(this)">📖 BLOCO</div>
-                <div class="tab" data-target="l4-tab2" onclick="openTab(this)">🛠️ FERRAMENTAS</div>
-                <div class="tab" data-target="l4-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l4-tab1" onclick="openTab(this)">📖 BLOCO</div><div class="tab" data-target="l4-tab2" onclick="openTab(this)">🛠️ FERRAMENTAS</div><div class="tab" data-target="l4-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l4-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 REGRA DE FERRO</div>"Bloco de Ouro = 60 min só de AGR (Venda)."</div>
@@ -516,10 +387,7 @@
                 </div>
             </div>
             <div id="l4-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual Blocos de Ouro</div></div></div>
-                    <a href="https://drive.google.com/file/d/1gTYJRMWxrZz9i3VixNr8Fkat939HYEzx/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual Blocos de Ouro</div></div></div><a href="https://drive.google.com/file/d/1gTYJRMWxrZz9i3VixNr8Fkat939HYEzx/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l4-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -543,22 +411,12 @@
                 <div class="breadcrumbs">Módulo 2 > Funil</div>
                 <h1>2.1 — O Funil Perfeito</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: O Funil Perfeito</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/14Ne5siFWgg-8AlyUeGlSoCG8HNfKDiZ8/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "Sua Memória Te Engana"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1xK-J7ADGsYYy0yDrQasWpWUz7TwhNXPf/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: O Funil Perfeito</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/14Ne5siFWgg-8AlyUeGlSoCG8HNfKDiZ8/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Sua Memória Te Engana"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1xK-J7ADGsYYy0yDrQasWpWUz7TwhNXPf/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l5-tab1" onclick="openTab(this)">📖 RÉGUA</div>
-                <div class="tab" data-target="l5-tab2" onclick="openTab(this)">🛠️ MAPA</div>
-                <div class="tab" data-target="l5-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l5-tab1" onclick="openTab(this)">📖 RÉGUA</div><div class="tab" data-target="l5-tab2" onclick="openTab(this)">🛠️ MAPA</div><div class="tab" data-target="l5-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l5-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 LEI DE OURO</div>"Se não está no CRM, o cliente não existe."</div>
@@ -569,10 +427,7 @@
                 </div>
             </div>
             <div id="l5-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Mapa de Batalha: O Funil Perfeito</div></div></div>
-                    <a href="https://drive.google.com/file/d/1sivonFGSFC2VL11Pvm4McE4muQPx2ob3/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Mapa de Batalha: O Funil Perfeito</div></div></div><a href="https://drive.google.com/file/d/1sivonFGSFC2VL11Pvm4McE4muQPx2ob3/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l5-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -596,22 +451,12 @@
                 <div class="breadcrumbs">Módulo 2 > CRM & Funil</div>
                 <h1>2.2 — Utilização Eficiente do CRM</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: O Cofre do Corretor</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/1_rxHFtOCVw8J5UljCmerqbOxtoE1aaN6/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "Fim do Lead Fantasma"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15zVTtX7Cm6VT52a_AOFpPf2l_FOwe4s6/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: O Cofre do Corretor</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/1_rxHFtOCVw8J5UljCmerqbOxtoE1aaN6/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Fim do Lead Fantasma"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/15zVTtX7Cm6VT52a_AOFpPf2l_FOwe4s6/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l6-tab1" onclick="openTab(this)">📖 REGISTRO PERFEITO</div>
-                <div class="tab" data-target="l6-tab2" onclick="openTab(this)">🛠️ FERRAMENTAS</div>
-                <div class="tab" data-target="l6-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l6-tab1" onclick="openTab(this)">📖 REGISTRO PERFEITO</div><div class="tab" data-target="l6-tab2" onclick="openTab(this)">🛠️ FERRAMENTAS</div><div class="tab" data-target="l6-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l6-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 O COFRE</div>"O CRM não é fiscalização da gerência. Ele é o seu cofre. O que não está ali, você perde."</div>
@@ -623,10 +468,7 @@
                 </div>
             </div>
             <div id="l6-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Checklist: Registro Perfeito</div></div></div>
-                    <a href="https://drive.google.com/file/d/1ARcF1YRsDbYu-Cbg7eCJz2aw5DyH-Pxh/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Checklist: Registro Perfeito</div></div></div><a href="https://drive.google.com/file/d/1ARcF1YRsDbYu-Cbg7eCJz2aw5DyH-Pxh/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l6-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -650,22 +492,12 @@
                 <div class="breadcrumbs">Módulo 2 > CRM & Funil</div>
                 <h1>2.3 — O Método 3x3 de Follow-up</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: Fim do Vácuo</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/1xPJ0Ehb4_LKdHpXbsOtVslBy6o_YcR7W/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "Fim do Vácuo"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1DoATJ8igV3wbLfmuw01_WnZG2Psh3Era/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Fim do Vácuo</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/1xPJ0Ehb4_LKdHpXbsOtVslBy6o_YcR7W/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Fim do Vácuo"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1DoATJ8igV3wbLfmuw01_WnZG2Psh3Era/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l7-tab1" onclick="openTab(this)">📖 O FRAMEWORK</div>
-                <div class="tab" data-target="l7-tab2" onclick="openTab(this)">🛠️ SCRIPTS</div>
-                <div class="tab" data-target="l7-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l7-tab1" onclick="openTab(this)">📖 O FRAMEWORK</div><div class="tab" data-target="l7-tab2" onclick="openTab(this)">🛠️ SCRIPTS</div><div class="tab" data-target="l7-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l7-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 A REGRA ANTI-VÁCUO</div>"Persistência sem método é chatice. Persistência com o Método 3x3 é Alta Performance."</div>
@@ -676,10 +508,7 @@
                 </div>
             </div>
             <div id="l7-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Script de Bolso: O Método 3x3</div></div></div>
-                    <a href="https://drive.google.com/file/d/1Qf8LXfV9U12Q-JVACP8LyRXOC9dn3Y3y/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Script de Bolso: O Método 3x3</div></div></div><a href="https://drive.google.com/file/d/1Qf8LXfV9U12Q-JVACP8LyRXOC9dn3Y3y/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l7-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -703,22 +532,12 @@
                 <div class="breadcrumbs">Módulo 2 > CRM & Funil</div>
                 <h1>2.4 — KPIs de Verdade em Vendas</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: A Matemática da Comissão</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/13uO9FJ0IvOES1HGWWghhk4rQFd4vGL8A/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "Mentoria de Choque"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/14NMDeDDu3-7oc2VkrFRMmZlg6Kt2TwQJ/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: A Matemática da Comissão</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/13uO9FJ0IvOES1HGWWghhk4rQFd4vGL8A/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Mentoria de Choque"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/14NMDeDDu3-7oc2VkrFRMmZlg6Kt2TwQJ/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l8-tab1" onclick="openTab(this)">📖 KPIs REAIS</div>
-                <div class="tab" data-target="l8-tab2" onclick="openTab(this)">🛠️ DASHBOARD</div>
-                <div class="tab" data-target="l8-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l8-tab1" onclick="openTab(this)">📖 KPIs REAIS</div><div class="tab" data-target="l8-tab2" onclick="openTab(this)">🛠️ DASHBOARD</div><div class="tab" data-target="l8-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l8-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 O RAIO-X</div>"Métricas de Vaidade não pagam boleto. A Matemática da Conversão é o seu GPS para a Alta Performance."</div>
@@ -730,10 +549,7 @@
                 </div>
             </div>
             <div id="l8-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Dashboard do Corretor Elite: Meus KPIs</div></div></div>
-                    <a href="https://drive.google.com/file/d/1r-e_QgnQRoYUIz83BXzF7LMyxEin0Weg/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Dashboard do Corretor Elite: Meus KPIs</div></div></div><a href="https://drive.google.com/file/d/1r-e_QgnQRoYUIz83BXzF7LMyxEin0Weg/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l8-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -757,22 +573,12 @@
                 <div class="breadcrumbs">Módulo 3 > Prospecção Ativa</div>
                 <h1>3.1 — O Fim da Espera: Oferta Dirigida</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: Imprima Seu Dinheiro</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/1I0fR3HjTMxH7Sb4-qiLCCOYQV5ejDMN1/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "O Caçador Yuny"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1opgsgt5q8xxW47zmCIP-1pTc1895ZhB1/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Imprima Seu Dinheiro</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/1I0fR3HjTMxH7Sb4-qiLCCOYQV5ejDMN1/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "O Caçador Yuny"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1opgsgt5q8xxW47zmCIP-1pTc1895ZhB1/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l9-tab1" onclick="openTab(this)">📖 OFERTA DIRIGIDA</div>
-                <div class="tab" data-target="l9-tab2" onclick="openTab(this)">🛠️ MANUAL HUNTER</div>
-                <div class="tab" data-target="l9-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l9-tab1" onclick="openTab(this)">📖 OFERTA DIRIGIDA</div><div class="tab" data-target="l9-tab2" onclick="openTab(this)">🛠️ MANUAL HUNTER</div><div class="tab" data-target="l9-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l9-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 A REGRA DA DEMANDA</div>"O corretor Top 1% não depende do marketing. Ele cria a própria demanda. Ele caça."</div>
@@ -784,10 +590,7 @@
                 </div>
             </div>
             <div id="l9-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual do Hunter: Abordagem a Frio</div></div></div>
-                    <a href="https://drive.google.com/file/d/1GdQmvEtalM6U80Z9z_yOexRhDpTUK7b9/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual do Hunter: Abordagem a Frio</div></div></div><a href="https://drive.google.com/file/d/1GdQmvEtalM6U80Z9z_yOexRhDpTUK7b9/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l9-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -811,22 +614,12 @@
                 <div class="breadcrumbs">Módulo 3 > Prospecção Ativa</div>
                 <h1>3.2 — Dominando o Frio (Call, WhatsApp e Visita)</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: Triplo Ataque</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/16kRu1D5DW4rn84RcYPkyyty7u-U9UUCN/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "O Medo do Frio"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1pinK4ATgqztCTsmOfDonu7TbPcvGEij0/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Triplo Ataque</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/16kRu1D5DW4rn84RcYPkyyty7u-U9UUCN/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "O Medo do Frio"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1pinK4ATgqztCTsmOfDonu7TbPcvGEij0/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l10-tab1" onclick="openTab(this)">📖 A ABORDAGEM</div>
-                <div class="tab" data-target="l10-tab2" onclick="openTab(this)">🛠️ MANUAIS</div>
-                <div class="tab" data-target="l10-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l10-tab1" onclick="openTab(this)">📖 A ABORDAGEM</div><div class="tab" data-target="l10-tab2" onclick="openTab(this)">🛠️ MANUAIS</div><div class="tab" data-target="l10-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l10-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 MINDSET DE CAÇADOR</div>"O telefone não é um cacto. Você não está a pedir favores, está a levar oportunidades milionárias."</div>
@@ -840,28 +633,22 @@
             <div id="l10-tab2" class="content-area">
                 <h3 class="section-title">Playbooks do Módulo</h3>
                 <div class="download-grid">
-                    <div class="download-card">
-                        <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Playbook Parte 1</div></div></div>
-                        <a href="https://drive.google.com/file/d/1wMOPNlDrlkc8fmg7fRpu9hp7YOZ_h96j/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF 1</a>
-                    </div>
-                    <div class="download-card">
-                        <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Playbook Parte 2</div></div></div>
-                        <a href="https://drive.google.com/file/d/19LWP9SenYcEssz_u_fJ8kpLIPKKu4h3h/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF 2</a>
-                    </div>
+                    <div class="download-card"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Playbook Parte 1</div></div></div><a href="https://drive.google.com/file/d/1wMOPNlDrlkc8fmg7fRpu9hp7YOZ_h96j/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF 1</a></div>
+                    <div class="download-card"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Playbook Parte 2</div></div></div><a href="https://drive.google.com/file/d/19LWP9SenYcEssz_u_fJ8kpLIPKKu4h3h/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF 2</a></div>
                 </div>
             </div>
             <div id="l10-tab3" class="content-area">
                 <div class="flashcard-container">
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Objetivo da Cold Call?</div><div class="card-back">Vender o próximo passo, não o imóvel.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Quebra de Padrão (Call)?</div><div class="card-back">"Sei que te peguei de surpresa..."</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Cold Whats Amador?</div><div class="card-back">Mandar PDF/book logo na primeira mensagem.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Cold Whats Amador?</div><div class="card-back">Mandar PDF logo na primeira mensagem.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Regra Anti-Catálogo?</div><div class="card-back">Apenas texto para gerar contexto e curiosidade.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O Medo do Telefone?</div><div class="card-back">Nasce de achar que se está a pedir um favor.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Postura do Hunter?</div><div class="card-back">É superior: Leva oportunidades milionárias.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Cold Visita?</div><div class="card-back">Fazer networking nos negócios ao redor do stand.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Jaleco (Doctor Frame)?</div><div class="card-back">Atitude de autoridade no corpo a corpo.</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Permissão Tática?</div><div class="card-back">"Posso mandar um áudio de 30s para explicar?"</div></div></div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Mapeamento de Bairro?</div><div class="card-back">Atacar farmácias, clínicas e padarias premium.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O Medo do Telefone?</div><div class="card-back">Nasce de achar que se pede um favor.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Postura do Hunter?</div><div class="card-back">Leva oportunidades milionárias.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Cold Visita?</div><div class="card-back">Fazer networking nos negócios vizinhos.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Jaleco (Doctor Frame)?</div><div class="card-back">Atitude de autoridade presencial.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Permissão Tática?</div><div class="card-back">"Posso mandar um áudio de 30s?"</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Mapeamento de Bairro?</div><div class="card-back">Atacar clínicas e padarias premium.</div></div></div>
                 </div>
             </div>
             <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson9')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson11')">Ir para 3.3 →</button></footer>
@@ -872,22 +659,12 @@
                 <div class="breadcrumbs">Módulo 3 > Prospecção Ativa</div>
                 <h1>3.3 — Construindo a Carteira Definitiva</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: Ouro no Garimpo</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/1ZGMU9pkjXzjmg2Awaw2K6fLEh35Ewf0h/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "Gestão de Elite"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1ov4SJcX4eSKxEIpoE8V2bI7ia9INY57z/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Ouro no Garimpo</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/1ZGMU9pkjXzjmg2Awaw2K6fLEh35Ewf0h/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Gestão de Elite"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1ov4SJcX4eSKxEIpoE8V2bI7ia9INY57z/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l11-tab1" onclick="openTab(this)">📖 A CARTEIRA</div>
-                <div class="tab" data-target="l11-tab2" onclick="openTab(this)">🛠️ MANUAL</div>
-                <div class="tab" data-target="l11-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l11-tab1" onclick="openTab(this)">📖 A CARTEIRA</div><div class="tab" data-target="l11-tab2" onclick="openTab(this)">🛠️ MANUAL</div><div class="tab" data-target="l11-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l11-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 A REGRA DA SEGMENTAÇÃO</div>"Volume cego é vaidade. Uma carteira de 100 leads segmentados vale mil vezes mais que 10.000 contatos frios."</div>
@@ -899,14 +676,11 @@
                 </div>
             </div>
             <div id="l11-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual do Garimpeiro</div></div></div>
-                    <a href="https://drive.google.com/file/d/1DXTP-5GNNuG62ZEmtHNcpL9jXDIQZWMf/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual do Garimpeiro</div></div></div><a href="https://drive.google.com/file/d/1DXTP-5GNNuG62ZEmtHNcpL9jXDIQZWMf/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l11-tab3" class="content-area">
                 <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Carteira Entulhada?</div><div class="card-back">Ter milhares de leads mortos = Cemitério de dados.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Carteira Entulhada?</div><div class="card-back">Milhares de leads mortos = Cemitério de dados.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Gaveta A?</div><div class="card-back">Investidores buscando giro ou renda.</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Gaveta B?</div><div class="card-back">Upgrade de moradia (famílias que cresceram).</div></div></div>
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Gaveta C?</div><div class="card-back">Lifestyle ou Primeiro Imóvel.</div></div></div>
@@ -926,22 +700,12 @@
                 <div class="breadcrumbs">Módulo 3 > Prospecção Ativa</div>
                 <h1>3.4 — Ressuscitando Vendas: Reativação Técnica</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: O Lucro Escondido</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://drive.google.com/file/d/1Nl6MjowXM02xis7Xpje6VfL-PHch3K2I/preview" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="media-card secondary">
-                        <div class="media-info"><h4>🎧 Podcast: "Protocolo Lázaro"</h4></div>
-                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1a4P4zitea5RCcj2DPuwOekSg8-jR3Pdw/preview" width="100%" height="100%" style="border:none;"></iframe></div>
-                    </div>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: O Lucro Escondido</h4></div><div class="video-container"><iframe src="https://drive.google.com/file/d/1Nl6MjowXM02xis7Xpje6VfL-PHch3K2I/preview" allowfullscreen></iframe></div></div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Protocolo Lázaro"</h4></div><div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/1a4P4zitea5RCcj2DPuwOekSg8-jR3Pdw/preview" width="100%" height="100%" style="border:none;"></iframe></div></div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="l12-tab1" onclick="openTab(this)">📖 REATIVAÇÃO</div>
-                <div class="tab" data-target="l12-tab2" onclick="openTab(this)">🛠️ PROTOCOLO</div>
-                <div class="tab" data-target="l12-tab3" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l12-tab1" onclick="openTab(this)">📖 REATIVAÇÃO</div><div class="tab" data-target="l12-tab2" onclick="openTab(this)">🛠️ PROTOCOLO</div><div class="tab" data-target="l12-tab3" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="l12-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 MINA DE OURO</div>"O dinheiro mais rápido do mês está escondido na sua gaveta de Leads Perdidos."</div>
@@ -953,10 +717,7 @@
                 </div>
             </div>
             <div id="l12-tab2" class="content-area">
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Protocolo Lázaro: Reativação</div></div></div>
-                    <a href="https://drive.google.com/file/d/1em1H9eFV3zkBQhJVgh96qfGYAvoX-2qF/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Protocolo Lázaro: Reativação</div></div></div><a href="https://drive.google.com/file/d/1em1H9eFV3zkBQhJVgh96qfGYAvoX-2qF/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
             </div>
             <div id="l12-tab3" class="content-area">
                 <div class="flashcard-container">
@@ -972,46 +733,197 @@
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">60% dos 'desistentes'?</div><div class="card-back">Ainda procuram imóvel, mas de forma passiva.</div></div></div>
                 </div>
             </div>
-            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson11')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson-sigavi')">Ir para Bônus →</button></footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson11')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson13')">Ir para 4.1 →</button></footer>
         </div>
 
-        <div id="lesson-sigavi" class="lesson-wrapper">
+        <div id="lesson13" class="lesson-wrapper">
             <header class="lesson-header">
-                <div class="breadcrumbs">Módulo Bônus > Sistemas</div>
-                <h1>B.1 — Treinamento SIGAVI Connect</h1>
+                <div class="breadcrumbs">Módulo 4 > Produto</div>
+                <h1>4.1 — Engenharia de Valor: O Raio-X do Produto Yuny</h1>
                 <div class="media-section">
-                    <div class="media-card block-display">
-                        <div class="media-info"><h4>📺 Vídeo Aula: Otimizando o SIGAVI</h4></div>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/nQntdSq899c" allowfullscreen></iframe>
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Engenharia de Valor</h4></div>
+                        <div class="video-container" style="background:#1e293b;">
+                            <div style="text-align:center;">VÍDEO EM BREVE<br><span style="font-size:0.7rem;">Aguardando Link</span></div>
                         </div>
+                    </div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "O Guia Turístico"</h4></div>
+                        <div class="audio-iframe-container" style="display:flex; align-items:center; justify-content:center; background:#e2e8f0; color:#64748b; font-size:0.8rem; font-weight:bold;">ÁUDIO EM BREVE</div>
                     </div>
                 </div>
             </header>
             <div class="tabs-container">
-                <div class="tab active" data-target="sigavi-tab1" onclick="openTab(this)">📖 ACERVO & MATERIAIS</div>
-                <div class="tab" data-target="sigavi-tab2" onclick="openTab(this)">🧠 TREINO</div>
+                <div class="tab active" data-target="l13-tab1" onclick="openTab(this)">📖 MÉTODO C.V.B.</div><div class="tab" data-target="l13-tab2" onclick="openTab(this)">🛠️ MEMORIAL</div><div class="tab" data-target="l13-tab3" onclick="openTab(this)">🧠 TREINO</div>
+            </div>
+            <div id="l13-tab1" class="content-area active-content">
+                <div class="highlight-box"><div class="highlight-title">💎 O FIM DO GUIA TURÍSTICO</div>"Narrar o óbvio ('aqui é a sala') ofende a inteligência do cliente AA. Você não vende tijolo, vende status e solução."</div>
+                <h3 class="section-title">Método C.V.B.</h3>
+                <div class="triad-grid">
+                    <div class="triad-card"><span class="triad-icon">📏</span><span class="triad-title">CARACTERÍSTICA</span><span class="triad-desc">O que o produto é (Manta Acústica).</span></div>
+                    <div class="triad-card"><span class="triad-icon">⚙️</span><span class="triad-title">VANTAGEM</span><span class="triad-desc">O que faz (Bloqueia o som).</span></div>
+                    <div class="triad-card"><span class="triad-icon">❤️</span><span class="triad-title">BENEFÍCIO</span><span class="triad-desc">Como muda a vida (Paz e Privacidade).</span></div>
+                </div>
+            </div>
+            <div id="l13-tab2" class="content-area">
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Playbook: Engenharia de Valor</div></div></div><a href="#" class="btn btn-secondary" onclick="alert('Link em breve')">Baixar PDF</a></div>
+            </div>
+            <div id="l13-tab3" class="content-area">
+                <div class="flashcard-container">
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Corretor Guia Turístico?</div><div class="card-back">Aponta para paredes e descreve o óbvio.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Engenharia de Valor?</div><div class="card-back">Traduzir tijolo em solução de vida.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é o C.V.B.?</div><div class="card-back">Características, Vantagens, Benefícios.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que o cliente compra?</div><div class="card-back">Somente o Benefício (A Transformação).</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Memorial Descritivo?</div><div class="card-back">Arsenal para justificar preço premium.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Vender o Invisível?</div><div class="card-back">Vender segurança, status e tempo.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Assinatura / Grife?</div><div class="card-back">Falar quem é o arquiteto e paisagista.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Dossiê do Bairro?</div><div class="card-back">Conhecer o raio de 2km a pé.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Ralo Linear vende?</div><div class="card-back">Vende design, estética e limpeza fácil.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Por que saber a tubulação?</div><div class="card-back">Mata a concorrência que vende mais barato.</div></div></div>
+                </div>
+            </div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson12')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson14')">Ir para 4.2 →</button></footer>
+        </div>
+
+        <div id="lesson14" class="lesson-wrapper">
+            <header class="lesson-header">
+                <div class="breadcrumbs">Módulo 4 > Produto</div>
+                <h1>4.2 — O Pitch de Alto Padrão (Coreografia de Vendas)</h1>
+                <div class="media-section">
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: O Tapete Vermelho</h4></div>
+                        <div class="video-container" style="background:#1e293b;"><div style="text-align:center;">VÍDEO EM BREVE</div></div>
+                    </div>
+                </div>
+            </header>
+            <div class="tabs-container">
+                <div class="tab active" data-target="l14-tab1" onclick="openTab(this)">📖 COREOGRAFIA</div><div class="tab" data-target="l14-tab2" onclick="openTab(this)">🛠️ PLAYBOOK</div><div class="tab" data-target="l14-tab3" onclick="openTab(this)">🧠 TREINO</div>
+            </div>
+            <div id="l14-tab1" class="content-area active-content">
+                <div class="highlight-box"><div class="highlight-title">💎 O TABULEIRO DE XADREZ</div>"Não corra para o apartamento decorado. A venda acontece no controle do ritmo."</div>
+                <div class="triad-grid">
+                    <div class="triad-card"><span class="triad-icon">☕</span><span class="triad-title">TAPETE VERMELHO</span><span class="triad-desc">3 Minutos de Lounge e Alinhamento.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🏙️</span><span class="triad-title">A MAQUETE</span><span class="triad-desc">Venda do Macro e Logística.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🎬</span><span class="triad-title">O DECORADO</span><span class="triad-desc">Silêncio de 5s e Efeito Uau.</span></div>
+                </div>
+            </div>
+            <div id="l14-tab2" class="content-area">
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Playbook: O Pitch Presencial</div></div></div><a href="#" class="btn btn-secondary" onclick="alert('Link em breve')">Baixar PDF</a></div>
+            </div>
+            <div id="l14-tab3" class="content-area">
+                <div class="flashcard-container">
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Regra dos 3 Minutos?</div><div class="card-back">Sente no lounge, ofereça café e alinhe a dor.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Para que serve a Maquete?</div><div class="card-back">Para o cliente "comprar" o prédio todo.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O Efeito Uau?</div><div class="card-back">Abrir a porta, recuar e fazer silêncio por 5s.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Na Cozinha, pergunte:</div><div class="card-back">"Quem é o Chef nos fins de semana?"</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Micro-compromissos?</div><div class="card-back">Coletar pequenos "Sims" ao longo da visita.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">"O que você achou?"</div><div class="card-back">Pergunta amadora. Abre brecha para fugir.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Transição para Mesa?</div><div class="card-back">Diretiva. "Venham comigo desenhar o fluxo."</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Posicionamento Físico?</div><div class="card-back">Nunca ande à frente nem bloqueie a visão.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Venda Presencial é?</div><div class="card-back">Coreografia ensaiada, controle de emoções.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Corretor Ansioso?</div><div class="card-back">Corre direto para a maquete sem respirar.</div></div></div>
+                </div>
+            </div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson13')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson15')">Ir para 4.3 →</button></footer>
+        </div>
+
+        <div id="lesson15" class="lesson-wrapper">
+            <header class="lesson-header">
+                <div class="breadcrumbs">Módulo 4 > Produto</div>
+                <h1>4.3 — A Arte da Guerra: Contorno de Objeções e Fechamento</h1>
+                <div class="media-section">
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: O Fechamento Assumido</h4></div>
+                        <div class="video-container" style="background:#1e293b;"><div style="text-align:center;">VÍDEO EM BREVE</div></div>
+                    </div>
+                </div>
+            </header>
+            <div class="tabs-container">
+                <div class="tab active" data-target="l15-tab1" onclick="openTab(this)">📖 A ARTE DA GUERRA</div><div class="tab" data-target="l15-tab2" onclick="openTab(this)">🛠️ PLAYBOOK</div><div class="tab" data-target="l15-tab3" onclick="openTab(this)">🧠 TREINO</div>
+            </div>
+            <div id="l15-tab1" class="content-area active-content">
+                <div class="highlight-box"><div class="highlight-title">💎 A OBJEÇÃO É O INÍCIO</div>"Se o cliente não tem objeção, ele está apenas elogiando para ir embora. O 'Não' é um pedido disfarçado de mais informação."</div>
+                <h3 class="section-title">A Tríade da Mesa</h3>
+                <div class="triad-grid">
+                    <div class="triad-card"><span class="triad-icon">🥋</span><span class="triad-title">AMORTECIMENTO</span><span class="triad-desc">Aikido. Nunca bata de frente.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🔍</span><span class="triad-title">ISOLAMENTO</span><span class="triad-desc">Tire a cortina de fumaça da frente.</span></div>
+                    <div class="triad-card"><span class="triad-icon">✍️</span><span class="triad-title">FECHAMENTO</span><span class="triad-desc">Assumptive Close. Assuma o Sim.</span></div>
+                </div>
+            </div>
+            <div id="l15-tab2" class="content-area">
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Playbook: Objeções e Fechamento</div></div></div><a href="#" class="btn btn-secondary" onclick="alert('Link em breve')">Baixar PDF</a></div>
+            </div>
+            <div id="l15-tab3" class="content-area">
+                <div class="flashcard-container">
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é uma Objeção?</div><div class="card-back">Medo de decidir / Pedido de segurança.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Amortecimento (Aikido)?</div><div class="card-back">"Compreendo o seu ponto..." (Validar).</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Cortina de Fumaça?</div><div class="card-back">Objeção falsa para esconder que achou caro.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Isolamento?</div><div class="card-back">"Tirando X, tem mais algum impeditivo?"</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Oferecer desconto logo?</div><div class="card-back">Erro de amador em pânico.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">"Vamos fechar?"</div><div class="card-back">Pergunta fraca que convida ao "Não".</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Assumptive Close?</div><div class="card-back">Agir como se o Sim já fosse óbvio.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Fechamento Alternativo?</div><div class="card-back">"Vai pro nome da empresa ou pessoa física?"</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Cliente que diz "Tá caro"?</div><div class="card-back">Ele não viu o Valor suficiente para cobrir o Preço.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Mesa de Negociação?</div><div class="card-back">Quem faz as perguntas detém o controle.</div></div></div>
+                </div>
+            </div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson14')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson16')">Ir para 4.4 →</button></footer>
+        </div>
+
+        <div id="lesson16" class="lesson-wrapper">
+            <header class="lesson-header">
+                <div class="breadcrumbs">Módulo 4 > Produto</div>
+                <h1>4.4 — Império do Pós-Venda: Cross-Selling e Indicações</h1>
+                <div class="media-section">
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: A Máquina de Indicações</h4></div>
+                        <div class="video-container" style="background:#1e293b;"><div style="text-align:center;">VÍDEO EM BREVE</div></div>
+                    </div>
+                </div>
+            </header>
+            <div class="tabs-container">
+                <div class="tab active" data-target="l16-tab1" onclick="openTab(this)">📖 EFEITO CONCIERGE</div><div class="tab" data-target="l16-tab2" onclick="openTab(this)">🛠️ SCRIPTS</div><div class="tab" data-target="l16-tab3" onclick="openTab(this)">🧠 TREINO</div>
+            </div>
+            <div id="l16-tab1" class="content-area active-content">
+                <div class="highlight-box"><div class="highlight-title">💎 O EFEITO CONCIERGE</div>"A venda não termina na assinatura. Ela começa aí. O seu cliente feliz é a sua máquina de indicações a custo zero."</div>
+                <h3 class="section-title">O Tripé do Long Term Value</h3>
+                <div class="triad-grid">
+                    <div class="triad-card"><span class="triad-icon">🛎️</span><span class="triad-title">CONCIERGE</span><span class="triad-desc">Indique arquitetos e mande fotos da obra.</span></div>
+                    <div class="triad-card"><span class="triad-icon">👥</span><span class="triad-title">INDICAÇÃO</span><span class="triad-desc">Gatilho da Vizinhança Exclusiva.</span></div>
+                    <div class="triad-card"><span class="triad-icon">📈</span><span class="triad-title">CROSS-SELLING</span><span class="triad-desc">Faça cliente habitacional virar investidor.</span></div>
+                </div>
+            </div>
+            <div id="l16-tab2" class="content-area">
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Playbook: Pós-Venda e Indicações</div></div></div><a href="#" class="btn btn-secondary" onclick="alert('Link em breve')">Baixar PDF</a></div>
+            </div>
+            <div id="l16-tab3" class="content-area">
+                <div class="flashcard-container">
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Linha de Chegada?</div><div class="card-back">É um mito. Assinatura é a linha de partida.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Corretor Descartável?</div><div class="card-back">Soma a comissão e abandona o cliente.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Efeito Concierge?</div><div class="card-back">Resolver problemas que não são sua obrigação.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Mendigar Contato?</div><div class="card-back">"Passa meu cartão pros amigos". Muito fraco.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Gatilho da Vizinhança?</div><div class="card-back">"Quem você quer trazer pra ser seu vizinho?"</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O que é Cross-Selling?</div><div class="card-back">Vender outro produto da prateleira ao cliente.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Escada de Patrimônio?</div><div class="card-back">Comprou Moradia -> Oferecer Studios para Renda.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Café de 6 Meses?</div><div class="card-back">Mostrar a valorização e gerar nova oferta.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Custo de Indicações?</div><div class="card-back">Praticamente zero, com conversão altíssima.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Visão de Elite?</div><div class="card-back">Gerir patrimônio imobiliário a longo prazo.</div></div></div>
+                </div>
+            </div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson15')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson-sigavi')">Trilha Bônus →</button></footer>
+        </div>
+
+        <div id="lesson-sigavi" class="lesson-wrapper">
+            <header class="lesson-header">
+                <div class="breadcrumbs">Trilha Bônus > Sistemas</div>
+                <h1>B.1 — Treinamento SIGAVI Connect</h1>
+                <div class="media-section">
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Otimizando o SIGAVI</h4></div><div class="video-container"><iframe src="https://www.youtube.com/embed/nQntdSq899c" allowfullscreen></iframe></div></div>
+                </div>
+            </header>
+            <div class="tabs-container">
+                <div class="tab active" data-target="sigavi-tab1" onclick="openTab(this)">📖 ACERVO & MATERIAIS</div><div class="tab" data-target="sigavi-tab2" onclick="openTab(this)">🧠 TREINO</div>
             </div>
             <div id="sigavi-tab1" class="content-area active-content">
                 <div class="highlight-box"><div class="highlight-title">💎 GESTÃO É PODER</div>"O SIGAVI não é apenas um sistema, é o motor da sua operação. O domínio da ferramenta separa os profissionais organizados dos amadores."</div>
-                
                 <h3 class="section-title">Biblioteca de Recursos</h3>
-                
-                <div class="download-card full-width">
-                    <div class="file-info"><div class="file-icon">📁</div><div><div style="font-weight: 600;">Apresentação Completa SIGAVI</div><div style="font-size: 0.8rem; color: #64748b;">Material de apoio da aula</div></div></div>
-                    <a href="https://drive.google.com/drive/folders/1KGQyhbX3rq3MySODwIrUR6a9SehA1ifZ?usp=sharing" target="_blank" class="btn btn-primary">Acessar Pasta</a>
-                </div>
-
-                <div class="download-card full-width drive-card">
-                    <div class="file-info">
-                        <div class="file-icon">📁</div>
-                        <div>
-                            <div style="font-weight: 600; color: #1e40af;">Acervo Completo no Google Drive</div>
-                            <div style="font-size: 0.85rem; color: #3b82f6;">Acesso a todos os manuais, painéis e tutoriais avançados do SIGAVI.</div>
-                        </div>
-                    </div>
-                    <a href="https://drive.google.com/drive/folders/1FMfVohoNaZYK1IZCtOSieJ6eKsXRJhOs" target="_blank" class="btn btn-primary" style="background: #1e40af;">Abrir Acervo Completo</a>
-                </div>
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">📁</div><div><div style="font-weight: 600;">Apresentação Completa SIGAVI</div><div style="font-size: 0.8rem; color: #64748b;">Material de apoio da aula</div></div></div><a href="https://drive.google.com/drive/folders/1KGQyhbX3rq3MySODwIrUR6a9SehA1ifZ?usp=sharing" target="_blank" class="btn btn-primary">Acessar Pasta</a></div>
+                <div class="download-card full-width drive-card"><div class="file-info"><div class="file-icon">📁</div><div><div style="font-weight: 600; color: #1e40af;">Acervo Completo no Google Drive</div><div style="font-size: 0.85rem; color: #3b82f6;">Acesso a manuais, painéis e tutoriais avançados do SIGAVI.</div></div></div><a href="https://drive.google.com/drive/folders/1FMfVohoNaZYK1IZCtOSieJ6eKsXRJhOs" target="_blank" class="btn btn-primary" style="background: #1e40af;">Abrir Acervo</a></div>
             </div>
             <div id="sigavi-tab2" class="content-area">
                 <div class="flashcard-container">
@@ -1022,7 +934,30 @@
                     <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Manuais em PDF?</div><div class="card-back">Estão todos na pasta Master do Drive.</div></div></div>
                 </div>
             </div>
-            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson12')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('home-dashboard')">Voltar ao Início</button></footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson16')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson-mkt')">Ir para B.2 →</button></footer>
+        </div>
+
+        <div id="lesson-mkt" class="lesson-wrapper">
+            <header class="lesson-header">
+                <div class="breadcrumbs">Trilha Bônus > Marketing</div>
+                <h1>B.2 — Masterclass de Marketing Imobiliário</h1>
+                <div class="media-section">
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Com Felipe Capuano</h4></div>
+                        <div class="video-container" style="background:#1e293b;"><div style="text-align:center;">VÍDEO EM BREVE</div></div>
+                    </div>
+                </div>
+            </header>
+            <div class="tabs-container">
+                <div class="tab active" data-target="mkt-tab1" onclick="openTab(this)">📖 ESTRATÉGIA</div><div class="tab" data-target="mkt-tab2" onclick="openTab(this)">🛠️ MATERIAIS</div>
+            </div>
+            <div id="mkt-tab1" class="content-area active-content">
+                <div class="highlight-box"><div class="highlight-title">💎 AUTORIDADE DIGITAL</div>"O marketing imobiliário não é sobre postar fotos bonitas de piscinas. É sobre construir autoridade e criar uma máquina de atração de clientes de alto padrão."</div>
+                <p>Nesta masterclass exclusiva, Felipe Capuano revela as estratégias digitais utilizadas pelos maiores corretores do mercado para dominar as redes sociais, gerar leads qualificados e posicionar-se como a única escolha lógica para clientes premium.</p>
+            </div>
+            <div id="mkt-tab2" class="content-area">
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Apresentação: Masterclass Mkt Imobiliário</div></div></div><a href="#" class="btn btn-secondary" onclick="alert('Link em breve')">Baixar PDF</a></div>
+            </div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson-sigavi')">← Anterior</button><button class="btn btn-primary locked">Módulo 5 em Breve</button></footer>
         </div>
 
     </main>
@@ -1049,11 +984,8 @@
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
             
-            if (sidebar.classList.contains('active')) {
-                document.body.classList.add('no-scroll');
-            } else {
-                document.body.classList.remove('no-scroll');
-            }
+            if (sidebar.classList.contains('active')) document.body.classList.add('no-scroll');
+            else document.body.classList.remove('no-scroll');
         }
 
         function toggleSidebarMobile() {
@@ -1073,25 +1005,26 @@
             window.scrollTo(0,0);
             if (document.querySelector('.main')) document.querySelector('.main').scrollTop = 0;
 
-            const navs = ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8', 'nav-l9', 'nav-l10', 'nav-l11', 'nav-l12', 'nav-l-sigavi'];
-            navs.forEach(id => {
-                const el = document.getElementById(id);
-                if(el) { el.classList.remove('current'); }
-            });
+            const navs = ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8', 'nav-l9', 'nav-l10', 'nav-l11', 'nav-l12', 'nav-l13', 'nav-l14', 'nav-l15', 'nav-l16', 'nav-l-sigavi', 'nav-l-mkt'];
+            navs.forEach(id => { const el = document.getElementById(id); if(el) el.classList.remove('current', 'completed'); });
 
-            if (lessonId === 'lesson1' && document.getElementById('nav-l1')) document.getElementById('nav-l1').classList.add('current');
-            else if (lessonId === 'lesson2' && document.getElementById('nav-l2')) { document.getElementById('nav-l2').classList.add('current'); document.getElementById('nav-l1').classList.add('completed'); }
-            else if (lessonId === 'lesson3' && document.getElementById('nav-l3')) { document.getElementById('nav-l3').classList.add('current'); ['nav-l1', 'nav-l2'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson4' && document.getElementById('nav-l4')) { document.getElementById('nav-l4').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson5' && document.getElementById('nav-l5')) { document.getElementById('nav-l5').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson6' && document.getElementById('nav-l6')) { document.getElementById('nav-l6').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson7' && document.getElementById('nav-l7')) { document.getElementById('nav-l7').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson8' && document.getElementById('nav-l8')) { document.getElementById('nav-l8').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson9' && document.getElementById('nav-l9')) { document.getElementById('nav-l9').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson10' && document.getElementById('nav-l10')) { document.getElementById('nav-l10').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8', 'nav-l9'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson11' && document.getElementById('nav-l11')) { document.getElementById('nav-l11').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8', 'nav-l9', 'nav-l10'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson12' && document.getElementById('nav-l12')) { document.getElementById('nav-l12').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8', 'nav-l9', 'nav-l10', 'nav-l11'].forEach(id => document.getElementById(id).classList.add('completed')); }
-            else if (lessonId === 'lesson-sigavi' && document.getElementById('nav-l-sigavi')) { document.getElementById('nav-l-sigavi').classList.add('current'); ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8', 'nav-l9', 'nav-l10', 'nav-l11', 'nav-l12'].forEach(id => document.getElementById(id).classList.add('completed')); }
+            // Lógica sequencial para colorir a barra lateral (Sidebar)
+            const sequence = ['nav-l1','nav-l2','nav-l3','nav-l4','nav-l5','nav-l6','nav-l7','nav-l8','nav-l9','nav-l10','nav-l11','nav-l12','nav-l13','nav-l14','nav-l15','nav-l16','nav-l-sigavi','nav-l-mkt'];
+            
+            // Mapeamento entre ID da aula e ID do Nav
+            const lessonToNav = {
+                'lesson1':'nav-l1', 'lesson2':'nav-l2', 'lesson3':'nav-l3', 'lesson4':'nav-l4', 'lesson5':'nav-l5', 'lesson6':'nav-l6', 'lesson7':'nav-l7', 'lesson8':'nav-l8', 'lesson9':'nav-l9', 'lesson10':'nav-l10', 'lesson11':'nav-l11', 'lesson12':'nav-l12', 'lesson13':'nav-l13', 'lesson14':'nav-l14', 'lesson15':'nav-l15', 'lesson16':'nav-l16', 'lesson-sigavi':'nav-l-sigavi', 'lesson-mkt':'nav-l-mkt'
+            };
+
+            const currentNavId = lessonToNav[lessonId];
+            if (currentNavId) {
+                const currentIndex = sequence.indexOf(currentNavId);
+                document.getElementById(currentNavId).classList.add('current');
+                for (let i = 0; i < currentIndex; i++) {
+                    const el = document.getElementById(sequence[i]);
+                    if (el) el.classList.add('completed');
+                }
+            }
         }
 
         function openTab(tabEl) {
@@ -1119,9 +1052,7 @@
             const lessonId = lessonWrapper.id;
             const map = safeGetJSON(LS_KEYS.tabMap, {});
             const desiredTargetId = map[lessonId];
-
             if (!desiredTargetId) return;
-
             const desiredTab = lessonWrapper.querySelector(`.tab[data-target="${CSS.escape(desiredTargetId)}"]`);
             if (desiredTab) openTab(desiredTab);
         }
@@ -1129,20 +1060,13 @@
         // ==========================================
         // INIT
         // ==========================================
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                document.body.classList.remove('no-scroll');
-            }
-        });
+        window.addEventListener('resize', () => { if (window.innerWidth > 768) document.body.classList.remove('no-scroll'); });
 
         let last = null;
         try { last = localStorage.getItem(LS_KEYS.lesson); } catch {}
         
-        if (last && document.getElementById(last)) {
-            showLesson(last);
-        } else {
-            showLesson('home-dashboard');
-        }
+        if (last && document.getElementById(last)) showLesson(last);
+        else showLesson('home-dashboard');
 
     </script>
 </body>
