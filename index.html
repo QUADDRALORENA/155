@@ -190,9 +190,20 @@
                 <div id="nav-l-mkt" class="sub-item" onclick="showLesson('lesson-mkt'); toggleSidebarMobile()">B.2 Mkt Imobiliário (Felipe Capuano)</div>
             </div>
 
-            <div class="module-item locked"><span class="status-icon">🔒</span> 5. Fechamento Jurídico</div>
+            <div class="module-item"><span class="status-icon">✅</span> 5. Fechamento Jurídico</div>
             <div class="sub-module-list">
-                <div class="sub-item locked">Em breve</div>
+                <div id="nav-l17" class="sub-item" onclick="showLesson('lesson17'); toggleSidebarMobile()">5.1 A Esteira de Aprovação</div>
+                <div id="nav-l18" class="sub-item" onclick="showLesson('lesson18'); toggleSidebarMobile()">5.2 Análise de Crédito</div>
+                <div id="nav-l19" class="sub-item" onclick="showLesson('lesson19'); toggleSidebarMobile()">5.3 Contratos e Alienação</div>
+                <div id="nav-l20" class="sub-item" onclick="showLesson('lesson20'); toggleSidebarMobile()">5.4 Vistoria e Chaves</div>
+            </div>
+
+            <div class="module-item"><span class="status-icon">⏳</span> 6. Maestria e Escala</div>
+            <div class="sub-module-list">
+                <div id="nav-l21" class="sub-item" onclick="showLesson('lesson21'); toggleSidebarMobile()">6.1 Networking AA</div>
+                <div id="nav-l22" class="sub-item" onclick="showLesson('lesson22'); toggleSidebarMobile()">6.2 Gestão de Carteira VIP</div>
+                <div id="nav-l23" class="sub-item" onclick="showLesson('lesson23'); toggleSidebarMobile()">6.3 Captação de Investidores</div>
+                <div id="nav-l24" class="sub-item" onclick="showLesson('lesson24'); toggleSidebarMobile()">6.4 Marca Pessoal (Branding)</div>
             </div>
         </div>
     </nav>
@@ -225,9 +236,9 @@
                     <div class="dash-card-footer"><span>4 Aulas</span> <span>Acessar →</span></div>
                 </button>
 
-                <button class="dash-card" onclick="showLesson('lesson13')" style="border-color: var(--accent); box-shadow: 0 4px 15px rgba(202, 138, 4, 0.1);" aria-label="Acessar Módulo 4">
+                <button class="dash-card" onclick="showLesson('lesson13')" aria-label="Acessar Módulo 4">
                     <div><div class="dash-card-icon">🏢</div><div class="dash-card-title">Módulo 4: Domínio do Produto</div><div class="dash-card-desc">Estratégias avançadas de pitch presencial, engenharia de valor e contorno de objeções.</div></div>
-                    <div class="dash-card-footer" style="color: var(--primary);"><span>Módulo Atual</span> <span>Continuar →</span></div>
+                    <div class="dash-card-footer"><span>4 Aulas</span> <span>Acessar →</span></div>
                 </button>
 
                 <button class="dash-card" onclick="showLesson('lesson-sigavi')" style="border-color: #60a5fa; box-shadow: 0 4px 15px rgba(96, 165, 250, 0.1);" aria-label="Acessar Trilha Bônus">
@@ -235,9 +246,14 @@
                     <div class="dash-card-footer" style="color: #2563eb;"><span>2 Masterclasses</span> <span>Acessar →</span></div>
                 </button>
 
-                <button class="dash-card" style="opacity: 0.6; cursor: not-allowed;" aria-label="Módulo 5 Bloqueado" disabled>
+                <button class="dash-card" onclick="showLesson('lesson17')" style="border-color: var(--accent); box-shadow: 0 4px 15px rgba(202, 138, 4, 0.1);" aria-label="Acessar Módulo 5">
                     <div><div class="dash-card-icon">⚖️</div><div class="dash-card-title">Módulo 5: Fechamento Jurídico</div><div class="dash-card-desc">Tudo sobre contratos, documentação, análise de crédito e a esteira de aprovação Yuny.</div></div>
-                    <div class="dash-card-footer" style="color: #94a3b8;"><span>Em breve</span> <span>🔒 Bloqueado</span></div>
+                    <div class="dash-card-footer" style="color: var(--primary);"><span>Módulo Atual</span> <span>Continuar →</span></div>
+                </button>
+
+                <button class="dash-card" onclick="showLesson('lesson21')" aria-label="Acessar Módulo 6">
+                    <div><div class="dash-card-icon">🚀</div><div class="dash-card-title">Módulo 6: Maestria e Escala</div><div class="dash-card-desc">Como criar uma marca pessoal magnética, captar investidores e dominar o networking de luxo.</div></div>
+                    <div class="dash-card-footer"><span>Em Produção</span> <span>Aguarde ⏳</span></div>
                 </button>
 
             </div>
@@ -972,7 +988,135 @@
             <div id="mkt-tab2" class="content-area">
                 <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Apresentação: Masterclass Mkt Imobiliário</div></div></div><a href="#" class="btn btn-secondary" onclick="alert('Link em breve')">Baixar PDF</a></div>
             </div>
-            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson-sigavi')">← Anterior</button><button class="btn btn-primary locked">Módulo 5 em Breve</button></footer>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson-sigavi')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson17')">Ir para Módulo 5 →</button></footer>
+        </div>
+
+        <div id="lesson17" class="lesson-wrapper">
+            <header class="lesson-header">
+                <div class="breadcrumbs">Módulo 5 > Fechamento Jurídico</div>
+                <h1>5.1 — Blindagem Comercial: A Esteira de Aprovação</h1>
+                <div class="media-section">
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: O Fator Tempo</h4></div>
+                        <div class="video-container">
+                            <iframe src="https://drive.google.com/file/d/1VWkdtrIfmgxcdVKLj8tvfZ01maOwh6cP/preview" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Consultoria de Risco"</h4></div>
+                        <div class="audio-iframe-container"><iframe src="https://drive.google.com/file/d/16zUts0lKhrBQioRa70I2egADZRvYo1En/preview" width="100%" height="100%" style="border:none;"></iframe></div>
+                    </div>
+                </div>
+            </header>
+            <div class="tabs-container">
+                <div class="tab active" data-target="l17-tab1" onclick="openTab(this)">📖 A ZONA DE RISCO</div><div class="tab" data-target="l17-tab2" onclick="openTab(this)">🛠️ PLAYBOOK JURÍDICO</div><div class="tab" data-target="l17-tab3" onclick="openTab(this)">🧠 TREINO</div>
+            </div>
+            <div id="l17-tab1" class="content-area active-content">
+                <div class="highlight-box"><div class="highlight-title">💎 O TEMPO MATA NEGÓCIOS</div>"Na alta performance, um acordo verbal não é uma venda. A burocracia não pode ser desculpa para lentidão. Cada hora sem contrato assinado aumenta o risco de distrato em 15%."</div>
+                <h3 class="section-title">A Tríade da Esteira</h3>
+                <div class="triad-grid">
+                    <div class="triad-card"><span class="triad-icon">📁</span><span class="triad-title">DOSSIÊ IMPECÁVEL</span><span class="triad-desc">Documentação 100% validada e legível.</span></div>
+                    <div class="triad-card"><span class="triad-icon">⚓</span><span class="triad-title">ANCORAGEM</span><span class="triad-desc">Atualizações proativas a cada 24 horas.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🤝</span><span class="triad-title">LEITURA ASSISTIDA</span><span class="triad-desc">Não envie o PDF solto. Explique as cláusulas.</span></div>
+                </div>
+            </div>
+            <div id="l17-tab2" class="content-area">
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual de Esteira: Blindagem de Contratos</div></div></div><a href="https://drive.google.com/file/d/169v1EIb5Hw3wzMUzJ4ACz1YHWsOBbvQJ/view?usp=sharing" target="_blank" class="btn btn-primary">Baixar PDF</a></div>
+            </div>
+            <div id="l17-tab3" class="content-area">
+                <div class="flashcard-container">
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Zona de Risco?</div><div class="card-back">Tempo entre o "Sim" verbal e a assinatura.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Dossiê "às pinguinhas"?</div><div class="card-back">Erro grave. Só envie quando estiver 100% completo.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Ancoragem da Ansiedade?</div><div class="card-back">Informar o cliente do status do processo a cada 24h.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">O Silêncio gera?</div><div class="card-back">Insegurança e arrependimento de compra.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Leitura Assistida?</div><div class="card-back">Explicar o contrato junto ao cliente, sem sustos.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Alienação Fiduciária?</div><div class="card-back">O imóvel é a garantia do banco até à quitação.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Índice INCC?</div><div class="card-back">Reajuste de obra. Deve ser explicado com clareza.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Distrato?</div><div class="card-back">Cancelamento do negócio. Evitado com agilidade.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Fotos de Documentos?</div><div class="card-back">Devem estar legíveis e sem cortes.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Assinatura Digital?</div><div class="card-back">Acelera o processo, mas não anula a leitura assistida.</div></div></div>
+                </div>
+            </div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson-mkt')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson18')">Ir para 5.2 →</button></footer>
+        </div>
+
+        <div id="lesson18" class="lesson-wrapper">
+            <header class="lesson-header">
+                <div class="breadcrumbs">Módulo 5 > Fechamento Jurídico</div>
+                <h1>5.2 — A Matemática da Aprovação: Financiamento e Risco</h1>
+                <div class="media-section">
+                    <div class="media-card block-display"><div class="media-info"><h4>📺 Vídeo Aula: Financiamento Imobiliário</h4></div>
+                        <div class="video-container" style="background:#1e293b;"><div style="text-align:center;">VÍDEO EM BREVE<br><span style="font-size:0.7rem;">Aguardando Link</span></div></div>
+                    </div>
+                    <div class="media-card secondary"><div class="media-info"><h4>🎧 Podcast: "Sessão de Auditoria"</h4></div>
+                        <div class="audio-iframe-container" style="display:flex; align-items:center; justify-content:center; background:#e2e8f0; color:#64748b; font-size:0.8rem; font-weight:bold;">ÁUDIO EM BREVE</div>
+                    </div>
+                </div>
+            </header>
+            <div class="tabs-container">
+                <div class="tab active" data-target="l18-tab1" onclick="openTab(this)">📖 PRÉ-QUALIFICAÇÃO</div><div class="tab" data-target="l18-tab2" onclick="openTab(this)">🛠️ MANUAL DE CRÉDITO</div><div class="tab" data-target="l18-tab3" onclick="openTab(this)">🧠 TREINO</div>
+            </div>
+            <div id="l18-tab1" class="content-area active-content">
+                <div class="highlight-box"><div class="highlight-title">💎 AUDITORIA PRÉVIA</div>"Um processo comercial eficiente exige uma pré-qualificação financeira antes da emissão de qualquer documento. A intenção não supera a matemática."</div>
+                <h3 class="section-title">Pilares do Crédito</h3>
+                <div class="triad-grid">
+                    <div class="triad-card"><span class="triad-icon">📊</span><span class="triad-title">COMPROMETIMENTO</span><span class="triad-desc">A parcela não pode exceder 30% da renda bruta.</span></div>
+                    <div class="triad-card"><span class="triad-icon">📄</span><span class="triad-title">COMPROVAÇÃO</span><span class="triad-desc">Holerite e IRPF são primários. Extrato é secundário.</span></div>
+                    <div class="triad-card"><span class="triad-icon">🧮</span><span class="triad-title">SISTEMAS</span><span class="triad-desc">Entenda as diferenças vitais entre SAC e PRICE.</span></div>
+                </div>
+            </div>
+            <div id="l18-tab2" class="content-area">
+                <div class="download-card full-width"><div class="file-info"><div class="file-icon">PDF</div><div><div style="font-weight: 600;">Manual de Crédito e Financiamento</div></div></div><a href="#" class="btn btn-secondary" onclick="alert('Link em breve')">Baixar PDF</a></div>
+            </div>
+            <div id="l18-tab3" class="content-area">
+                <div class="flashcard-container">
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Regra dos 30%?</div><div class="card-back">A parcela do financiamento não pode comprometer mais que 30% da renda.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Comprovação Principal?</div><div class="card-back">Holerite (CLT) ou IRPF com recibo de entrega (Empresários).</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Extrato Bancário serve?</div><div class="card-back">Apenas como apoio. Não sustenta operações de alto valor sozinho.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Tabela SAC?</div><div class="card-back">Amortização Constante. Parcelas decrescentes, menor custo total.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Tabela PRICE?</div><div class="card-back">Parcelas fixas. Exige renda inicial menor, mas tem mais juros no fim.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Plano de Contingência?</div><div class="card-back">O que fazer imediatamente se o crédito do cliente for reprovado.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Score de Crédito?</div><div class="card-back">Pontuação interna dos bancos que avalia o risco do comprador.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Auditor Financeiro?</div><div class="card-back">Postura do corretor ao mapear a renda antes de prometer a venda.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">LTV (Loan to Value)?</div><div class="card-back">Percentual do valor do imóvel que o banco aceita financiar.</div></div></div>
+                    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="card-front">Diversificação de Risco?</div><div class="card-back">Submeter a pasta a uma segunda instituição financeira.</div></div></div>
+                </div>
+            </div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson17')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson19')">Ir para 5.3 →</button></footer>
+        </div>
+
+        <div id="lesson19" class="lesson-wrapper">
+            <header class="lesson-header"><div class="breadcrumbs">Módulo 5 > Fechamento Jurídico</div><h1>5.3 — Estruturação de Contratos e Análise de Risco</h1></header>
+            <div class="content-area active-content" style="display:block;"><div class="highlight-box">💎 Conteúdo em Produção. Aguardando links e roteiros de aula.</div></div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson18')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson20')">Ir para 5.4 →</button></footer>
+        </div>
+
+        <div id="lesson20" class="lesson-wrapper">
+            <header class="lesson-header"><div class="breadcrumbs">Módulo 5 > Fechamento Jurídico</div><h1>5.4 — Vistoria, Entrega e Encerramento do Ciclo</h1></header>
+            <div class="content-area active-content" style="display:block;"><div class="highlight-box">💎 Conteúdo em Produção. Aguardando links e roteiros de aula.</div></div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson19')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson21')">Ir para Módulo 6 →</button></footer>
+        </div>
+
+        <div id="lesson21" class="lesson-wrapper">
+            <header class="lesson-header"><div class="breadcrumbs">Módulo 6 > Maestria e Escala</div><h1>6.1 — O Jogo das Cadeiras: Networking de Alto Nível</h1></header>
+            <div class="content-area active-content" style="display:block;"><div class="highlight-box">💎 Conteúdo em Produção. Aguardando links e roteiros de aula.</div></div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson20')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson22')">Ir para 6.2 →</button></footer>
+        </div>
+
+        <div id="lesson22" class="lesson-wrapper">
+            <header class="lesson-header"><div class="breadcrumbs">Módulo 6 > Maestria e Escala</div><h1>6.2 — Gestão de Carteira VIP e Family Offices</h1></header>
+            <div class="content-area active-content" style="display:block;"><div class="highlight-box">💎 Conteúdo em Produção. Aguardando links e roteiros de aula.</div></div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson21')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson23')">Ir para 6.3 →</button></footer>
+        </div>
+
+        <div id="lesson23" class="lesson-wrapper">
+            <header class="lesson-header"><div class="breadcrumbs">Módulo 6 > Maestria e Escala</div><h1>6.3 — Captação de Investidores e Fundos Imobiliários</h1></header>
+            <div class="content-area active-content" style="display:block;"><div class="highlight-box">💎 Conteúdo em Produção. Aguardando links e roteiros de aula.</div></div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson22')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('lesson24')">Ir para 6.4 →</button></footer>
+        </div>
+
+        <div id="lesson24" class="lesson-wrapper">
+            <header class="lesson-header"><div class="breadcrumbs">Módulo 6 > Maestria e Escala</div><h1>6.4 — O Corretor como Instituição: Marca Pessoal</h1></header>
+            <div class="content-area active-content" style="display:block;"><div class="highlight-box">💎 Conteúdo em Produção. Aguardando links e roteiros de aula.</div></div>
+            <footer class="lesson-footer"><button class="btn btn-secondary" onclick="showLesson('lesson23')">← Anterior</button><button class="btn btn-primary" onclick="showLesson('home-dashboard')">Concluir Trilha →</button></footer>
         </div>
 
     </main>
@@ -1020,15 +1164,15 @@
             window.scrollTo(0,0);
             if (document.querySelector('.main')) document.querySelector('.main').scrollTop = 0;
 
-            const navs = ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8', 'nav-l9', 'nav-l10', 'nav-l11', 'nav-l12', 'nav-l13', 'nav-l14', 'nav-l15', 'nav-l16', 'nav-l-sigavi', 'nav-l-mkt'];
+            const navs = ['nav-l1', 'nav-l2', 'nav-l3', 'nav-l4', 'nav-l5', 'nav-l6', 'nav-l7', 'nav-l8', 'nav-l9', 'nav-l10', 'nav-l11', 'nav-l12', 'nav-l13', 'nav-l14', 'nav-l15', 'nav-l16', 'nav-l-sigavi', 'nav-l-mkt', 'nav-l17', 'nav-l18', 'nav-l19', 'nav-l20', 'nav-l21', 'nav-l22', 'nav-l23', 'nav-l24'];
             navs.forEach(id => { const el = document.getElementById(id); if(el) el.classList.remove('current', 'completed'); });
 
             // Lógica sequencial para colorir a barra lateral (Sidebar)
-            const sequence = ['nav-l1','nav-l2','nav-l3','nav-l4','nav-l5','nav-l6','nav-l7','nav-l8','nav-l9','nav-l10','nav-l11','nav-l12','nav-l13','nav-l14','nav-l15','nav-l16','nav-l-sigavi','nav-l-mkt'];
+            const sequence = ['nav-l1','nav-l2','nav-l3','nav-l4','nav-l5','nav-l6','nav-l7','nav-l8','nav-l9','nav-l10','nav-l11','nav-l12','nav-l13','nav-l14','nav-l15','nav-l16','nav-l-sigavi','nav-l-mkt','nav-l17','nav-l18','nav-l19','nav-l20','nav-l21','nav-l22','nav-l23','nav-l24'];
             
             // Mapeamento entre ID da aula e ID do Nav
             const lessonToNav = {
-                'lesson1':'nav-l1', 'lesson2':'nav-l2', 'lesson3':'nav-l3', 'lesson4':'nav-l4', 'lesson5':'nav-l5', 'lesson6':'nav-l6', 'lesson7':'nav-l7', 'lesson8':'nav-l8', 'lesson9':'nav-l9', 'lesson10':'nav-l10', 'lesson11':'nav-l11', 'lesson12':'nav-l12', 'lesson13':'nav-l13', 'lesson14':'nav-l14', 'lesson15':'nav-l15', 'lesson16':'nav-l16', 'lesson-sigavi':'nav-l-sigavi', 'lesson-mkt':'nav-l-mkt'
+                'lesson1':'nav-l1', 'lesson2':'nav-l2', 'lesson3':'nav-l3', 'lesson4':'nav-l4', 'lesson5':'nav-l5', 'lesson6':'nav-l6', 'lesson7':'nav-l7', 'lesson8':'nav-l8', 'lesson9':'nav-l9', 'lesson10':'nav-l10', 'lesson11':'nav-l11', 'lesson12':'nav-l12', 'lesson13':'nav-l13', 'lesson14':'nav-l14', 'lesson15':'nav-l15', 'lesson16':'nav-l16', 'lesson-sigavi':'nav-l-sigavi', 'lesson-mkt':'nav-l-mkt', 'lesson17':'nav-l17', 'lesson18':'nav-l18', 'lesson19':'nav-l19', 'lesson20':'nav-l20', 'lesson21':'nav-l21', 'lesson22':'nav-l22', 'lesson23':'nav-l23', 'lesson24':'nav-l24'
             };
 
             const currentNavId = lessonToNav[lessonId];
